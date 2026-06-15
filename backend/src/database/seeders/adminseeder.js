@@ -1,0 +1,34 @@
+import { connectDB, disconnectDB } from "../../config/db.js";
+import env from "../../config/env.js";
+import Admin from "../../models/Admin.js";
+
+async function seedAdmin() {
+  try {
+    await connectDB();
+
+    const existingAdmin = await Admin.findOne({
+      email: env.ADMIN_EMAIL,
+    });
+
+    if (existingAdmin) {
+      console.log("Admin already exists");
+      process.exit(0);
+    }
+
+    await Admin.create({
+      name: env.ADMIN_NAME,
+      email: env.ADMIN_EMAIL,
+      password: env.ADMIN_PASSWORD,
+    });
+
+    console.log("Admin created successfully");
+    process.exit(0);
+  } catch (error) {
+    console.error("Seeder failed:", error.message);
+    process.exit(1);
+  } finally {
+    await disconnectDB();
+  }
+}
+
+seedAdmin();
