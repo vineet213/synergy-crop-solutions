@@ -4,9 +4,11 @@ import Footer from "./Footer.jsx";
 
 export default function PublicLayout() {
   return (
-    <div>
+    <div className="layout-shell">
       <Navbar />
-      <Outlet />
+      <main className="content-shell">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

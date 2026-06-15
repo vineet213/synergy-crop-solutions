@@ -1,8 +1,118 @@
-﻿export default function HomePage() {
+﻿import { ArrowRight, Leaf, ShieldCheck, MapPin, Sparkles, Truck } from "lucide-react";
+import Button from "../../components/ui/Button.jsx";
+import Card from "../../components/ui/Card.jsx";
+import Badge from "../../components/ui/Badge.jsx";
+import SectionContainer from "../../components/ui/SectionContainer.jsx";
+
+const categories = [
+  { title: "Seeds & Nutrition", description: "High-yield seed varieties and custom nutrient plans.", icon: <Leaf size={20} /> },
+  { title: "Field Protection", description: "Precision disease and pest protection strategies.", icon: <ShieldCheck size={20} /> },
+  { title: "Supply Chain", description: "Distribution solutions from farm to market.", icon: <Truck size={20} /> },
+];
+
+const discoveryItems = [
+  { title: "Crop health scoring", description: "Data-driven crop insights for optimized yield." },
+  { title: "Growth cycle tracking", description: "Monitor field performance across seasons." },
+  { title: "Soil nutrition plans", description: "Adaptive nutrient programs for every soil type." },
+];
+
+const diseaseItems = [
+  { title: "Blight response", description: "Early detection and rapid mitigation support." },
+  { title: "Fungal control", description: "Protect crops with sustainable treatment plans." },
+  { title: "Resistance management", description: "Prevent recurring disease pressure and loss." },
+];
+
+const testimonials = [
+  { name: "Maya Patel", role: "Farm Owner", quote: "Synergy Crop Solutions helped us improve yield and reduce waste with a reliable discovery program." },
+  { name: "Jonas Turner", role: "Operations Lead", quote: "The logistics platform keeps our distributor network connected and efficient." },
+];
+
+export default function HomePage() {
   return (
-    <main className="page-container">
-      <h1 className="page-title">HomePage</h1>
-      <p className="page-description">Welcome to Synergy Crop Solutions. This is the HomePage placeholder.</p>
-    </main>
+    <div>
+      <section className="hero-panel page-container">
+        <div className="hero-copy">
+          <Badge variant="brand">Agricultural Intelligence</Badge>
+          <h1 className="hero-title">Modern farming for resilient, profitable harvests.</h1>
+          <p className="hero-text">
+            Synergy Crop Solutions blends crop science, digital insights, and distribution expertise
+            to empower growers across every season.
+          </p>
+          <div className="hero-actions">
+            <Button>Explore solutions</Button>
+            <Button variant="secondary">View our story</Button>
+          </div>
+          <div className="hero-quote">
+            <p>
+              <strong>Trusted by growers nationwide.</strong> We help farms scale sustainably while keeping
+              quality and community at the center.
+            </p>
+          </div>
+        </div>
+        <div className="hero-visual">
+          <p>Crop intelligence through innovation</p>
+        </div>
+      </section>
+
+      <SectionContainer title="Our focused capabilities" subtitle="Built for modern agriculture">
+        <div className="card-grid">
+          {categories.map((item) => (
+            <Card
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              icon={item.icon}
+            />
+          ))}
+        </div>
+      </SectionContainer>
+
+      <SectionContainer title="Crop Discovery" subtitle="Find the right path for every field">
+        <div className="discover-grid">
+          {discoveryItems.map((item) => (
+            <Card key={item.title} title={item.title} description={item.description} />
+          ))}
+        </div>
+      </SectionContainer>
+
+      <SectionContainer title="Disease Discovery" subtitle="Protect crops with smarter decisions">
+        <div className="discover-grid">
+          {diseaseItems.map((item) => (
+            <Card key={item.title} title={item.title} description={item.description} />
+          ))}
+        </div>
+      </SectionContainer>
+
+      <SectionContainer title="Distributor Locator" subtitle="Connect with trusted supply partners">
+        <div className="card-shell">
+          <div className="card-header">
+            <span className="card-icon"><MapPin size={20} /></span>
+            <h3 className="card-title">Local distribution coverage</h3>
+          </div>
+          <p className="card-description">Find certified distributors and supply partners near your farm with a single search.</p>
+          <div style={{ marginTop: "1.5rem" }}>
+            <Button variant="secondary">Visit locator</Button>
+          </div>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer title="What growers say" subtitle="Real results from field leaders">
+        <div className="testimonials-grid">
+          {testimonials.map((item) => (
+            <Card key={item.name} title={item.name} description={`${item.role} · ${item.quote}`} />
+          ))}
+        </div>
+      </SectionContainer>
+
+      <SectionContainer title="Ready to grow with confidence?" subtitle="Partner with Synergy Crop Solutions">
+        <div className="card-shell" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+          <div>
+            <p className="section-subtitle">Actionable agriculture</p>
+            <h2 className="section-title" style={{ fontSize: "2rem" }}>Build smarter crop strategies today.</h2>
+          </div>
+          <Button>Contact our team</Button>
+        </div>
+      </SectionContainer>
+    </div>
   );
 }
