@@ -17,6 +17,9 @@ import ProductsPage from "../pages/public/ProductsPage.jsx";
 import ProductDetailPage from "../pages/public/ProductDetailPage.jsx";
 import StateProductsPage from "../pages/public/StateProductsPage.jsx";
 import TestimonialsPage from "../pages/public/TestimonialsPage.jsx";
+import AdminLayout from "../layouts/AdminLayout.jsx";
+import ProtectedRoute from "../components/ProtectedRoute.jsx";
+import AdminLogin from "../pages/admin/AdminLogin.jsx";
 import DashboardPage from "../pages/admin/DashboardPage.jsx";
 import BlogManagePage from "../pages/admin/BlogManagePage.jsx";
 import CategoriesManagePage from "../pages/admin/CategoriesManagePage.jsx";
@@ -26,16 +29,14 @@ import DiseasesManagePage from "../pages/admin/DiseasesManagePage.jsx";
 import DistributorsManagePage from "../pages/admin/DistributorsManagePage.jsx";
 import LeadsManagePage from "../pages/admin/LeadsManagePage.jsx";
 import ProductsManagePage from "../pages/admin/ProductsManagePage.jsx";
+import ProductCreatePage from "../pages/admin/ProductCreatePage.jsx";
 import SettingsPage from "../pages/admin/SettingsPage.jsx";
 import TestimonialsManagePage from "../pages/admin/TestimonialsManagePage.jsx";
-
-function AdminShell({ children }) {
-  return <main className="page-container">{children}</main>;
-}
 
 export default function AppRoutes() {
   return (
     <Routes>
+      {/* Public Routes */}
       <Route path="/" element={<PublicLayout />}>
         <Route index element={<HomePage />} />
         <Route path="blog" element={<BlogPage />} />
@@ -56,8 +57,20 @@ export default function AppRoutes() {
         <Route path="testimonials" element={<TestimonialsPage />} />
       </Route>
 
-      <Route path="/admin" element={<AdminShell><DashboardPage /></AdminShell>}>
-        <Route index element={<DashboardPage />} />
+      {/* Admin Login */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+
+      {/* Admin Protected Routes */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<DashboardPage />} />
         <Route path="blog" element={<BlogManagePage />} />
         <Route path="categories" element={<CategoriesManagePage />} />
         <Route path="certifications" element={<CertificationsManagePage />} />
@@ -66,10 +79,12 @@ export default function AppRoutes() {
         <Route path="distributors" element={<DistributorsManagePage />} />
         <Route path="leads" element={<LeadsManagePage />} />
         <Route path="products" element={<ProductsManagePage />} />
+        <Route path="products/new" element={<ProductCreatePage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="testimonials" element={<TestimonialsManagePage />} />
       </Route>
 
+      {/* Catch all - redirect to home */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

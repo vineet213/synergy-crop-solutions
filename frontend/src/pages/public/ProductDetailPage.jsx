@@ -2,20 +2,30 @@
 import { useParams, Link } from "react-router-dom";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import ProductDetail from "../../components/products/ProductDetail.jsx";
-import { productCatalog } from "../../components/products/mockProducts.js";
+import productService from "../../services/productService.js";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-
-  const product = useMemo(
-    () => productCatalog.find((item) => item.id === id),
-    [id]
-  );
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 250);
-    return () => window.clearTimeout(timer);
+    let mounted = true;
+    async function load() {
+      try {
+        setLoading(true);
+        const data = await productService.getPublicProduct(id);
+        if (!mounted) return;
+        setProduct(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+
+    if (id) load();
+    return () => (mounted = false);
   }, [id]);
 
   return (

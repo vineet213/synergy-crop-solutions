@@ -41,7 +41,7 @@ app.use(corsMiddleware);
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
-app.use("/api/v1", apiRoutes);
+app.use("/api", apiRoutes);
 
 app.get("/health", (_req, res) => {
   res.status(200).json({

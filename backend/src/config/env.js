@@ -70,7 +70,7 @@ const env = Object.freeze({
   CORS_ORIGINS: parseOrigins(
     optionalEnv(
       "CORS_ORIGINS",
-      isProduction ? "" : "http://localhost:5173"
+      isProduction ? "" : "http://localhost:5173,http://localhost:5174"
     )
   ),
 

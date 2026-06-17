@@ -2,31 +2,51 @@
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import ProductFilter from "../../components/products/ProductFilter.jsx";
 import ProductGrid from "../../components/products/ProductGrid.jsx";
-import { productCatalog, productCategories } from "../../components/products/mockProducts.js";
 import Card from "../../components/ui/Card.jsx";
+import productService from "../../services/productService.js";
 
 export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState(["All"]);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 350);
-    return () => window.clearTimeout(timer);
+    let mounted = true;
+    async function load() {
+      try {
+        setLoading(true);
+        const data = await productService.getPublicProducts();
+        if (!mounted) return;
+        setProducts(data || []);
+        // derive categories
+        const cats = ["All", ...Array.from(new Set((data || []).map((p) => p.category || "Uncategorized")))];
+        setCategories(cats);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const filteredProducts = useMemo(() => {
-    return productCatalog.filter((product) => {
-      const matchesCategory =
-        selectedCategory === "All" || product.category === selectedCategory;
+    return products.filter((product) => {
+      const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
+      const q = searchQuery.trim().toLowerCase();
       const matchesSearch =
-        searchQuery.trim() === "" ||
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.lead.toLowerCase().includes(searchQuery.toLowerCase());
+        q === "" ||
+        (product.name && product.name.toLowerCase().includes(q)) ||
+        (product.description && product.description.toLowerCase().includes(q));
       return matchesCategory && matchesSearch;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, products]);
 
   return (
     <main className="page-container product-page">
@@ -38,7 +58,7 @@ export default function ProductsPage() {
         <ProductFilter
           searchQuery={searchQuery}
           onSearch={setSearchQuery}
-          categories={productCategories}
+          categories={categories}
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
           onClear={() => {
