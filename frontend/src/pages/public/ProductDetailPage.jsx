@@ -1,57 +1,55 @@
-﻿import { useEffect, useMemo, useState } from "react";
+﻿import { useTranslation } from "react-i18next";
 import { useParams, Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import ProductDetail from "../../components/products/ProductDetail.jsx";
-import productService from "../../services/productService.js";
+import { usePublicProduct } from "../../hooks/useProducts.js";
 
 export default function ProductDetailPage() {
+  const { t } = useTranslation("products");
   const { id } = useParams();
-  const [loading, setLoading] = useState(true);
-  const [product, setProduct] = useState(null);
-
-  useEffect(() => {
-    let mounted = true;
-    async function load() {
-      try {
-        setLoading(true);
-        const data = await productService.getPublicProduct(id);
-        if (!mounted) return;
-        setProduct(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        if (mounted) setLoading(false);
-      }
-    }
-
-    if (id) load();
-    return () => (mounted = false);
-  }, [id]);
+  const { product, loading, error } = usePublicProduct(id);
 
   return (
-    <main className="page-container">
-      <SectionContainer
-        title={product ? product.name : "Product Details"}
-        subtitle={product ? product.category : "Product information and specifications."}
+    <main className="page-container" style={{ padding: "2rem 0" }}>
+      <Link
+        to="/products"
+        className="button-base button-secondary"
+        style={{ marginBottom: "1rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
       >
+        <ArrowLeft size={18} />
+        {t("backToList")}
+      </Link>
+
+      <SectionContainer title={t("sectionTitle")} subtitle={t("sectionSubtitle")}>
         {loading ? (
           <div className="loading-placeholder">
             <div className="skeleton-block skeleton-title" />
             <div className="skeleton-block skeleton-line" />
+            <div className="skeleton-block skeleton-line short" />
+            <div className="skeleton-block skeleton-tag" style={{ marginTop: "1rem" }} />
+          </div>
+        ) : error ? (
+          <div className="empty-state card-shell">
+            <h2>{t("errors.generic")}</h2>
+            <p>{error}</p>
+            <Link to="/products" className="button-base button-primary back-link">
+              {t("errors.browseCatalog")}
+            </Link>
           </div>
         ) : product ? (
           <>
             <ProductDetail product={product} />
-            <Link to="/products" className="button-base button-secondary back-link">
-              Back to products
+            <Link to="/products" className="back-link button-base button-secondary">
+              {t("backToList")}
             </Link>
           </>
         ) : (
           <div className="empty-state card-shell">
-            <h2>Product not found</h2>
-            <p>The product you are looking for does not exist in the catalog.</p>
+            <h2>{t("errors.notFound")}</h2>
+            <p>{t("errors.notFoundDesc")}</p>
             <Link to="/products" className="button-base button-primary back-link">
-              View catalog
+              {t("errors.viewCatalog")}
             </Link>
           </div>
         )}

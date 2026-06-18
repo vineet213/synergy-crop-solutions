@@ -1,0 +1,31 @@
+{
+  "title": "Products",
+  "subtitle": "Agricultural products built for modern operations.",
+  "intro": "Browse a curated catalog of agronomy, protection, irrigation, and digital tools. Filter by category or search for the exact solution your farm needs.",
+  "searchPlaceholder": "Search products, tools, and services",
+  "searchAria": "Search products",
+  "clear": "Clear",
+  "viewDetails": "View details",
+  "contactForPrice": "Contact for price",
+  "backToList": "Back to products",
+  "sectionTitle": "Product Details",
+  "sectionSubtitle": "Product information and specifications.",
+  "detail": {
+    "price": "Price",
+    "category": "Category",
+    "added": "Added",
+    "specs": "Specifications"
+  },
+  "empty": {
+    "title": "No products match your search",
+    "description": "Try a different keyword or clear the category filter to see more agricultural products."
+  },
+  "errors": {
+    "load": "Failed to load products",
+    "generic": "Something went wrong",
+    "notFound": "Product not found",
+    "notFoundDesc": "The product you are looking for does not exist in the catalog.",
+    "browseCatalog": "Browse catalog",
+    "viewCatalog": "View catalog"
+  }
+}

@@ -1,4 +1,5 @@
-﻿import { Search } from "lucide-react";
+﻿import { useTranslation } from "react-i18next";
+import { Search } from "lucide-react";
 import Button from "../ui/Button.jsx";
 
 export default function ProductFilter({
@@ -9,6 +10,8 @@ export default function ProductFilter({
   onSelectCategory,
   onClear,
 }) {
+  const { t } = useTranslation("products");
+
   return (
     <div className="product-filter">
       <div className="product-search">
@@ -16,9 +19,9 @@ export default function ProductFilter({
         <input
           value={searchQuery}
           onChange={(event) => onSearch(event.target.value)}
-          placeholder="Search products, tools, and services"
+          placeholder={t("searchPlaceholder")}
           className="search-input"
-          aria-label="Search products"
+          aria-label={t("searchAria")}
         />
       </div>
       <div className="product-category-row">
@@ -37,7 +40,7 @@ export default function ProductFilter({
           </button>
         ))}
         <Button variant="secondary" className="filter-clear" onClick={onClear}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
     </div>

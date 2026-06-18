@@ -1,58 +1,42 @@
-﻿import { useEffect, useMemo, useState } from "react";
+﻿import { useState, useMemo, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import ProductFilter from "../../components/products/ProductFilter.jsx";
 import ProductGrid from "../../components/products/ProductGrid.jsx";
 import Card from "../../components/ui/Card.jsx";
-import productService from "../../services/productService.js";
+import Button from "../../components/ui/Button.jsx";
+import { usePublicProducts } from "../../hooks/useProducts.js";
 
 export default function ProductsPage() {
+  const { t } = useTranslation("products");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState(["All"]);
 
-  useEffect(() => {
-    let mounted = true;
-    async function load() {
-      try {
-        setLoading(true);
-        const data = await productService.getPublicProducts();
-        if (!mounted) return;
-        setProducts(data || []);
-        // derive categories
-        const cats = ["All", ...Array.from(new Set((data || []).map((p) => p.category || "Uncategorized")))];
-        setCategories(cats);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        if (mounted) setLoading(false);
-      }
-    }
+  const params = selectedCategory !== "All" ? { category: selectedCategory } : {};
+  const { products, loading, error, reload } = usePublicProducts(params);
 
-    load();
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  useEffect(() => {
+    if (selectedCategory === "All" && !loading) {
+      const cats = ["All", ...Array.from(new Set((products || []).map((p) => p.category || "Uncategorized")))];
+      setCategories(cats);
+    }
+  }, [selectedCategory, loading, products]);
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
-      const q = searchQuery.trim().toLowerCase();
-      const matchesSearch =
-        q === "" ||
-        (product.name && product.name.toLowerCase().includes(q)) ||
-        (product.description && product.description.toLowerCase().includes(q));
-      return matchesCategory && matchesSearch;
-    });
-  }, [searchQuery, selectedCategory, products]);
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return products;
+    return products.filter((product) =>
+      (product.name && product.name.toLowerCase().includes(q)) ||
+      (product.description && product.description.toLowerCase().includes(q))
+    );
+  }, [searchQuery, products]);
 
   return (
-    <main className="page-container product-page">
-      <SectionContainer title="Products" subtitle="Agricultural products built for modern operations.">
+    <main className="page-container" style={{ padding: "2rem 0" }}>
+      <SectionContainer title={t("title")} subtitle={t("subtitle")}>
         <p className="product-intro-copy">
-          Browse a curated catalog of agronomy, protection, irrigation, and digital tools. Filter by category or search for the exact solution your farm needs.
+          {t("intro")}
         </p>
 
         <ProductFilter
@@ -78,10 +62,18 @@ export default function ProductsPage() {
               </Card>
             ))}
           </div>
+        ) : error ? (
+          <div className="empty-state card-shell">
+            <h2>{t("errors.load")}</h2>
+            <p>{error}</p>
+            <Button onClick={reload}>
+              Retry
+            </Button>
+          </div>
         ) : filteredProducts.length === 0 ? (
           <div className="empty-state card-shell">
-            <h2>No products match your search</h2>
-            <p>Try a different keyword or clear the category filter to see more agricultural products.</p>
+            <h2>{t("empty.title")}</h2>
+            <p>{t("empty.description")}</p>
           </div>
         ) : (
           <ProductGrid products={filteredProducts} />
