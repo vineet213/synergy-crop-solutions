@@ -1,0 +1,14 @@
+{
+  "brand": "Synergy Crop Solutions",
+  "links": {
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "cropDiscovery": "Crop Discovery",
+    "diseaseDiscovery": "Disease Discovery",
+    "locator": "Locator",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "cta": "Get in Touch"
+}

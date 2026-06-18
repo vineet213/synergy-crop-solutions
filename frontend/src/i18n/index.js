@@ -1,0 +1,33 @@
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+import enNav from "./locales/en/navigation.json";
+import enCommon from "./locales/en/common.json";
+import enHome from "./locales/en/home.json";
+import hiNav from "./locales/hi/navigation.json";
+import hiCommon from "./locales/hi/common.json";
+import hiHome from "./locales/hi/home.json";
+import mrNav from "./locales/mr/navigation.json";
+import mrCommon from "./locales/mr/common.json";
+import mrHome from "./locales/mr/home.json";
+import knNav from "./locales/kn/navigation.json";
+import knCommon from "./locales/kn/common.json";
+import knHome from "./locales/kn/home.json";
+
+const savedLang = localStorage.getItem("appLanguage") || "en";
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { navigation: enNav, common: enCommon, home: enHome },
+    hi: { navigation: hiNav, common: hiCommon, home: hiHome },
+    mr: { navigation: mrNav, common: mrCommon, home: mrHome },
+    kn: { navigation: knNav, common: knCommon, home: knHome },
+  },
+  lng: savedLang,
+  fallbackLng: "en",
+  ns: ["navigation", "common", "home"],
+  defaultNS: "navigation",
+  interpolation: { escapeValue: false },
+});
+
+export default i18n;

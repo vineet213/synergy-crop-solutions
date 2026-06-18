@@ -1,4 +1,5 @@
-﻿import { ArrowRight, Leaf, ShieldCheck, MapPin, Sparkles, Truck } from "lucide-react";
+﻿import { useTranslation } from "react-i18next";
+import { ArrowRight, Leaf, ShieldCheck, MapPin, Sparkles, Truck } from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
 import Card from "../../components/ui/Card.jsx";
 import Badge from "../../components/ui/Badge.jsx";
@@ -28,41 +29,32 @@ const testimonials = [
 ];
 
 export default function HomePage() {
+  const { t } = useTranslation("home");
+
   return (
     <div>
       <section className="hero-panel page-container">
         <div className="hero-copy">
-          <Badge variant="brand">Agricultural Intelligence</Badge>
-          <h1 className="hero-title">Modern farming for resilient, profitable harvests.</h1>
-          <p className="hero-text">
-            Synergy Crop Solutions blends crop science, digital insights, and distribution expertise
-            to empower growers across every season.
-          </p>
+          <Badge variant="brand">{t("hero.badge")}</Badge>
+          <h1 className="hero-title">{t("hero.title")}</h1>
+          <p className="hero-text">{t("hero.subtitle")}</p>
           <div className="hero-actions">
-            <Button>Explore solutions</Button>
-            <Button variant="secondary">View our story</Button>
+            <Button>{t("common:cta.exploreSolutions")}</Button>
+            <Button variant="secondary">{t("common:cta.viewOurStory")}</Button>
           </div>
           <div className="hero-quote">
-            <p>
-              <strong>Trusted by growers nationwide.</strong> We help farms scale sustainably while keeping
-              quality and community at the center.
-            </p>
+            <p><strong>{t("hero.quote")}</strong></p>
           </div>
         </div>
         <div className="hero-visual">
-          <p>Crop intelligence through innovation</p>
+          <p>{t("hero.visual")}</p>
         </div>
       </section>
 
       <SectionContainer title="Our focused capabilities" subtitle="Built for modern agriculture">
         <div className="card-grid">
           {categories.map((item) => (
-            <Card
-              key={item.title}
-              title={item.title}
-              description={item.description}
-              icon={item.icon}
-            />
+            <Card key={item.title} title={item.title} description={item.description} icon={item.icon} />
           ))}
         </div>
       </SectionContainer>
@@ -91,7 +83,7 @@ export default function HomePage() {
           </div>
           <p className="card-description">Find certified distributors and supply partners near your farm with a single search.</p>
           <div style={{ marginTop: "1.5rem" }}>
-            <Button variant="secondary">Visit locator</Button>
+            <Button variant="secondary">{t("common:cta.visitLocator")}</Button>
           </div>
         </div>
       </SectionContainer>
@@ -110,7 +102,7 @@ export default function HomePage() {
             <p className="section-subtitle">Actionable agriculture</p>
             <h2 className="section-title" style={{ fontSize: "2rem" }}>Build smarter crop strategies today.</h2>
           </div>
-          <Button>Contact our team</Button>
+          <Button>{t("common:cta.contactOurTeam")}</Button>
         </div>
       </SectionContainer>
     </div>

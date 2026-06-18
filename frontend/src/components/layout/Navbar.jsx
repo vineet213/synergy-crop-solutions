@@ -1,27 +1,30 @@
 ﻿import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X, Leaf, MapPin, Sparkles } from "lucide-react";
-
-const publicLinks = [
-  { to: "/", label: "Home" },
-  { to: "/products", label: "Products" },
-  { to: "/categories", label: "Categories" },
-  { to: "/crops", label: "Crop Discovery" },
-  { to: "/diseases", label: "Disease Discovery" },
-  { to: "/distributors", label: "Locator" },
-  { to: "/blog", label: "Blog" },
-  { to: "/contact", label: "Contact" },
-];
+import { useTranslation } from "react-i18next";
+import { Menu, X, Leaf } from "lucide-react";
+import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { to: "/", label: t("links.home") },
+    { to: "/products", label: t("links.products") },
+    { to: "/categories", label: t("links.categories") },
+    { to: "/crops", label: t("links.cropDiscovery") },
+    { to: "/diseases", label: t("links.diseaseDiscovery") },
+    { to: "/distributors", label: t("links.locator") },
+    { to: "/blog", label: t("links.blog") },
+    { to: "/contact", label: t("links.contact") },
+  ];
 
   return (
     <header className="site-header">
       <div className="nav-inner page-container">
         <NavLink to="/" className="brand">
           <Leaf className="brand-icon" />
-          <span>Synergy Crop Solutions</span>
+          <span>{t("brand")}</span>
         </NavLink>
 
         <button
@@ -34,7 +37,7 @@ export default function Navbar() {
         </button>
 
         <nav className={`site-nav-links ${open ? "active" : ""}`}>
-          {publicLinks.map((link) => (
+          {links.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
@@ -51,8 +54,9 @@ export default function Navbar() {
             className="nav-link nav-cta"
             onClick={() => setOpen(false)}
           >
-            Get in Touch
+            {t("cta")}
           </NavLink>
+          <LanguageSwitcher />
         </nav>
       </div>
     </header>
