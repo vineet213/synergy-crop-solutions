@@ -5,24 +5,22 @@ import productService from "../../services/productService.js";
 export default function ProductsManagePage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    let mounted = true;
-    async function load() {
-      try {
-        setLoading(true);
-        const data = await productService.adminListProducts();
-        if (!mounted) return;
-        setProducts(data || []);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        if (mounted) setLoading(false);
-      }
+  const load = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await productService.adminListProducts();
+      setProducts(data || []);
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    } finally {
+      setLoading(false);
     }
-    load();
-    return () => (mounted = false);
-  }, []);
+  };
+
+  useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this product?")) return;
@@ -44,13 +42,28 @@ export default function ProductsManagePage() {
 
       {loading ? (
         <p>Loading…</p>
+      ) : error ? (
+        <div className="empty-state card-shell">
+          <h2>Failed to load products</h2>
+          <p>{error}</p>
+          <button onClick={load} className="button-base button-primary">Retry</button>
+        </div>
+      ) : products.length === 0 ? (
+        <div className="empty-state card-shell">
+          <h2>No products yet</h2>
+          <p>Create your first product to start building your catalog.</p>
+          <Link to="/admin/products/new" className="button-base button-primary">Create product</Link>
+        </div>
       ) : (
         <div className="space-y-4">
           {products.map((prod) => (
             <div key={prod._id} className="card-shell flex items-center justify-between">
               <div>
                 <h3 className="font-semibold">{prod.name}</h3>
-                <p className="text-sm text-gray-600">{prod.category} • {prod.slug}</p>
+                <p className="text-sm text-gray-600">
+                  {prod.category} &middot; {prod.slug}
+                  &middot; <span className={`badge badge-${prod.status === "published" ? "brand" : "soft"}`}>{prod.status}</span>
+                </p>
               </div>
               <div className="flex items-center gap-2">
                 <Link to={`/admin/products/${prod._id}/edit`} className="button-base">Edit</Link>

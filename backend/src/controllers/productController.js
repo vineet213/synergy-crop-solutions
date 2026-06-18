@@ -67,7 +67,7 @@ export async function adminUpdateProduct(req, res, next) {
 	try {
 		const { id } = req.params;
 		const updates = req.body;
-		const product = await Product.findByIdAndUpdate(id, updates, { new: true });
+		const product = await Product.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
 		if (!product) return next(new AppError("Product not found", 404));
 		res.json({ success: true, data: product });
 	} catch (error) {

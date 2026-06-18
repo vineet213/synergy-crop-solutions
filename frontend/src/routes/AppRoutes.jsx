@@ -30,7 +30,7 @@ import DistributorsManagePage from "../pages/admin/DistributorsManagePage.jsx";
 import DistributorFormPage from "../pages/admin/DistributorFormPage.jsx";
 import LeadsManagePage from "../pages/admin/LeadsManagePage.jsx";
 import ProductsManagePage from "../pages/admin/ProductsManagePage.jsx";
-import ProductCreatePage from "../pages/admin/ProductCreatePage.jsx";
+import ProductFormPage from "../pages/admin/ProductFormPage.jsx";
 import SettingsPage from "../pages/admin/SettingsPage.jsx";
 import TestimonialsManagePage from "../pages/admin/TestimonialsManagePage.jsx";
 
@@ -82,7 +82,8 @@ export default function AppRoutes() {
         <Route path="distributors/:id/edit" element={<DistributorFormPage />} />
         <Route path="leads" element={<LeadsManagePage />} />
         <Route path="products" element={<ProductsManagePage />} />
-        <Route path="products/new" element={<ProductCreatePage />} />
+        <Route path="products/new" element={<ProductFormPage />} />
+        <Route path="products/:id/edit" element={<ProductFormPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="testimonials" element={<TestimonialsManagePage />} />
       </Route>

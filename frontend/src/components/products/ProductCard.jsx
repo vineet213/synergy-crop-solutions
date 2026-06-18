@@ -1,6 +1,5 @@
 ﻿import { Link } from "react-router-dom";
 import Badge from "../ui/Badge.jsx";
-import Button from "../ui/Button.jsx";
 import Card from "../ui/Card.jsx";
 
 export default function ProductCard({ product }) {
@@ -9,21 +8,15 @@ export default function ProductCard({ product }) {
       <div className="product-card-head">
         <Badge variant="soft">{product.category}</Badge>
         <h3 className="product-card-title">{product.name}</h3>
-        <p className="product-card-tagline">{product.tagline}</p>
       </div>
       <div className="product-card-body">
-        <p className="product-card-lead">{product.lead}</p>
-        <ul className="product-card-highlights">
-          {product.highlights.map((highlight) => (
-            <li key={highlight}>{highlight}</li>
-          ))}
-        </ul>
+        <p className="product-card-lead">{product.description}</p>
       </div>
       <div className="product-card-footer">
         <div>
-          <p className="product-price">{product.price}</p>
+          <p className="product-price">{product.price ? `₹${product.price}` : "Contact for price"}</p>
         </div>
-        <Link to={`/products/${product.id}`} className="button-base button-primary button-small">
+        <Link to={`/products/${product._id}`} className="button-base button-primary button-small">
           View details
         </Link>
       </div>

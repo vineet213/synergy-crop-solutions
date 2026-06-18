@@ -1,65 +1,186 @@
-﻿import { Package, Truck, MessageSquare } from "lucide-react";
+﻿import { useEffect, useState } from "react";
+import { Package, Truck, MessageSquare } from "lucide-react";
 import { useAuth } from "../../context/AuthContext.jsx";
+import api from "../../services/api.js";
 
 export default function DashboardPage() {
-  const { user } = useAuth();
+const { user } = useAuth();
+const [stats, setStats] = useState(null);
+const [loading, setLoading] = useState(true);
 
-  const stats = [
-    {
-      label: "Total Products",
-      value: "1,234",
-      icon: Package,
-      color: "bg-blue-500",
-    },
-    {
-      label: "Total Distributors",
-      value: "56",
-      icon: Truck,
-      color: "bg-green-500",
-    },
-    {
-      label: "Total Leads",
-      value: "892",
-      icon: MessageSquare,
-      color: "bg-purple-500",
-    },
-  ];
+useEffect(() => {
+let mounted = true;
 
-  return (
-    <div className="p-8">
-      {/* Welcome Section */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">Welcome, {user?.name}!</h1>
-        <p className="text-gray-600 mt-2">Here's an overview of your platform</p>
-      </div>
+async function load() {
+  try {
+    setLoading(true);
+    const res = await api.get("/admin/stats");
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {stats.map((stat) => {
+    if (!mounted) return;
+
+    setStats(res.data.data);
+  } catch (err) {
+    console.error("Failed to load stats:", err);
+  } finally {
+    if (mounted) setLoading(false);
+  }
+}
+
+load();
+
+return () => {
+  mounted = false;
+};
+
+
+}, []);
+
+const statCards = stats
+? [
+{
+label: "Total Products",
+value: String(stats.products),
+icon: Package,
+},
+{
+label: "Total Distributors",
+value: String(stats.distributors),
+icon: Truck,
+},
+{
+label: "Total Leads",
+value: String(stats.leads),
+icon: MessageSquare,
+},
+]
+: [];
+
+return ( <main className="page-container section-block"> <div className="section-header"> <h1 className="page-title">
+Welcome, {user?.name || "Admin"}! </h1>
+
+    <p className="page-description">
+      Here's an overview of your platform.
+    </p>
+  </div>
+
+  <div
+    className="card-grid"
+    style={{ marginBottom: "2rem" }}
+  >
+    {loading
+      ? [1, 2, 3].map((i) => (
+          <div key={i} className="card-shell">
+            <div className="skeleton-block skeleton-title" />
+            <div
+              className="skeleton-block skeleton-line short"
+              style={{ marginTop: "1rem" }}
+            />
+          </div>
+        ))
+      : statCards.map((stat) => {
           const Icon = stat.icon;
+
           return (
-            <div key={stat.label} className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between">
+            <div
+              key={stat.label}
+              className="card-shell"
+            >
+              <div className="card-header">
+                <span className="card-icon">
+                  <Icon size={24} />
+                </span>
+
                 <div>
-                  <p className="text-gray-600 text-sm font-medium">{stat.label}</p>
-                  <p className="text-3xl font-bold text-gray-800 mt-2">{stat.value}</p>
-                </div>
-                <div className={`${stat.color} p-4 rounded-lg`}>
-                  <Icon className="text-white" size={32} />
+                  <p
+                    className="page-description"
+                    style={{ margin: 0 }}
+                  >
+                    {stat.label}
+                  </p>
+
+                  <h2
+                    style={{
+                      margin: "0.25rem 0 0",
+                      fontSize: "2rem",
+                      fontWeight: "700",
+                    }}
+                  >
+                    {stat.value}
+                  </h2>
                 </div>
               </div>
             </div>
           );
         })}
-      </div>
+  </div>
 
-      {/* Recent Activity */}
-      <div className="bg-white rounded-lg shadow p-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Recent Activity</h2>
-        <div className="text-gray-600 text-center py-8">
-          <p>Dashboard features coming soon</p>
-        </div>
+  <div className="card-shell">
+    <h2
+      className="page-title"
+      style={{
+        fontSize: "1.4rem",
+        marginBottom: "1rem",
+      }}
+    >
+      Recent Leads
+    </h2>
+
+    {loading ? (
+      <div className="loading-placeholder">
+        <div className="skeleton-block skeleton-line" />
+        <div className="skeleton-block skeleton-line" />
+        <div className="skeleton-block skeleton-line short" />
       </div>
-    </div>
-  );
+    ) : !stats?.recentLeads?.length ? (
+      <div className="empty-state">
+        <h2>No Leads Yet</h2>
+        <p>
+          Leads submitted through the Contact page
+          will appear here.
+        </p>
+      </div>
+    ) : (
+      <div>
+        {stats.recentLeads.map((lead) => (
+          <div
+            key={lead._id}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "1rem",
+              padding: "1rem 0",
+              borderBottom:
+                "1px solid var(--border)",
+            }}
+          >
+            <div>
+              <strong>{lead.name}</strong>
+
+              <p
+                className="page-description"
+                style={{ marginTop: "0.25rem" }}
+              >
+                {lead.email} &middot;{" "}
+                {lead.company || "—"}
+              </p>
+            </div>
+
+            <span
+              className={`badge badge-${
+                lead.status === "new"
+                  ? "brand"
+                  : "soft"
+              }`}
+            >
+              {lead.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</main>
+
+);
 }

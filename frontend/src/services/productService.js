@@ -16,6 +16,10 @@ const productService = {
 		const res = await api.get("/admin/products");
 		return res.data.data;
 	},
+	adminGetProduct: async (id) => {
+	const res = await api.get(`/admin/products/${id}`);
+	return res.data.data;
+},
 	adminCreateProduct: async (payload) => {
 		const res = await api.post("/admin/products", payload);
 		return res.data.data;
