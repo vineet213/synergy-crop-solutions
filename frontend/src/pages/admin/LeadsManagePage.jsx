@@ -1,6 +1,6 @@
-﻿import { useState } from "react";
+﻿import { useState, useEffect } from "react";
 import { useAdminLeads } from "../../hooks/useLeads.js";
-import leadService from "../../services/leadService.js";
+import distributorService from "../../services/distributorService.js";
 
 const STATUS_OPTIONS = ["new", "contacted", "qualified", "converted", "closed"];
 const FILTER_OPTIONS = ["all", ...STATUS_OPTIONS];
@@ -12,6 +12,16 @@ export default function LeadsManagePage() {
   const [editingId, setEditingId] = useState(null);
   const [editStatus, setEditStatus] = useState("");
   const [editNotes, setEditNotes] = useState("");
+  const [editDistributor, setEditDistributor] = useState("");
+  const [distributors, setDistributors] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+    distributorService.adminListDistributors()
+      .then((data) => { if (mounted) setDistributors(data || []); })
+      .catch(() => {});
+    return () => { mounted = false; };
+  }, []);
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this lead?")) return;
@@ -27,25 +37,29 @@ export default function LeadsManagePage() {
     setEditingId(lead._id);
     setEditStatus(lead.status);
     setEditNotes(lead.notes || "");
+    setEditDistributor(lead.assignedDistributor?._id || "");
   };
 
   const cancelEdit = () => {
     setEditingId(null);
     setEditStatus("");
     setEditNotes("");
+    setEditDistributor("");
   };
 
   const saveEdit = async (id) => {
     try {
-      await update(id, { status: editStatus, notes: editNotes });
+      await update(id, {
+        status: editStatus,
+        notes: editNotes,
+        assignedDistributor: editDistributor || null,
+      });
       setEditingId(null);
     } catch (err) {
       console.error(err);
       alert("Failed to update lead");
     }
   };
-
-  const lead = (l) => l;
 
   return (
     <main className="page-container">
@@ -97,6 +111,15 @@ export default function LeadsManagePage() {
                     </select>
                   </div>
                   <div>
+                    <label className="block text-sm font-medium">Assigned Distributor</label>
+                    <select value={editDistributor} onChange={(e) => setEditDistributor(e.target.value)} className="input-field">
+                      <option value="">— Unassigned —</option>
+                      {distributors.map((d) => (
+                        <option key={d._id} value={d._id}>{d.name} — {d.company}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
                     <label className="block text-sm font-medium">Notes</label>
                     <textarea value={editNotes} onChange={(e) => setEditNotes(e.target.value)} className="input-field" rows={3} />
                   </div>
@@ -112,6 +135,11 @@ export default function LeadsManagePage() {
                     <span className="muted-label">{l.email}</span>
                     {l.phone && <span className="muted-label">{l.phone}</span>}
                     <span className={`badge badge-${l.status === "new" ? "brand" : "soft"}`}>{l.status}</span>
+                    {l.assignedDistributor && (
+                      <span className="badge badge-soft">
+                        {l.assignedDistributor.name} ({l.assignedDistributor.company})
+                      </span>
+                    )}
                   </div>
                   {l.company && <p className="card-description" style={{ marginBottom: "0.25rem" }}>Company: {l.company}</p>}
                   {l.message && <p className="card-description" style={{ marginBottom: "0.5rem" }}>"{l.message}"</p>}

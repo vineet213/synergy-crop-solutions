@@ -14,6 +14,12 @@ const leadSchema = new mongoose.Schema(
       default: "new",
     },
     notes: { type: String, trim: true },
+    assignedDistributor: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Distributor",
+      default: null,
+    },
+    assignedAt: { type: Date, default: null },
   },
   { timestamps: true }
 );
