@@ -27,6 +27,7 @@ import CertificationsManagePage from "../pages/admin/CertificationsManagePage.js
 import CropsManagePage from "../pages/admin/CropsManagePage.jsx";
 import DiseasesManagePage from "../pages/admin/DiseasesManagePage.jsx";
 import DistributorsManagePage from "../pages/admin/DistributorsManagePage.jsx";
+import DistributorFormPage from "../pages/admin/DistributorFormPage.jsx";
 import LeadsManagePage from "../pages/admin/LeadsManagePage.jsx";
 import ProductsManagePage from "../pages/admin/ProductsManagePage.jsx";
 import ProductCreatePage from "../pages/admin/ProductCreatePage.jsx";
@@ -77,6 +78,8 @@ export default function AppRoutes() {
         <Route path="crops" element={<CropsManagePage />} />
         <Route path="diseases" element={<DiseasesManagePage />} />
         <Route path="distributors" element={<DistributorsManagePage />} />
+        <Route path="distributors/new" element={<DistributorFormPage />} />
+        <Route path="distributors/:id/edit" element={<DistributorFormPage />} />
         <Route path="leads" element={<LeadsManagePage />} />
         <Route path="products" element={<ProductsManagePage />} />
         <Route path="products/new" element={<ProductCreatePage />} />
