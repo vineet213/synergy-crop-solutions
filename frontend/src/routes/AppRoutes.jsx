@@ -34,6 +34,7 @@ import ProductFormPage from "../pages/admin/ProductFormPage.jsx";
 import SettingsPage from "../pages/admin/SettingsPage.jsx";
 import TestimonialsManagePage from "../pages/admin/TestimonialsManagePage.jsx";
 import TestimonialFormPage from "../pages/admin/TestimonialFormPage.jsx";
+import CertificationFormPage from "../pages/admin/CertificationFormPage.jsx";
 
 export default function AppRoutes() {
   return (
@@ -76,6 +77,8 @@ export default function AppRoutes() {
         <Route path="blog" element={<BlogManagePage />} />
         <Route path="categories" element={<CategoriesManagePage />} />
         <Route path="certifications" element={<CertificationsManagePage />} />
+        <Route path="certifications/new" element={<CertificationFormPage />} />
+        <Route path="certifications/:id/edit" element={<CertificationFormPage />} />
         <Route path="crops" element={<CropsManagePage />} />
         <Route path="diseases" element={<DiseasesManagePage />} />
         <Route path="distributors" element={<DistributorsManagePage />} />

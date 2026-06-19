@@ -6,6 +6,7 @@ import Card from "../../components/ui/Card.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import testimonialService from "../../services/testimonialService.js";
+import certificationService from "../../services/certificationService.js";
 
 const categories = [
   { title: "Seeds & Nutrition", description: "High-yield seed varieties and custom nutrient plans.", icon: <Leaf size={20} /> },
@@ -28,10 +29,17 @@ const diseaseItems = [
 export default function HomePage() {
   const { t } = useTranslation("home");
   const [testimonials, setTestimonials] = useState([]);
+  const [certifications, setCertifications] = useState([]);
 
   useEffect(() => {
     testimonialService.getPublicTestimonials()
       .then(setTestimonials)
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    certificationService.getPublicCertifications()
+      .then(setCertifications)
       .catch(console.error);
   }, []);
 
@@ -76,6 +84,22 @@ export default function HomePage() {
           {diseaseItems.map((item) => (
             <Card key={item.title} title={item.title} description={item.description} />
           ))}
+        </div>
+      </SectionContainer>
+
+      <SectionContainer title="Certifications" subtitle="Trusted standards for every field">
+        <div className="card-grid">
+          {certifications.length === 0 ? (
+            <p>No certifications yet.</p>
+          ) : (
+            certifications.map((item) => (
+              <Card
+                key={item._id}
+                title={item.title}
+                description={`${item.description || ""}${item.issuingAuthority ? ` — ${item.issuingAuthority}` : ""}`}
+              />
+            ))
+          )}
         </div>
       </SectionContainer>
 

@@ -1,21 +1,37 @@
-﻿import Card from "../../components/ui/Card.jsx";
+﻿import { useEffect, useState } from "react";
+import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
-
-const certs = [
-  { title: "Quality Assurance", description: "Certified processes for reliable crop performance." },
-  { title: "Sustainable Practices", description: "Proven methods that prioritize environmental care." },
-  { title: "Traceability", description: "Transparent tracking from field to delivery." },
-];
+import certificationService from "../../services/certificationService.js";
 
 export default function CertificationsPage() {
+  const [certifications, setCertifications] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    certificationService.getPublicCertifications()
+      .then(setCertifications)
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div className="page-container">
       <SectionContainer title="Certifications" subtitle="Trusted standards for every field">
-        <div className="card-grid">
-          {certs.map((item) => (
-            <Card key={item.title} title={item.title} description={item.description} />
-          ))}
-        </div>
+        {loading ? (
+          <p>Loading&hellip;</p>
+        ) : certifications.length === 0 ? (
+          <p>No certifications yet.</p>
+        ) : (
+          <div className="card-grid">
+            {certifications.map((item) => (
+              <Card
+                key={item._id}
+                title={item.title}
+                description={`${item.description || ""}${item.issuingAuthority ? ` — ${item.issuingAuthority}` : ""}`}
+              />
+            ))}
+          </div>
+        )}
       </SectionContainer>
     </div>
   );
