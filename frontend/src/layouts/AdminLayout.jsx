@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, Outlet } from "react-router-dom";
-import { Menu, X, LogOut, LayoutDashboard, Package, Users, Truck, MessageSquare } from "lucide-react";
+import { Menu, X, LogOut, LayoutDashboard, Package, Users, Truck, MessageSquare, Star } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 import toast from "react-hot-toast";
 
@@ -19,6 +19,7 @@ export default function AdminLayout() {
     { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
     { label: "Products", href: "/admin/products", icon: Package },
     { label: "Distributors", href: "/admin/distributors", icon: Truck },
+    { label: "Testimonials", href: "/admin/testimonials", icon: Star },
     { label: "Leads", href: "/admin/leads", icon: MessageSquare },
     { label: "Users", href: "/admin/users", icon: Users },
   ];

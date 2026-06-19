@@ -1,21 +1,37 @@
-﻿import Card from "../../components/ui/Card.jsx";
+﻿import { useEffect, useState } from "react";
+import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
-
-const reviews = [
-  { title: "Ava Green", description: "The team helped us scale with confidence. Our fields have never looked better." },
-  { title: "Noah Rivera", description: "Reliable distributor connections and insightful crop guidance made all the difference." },
-  { title: "Elena Chen", description: "We finally have a clean, professional way to manage crop protection across our acreage." },
-];
+import testimonialService from "../../services/testimonialService.js";
 
 export default function TestimonialsPage() {
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    testimonialService.getPublicTestimonials()
+      .then(setTestimonials)
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div className="page-container">
       <SectionContainer title="Testimonials" subtitle="Grower stories and results">
-        <div className="testimonials-grid">
-          {reviews.map((item) => (
-            <Card key={item.title} title={item.title} description={item.description} />
-          ))}
-        </div>
+        {loading ? (
+          <p>Loading&hellip;</p>
+        ) : testimonials.length === 0 ? (
+          <p>No testimonials yet.</p>
+        ) : (
+          <div className="testimonials-grid">
+            {testimonials.map((item) => (
+              <Card
+                key={item._id}
+                title={item.customerName}
+                description={`${item.testimonial}${item.location ? ` — ${item.location}` : ""}${item.rating ? ` ${"★".repeat(item.rating)}${"☆".repeat(5 - item.rating)}` : ""}`}
+              />
+            ))}
+          </div>
+        )}
       </SectionContainer>
     </div>
   );

@@ -1,8 +1,80 @@
-﻿export default function TestimonialsManagePage() {
+﻿import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import testimonialService from "../../services/testimonialService.js";
+
+export default function TestimonialsManagePage() {
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const load = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await testimonialService.adminListTestimonials();
+      setTestimonials(data || []);
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const handleDelete = async (id) => {
+    if (!confirm("Delete this testimonial?")) return;
+    try {
+      await testimonialService.adminDeleteTestimonial(id);
+      setTestimonials((p) => p.filter((x) => x._id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete testimonial");
+    }
+  };
+
   return (
     <main className="page-container">
-      <h1 className="page-title">TestimonialsManagePage</h1>
-      <p className="page-description">This is the admin testimonials management placeholder.</p>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="page-title">Testimonials</h1>
+        <Link to="/admin/testimonials/new" className="button-base button-primary">Create testimonial</Link>
+      </div>
+
+      {loading ? (
+        <p>Loading&hellip;</p>
+      ) : error ? (
+        <div className="empty-state card-shell">
+          <h2>Failed to load testimonials</h2>
+          <p>{error}</p>
+          <button onClick={load} className="button-base button-primary">Retry</button>
+        </div>
+      ) : testimonials.length === 0 ? (
+        <div className="empty-state card-shell">
+          <h2>No testimonials yet</h2>
+          <p>Create your first testimonial to showcase customer feedback.</p>
+          <Link to="/admin/testimonials/new" className="button-base button-primary">Create testimonial</Link>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {testimonials.map((t) => (
+            <div key={t._id} className="card-shell flex items-center justify-between">
+              <div>
+                <h3 className="font-semibold">{t.customerName}</h3>
+                <p className="text-sm text-gray-600">
+                  {t.location ? `${t.location}  · ` : ""}
+                  {t.rating ? `${"★".repeat(t.rating)}${"☆".repeat(5 - t.rating)}  · ` : ""}
+                  <span className={`badge badge-${t.status === "active" ? "brand" : "soft"}`}>{t.status}</span>
+                  {t.isFeatured && <span className="badge badge-brand ml-1">Featured</span>}
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Link to={`/admin/testimonials/${t._id}/edit`} className="button-base">Edit</Link>
+                <button onClick={() => handleDelete(t._id)} className="button-base button-danger">Delete</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </main>
   );
 }

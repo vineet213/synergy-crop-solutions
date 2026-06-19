@@ -1,9 +1,11 @@
-﻿import { useTranslation } from "react-i18next";
+﻿import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, Leaf, ShieldCheck, MapPin, Sparkles, Truck } from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
 import Card from "../../components/ui/Card.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
+import testimonialService from "../../services/testimonialService.js";
 
 const categories = [
   { title: "Seeds & Nutrition", description: "High-yield seed varieties and custom nutrient plans.", icon: <Leaf size={20} /> },
@@ -23,13 +25,15 @@ const diseaseItems = [
   { title: "Resistance management", description: "Prevent recurring disease pressure and loss." },
 ];
 
-const testimonials = [
-  { name: "Maya Patel", role: "Farm Owner", quote: "Synergy Crop Solutions helped us improve yield and reduce waste with a reliable discovery program." },
-  { name: "Jonas Turner", role: "Operations Lead", quote: "The logistics platform keeps our distributor network connected and efficient." },
-];
-
 export default function HomePage() {
   const { t } = useTranslation("home");
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    testimonialService.getPublicTestimonials()
+      .then(setTestimonials)
+      .catch(console.error);
+  }, []);
 
   return (
     <div>
@@ -90,9 +94,17 @@ export default function HomePage() {
 
       <SectionContainer title="What growers say" subtitle="Real results from field leaders">
         <div className="testimonials-grid">
-          {testimonials.map((item) => (
-            <Card key={item.name} title={item.name} description={`${item.role} · ${item.quote}`} />
-          ))}
+          {testimonials.length === 0 ? (
+            <p>No testimonials yet.</p>
+          ) : (
+            testimonials.map((item) => (
+              <Card
+                key={item._id}
+                title={item.customerName}
+                description={`${item.testimonial}${item.location ? ` — ${item.location}` : ""}${item.rating ? ` ${"★".repeat(item.rating)}${"☆".repeat(5 - item.rating)}` : ""}`}
+              />
+            ))
+          )}
         </div>
       </SectionContainer>
 

@@ -4,6 +4,7 @@ import productRoutes from "./productRoutes.js";
 import distributorRoutes from "./distributorRoutes.js";
 import leadRoutes from "./leadRoutes.js";
 import statsRoutes from "./statsRoutes.js";
+import testimonialRoutes from "./testimonialRoutes.js";
 
 const router = express.Router();
 
@@ -12,5 +13,6 @@ router.use(productRoutes);
 router.use(distributorRoutes);
 router.use(leadRoutes);
 router.use(statsRoutes);
+router.use(testimonialRoutes);
 
 export default router;
