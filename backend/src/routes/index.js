@@ -6,6 +6,8 @@ import leadRoutes from "./leadRoutes.js";
 import statsRoutes from "./statsRoutes.js";
 import testimonialRoutes from "./testimonialRoutes.js";
 import certificationRoutes from "./certificationRoutes.js";
+import cropRoutes from "./cropRoutes.js";
+import diseaseRoutes from "./diseaseRoutes.js";
 
 const router = express.Router();
 
@@ -16,5 +18,7 @@ router.use(leadRoutes);
 router.use(statsRoutes);
 router.use(testimonialRoutes);
 router.use(certificationRoutes);
+router.use(cropRoutes);
+router.use(diseaseRoutes);
 
 export default router;

@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Leaf, ShieldCheck, MapPin, Sparkles, Truck } from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
@@ -7,6 +8,8 @@ import Badge from "../../components/ui/Badge.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import testimonialService from "../../services/testimonialService.js";
 import certificationService from "../../services/certificationService.js";
+import cropService from "../../services/cropService.js";
+import diseaseService from "../../services/diseaseService.js";
 
 const categories = [
   { title: "Seeds & Nutrition", description: "High-yield seed varieties and custom nutrient plans.", icon: <Leaf size={20} /> },
@@ -14,22 +17,12 @@ const categories = [
   { title: "Supply Chain", description: "Distribution solutions from farm to market.", icon: <Truck size={20} /> },
 ];
 
-const discoveryItems = [
-  { title: "Crop health scoring", description: "Data-driven crop insights for optimized yield." },
-  { title: "Growth cycle tracking", description: "Monitor field performance across seasons." },
-  { title: "Soil nutrition plans", description: "Adaptive nutrient programs for every soil type." },
-];
-
-const diseaseItems = [
-  { title: "Blight response", description: "Early detection and rapid mitigation support." },
-  { title: "Fungal control", description: "Protect crops with sustainable treatment plans." },
-  { title: "Resistance management", description: "Prevent recurring disease pressure and loss." },
-];
-
 export default function HomePage() {
   const { t } = useTranslation("home");
   const [testimonials, setTestimonials] = useState([]);
   const [certifications, setCertifications] = useState([]);
+  const [crops, setCrops] = useState([]);
+  const [diseases, setDiseases] = useState([]);
 
   useEffect(() => {
     testimonialService.getPublicTestimonials()
@@ -40,6 +33,18 @@ export default function HomePage() {
   useEffect(() => {
     certificationService.getPublicCertifications()
       .then(setCertifications)
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    cropService.getPublicCrops()
+      .then(setCrops)
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    diseaseService.getPublicDiseases()
+      .then(setDiseases)
       .catch(console.error);
   }, []);
 
@@ -71,20 +76,38 @@ export default function HomePage() {
         </div>
       </SectionContainer>
 
-      <SectionContainer title="Crop Discovery" subtitle="Find the right path for every field">
-        <div className="discover-grid">
-          {discoveryItems.map((item) => (
-            <Card key={item.title} title={item.title} description={item.description} />
-          ))}
-        </div>
+      <SectionContainer title="Browse by Crop" subtitle="Find the right products for your field">
+        {crops.length === 0 ? (
+          <p>No crops available yet.</p>
+        ) : (
+          <div className="discover-grid">
+            {crops.map((crop) => (
+              <Link key={crop._id} to={`/crops/${crop._id}`} className="no-underline">
+                <Card
+                  title={crop.name}
+                  description={crop.description || "Discover products for this crop."}
+                />
+              </Link>
+            ))}
+          </div>
+        )}
       </SectionContainer>
 
-      <SectionContainer title="Disease Discovery" subtitle="Protect crops with smarter decisions">
-        <div className="discover-grid">
-          {diseaseItems.map((item) => (
-            <Card key={item.title} title={item.title} description={item.description} />
-          ))}
-        </div>
+      <SectionContainer title="Browse by Disease" subtitle="Protect crops with smarter decisions">
+        {diseases.length === 0 ? (
+          <p>No diseases available yet.</p>
+        ) : (
+          <div className="discover-grid">
+            {diseases.map((disease) => (
+              <Link key={disease._id} to={`/diseases/${disease._id}`} className="no-underline">
+                <Card
+                  title={disease.name}
+                  description={disease.description || "Discover products for this disease."}
+                />
+              </Link>
+            ))}
+          </div>
+        )}
       </SectionContainer>
 
       <SectionContainer title="Certifications" subtitle="Trusted standards for every field">
