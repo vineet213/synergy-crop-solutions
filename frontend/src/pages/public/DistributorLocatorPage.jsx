@@ -3,6 +3,7 @@ import { Search, MapPin } from "lucide-react";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import DistributorList from "../../components/distributor-locator/DistributorList.jsx";
 import { usePublicDistributors } from "../../hooks/useDistributors.js";
+import useSEO from "../../hooks/useSEO.js";
 
 const INDIAN_STATES = [
   "All", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -13,6 +14,7 @@ const INDIAN_STATES = [
 ];
 
 export default function DistributorLocatorPage() {
+  useSEO({ title: "Distributor Locator", description: "Find certified agricultural distributors and supply partners near you across India. Connect with trusted partners for timely support and reliable inventory.", canonical: "/distributors" });
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("All");
 

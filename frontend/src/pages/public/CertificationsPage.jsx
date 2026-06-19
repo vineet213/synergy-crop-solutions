@@ -2,8 +2,10 @@
 import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import certificationService from "../../services/certificationService.js";
+import useSEO from "../../hooks/useSEO.js";
 
 export default function CertificationsPage() {
+  useSEO({ title: "Certifications", description: "Trusted standards for every field. View our certifications including quality assurance, sustainable practices, and traceability credentials.", canonical: "/certifications" });
   const [certifications, setCertifications] = useState([]);
   const [loading, setLoading] = useState(true);
 

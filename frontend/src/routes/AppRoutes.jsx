@@ -37,6 +37,7 @@ import TestimonialFormPage from "../pages/admin/TestimonialFormPage.jsx";
 import CertificationFormPage from "../pages/admin/CertificationFormPage.jsx";
 import CropFormPage from "../pages/admin/CropFormPage.jsx";
 import DiseaseFormPage from "../pages/admin/DiseaseFormPage.jsx";
+import NotFoundPage from "../pages/public/NotFoundPage.jsx";
 
 export default function AppRoutes() {
   return (
@@ -60,6 +61,7 @@ export default function AppRoutes() {
         <Route path="products/:id" element={<ProductDetailPage />} />
         <Route path="state-products" element={<StateProductsPage />} />
         <Route path="testimonials" element={<TestimonialsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
 
       {/* Admin Login */}
@@ -100,8 +102,6 @@ export default function AppRoutes() {
         <Route path="testimonials/:id/edit" element={<TestimonialFormPage />} />
       </Route>
 
-      {/* Catch all - redirect to home */}
-      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

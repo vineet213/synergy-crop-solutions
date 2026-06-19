@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import cropService from "../../services/cropService.js";
+import useSEO from "../../hooks/useSEO.js";
 
 export default function CropDiscoveryPage() {
+  useSEO({ title: "Crop Discovery", description: "Browse our crop catalog to find information and discover relevant agricultural products for each crop type.", canonical: "/crops" });
   const [crops, setCrops] = useState([]);
   const [loading, setLoading] = useState(true);
 

@@ -1,7 +1,9 @@
 ﻿import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import ContactForm from "../../components/leads/ContactForm.jsx";
+import useSEO from "../../hooks/useSEO.js";
 
 export default function ContactPage() {
+  useSEO({ title: "Contact Us", description: "Get in touch with Synergy Crop Solutions. Start your next agricultural partnership with our team of experts.", canonical: "/contact" });
   return (
     <main className="page-container" style={{ padding: "2rem 0" }}>
       <SectionContainer title="Contact Us" subtitle="Start your next agricultural partnership">

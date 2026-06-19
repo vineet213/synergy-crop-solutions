@@ -2,8 +2,10 @@
 import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import testimonialService from "../../services/testimonialService.js";
+import useSEO from "../../hooks/useSEO.js";
 
 export default function TestimonialsPage() {
+  useSEO({ title: "Testimonials", description: "Read real results from field leaders. See how Synergy Crop Solutions helps growers improve yield, reduce waste, and scale sustainably.", canonical: "/testimonials" });
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
 

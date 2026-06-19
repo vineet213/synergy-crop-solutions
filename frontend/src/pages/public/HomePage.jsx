@@ -10,6 +10,7 @@ import testimonialService from "../../services/testimonialService.js";
 import certificationService from "../../services/certificationService.js";
 import cropService from "../../services/cropService.js";
 import diseaseService from "../../services/diseaseService.js";
+import useSEO from "../../hooks/useSEO.js";
 
 const categories = [
   { title: "Seeds & Nutrition", description: "High-yield seed varieties and custom nutrient plans.", icon: <Leaf size={20} /> },
@@ -18,6 +19,7 @@ const categories = [
 ];
 
 export default function HomePage() {
+  useSEO({ canonical: "/" });
   const { t } = useTranslation("home");
   const [testimonials, setTestimonials] = useState([]);
   const [certifications, setCertifications] = useState([]);

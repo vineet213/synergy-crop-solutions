@@ -4,11 +4,13 @@ import { ArrowLeft } from "lucide-react";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import ProductDetail from "../../components/products/ProductDetail.jsx";
 import { usePublicProduct } from "../../hooks/useProducts.js";
+import useSEO from "../../hooks/useSEO.js";
 
 export default function ProductDetailPage() {
   const { t } = useTranslation("products");
   const { id } = useParams();
   const { product, loading, error } = usePublicProduct(id);
+  useSEO({ title: product ? product.name : "Product Details", description: product?.description, canonical: `/products/${id}` });
 
   return (
     <main className="page-container" style={{ padding: "2rem 0" }}>

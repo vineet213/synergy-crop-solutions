@@ -6,8 +6,10 @@ import ProductGrid from "../../components/products/ProductGrid.jsx";
 import Card from "../../components/ui/Card.jsx";
 import Button from "../../components/ui/Button.jsx";
 import { usePublicProducts } from "../../hooks/useProducts.js";
+import useSEO from "../../hooks/useSEO.js";
 
 export default function ProductsPage() {
+  useSEO({ title: "Products", description: "Browse our curated catalog of agricultural products including bio fertilizers, bio pesticides, fungicides, and micronutrients for modern farming operations.", canonical: "/products" });
   const { t } = useTranslation("products");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");

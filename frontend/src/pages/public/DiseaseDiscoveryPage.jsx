@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import diseaseService from "../../services/diseaseService.js";
+import useSEO from "../../hooks/useSEO.js";
 
 export default function DiseaseDiscoveryPage() {
+  useSEO({ title: "Disease Discovery", description: "Browse our disease catalog to identify crop problems and discover relevant treatments and agricultural products.", canonical: "/diseases" });
   const [diseases, setDiseases] = useState([]);
   const [loading, setLoading] = useState(true);
 
