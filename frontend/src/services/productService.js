@@ -1,7 +1,21 @@
 import api from "./api.js";
 
 const productService = {
-	// Public
+	// Public — new API
+	getProducts: async (params = {}) => {
+		const res = await api.get("/products", { params });
+		return res.data;
+	},
+	getProductBySlug: async (slug) => {
+		const res = await api.get(`/products/${slug}`);
+		return res.data.data;
+	},
+	getProductsByCategory: async (category) => {
+		const res = await api.get(`/products/category/${encodeURIComponent(category)}`);
+		return res.data.data;
+	},
+
+	// Public — legacy (keep for backward compat)
 	getPublicProducts: async (params = {}) => {
 		const res = await api.get("/public/products", { params });
 		return res.data.data;
@@ -17,9 +31,9 @@ const productService = {
 		return res.data.data;
 	},
 	adminGetProduct: async (id) => {
-	const res = await api.get(`/admin/products/${id}`);
-	return res.data.data;
-},
+		const res = await api.get(`/admin/products/${id}`);
+		return res.data.data;
+	},
 	adminCreateProduct: async (payload) => {
 		const res = await api.post("/admin/products", payload);
 		return res.data.data;

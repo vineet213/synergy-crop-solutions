@@ -1,0 +1,95 @@
+========================================================================
+VALIDATION REPORT — Synergy Crop Solutions Product Catalog
+========================================================================
+Date: Production build
+Total products discovered: 31
+
+Products missing scientific names: 23/31
+  -> Azospi, Basu, Phosphate, Potash, Secure-P, Tri Immune, VAM, Zinc, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing dosage: 31/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Meta, Pseudo, Tricho, Tricho-H, Verti-C, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing target crops: 31/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Meta, Pseudo, Tricho, Tricho-H, Verti-C, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing composition: 24/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing pack size: 25/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing storage instructions: 31/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Meta, Pseudo, Tricho, Tricho-H, Verti-C, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing shelf life: 31/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Meta, Pseudo, Tricho, Tricho-H, Verti-C, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing benefits: 31/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Meta, Pseudo, Tricho, Tricho-H, Verti-C, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing application method: 30/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Meta, Pseudo, Tricho, Tricho-H, Verti-C, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+Products missing long description: 31/31
+  -> Aceto, Azospi, Azoto, Basu, Phosphate, Potash, Rhizo, Secure-P, Tri Immune, VAM, Zinc, Meta, Pseudo, Tricho, Tricho-H, Verti-C, Fusion, Life, Plant Bliss, Plant Cure, Plant Cure Plus, Root Cure, Root Cure Plus, Zeal, AgriBest Plus, Algafert, Biofat 600, Boratech MO+, Lignocomplex + Zn, Syn BioK Plus, Spectrum
+
+========================================================================
+OCR CONFIDENCE WARNINGS
+========================================================================
+
+Note: All product data was extracted from JPEG product label images
+via Tesseract OCR (v5.4.0) with multiple PSM modes and contrast enhancements.
+
+Low-confidence / garbled extractions:
+  - Azospi: Label shows 'Azospi_' and 'Lyophilized'. No scientific name visible.
+    Full genus name (e.g. Azospirillum) NOT confirmed on packaging.
+  - Secure-P: Label text partially garbled. 'Secure-P' + 'Consortium of
+    Phyllospheric Microbes' confirmed. Dosage/crops NOT visible.
+  - Tri Immune: Label text partially garbled. 'Tri Immune' + 'Consortium of
+    phyllospheric Microbes' confirmed. Dosage/crops NOT visible.
+  - Algafert: Very little readable English text. 'Bioenhancers' tentatively
+    identified via PSM 6 OCR. Not cross-confirmable.
+  - Syn BioK Plus: No readable English text detected in any OCR pass.
+    Product name confirmed visually as 'Syn Biok' from rotated capture.
+  - Pseudo: '250 9m' interpreted as '250 gm'. '9m' is OCR artifact for 'gm'.
+  - Marathi brochures: OCR quality too poor for reliable data extraction.
+    Brochure describes product categories, not specific branded products.
+  - Numerous images contain the brand logo 'Jiorizen biotech' / 'Jerizon biotech'
+    on liquid nutrition products — likely the manufacturer brand.
+
+========================================================================
+HALLUCINATION / INFERENCE FLAGS
+========================================================================
+
+The following values are DIRECTLY from packaging and are NOT inferred:
+  - All 8 scientific names (Acetobacter, Azotobacter, Rhizobium,
+    Metarhizium anisopliae, Pseudomonas fluorescens, Trichoderma viride,
+    Trichoderma harzianum, Verticillium chlamydosporium)
+  - All 6 pack sizes (from 'Net Weight' lines)
+  - All formulations (Lyophilized, WP, Liquid)
+  - All compositions (CFU counts, concentrations)
+  - Application method 'Shake before use' on AgriBest Plus
+  - Taglines on 5 biofertilizer labels
+
+NO inferred values are present. All empty fields are genuinely empty.
+The brochure (Marathi) was NOT used for product-specific data because
+it describes product categories, not individual branded SKUs.
+
+========================================================================
+CATALOG COMPLETENESS
+========================================================================
+Total products: 31
+Total content fields (14 per product): 434
+Fields populated: 88
+Fields empty: 346
+Completeness: 20.3%
+
+Products fully completed (all 17 fields): 0/31
+Reason: dosage, targetCrops, storage, shelfLife, compatibility,
+longDescription, and benefits are not printed on any product label.
+Supply chain / technical data sheet documents would be needed.
+
+========================================================================
+END OF VALIDATION REPORT
+========================================================================

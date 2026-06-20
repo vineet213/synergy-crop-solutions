@@ -58,7 +58,7 @@ export default function AppRoutes() {
         <Route path="diseases/:id" element={<DiseaseDetailPage />} />
         <Route path="distributors" element={<DistributorLocatorPage />} />
         <Route path="products" element={<ProductsPage />} />
-        <Route path="products/:id" element={<ProductDetailPage />} />
+        <Route path="products/:slug" element={<ProductDetailPage />} />
         <Route path="state-products" element={<StateProductsPage />} />
         <Route path="testimonials" element={<TestimonialsPage />} />
         <Route path="*" element={<NotFoundPage />} />

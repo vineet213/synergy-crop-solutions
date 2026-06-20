@@ -14,7 +14,19 @@
     "price": "Price",
     "category": "Category",
     "added": "Added",
-    "specs": "Specifications"
+    "specs": "Specifications",
+    "scientificName": "Scientific Name",
+    "productType": "Product Type",
+    "composition": "Composition",
+    "dosage": "Dosage",
+    "applicationMethod": "Application Method",
+    "storage": "Storage",
+    "shelfLife": "Shelf Life",
+    "compatibility": "Compatibility",
+    "packSize": "Pack Size",
+    "benefits": "Benefits",
+    "targetCrops": "Target Crops",
+    "longDescription": "Description"
   },
   "empty": {
     "title": "No products match your search",

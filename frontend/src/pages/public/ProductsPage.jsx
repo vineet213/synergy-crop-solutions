@@ -15,7 +15,8 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [categories, setCategories] = useState(["All"]);
 
-  const params = selectedCategory !== "All" ? { category: selectedCategory } : {};
+  const params = { limit: 100 };
+  if (selectedCategory !== "All") params.category = selectedCategory;
   const { products, loading, error, reload } = usePublicProducts(params);
 
   useEffect(() => {
@@ -30,7 +31,8 @@ export default function ProductsPage() {
     if (!q) return products;
     return products.filter((product) =>
       (product.name && product.name.toLowerCase().includes(q)) ||
-      (product.description && product.description.toLowerCase().includes(q))
+      (product.scientificName && product.scientificName.toLowerCase().includes(q)) ||
+      (product.category && product.category.toLowerCase().includes(q))
     );
   }, [searchQuery, products]);
 

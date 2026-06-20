@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "seed:admin": "node src/database/seeders/adminSeeder.js"
+    "seed:admin": "node src/database/seeders/adminSeeder.js",
+    "seed:products": "node src/database/seeders/productSeeder.js"
   },
   "keywords": ["agriculture", "express", "mongodb", "mern"],
   "license": "ISC",

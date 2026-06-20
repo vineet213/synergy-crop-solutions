@@ -93,7 +93,7 @@ export default function CropDetailPage() {
                       {product.price ? `₹${product.price}` : "Contact for price"}
                     </p>
                   </div>
-                  <Link to={`/products/${product._id}`} className="button-base button-primary button-small">
+                  <Link to={`/products/${product.slug}`} className="button-base button-primary button-small">
                     View Details
                   </Link>
                 </div>

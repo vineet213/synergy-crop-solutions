@@ -5,21 +5,27 @@ import Card from "../ui/Card.jsx";
 
 export default function ProductCard({ product }) {
   const { t } = useTranslation("products");
+  const imageUrl = product.images?.[0] || null;
 
   return (
     <Card className="product-card">
+      {imageUrl && (
+        <div className="product-card-image">
+          <img src={imageUrl} alt={product.name} />
+        </div>
+      )}
       <div className="product-card-head">
         <Badge variant="soft">{product.category}</Badge>
         <h3 className="product-card-title">{product.name}</h3>
       </div>
       <div className="product-card-body">
-        <p className="product-card-lead">{product.description}</p>
+        <p className="product-card-lead">{product.shortDescription || product.description}</p>
       </div>
       <div className="product-card-footer">
         <div>
           <p className="product-price">{product.price ? `₹${product.price}` : t("contactForPrice")}</p>
         </div>
-        <Link to={`/products/${product._id}`} className="button-base button-primary button-small">
+        <Link to={`/products/${product.slug}`} className="button-base button-primary button-small">
           {t("viewDetails")}
         </Link>
       </div>

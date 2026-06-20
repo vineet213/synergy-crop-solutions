@@ -1,0 +1,174 @@
+{
+	"info": {
+		"name": "Agri Platform — Products API",
+		"description": "Public + Admin endpoints for the product catalog at /api/products, /api/public/products, /api/admin/products.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public — List products",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/products",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "products"]
+				}
+			}
+		},
+		{
+			"name": "Public — Search products",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/products?search=aceto&page=1&limit=10&sort=name&order=asc",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "products"],
+					"query": [
+						{ "key": "search", "value": "aceto" },
+						{ "key": "page", "value": "1" },
+						{ "key": "limit", "value": "10" },
+						{ "key": "sort", "value": "name" },
+						{ "key": "order", "value": "asc" }
+					]
+				}
+			}
+		},
+		{
+			"name": "Public — Filter by category (query)",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/products?category=Bio%20Fertilizers",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "products"],
+					"query": [
+						{ "key": "category", "value": "Bio Fertilizers" }
+					]
+				}
+			}
+		},
+		{
+			"name": "Public — Get product by slug",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/products/aceto",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "products", "aceto"]
+				}
+			}
+		},
+		{
+			"name": "Public — Get products by category (URL param)",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/products/category/Bio%20Pesticides",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "products", "category", "Bio Pesticides"]
+				}
+			}
+		},
+		{
+			"name": "Public — Legacy list (old route)",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/public/products",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "public", "products"]
+				}
+			}
+		},
+		{
+			"name": "Admin — List all products",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/admin/products",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "admin", "products"]
+				},
+				"header": [
+					{ "key": "Authorization", "value": "Bearer {{ADMIN_TOKEN}}" }
+				]
+			}
+		},
+		{
+			"name": "Admin — Get product by ID",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{BASE_URL}}/api/admin/products/:id",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "admin", "products", ":id"],
+					"variable": [
+						{ "key": "id", "value": "" }
+					]
+				},
+				"header": [
+					{ "key": "Authorization", "value": "Bearer {{ADMIN_TOKEN}}" }
+				]
+			}
+		},
+		{
+			"name": "Admin — Create product",
+			"request": {
+				"method": "POST",
+				"url": {
+					"raw": "{{BASE_URL}}/api/admin/products",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "admin", "products"]
+				},
+				"header": [
+					{ "key": "Authorization", "value": "Bearer {{ADMIN_TOKEN}}" },
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"New Product\",\n  \"slug\": \"new-product\",\n  \"category\": \"Bio Fertilizers\",\n  \"shortDescription\": \"A brand new product\",\n  \"scientificName\": \"Testus productus\",\n  \"productType\": \"Lyophilized\",\n  \"images\": [\"client-assets/products/biofertilizers/new-product.jpeg\"]\n}"
+				}
+			}
+		},
+		{
+			"name": "Admin — Update product",
+			"request": {
+				"method": "PATCH",
+				"url": {
+					"raw": "{{BASE_URL}}/api/admin/products/:id",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "admin", "products", ":id"],
+					"variable": [
+						{ "key": "id", "value": "" }
+					]
+				},
+				"header": [
+					{ "key": "Authorization", "value": "Bearer {{ADMIN_TOKEN}}" },
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"price\": 299,\n  \"tagline\": \"Updated tagline\"\n}"
+				}
+			}
+		},
+		{
+			"name": "Admin — Delete product",
+			"request": {
+				"method": "DELETE",
+				"url": {
+					"raw": "{{BASE_URL}}/api/admin/products/:id",
+					"host": ["{{BASE_URL}}"],
+					"path": ["api", "admin", "products", ":id"],
+					"variable": [
+						{ "key": "id", "value": "" }
+					]
+				},
+				"header": [
+					{ "key": "Authorization", "value": "Bearer {{ADMIN_TOKEN}}" }
+				]
+			}
+		}
+	]
+}

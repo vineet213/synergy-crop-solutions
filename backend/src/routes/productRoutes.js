@@ -4,9 +4,14 @@ import { authenticate } from "../middleware/authenticate.js";
 
 const router = express.Router();
 
-// Public product endpoints
+// Existing public product endpoints
 router.get("/public/products", productController.listPublicProducts);
 router.get("/public/products/:id", productController.getPublicProduct);
+
+// New public API (aligned with /api/products mount)
+router.get("/products", productController.listPublicProducts);
+router.get("/products/category/:category", productController.getProductsByCategory);
+router.get("/products/:slug", productController.getProductBySlug);
 
 // Admin product endpoints (protected)
 router.get("/admin/products", authenticate, productController.adminListProducts);
