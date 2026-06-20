@@ -9,6 +9,7 @@ export default function Footer() {
         <div>
           <p className="footer-brand">Synergy Crop Solutions</p>
           <p>{t("footer.tagline")}</p>
+          <p className="footer-vision">{t("about.visionStatement")}</p>
         </div>
         <div>
           <p className="footer-heading">{t("footer.contact")}</p>

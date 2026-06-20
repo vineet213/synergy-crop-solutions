@@ -1,6 +1,7 @@
 ﻿import { Routes, Route, Navigate } from "react-router-dom";
 import PublicLayout from "../components/layout/PublicLayout.jsx";
 import HomePage from "../pages/public/HomePage.jsx";
+import AboutPage from "../pages/public/AboutPage.jsx";
 import BlogPage from "../pages/public/BlogPage.jsx";
 import BlogDetailPage from "../pages/public/BlogDetailPage.jsx";
 import CategoriesPage from "../pages/public/CategoriesPage.jsx";
@@ -45,6 +46,7 @@ export default function AppRoutes() {
       {/* Public Routes */}
       <Route path="/" element={<PublicLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
         <Route path="blog" element={<BlogPage />} />
         <Route path="blog/:id" element={<BlogDetailPage />} />
         <Route path="categories" element={<CategoriesPage />} />

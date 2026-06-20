@@ -70,7 +70,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <SectionContainer title="Our focused capabilities" subtitle="Built for modern agriculture">
+      <SectionContainer title={t("sections.capabilities.title")} subtitle={t("sections.capabilities.subtitle")}>
         <div className="card-grid">
           {categories.map((item) => (
             <Card key={item.title} title={item.title} description={item.description} icon={item.icon} />
@@ -78,16 +78,23 @@ export default function HomePage() {
         </div>
       </SectionContainer>
 
-      <SectionContainer title="Browse by Crop" subtitle="Find the right products for your field">
+      <SectionContainer title={t("vision.title")} subtitle={t("mission.title")}>
+        <div className="card-shell">
+          <p>{t("vision.statement")}</p>
+          <p>{t("mission.statement")}</p>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer title={t("sections.crops.title")} subtitle={t("sections.crops.subtitle")}>
         {crops.length === 0 ? (
-          <p>No crops available yet.</p>
+          <p>{t("sections.crops.empty")}</p>
         ) : (
           <div className="discover-grid">
             {crops.map((crop) => (
               <Link key={crop._id} to={`/crops/${crop._id}`} className="no-underline">
                 <Card
                   title={crop.name}
-                  description={crop.description || "Discover products for this crop."}
+                  description={crop.description || t("sections.crops.fallback")}
                 />
               </Link>
             ))}
@@ -95,16 +102,16 @@ export default function HomePage() {
         )}
       </SectionContainer>
 
-      <SectionContainer title="Browse by Disease" subtitle="Protect crops with smarter decisions">
+      <SectionContainer title={t("sections.diseases.title")} subtitle={t("sections.diseases.subtitle")}>
         {diseases.length === 0 ? (
-          <p>No diseases available yet.</p>
+          <p>{t("sections.diseases.empty")}</p>
         ) : (
           <div className="discover-grid">
             {diseases.map((disease) => (
               <Link key={disease._id} to={`/diseases/${disease._id}`} className="no-underline">
                 <Card
                   title={disease.name}
-                  description={disease.description || "Discover products for this disease."}
+                  description={disease.description || t("sections.diseases.fallback")}
                 />
               </Link>
             ))}
@@ -112,10 +119,10 @@ export default function HomePage() {
         )}
       </SectionContainer>
 
-      <SectionContainer title="Certifications" subtitle="Trusted standards for every field">
+      <SectionContainer title={t("sections.certifications.title")} subtitle={t("sections.certifications.subtitle")}>
         <div className="card-grid">
           {certifications.length === 0 ? (
-            <p>No certifications yet.</p>
+            <p>{t("sections.certifications.empty")}</p>
           ) : (
             certifications.map((item) => (
               <Card
@@ -128,23 +135,23 @@ export default function HomePage() {
         </div>
       </SectionContainer>
 
-      <SectionContainer title="Distributor Locator" subtitle="Connect with trusted supply partners">
+      <SectionContainer title={t("sections.distributors.title")} subtitle={t("sections.distributors.subtitle")}>
         <div className="card-shell">
           <div className="card-header">
             <span className="card-icon"><MapPin size={20} /></span>
-            <h3 className="card-title">Local distribution coverage</h3>
+            <h3 className="card-title">{t("sections.distributors.cardTitle")}</h3>
           </div>
-          <p className="card-description">Find certified distributors and supply partners near your farm with a single search.</p>
+          <p className="card-description">{t("sections.distributors.cardDesc")}</p>
           <div style={{ marginTop: "1.5rem" }}>
             <Button variant="secondary">{t("common:cta.visitLocator")}</Button>
           </div>
         </div>
       </SectionContainer>
 
-      <SectionContainer title="What growers say" subtitle="Real results from field leaders">
+      <SectionContainer title={t("sections.testimonials.title")} subtitle={t("sections.testimonials.subtitle")}>
         <div className="testimonials-grid">
           {testimonials.length === 0 ? (
-            <p>No testimonials yet.</p>
+            <p>{t("sections.testimonials.empty")}</p>
           ) : (
             testimonials.map((item) => (
               <Card
@@ -157,11 +164,11 @@ export default function HomePage() {
         </div>
       </SectionContainer>
 
-      <SectionContainer title="Ready to grow with confidence?" subtitle="Partner with Synergy Crop Solutions">
+      <SectionContainer title={t("sections.cta.title")} subtitle={t("sections.cta.subtitle")}>
         <div className="card-shell" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
           <div>
-            <p className="section-subtitle">Actionable agriculture</p>
-            <h2 className="section-title" style={{ fontSize: "2rem" }}>Build smarter crop strategies today.</h2>
+            <p className="section-subtitle">{t("sections.cta.tagline")}</p>
+            <h2 className="section-title" style={{ fontSize: "2rem" }}>{t("sections.cta.headline")}</h2>
           </div>
           <Button>{t("common:cta.contactOurTeam")}</Button>
         </div>

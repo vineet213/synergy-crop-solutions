@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import useSEO from "../../hooks/useSEO.js";
 
 export default function NotFoundPage() {
+  const { t } = useTranslation("common");
   useSEO({
-    title: "404 - Page Not Found",
-    description: "The page you are looking for could not be found.",
+    title: `404 - ${t("page.notFound.title")}`,
+    description: t("page.notFound.message"),
     canonical: "/404",
   });
 
@@ -29,7 +31,7 @@ export default function NotFoundPage() {
           margin: "0 0 0.75rem",
         }}
       >
-        Page Not Found
+        {t("page.notFound.title")}
       </h2>
       <p
         style={{
@@ -40,14 +42,14 @@ export default function NotFoundPage() {
           lineHeight: 1.6,
         }}
       >
-        The page you are looking for does not exist or may have been moved.
+        {t("page.notFound.message")}
       </p>
       <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
         <Link to="/" className="button-base button-primary">
-          Go Home
+          {t("page.notFound.goHome")}
         </Link>
         <Link to="/products" className="button-base button-secondary">
-          Browse Products
+          {t("page.notFound.browseProducts")}
         </Link>
       </div>
     </main>

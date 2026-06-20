@@ -5,5 +5,53 @@
     "subtitle": "Synergy Crop Solutions blends crop science, digital insights, and distribution expertise to empower growers across every season.",
     "quote": "Trusted by growers nationwide. We help farms scale sustainably while keeping quality and community at the center.",
     "visual": "Crop intelligence through innovation"
+  },
+  "vision": {
+    "title": "Our Vision",
+    "statement": "To build a strong legacy in agriculture by bringing innovative residue-free solutions that create trust, growth, and prosperity for every partner."
+  },
+  "mission": {
+    "title": "Our Mission",
+    "statement": "To deliver new-generation crop protection products that are safe, effective, and residue-free, helping farmers improve harvests and helping distributors and dealers build lasting business."
+  },
+  "sections": {
+    "capabilities": {
+      "title": "Our focused capabilities",
+      "subtitle": "Built for modern agriculture"
+    },
+    "crops": {
+      "title": "Browse by Crop",
+      "subtitle": "Find the right products for your field",
+      "empty": "No crops available yet.",
+      "fallback": "Discover products for this crop."
+    },
+    "diseases": {
+      "title": "Browse by Disease",
+      "subtitle": "Protect crops with smarter decisions",
+      "empty": "No diseases available yet.",
+      "fallback": "Discover products for this disease."
+    },
+    "certifications": {
+      "title": "Certifications",
+      "subtitle": "Trusted standards for every field",
+      "empty": "No certifications yet."
+    },
+    "distributors": {
+      "title": "Distributor Locator",
+      "subtitle": "Connect with trusted supply partners",
+      "cardTitle": "Local distribution coverage",
+      "cardDesc": "Find certified distributors and supply partners near your farm with a single search."
+    },
+    "testimonials": {
+      "title": "What growers say",
+      "subtitle": "Real results from field leaders",
+      "empty": "No testimonials yet."
+    },
+    "cta": {
+      "title": "Ready to grow with confidence?",
+      "subtitle": "Partner with Synergy Crop Solutions",
+      "tagline": "Actionable agriculture",
+      "headline": "Build smarter crop strategies today."
+    }
   }
 }

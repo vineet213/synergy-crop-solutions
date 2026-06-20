@@ -1,4 +1,5 @@
 ﻿import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Search, MapPin } from "lucide-react";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import DistributorList from "../../components/distributor-locator/DistributorList.jsx";
@@ -14,7 +15,8 @@ const INDIAN_STATES = [
 ];
 
 export default function DistributorLocatorPage() {
-  useSEO({ title: "Distributor Locator", description: "Find certified agricultural distributors and supply partners near you across India. Connect with trusted partners for timely support and reliable inventory.", canonical: "/distributors" });
+  const { t } = useTranslation("common");
+  useSEO({ title: t("page.distributor.title"), description: t("page.distributor.intro"), canonical: "/distributors" });
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("All");
 
@@ -37,12 +39,11 @@ export default function DistributorLocatorPage() {
   return (
     <main className="page-container" style={{ padding: "2rem 0" }}>
       <SectionContainer
-        title="Distributor Locator"
-        subtitle="Find trusted partners near you"
+        title={t("page.distributor.title")}
+        subtitle={t("page.distributor.subtitle")}
       >
         <p className="product-intro-copy">
-          Locate certified distributors and manage your supply chain with confidence.
-          Our network is built for timely support, reliable inventory, and field-ready delivery.
+          {t("page.distributor.intro")}
         </p>
 
         <div className="product-filter">
@@ -50,7 +51,7 @@ export default function DistributorLocatorPage() {
             <Search size={20} />
             <input
               className="search-input"
-              placeholder="Search by name, company, city, or state…"
+              placeholder={t("page.distributor.searchPlaceholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -72,7 +73,7 @@ export default function DistributorLocatorPage() {
                 className="filter-pill filter-clear"
                 onClick={() => { setSelectedState("All"); setSearchQuery(""); }}
               >
-                Clear
+                {t("page.distributor.clear")}
               </button>
             )}
           </div>

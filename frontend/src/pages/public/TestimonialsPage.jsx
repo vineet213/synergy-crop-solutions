@@ -1,28 +1,23 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useTranslation } from "react-i18next";
 import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
-import testimonialService from "../../services/testimonialService.js";
 import useSEO from "../../hooks/useSEO.js";
+import { usePublicTestimonials } from "../../hooks/useTestimonials.js";
 
 export default function TestimonialsPage() {
   useSEO({ title: "Testimonials", description: "Read real results from field leaders. See how Synergy Crop Solutions helps growers improve yield, reduce waste, and scale sustainably.", canonical: "/testimonials" });
-  const [testimonials, setTestimonials] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    testimonialService.getPublicTestimonials()
-      .then(setTestimonials)
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  }, []);
+  const { t } = useTranslation("testimonials");
+  const { testimonials, loading, error } = usePublicTestimonials();
 
   return (
     <div className="page-container">
-      <SectionContainer title="Testimonials" subtitle="Grower stories and results">
+      <SectionContainer title={t("page.title")} subtitle={t("page.subtitle")}>
         {loading ? (
-          <p>Loading&hellip;</p>
+          <p>{t("page.loading")}</p>
+        ) : error ? (
+          <p>{error}</p>
         ) : testimonials.length === 0 ? (
-          <p>No testimonials yet.</p>
+          <p>{t("page.empty")}</p>
         ) : (
           <div className="testimonials-grid">
             {testimonials.map((item) => (

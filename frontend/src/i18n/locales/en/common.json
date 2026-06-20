@@ -9,5 +9,104 @@
     "viewOurStory": "View our story",
     "visitLocator": "Visit locator",
     "contactOurTeam": "Contact our team"
+  },
+  "about": {
+    "visionStatement": "We are committed to building a strong legacy in agriculture by bringing innovative residue-free solutions that create trust, growth, and prosperity for every partner."
+  },
+  "page": {
+    "notFound": {
+      "title": "Page Not Found",
+      "message": "The page you are looking for does not exist or may have been moved.",
+      "goHome": "Go Home",
+      "browseProducts": "Browse Products"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Start your next agricultural partnership",
+      "intro": "Our team is ready to help you build a more resilient and profitable crop program. Reach out for an introductory consultation.",
+      "otherWays": "Other ways to reach us",
+      "email": "Email:",
+      "phone": "Phone:",
+      "office": "Office:"
+    },
+    "contactForm": {
+      "thankYou": "Thank you!",
+      "successMessage": "We have received your inquiry and will get back to you shortly.",
+      "name": "Name *",
+      "namePlaceholder": "Your full name",
+      "nameRequired": "Name is required",
+      "email": "Email *",
+      "emailPlaceholder": "your@email.com",
+      "emailRequired": "Email is required",
+      "phone": "Phone",
+      "phonePlaceholder": "+91-9876543210",
+      "company": "Company / Farm Name",
+      "companyPlaceholder": "Your farm or organization",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "submitting": "Submitting…",
+      "submit": "Send Inquiry",
+      "failed": "Failed to submit. Please try again."
+    },
+    "cropDiscovery": {
+      "title": "Crop Discovery",
+      "subtitle": "Responsive crop planning for growers",
+      "description": "Browse our crop catalog to find information and discover relevant products for each crop type.",
+      "loading": "Loading…",
+      "fallback": "Learn more about this crop and its products.",
+      "empty": "No crops available yet."
+    },
+    "cropDetail": {
+      "failed": "Failed to load crop",
+      "back": "Back to crops",
+      "notFound": "Crop not found",
+      "notFoundMessage": "The crop you are looking for does not exist.",
+      "info": "Crop information",
+      "noDescription": "No description available.",
+      "relatedProducts": "Related Products",
+      "productsAvailable": "product(s) available",
+      "noProducts": "No products listed for this crop yet.",
+      "contactForPrice": "Contact for price",
+      "viewDetails": "View Details"
+    },
+    "diseaseDiscovery": {
+      "title": "Disease Discovery",
+      "subtitle": "Prevent crop loss before it spreads",
+      "description": "Browse our disease catalog to identify problems and discover relevant treatments and products.",
+      "loading": "Loading…",
+      "fallback": "Learn more about this disease and its treatments.",
+      "empty": "No diseases available yet."
+    },
+    "diseaseDetail": {
+      "failed": "Failed to load disease",
+      "back": "Back to diseases",
+      "notFound": "Disease not found",
+      "notFoundMessage": "The disease you are looking for does not exist.",
+      "info": "Disease information",
+      "symptoms": "Symptoms",
+      "relatedProducts": "Related Products",
+      "productsAvailable": "product(s) available",
+      "noProducts": "No products listed for this disease yet.",
+      "contactForPrice": "Contact for price",
+      "viewDetails": "View Details"
+    },
+    "categories": {
+      "title": "Categories",
+      "subtitle": "Crop categories we support",
+      "featured": "Featured"
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Insights for modern agriculture"
+    },
+    "distributor": {
+      "title": "Distributor Locator",
+      "subtitle": "Find trusted partners near you",
+      "intro": "Locate certified distributors and manage your supply chain with confidence. Our network is built for timely support, reliable inventory, and field-ready delivery.",
+      "searchPlaceholder": "Search by name, company, city, or state…",
+      "clear": "Clear",
+      "empty": "No distributors found",
+      "emptyMessage": "Try a different search term or check back later as our network grows."
+    }
   }
 }

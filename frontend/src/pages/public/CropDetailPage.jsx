@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ArrowLeft } from "lucide-react";
 import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
@@ -8,6 +9,7 @@ import cropService from "../../services/cropService.js";
 
 export default function CropDetailPage() {
   const { id } = useParams();
+  const { t } = useTranslation(["common", "home"]);
   const [crop, setCrop] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +26,7 @@ export default function CropDetailPage() {
   if (loading) {
     return (
       <main className="page-container" style={{ padding: "2rem 0" }}>
-        <p>Loading&hellip;</p>
+        <p>{"Loading…"}</p>
       </main>
     );
   }
@@ -33,9 +35,9 @@ export default function CropDetailPage() {
     return (
       <main className="page-container" style={{ padding: "2rem 0" }}>
         <div className="empty-state card-shell">
-          <h2>Failed to load crop</h2>
+          <h2>{t("common:page.cropDetail.failed")}</h2>
           <p>{error}</p>
-          <Link to="/crops" className="button-base button-primary">Back to crops</Link>
+          <Link to="/crops" className="button-base button-primary">{t("common:page.cropDetail.back")}</Link>
         </div>
       </main>
     );
@@ -45,9 +47,9 @@ export default function CropDetailPage() {
     return (
       <main className="page-container" style={{ padding: "2rem 0" }}>
         <div className="empty-state card-shell">
-          <h2>Crop not found</h2>
-          <p>The crop you are looking for does not exist.</p>
-          <Link to="/crops" className="button-base button-primary">Back to crops</Link>
+          <h2>{t("common:page.cropDetail.notFound")}</h2>
+          <p>{t("common:page.cropDetail.notFoundMessage")}</p>
+          <Link to="/crops" className="button-base button-primary">{t("common:page.cropDetail.back")}</Link>
         </div>
       </main>
     );
@@ -63,19 +65,19 @@ export default function CropDetailPage() {
         style={{ marginBottom: "1rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
       >
         <ArrowLeft size={18} />
-        Back to crops
+        {t("common:page.cropDetail.back")}
       </Link>
 
-      <SectionContainer title={crop.name} subtitle="Crop information">
+      <SectionContainer title={crop.name} subtitle={t("common:page.cropDetail.info")}>
         {crop.imageUrl && (
           <img src={crop.imageUrl} alt={crop.name} style={{ maxWidth: "100%", borderRadius: "0.5rem", marginBottom: "1rem" }} />
         )}
-        <p>{crop.description || "No description available."}</p>
+        <p>{crop.description || t("common:page.cropDetail.noDescription")}</p>
       </SectionContainer>
 
-      <SectionContainer title="Related Products" subtitle={`${activeProducts.length} product(s) available`}>
+      <SectionContainer title={t("common:page.cropDetail.relatedProducts")} subtitle={`${activeProducts.length} ${t("common:page.cropDetail.productsAvailable")}`}>
         {activeProducts.length === 0 ? (
-          <p>No products listed for this crop yet.</p>
+          <p>{t("common:page.cropDetail.noProducts")}</p>
         ) : (
           <div className="product-grid">
             {activeProducts.map((product) => (
@@ -90,11 +92,11 @@ export default function CropDetailPage() {
                 <div className="product-card-footer">
                   <div>
                     <p className="product-price">
-                      {product.price ? `₹${product.price}` : "Contact for price"}
+                      {product.price ? `₹${product.price}` : t("common:page.cropDetail.contactForPrice")}
                     </p>
                   </div>
                   <Link to={`/products/${product.slug}`} className="button-base button-primary button-small">
-                    View Details
+                    {t("common:page.cropDetail.viewDetails")}
                   </Link>
                 </div>
               </Card>

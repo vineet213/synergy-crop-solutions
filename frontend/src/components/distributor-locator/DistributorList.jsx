@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next";
 import DistributorCard from "./DistributorCard.jsx";
 import Card from "../ui/Card.jsx";
 
 export default function DistributorList({ distributors, loading }) {
+  const { t } = useTranslation("common");
+
   if (loading) {
     return (
       <div className="discover-grid">
@@ -19,8 +22,8 @@ export default function DistributorList({ distributors, loading }) {
   if (!distributors || distributors.length === 0) {
     return (
       <div className="empty-state card-shell">
-        <h2>No distributors found</h2>
-        <p>Try a different search term or check back later as our network grows.</p>
+        <h2>{t("page.distributor.empty")}</h2>
+        <p>{t("page.distributor.emptyMessage")}</p>
       </div>
     );
   }

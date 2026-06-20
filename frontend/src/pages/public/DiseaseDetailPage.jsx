@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ArrowLeft } from "lucide-react";
 import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
@@ -8,6 +9,7 @@ import diseaseService from "../../services/diseaseService.js";
 
 export default function DiseaseDetailPage() {
   const { id } = useParams();
+  const { t } = useTranslation(["common", "home"]);
   const [disease, setDisease] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +26,7 @@ export default function DiseaseDetailPage() {
   if (loading) {
     return (
       <main className="page-container" style={{ padding: "2rem 0" }}>
-        <p>Loading&hellip;</p>
+        <p>{"Loading…"}</p>
       </main>
     );
   }
@@ -33,9 +35,9 @@ export default function DiseaseDetailPage() {
     return (
       <main className="page-container" style={{ padding: "2rem 0" }}>
         <div className="empty-state card-shell">
-          <h2>Failed to load disease</h2>
+          <h2>{t("common:page.diseaseDetail.failed")}</h2>
           <p>{error}</p>
-          <Link to="/diseases" className="button-base button-primary">Back to diseases</Link>
+          <Link to="/diseases" className="button-base button-primary">{t("common:page.diseaseDetail.back")}</Link>
         </div>
       </main>
     );
@@ -45,9 +47,9 @@ export default function DiseaseDetailPage() {
     return (
       <main className="page-container" style={{ padding: "2rem 0" }}>
         <div className="empty-state card-shell">
-          <h2>Disease not found</h2>
-          <p>The disease you are looking for does not exist.</p>
-          <Link to="/diseases" className="button-base button-primary">Back to diseases</Link>
+          <h2>{t("common:page.diseaseDetail.notFound")}</h2>
+          <p>{t("common:page.diseaseDetail.notFoundMessage")}</p>
+          <Link to="/diseases" className="button-base button-primary">{t("common:page.diseaseDetail.back")}</Link>
         </div>
       </main>
     );
@@ -63,22 +65,22 @@ export default function DiseaseDetailPage() {
         style={{ marginBottom: "1rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
       >
         <ArrowLeft size={18} />
-        Back to diseases
+        {t("common:page.diseaseDetail.back")}
       </Link>
 
-      <SectionContainer title={disease.name} subtitle="Disease information">
+      <SectionContainer title={disease.name} subtitle={t("common:page.diseaseDetail.info")}>
         {disease.description && <p>{disease.description}</p>}
         {disease.symptoms && (
           <div style={{ marginTop: "1rem" }}>
-            <h3 className="font-semibold">Symptoms</h3>
+            <h3 className="font-semibold">{t("common:page.diseaseDetail.symptoms")}</h3>
             <p>{disease.symptoms}</p>
           </div>
         )}
       </SectionContainer>
 
-      <SectionContainer title="Related Products" subtitle={`${activeProducts.length} product(s) available`}>
+      <SectionContainer title={t("common:page.diseaseDetail.relatedProducts")} subtitle={`${activeProducts.length} ${t("common:page.diseaseDetail.productsAvailable")}`}>
         {activeProducts.length === 0 ? (
-          <p>No products listed for this disease yet.</p>
+          <p>{t("common:page.diseaseDetail.noProducts")}</p>
         ) : (
           <div className="product-grid">
             {activeProducts.map((product) => (
@@ -93,11 +95,11 @@ export default function DiseaseDetailPage() {
                 <div className="product-card-footer">
                   <div>
                     <p className="product-price">
-                      {product.price ? `₹${product.price}` : "Contact for price"}
+                      {product.price ? `₹${product.price}` : t("common:page.diseaseDetail.contactForPrice")}
                     </p>
                   </div>
                   <Link to={`/products/${product.slug}`} className="button-base button-primary button-small">
-                    View Details
+                    {t("common:page.diseaseDetail.viewDetails")}
                   </Link>
                 </div>
               </Card>
