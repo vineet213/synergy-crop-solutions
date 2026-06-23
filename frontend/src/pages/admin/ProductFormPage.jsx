@@ -13,7 +13,7 @@ export default function ProductFormPage() {
     defaultValues: {
       name: "",
       slug: "",
-      category: "Bio Pesticides",
+      category: "Bio Fertilizers",
       description: "",
       price: "",
       images: "",
@@ -80,10 +80,11 @@ export default function ProductFormPage() {
         <div>
           <label className="block text-sm font-medium">Category *</label>
           <select {...register("category", { required: true })} className="input-field">
+            <option>Bio Fertilizers</option>
             <option>Bio Pesticides</option>
-            <option>Bio Fertilisers</option>
-            <option>Fungicides</option>
-            <option>Micro Nutrients</option>
+            <option>Consortia Products</option>
+            <option>Liquid Nutrition</option>
+            <option>Organic Inputs</option>
           </select>
         </div>
         <div>

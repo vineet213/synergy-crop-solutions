@@ -1,7 +1,7 @@
 ﻿import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ArrowRight, Leaf, ShieldCheck, MapPin, Sparkles, Truck } from "lucide-react";
+import { ArrowRight, Leaf, ShieldCheck, MapPin, Sparkles, Sprout, Droplets } from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
 import Card from "../../components/ui/Card.jsx";
 import Badge from "../../components/ui/Badge.jsx";
@@ -13,14 +13,15 @@ import diseaseService from "../../services/diseaseService.js";
 import useSEO from "../../hooks/useSEO.js";
 
 const categories = [
-  { title: "Seeds & Nutrition", description: "High-yield seed varieties and custom nutrient plans.", icon: <Leaf size={20} /> },
-  { title: "Field Protection", description: "Precision disease and pest protection strategies.", icon: <ShieldCheck size={20} /> },
-  { title: "Supply Chain", description: "Distribution solutions from farm to market.", icon: <Truck size={20} /> },
+  { title: "Bio Fertilizers", description: "Advanced bio-based nutrient solutions that enrich soil health and boost crop yields naturally.", icon: <Sprout size={20} /> },
+  { title: "Bio Pesticides", description: "Effective residue-free pest and disease control products derived from natural sources.", icon: <ShieldCheck size={20} /> },
+  { title: "Residue-Free Crop Protection", description: "Comprehensive crop protection portfolio designed for safer harvests and export-ready quality.", icon: <Droplets size={20} /> },
 ];
 
 export default function HomePage() {
   useSEO({ canonical: "/" });
   const { t } = useTranslation("home");
+  const navigate = useNavigate();
   const [testimonials, setTestimonials] = useState([]);
   const [certifications, setCertifications] = useState([]);
   const [crops, setCrops] = useState([]);
@@ -58,8 +59,8 @@ export default function HomePage() {
           <h1 className="hero-title">{t("hero.title")}</h1>
           <p className="hero-text">{t("hero.subtitle")}</p>
           <div className="hero-actions">
-            <Button>{t("common:cta.exploreSolutions")}</Button>
-            <Button variant="secondary">{t("common:cta.viewOurStory")}</Button>
+            <Button onClick={() => navigate("/products")}>{t("common:cta.exploreSolutions")}</Button>
+            <Button variant="secondary" onClick={() => navigate("/about")}>{t("common:cta.viewOurStory")}</Button>
           </div>
           <div className="hero-quote">
             <p><strong>{t("hero.quote")}</strong></p>
@@ -143,7 +144,7 @@ export default function HomePage() {
           </div>
           <p className="card-description">{t("sections.distributors.cardDesc")}</p>
           <div style={{ marginTop: "1.5rem" }}>
-            <Button variant="secondary">{t("common:cta.visitLocator")}</Button>
+            <Button variant="secondary" onClick={() => navigate("/distributors")}>{t("common:cta.visitLocator")}</Button>
           </div>
         </div>
       </SectionContainer>
@@ -170,7 +171,7 @@ export default function HomePage() {
             <p className="section-subtitle">{t("sections.cta.tagline")}</p>
             <h2 className="section-title" style={{ fontSize: "2rem" }}>{t("sections.cta.headline")}</h2>
           </div>
-          <Button>{t("common:cta.contactOurTeam")}</Button>
+          <Button onClick={() => navigate("/contact")}>{t("common:cta.contactOurTeam")}</Button>
         </div>
       </SectionContainer>
     </div>

@@ -17,9 +17,11 @@ export default function ContactPage() {
           <div className="card-shell" style={{ padding: "2rem", alignSelf: "start" }}>
             <h3 style={{ margin: "0 0 1rem" }}>{t("page.contact.otherWays")}</h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.email")}</strong> hello@synergycrops.com</p>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.phone")}</strong> +1 (555) 010-2024</p>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.office")}</strong> Nagpur, Maharashtra, India</p>
+              <p style={{ margin: 0 }}><strong>{t("page.contact.email")}</strong>{" "}
+                <a href="mailto:contact@synergycrops.com" style={{ color: "var(--brand)" }}>contact@synergycrops.com</a>
+              </p>
+              <p style={{ margin: 0 }}><strong>{t("page.contact.phone")}</strong> Phone Number – To Be Updated</p>
+              <p style={{ margin: 0 }}><strong>{t("page.contact.office")}</strong> Office Address – To Be Updated</p>
             </div>
           </div>
         </div>

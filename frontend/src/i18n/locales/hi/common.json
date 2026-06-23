@@ -13,6 +13,84 @@
   "about": {
     "visionStatement": "हम कृषि में एक मजबूत विरासत बनाने के लिए नवीन अवशेष-मुक्त समाधान लाकर हर भागीदार के लिए विश्वास, विकास और समृद्धि पैदा करने के लिए प्रतिबद्ध हैं।"
   },
+  "aboutPage": {
+    "hero": {
+      "subtitle": "Building a Residue-Free Tomorrow",
+      "title": "Driving Residue-Free Agriculture Across India",
+      "description": "Synergy Crop Solutions is a trusted agri-input company dedicated to bio-based crop protection, farmer prosperity, and sustainable agriculture. We partner with distributors, dealers, and growers to deliver innovative solutions that leave no harmful residues."
+    },
+    "overview": {
+      "title": "Company Overview",
+      "subtitle": "Who We Are",
+      "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom.\n\nOur team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.\n\nFrom smallholder farms to large agricultural enterprises, our solutions are designed to improve yields, reduce chemical dependency, and build long-term soil health."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "body": "To build a strong legacy in agriculture by bringing innovative residue-free solutions that create trust, growth, and prosperity for every partner."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "body": "To deliver new-generation crop protection products that are safe, effective, and residue-free, helping farmers improve harvests and helping distributors and dealers build lasting business."
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "subtitle": "Quality, Sustainability, and Farmer Success",
+      "items": [
+        {
+          "title": "Quality Assurance",
+          "description": "Every product undergoes rigorous testing to ensure purity, potency, and safety before reaching the field."
+        },
+        {
+          "title": "Sustainable Agriculture",
+          "description": "We champion farming practices that protect soil health, biodiversity, and water resources for future generations."
+        },
+        {
+          "title": "Farmer-Centric Approach",
+          "description": "Our solutions are designed with the farmer in mind — affordable, easy to apply, and backed by field-level technical support."
+        },
+        {
+          "title": "Distributor Enablement",
+          "description": "We empower our channel partners with training, marketing support, and reliable supply chains to build thriving agricultural businesses."
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": "Why Choose Synergy Crop Solutions",
+      "subtitle": "Built for the Challenges of Modern Agriculture",
+      "items": [
+        {
+          "title": "100% Bio-Based Solutions",
+          "description": "Our products are formulated from natural and biological sources, ensuring effective crop protection without chemical residues."
+        },
+        {
+          "title": "Residue-Free Guarantee",
+          "description": "We are committed to helping farmers achieve residue-free produce that meets domestic and international quality standards."
+        },
+        {
+          "title": "Pan-India Distribution Network",
+          "description": "With a growing network of distributors and dealers across multiple states, we ensure timely product availability in every region."
+        },
+        {
+          "title": "Farmer Training & Support",
+          "description": "We conduct regular training sessions, field demonstrations, and advisory programs to help farmers adopt best practices."
+        },
+        {
+          "title": "Trusted by Growers",
+          "description": "Thousands of farmers trust Synergy Crop Solutions for consistent quality, visible results, and dedicated customer service."
+        },
+        {
+          "title": "Environmentally Responsible",
+          "description": "Every product we develop is designed to minimize environmental impact while maximizing agricultural productivity."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Partner with Us",
+      "subtitle": "Let's Grow Together",
+      "description": "Whether you are a farmer looking for effective crop protection, a distributor seeking reliable partners, or a dealer wanting to stock quality products — we are here to help.",
+      "button": "Contact Our Team"
+    }
+  },
   "page": {
     "notFound": {
       "title": "पेज नहीं मिला",

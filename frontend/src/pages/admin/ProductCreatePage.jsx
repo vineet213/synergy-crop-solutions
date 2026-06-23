@@ -4,7 +4,7 @@ import productService from "../../services/productService.js";
 
 export default function ProductCreatePage() {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm({ defaultValues: { name: "", category: "Bio Pesticides", price: "" } });
+  const { register, handleSubmit } = useForm({ defaultValues: { name: "", category: "Bio Fertilizers", price: "" } });
 
   const onSubmit = async (data) => {
     try {
@@ -27,10 +27,11 @@ export default function ProductCreatePage() {
         <div>
           <label className="block text-sm font-medium">Category</label>
           <select {...register("category")} className="input-field">
+            <option>Bio Fertilizers</option>
             <option>Bio Pesticides</option>
-            <option>Bio Fertilisers</option>
-            <option>Fungicides</option>
-            <option>Micro Nutrients</option>
+            <option>Consortia Products</option>
+            <option>Liquid Nutrition</option>
+            <option>Organic Inputs</option>
           </select>
         </div>
         <div>

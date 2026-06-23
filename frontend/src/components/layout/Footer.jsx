@@ -13,13 +13,12 @@ export default function Footer() {
         </div>
         <div>
           <p className="footer-heading">{t("footer.contact")}</p>
-          <p>hello@synergycrops.com</p>
-          <p>+1 (555) 010-2024</p>
+          <p><a href="mailto:contact@synergycrops.com" style={{ color: "var(--brand)", textDecoration: "none" }}>contact@synergycrops.com</a></p>
+          <p>Phone Number – To Be Updated</p>
         </div>
         <div>
           <p className="footer-heading">{t("footer.location")}</p>
-          <p>172 Greenway Ave.</p>
-          <p>Fertilion, CA 94016</p>
+          <p>Office Address – To Be Updated</p>
         </div>
       </div>
     </footer>

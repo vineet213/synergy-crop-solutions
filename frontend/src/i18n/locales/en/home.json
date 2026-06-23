@@ -1,9 +1,9 @@
 {
   "hero": {
-    "badge": "Agricultural Intelligence",
-    "title": "Modern farming for resilient, profitable harvests.",
-    "subtitle": "Synergy Crop Solutions blends crop science, digital insights, and distribution expertise to empower growers across every season.",
-    "quote": "Trusted by growers nationwide. We help farms scale sustainably while keeping quality and community at the center.",
+    "badge": "Residue-Free Agriculture",
+    "title": "Bio-based crop protection for healthier harvests.",
+    "subtitle": "Synergy Crop Solutions delivers innovative bio-fertilizers, bio-pesticides, and residue-free crop protection products that help farmers grow more while protecting the land for future generations.",
+    "quote": "Committed to residue-free farming. Trusted by growers across India. We partner with distributors and dealers to build a sustainable agricultural future.",
     "visual": "Crop intelligence through innovation"
   },
   "vision": {
@@ -16,8 +16,8 @@
   },
   "sections": {
     "capabilities": {
-      "title": "Our focused capabilities",
-      "subtitle": "Built for modern agriculture"
+      "title": "Our core strengths",
+      "subtitle": "Specialised in residue-free agriculture"
     },
     "crops": {
       "title": "Browse by Crop",
@@ -39,8 +39,8 @@
     "distributors": {
       "title": "Distributor Locator",
       "subtitle": "Connect with trusted supply partners",
-      "cardTitle": "Local distribution coverage",
-      "cardDesc": "Find certified distributors and supply partners near your farm with a single search."
+      "cardTitle": "Find a distributor near you",
+      "cardDesc": "Locate certified Synergy Crop Solutions distributors and dealers in your region for timely access to bio-based crop protection products."
     },
     "testimonials": {
       "title": "What growers say",
@@ -50,8 +50,8 @@
     "cta": {
       "title": "Ready to grow with confidence?",
       "subtitle": "Partner with Synergy Crop Solutions",
-      "tagline": "Actionable agriculture",
-      "headline": "Build smarter crop strategies today."
+      "tagline": "Start your journey",
+      "headline": "Switch to bio-based, residue-free crop protection today."
     }
   }
 }
