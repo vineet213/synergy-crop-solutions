@@ -8,24 +8,29 @@ export function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Initialize auth state on mount
+  // Initialize auth state on mount — verify token against backend
   useEffect(() => {
     const initializeAuth = async () => {
       setIsLoading(true);
       const token = localStorage.getItem("authToken");
-      const storedUser = localStorage.getItem("user");
 
-      if (token && storedUser) {
-        try {
-          setUser(JSON.parse(storedUser));
-          setIsAuthenticated(true);
-        } catch (error) {
-          console.error("Failed to restore auth state:", error);
-          authService.logout();
-          setIsAuthenticated(false);
-        }
+      if (!token) {
+        setIsLoading(false);
+        return;
       }
-      setIsLoading(false);
+
+      try {
+        const user = await authService.getCurrentUser();
+        if (user) {
+          setUser(user);
+          setIsAuthenticated(true);
+        }
+      } catch {
+        setUser(null);
+        setIsAuthenticated(false);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     initializeAuth();

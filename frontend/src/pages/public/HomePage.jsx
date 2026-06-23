@@ -15,7 +15,9 @@ import useSEO from "../../hooks/useSEO.js";
 const categories = [
   { title: "Bio Fertilizers", description: "Advanced bio-based nutrient solutions that enrich soil health and boost crop yields naturally.", icon: <Sprout size={20} /> },
   { title: "Bio Pesticides", description: "Effective residue-free pest and disease control products derived from natural sources.", icon: <ShieldCheck size={20} /> },
-  { title: "Residue-Free Crop Protection", description: "Comprehensive crop protection portfolio designed for safer harvests and export-ready quality.", icon: <Droplets size={20} /> },
+  { title: "Consortia Products", description: "Synergistic microbial consortia for enhanced soil fertility, plant growth, and stress tolerance.", icon: <Sparkles size={20} /> },
+  { title: "Liquid Nutrition", description: "Ready-to-use liquid formulations for targeted nutrient delivery and rapid crop response.", icon: <Droplets size={20} /> },
+  { title: "Organic Inputs", description: "Certified organic soil amendments and natural inputs for sustainable farming systems.", icon: <Leaf size={20} /> },
 ];
 
 export default function HomePage() {

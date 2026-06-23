@@ -28,38 +28,36 @@ export default function AdminLayout() {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="admin-shell">
       {/* Sidebar */}
-      <aside
-        className={`${
-          sidebarOpen ? "w-64" : "w-20"
-        } bg-green-700 text-white transition-all duration-300 overflow-y-auto`}
-      >
+      <aside className={`admin-sidebar ${sidebarOpen ? "open" : "collapsed"}`}>
         {/* Logo */}
-        <div className="flex items-center justify-between p-4 border-b border-green-600">
-          <h1 className={`font-bold text-xl ${!sidebarOpen && "hidden"}`}>
+        <div className="admin-sidebar-logo">
+          <h1 className={`admin-sidebar-title ${!sidebarOpen && "hidden"}`}>
             Agri Platform
           </h1>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-1 hover:bg-green-600 rounded"
+            className="admin-sidebar-toggle"
           >
             {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
         {/* Navigation Links */}
-        <nav className="mt-6">
+        <nav className="admin-nav">
           {sidebarLinks.map((link) => {
             const Icon = link.icon;
             return (
               <Link
                 key={link.href}
                 to={link.href}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-green-600 transition"
+                className="admin-nav-link"
               >
                 <Icon size={20} />
-                <span className={!sidebarOpen ? "hidden" : ""}>{link.label}</span>
+                <span className={`admin-nav-label ${!sidebarOpen && "hidden"}`}>
+                  {link.label}
+                </span>
               </Link>
             );
           })}
@@ -67,23 +65,21 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="admin-main">
         {/* Header */}
-        <header className="bg-white shadow">
-          <div className="flex items-center justify-between px-6 py-4">
-            <h2 className="text-2xl font-bold text-gray-800">
-              Admin Dashboard
-            </h2>
-            <div className="flex items-center gap-4">
+        <header className="admin-header">
+          <div className="admin-header-inner">
+            <h2 className="admin-header-title">Admin Dashboard</h2>
+            <div className="admin-header-right">
               {user && (
-                <div className="text-right">
-                  <p className="text-sm font-medium text-gray-700">{user.name}</p>
-                  <p className="text-xs text-gray-500">{user.email}</p>
+                <div className="admin-user-info">
+                  <p className="admin-user-name">{user.name}</p>
+                  <p className="admin-user-email">{user.email}</p>
                 </div>
               )}
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                className="admin-logout-btn"
               >
                 <LogOut size={18} />
                 Logout
@@ -93,7 +89,7 @@ export default function AdminLayout() {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto">
+        <main className="admin-content">
           <Outlet />
         </main>
       </div>
