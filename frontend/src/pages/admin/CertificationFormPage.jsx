@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import certificationService from "../../services/certificationService.js";
 
 export default function CertificationFormPage() {
@@ -40,7 +41,7 @@ export default function CertificationFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        alert("Failed to load certification");
+        toast.error("Failed to load certification");
         navigate("/admin/certifications");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -63,7 +64,7 @@ export default function CertificationFormPage() {
       navigate("/admin/certifications");
     } catch (err) {
       console.error(err);
-      alert("Failed to save certification");
+      toast.error("Failed to save certification");
     }
   };
 

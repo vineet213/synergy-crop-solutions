@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import diseaseService from "../../services/diseaseService.js";
 import productService from "../../services/productService.js";
 
@@ -46,7 +47,7 @@ export default function DiseaseFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        alert("Failed to load disease");
+        toast.error("Failed to load disease");
         navigate("/admin/diseases");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -75,7 +76,7 @@ export default function DiseaseFormPage() {
       navigate("/admin/diseases");
     } catch (err) {
       console.error(err);
-      alert("Failed to save disease");
+      toast.error("Failed to save disease");
     }
   };
 

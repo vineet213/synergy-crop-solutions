@@ -1,8 +1,11 @@
 ﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import useConfirm from "../../hooks/useConfirm.jsx";
 import diseaseService from "../../services/diseaseService.js";
 
 export default function DiseasesManagePage() {
+  const { confirm, ConfirmDialog } = useConfirm();
   const [diseases, setDiseases] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,13 +26,15 @@ export default function DiseasesManagePage() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this disease?")) return;
+    const confirmed = await confirm("Are you sure you want to delete this disease? This action cannot be undone.", "Delete disease");
+    if (!confirmed) return;
     try {
       await diseaseService.adminDeleteDisease(id);
       setDiseases((p) => p.filter((x) => x._id !== id));
+      toast.success("Disease deleted");
     } catch (err) {
       console.error(err);
-      alert("Failed to delete disease");
+      toast.error("Failed to delete disease");
     }
   };
 
@@ -74,6 +79,7 @@ export default function DiseasesManagePage() {
           ))}
         </div>
       )}
+      {ConfirmDialog}
     </main>
   );
 }

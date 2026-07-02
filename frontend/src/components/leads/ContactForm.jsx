@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import leadService from "../../services/leadService.js";
 import Button from "../ui/Button.jsx";
 
@@ -17,7 +18,7 @@ export default function ContactForm() {
       setSubmitted(true);
     } catch (err) {
       console.error(err);
-      alert(t("page.contactForm.failed"));
+      toast.error(t("page.contactForm.failed"));
     }
   };
 
@@ -35,16 +36,17 @@ export default function ContactForm() {
       <div>
         <label className="block text-sm font-medium">{t("page.contactForm.name")}</label>
         <input {...register("name", { required: t("page.contactForm.nameRequired") })} className="input-field" placeholder={t("page.contactForm.namePlaceholder")} />
-        {errors.name && <p className="text-sm text-red-600" style={{ marginTop: "0.25rem" }}>{errors.name.message}</p>}
+        {errors.name && <p className="form-field-error">{errors.name.message}</p>}
       </div>
       <div>
         <label className="block text-sm font-medium">{t("page.contactForm.email")}</label>
-        <input type="email" {...register("email", { required: t("page.contactForm.emailRequired") })} className="input-field" placeholder={t("page.contactForm.emailPlaceholder")} />
-        {errors.email && <p className="text-sm text-red-600" style={{ marginTop: "0.25rem" }}>{errors.email.message}</p>}
+        <input type="email" {...register("email", { required: t("page.contactForm.emailRequired"), pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: t("page.contactForm.emailInvalid") || "Invalid email address" } })} className="input-field" placeholder={t("page.contactForm.emailPlaceholder")} />
+        {errors.email && <p className="form-field-error">{errors.email.message}</p>}
       </div>
       <div>
         <label className="block text-sm font-medium">{t("page.contactForm.phone")}</label>
-        <input {...register("phone")} className="input-field" placeholder={t("page.contactForm.phonePlaceholder")} />
+        <input type="tel" {...register("phone", { pattern: { value: /^[+]?[\d\s()-]{7,20}$/, message: t("page.contactForm.phoneInvalid") || "Invalid phone number" } })} className="input-field" placeholder={t("page.contactForm.phonePlaceholder")} />
+          {errors.phone && <p className="form-field-error">{errors.phone.message}</p>}
       </div>
       <div>
         <label className="block text-sm font-medium">{t("page.contactForm.company")}</label>

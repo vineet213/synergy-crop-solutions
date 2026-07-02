@@ -28,29 +28,34 @@ export default function HomePage() {
   const [certifications, setCertifications] = useState([]);
   const [crops, setCrops] = useState([]);
   const [diseases, setDiseases] = useState([]);
+  const [loading, setLoading] = useState({ testimonials: true, certifications: true, crops: true, diseases: true });
 
   useEffect(() => {
     testimonialService.getPublicTestimonials()
       .then(setTestimonials)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading((prev) => ({ ...prev, testimonials: false })));
   }, []);
 
   useEffect(() => {
     certificationService.getPublicCertifications()
       .then(setCertifications)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading((prev) => ({ ...prev, certifications: false })));
   }, []);
 
   useEffect(() => {
     cropService.getPublicCrops()
       .then(setCrops)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading((prev) => ({ ...prev, crops: false })));
   }, []);
 
   useEffect(() => {
     diseaseService.getPublicDiseases()
       .then(setDiseases)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading((prev) => ({ ...prev, diseases: false })));
   }, []);
 
   return (
@@ -89,7 +94,17 @@ export default function HomePage() {
       </SectionContainer>
 
       <SectionContainer title={t("sections.crops.title")} subtitle={t("sections.crops.subtitle")}>
-        {crops.length === 0 ? (
+        {loading.crops ? (
+          <div className="discover-grid">
+            {[...Array(3)].map((_, i) => (
+              <Card key={i} className="product-skeleton">
+                <div className="skeleton-block skeleton-title" />
+                <div className="skeleton-block skeleton-line" />
+                <div className="skeleton-block skeleton-line short" />
+              </Card>
+            ))}
+          </div>
+        ) : crops.length === 0 ? (
           <p>{t("sections.crops.empty")}</p>
         ) : (
           <div className="discover-grid">
@@ -106,7 +121,17 @@ export default function HomePage() {
       </SectionContainer>
 
       <SectionContainer title={t("sections.diseases.title")} subtitle={t("sections.diseases.subtitle")}>
-        {diseases.length === 0 ? (
+        {loading.diseases ? (
+          <div className="discover-grid">
+            {[...Array(3)].map((_, i) => (
+              <Card key={i} className="product-skeleton">
+                <div className="skeleton-block skeleton-title" />
+                <div className="skeleton-block skeleton-line" />
+                <div className="skeleton-block skeleton-line short" />
+              </Card>
+            ))}
+          </div>
+        ) : diseases.length === 0 ? (
           <p>{t("sections.diseases.empty")}</p>
         ) : (
           <div className="discover-grid">
@@ -124,7 +149,17 @@ export default function HomePage() {
 
       <SectionContainer title={t("sections.certifications.title")} subtitle={t("sections.certifications.subtitle")}>
         <div className="card-grid">
-          {certifications.length === 0 ? (
+          {loading.certifications ? (
+            <div className="card-grid">
+              {[...Array(2)].map((_, i) => (
+                <Card key={i} className="product-skeleton">
+                  <div className="skeleton-block skeleton-title" />
+                  <div className="skeleton-block skeleton-line" />
+                  <div className="skeleton-block skeleton-line short" />
+                </Card>
+              ))}
+            </div>
+          ) : certifications.length === 0 ? (
             <p>{t("sections.certifications.empty")}</p>
           ) : (
             certifications.map((item) => (
@@ -153,7 +188,17 @@ export default function HomePage() {
 
       <SectionContainer title={t("sections.testimonials.title")} subtitle={t("sections.testimonials.subtitle")}>
         <div className="testimonials-grid">
-          {testimonials.length === 0 ? (
+          {loading.testimonials ? (
+            <div className="testimonials-grid">
+              {[...Array(2)].map((_, i) => (
+                <Card key={i} className="product-skeleton">
+                  <div className="skeleton-block skeleton-title" />
+                  <div className="skeleton-block skeleton-line" />
+                  <div className="skeleton-block skeleton-line short" />
+                </Card>
+              ))}
+            </div>
+          ) : testimonials.length === 0 ? (
             <p>{t("sections.testimonials.empty")}</p>
           ) : (
             testimonials.map((item) => (

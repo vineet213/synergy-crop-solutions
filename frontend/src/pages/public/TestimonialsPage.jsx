@@ -13,11 +13,24 @@ export default function TestimonialsPage() {
     <div className="page-container">
       <SectionContainer title={t("page.title")} subtitle={t("page.subtitle")}>
         {loading ? (
-          <p>{t("page.loading")}</p>
+          <div className="testimonials-grid">
+            {[...Array(2)].map((_, i) => (
+              <Card key={i} className="product-skeleton">
+                <div className="skeleton-block skeleton-title" />
+                <div className="skeleton-block skeleton-line" />
+                <div className="skeleton-block skeleton-line short" />
+              </Card>
+            ))}
+          </div>
         ) : error ? (
-          <p>{error}</p>
+          <div className="empty-state card-shell">
+            <h2>{t("page.loadError") || "Failed to load testimonials"}</h2>
+            <p>{error}</p>
+          </div>
         ) : testimonials.length === 0 ? (
-          <p>{t("page.empty")}</p>
+          <div className="empty-state card-shell">
+            <h2>{t("page.empty")}</h2>
+          </div>
         ) : (
           <div className="testimonials-grid">
             {testimonials.map((item) => (

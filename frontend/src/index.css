@@ -985,6 +985,16 @@ select.input-field {
   }
 }
 
+.hero-panel {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1100px) {
+  .hero-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 900px) {
   .product-category-row {
     gap: 0.5rem;
@@ -1051,4 +1061,247 @@ select.input-field {
   .footer-grid {
     gap: 1.5rem;
   }
+
+  .product-category-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .product-category-row::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .product-category-row::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+}
+
+/* Admin utility classes */
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.font-semibold { font-weight: 600; }
+.text-sm { font-size: 0.875rem; }
+.text-gray-600 { color: var(--text-muted); }
+.ml-1 { margin-left: 0.25rem; }
+.w-full { width: 100%; }
+.max-w-lg { max-width: 32rem; }
+.block { display: block; }
+.relative { position: relative; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+
+/* Admin Login */
+.admin-login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 440px;
+}
+
+.admin-login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.admin-login-error {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 0.875rem;
+}
+
+.admin-login-field {
+  margin-bottom: 0;
+}
+
+.admin-login-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.admin-login-input-wrap {
+  position: relative;
+}
+
+.admin-login-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.admin-login-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+}
+
+.admin-login-input-error {
+  border-color: #dc2626;
+}
+
+.admin-login-field-error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin-top: 0.25rem;
+}
+
+.admin-login-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.admin-login-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.admin-login-footer a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.admin-login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Confirm Dialog */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(2px);
+  padding: 1rem;
+}
+
+.confirm-dialog {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.75rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.2);
+}
+
+.confirm-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.confirm-icon-wrap {
+  display: inline-flex;
+  padding: 0.75rem;
+  border-radius: 999px;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.confirm-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.confirm-close:hover {
+  background: var(--surface-muted);
+}
+
+.confirm-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.confirm-message {
+  margin: 0 0 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+/* Product Card Image */
+.product-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface-muted);
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Form Error State (general) */
+.form-field-error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin-top: 0.25rem;
+}
+
+/* Product Detail Gallery */
+.product-detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.product-detail-gallery-img {
+  border-radius: 16px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import distributorService from "../../services/distributorService.js";
 
 export default function DistributorFormPage() {
@@ -48,7 +49,7 @@ export default function DistributorFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        alert("Failed to load distributor");
+        toast.error("Failed to load distributor");
         navigate("/admin/distributors");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -82,7 +83,7 @@ export default function DistributorFormPage() {
       navigate("/admin/distributors");
     } catch (err) {
       console.error(err);
-      alert("Failed to save distributor");
+      toast.error("Failed to save distributor");
     }
   };
 

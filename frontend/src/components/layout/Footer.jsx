@@ -14,11 +14,11 @@ export default function Footer() {
         <div>
           <p className="footer-heading">{t("footer.contact")}</p>
           <p><a href="mailto:contact@synergycrops.com" style={{ color: "var(--brand)", textDecoration: "none" }}>contact@synergycrops.com</a></p>
-          <p>Phone Number – To Be Updated</p>
+          <p>Phone number available on request</p>
         </div>
         <div>
           <p className="footer-heading">{t("footer.location")}</p>
-          <p>Office Address – To Be Updated</p>
+          <p>Office address available on request</p>
         </div>
       </div>
     </footer>

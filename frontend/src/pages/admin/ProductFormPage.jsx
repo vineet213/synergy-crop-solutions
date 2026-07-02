@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import productService from "../../services/productService.js";
 
 export default function ProductFormPage() {
@@ -36,7 +37,7 @@ export default function ProductFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        alert("Failed to load product");
+        toast.error("Failed to load product");
         navigate("/admin/products");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -58,7 +59,7 @@ export default function ProductFormPage() {
       navigate("/admin/products");
     } catch (err) {
       console.error(err);
-      alert("Failed to save product");
+      toast.error("Failed to save product");
     }
   };
 

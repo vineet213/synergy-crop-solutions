@@ -15,11 +15,24 @@ export default function CertificationsPage() {
     <div className="page-container">
       <SectionContainer title={t("page.title")} subtitle={t("page.subtitle")}>
         {loading ? (
-          <p>{t("page.loading")}</p>
+          <div className="card-grid">
+            {[...Array(3)].map((_, i) => (
+              <Card key={i} className="product-skeleton">
+                <div className="skeleton-block skeleton-title" />
+                <div className="skeleton-block skeleton-line" />
+                <div className="skeleton-block skeleton-line short" />
+              </Card>
+            ))}
+          </div>
         ) : error ? (
-          <p>{error}</p>
+          <div className="empty-state card-shell">
+            <h2>{t("page.loadError") || "Failed to load certifications"}</h2>
+            <p>{error}</p>
+          </div>
         ) : certifications.length === 0 ? (
-          <p>{t("page.empty")}</p>
+          <div className="empty-state card-shell">
+            <h2>{t("page.empty")}</h2>
+          </div>
         ) : (
           <div className="card-grid">
             {certifications.map((item) => (
@@ -34,7 +47,7 @@ export default function CertificationsPage() {
                 )}
                 {item.description && <p>{item.description}</p>}
                 {item.issuingAuthority && (
-                  <p style={{ fontSize: "0.875rem", color: "var(--c-text-secondary)", marginTop: "0.5rem" }}>
+                  <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
                     {item.issuingAuthority}
                   </p>
                 )}

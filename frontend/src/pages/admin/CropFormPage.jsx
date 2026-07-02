@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import cropService from "../../services/cropService.js";
 import productService from "../../services/productService.js";
 
@@ -46,7 +47,7 @@ export default function CropFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        alert("Failed to load crop");
+        toast.error("Failed to load crop");
         navigate("/admin/crops");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -75,7 +76,7 @@ export default function CropFormPage() {
       navigate("/admin/crops");
     } catch (err) {
       console.error(err);
-      alert("Failed to save crop");
+      toast.error("Failed to save crop");
     }
   };
 

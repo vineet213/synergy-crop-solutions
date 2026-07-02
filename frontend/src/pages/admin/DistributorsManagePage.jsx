@@ -1,16 +1,21 @@
 ﻿import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import useConfirm from "../../hooks/useConfirm.jsx";
 import { useAdminDistributors } from "../../hooks/useDistributors.js";
 
 export default function DistributorsManagePage() {
+  const { confirm, ConfirmDialog } = useConfirm();
   const { distributors, loading, error, reload, remove } = useAdminDistributors();
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this distributor?")) return;
+    const confirmed = await confirm("Are you sure you want to delete this distributor? This action cannot be undone.", "Delete distributor");
+    if (!confirmed) return;
     try {
       await remove(id);
+      toast.success("Distributor deleted");
     } catch (err) {
       console.error(err);
-      alert("Failed to delete distributor");
+      toast.error("Failed to delete distributor");
     }
   };
 
@@ -62,6 +67,7 @@ export default function DistributorsManagePage() {
           ))}
         </div>
       )}
+      {ConfirmDialog}
     </main>
   );
 }

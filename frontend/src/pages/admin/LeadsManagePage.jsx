@@ -1,4 +1,6 @@
 ﻿import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import useConfirm from "../../hooks/useConfirm.jsx";
 import { useAdminLeads } from "../../hooks/useLeads.js";
 import distributorService from "../../services/distributorService.js";
 
@@ -6,6 +8,7 @@ const STATUS_OPTIONS = ["new", "contacted", "qualified", "converted", "closed"];
 const FILTER_OPTIONS = ["all", ...STATUS_OPTIONS];
 
 export default function LeadsManagePage() {
+  const { confirm, ConfirmDialog } = useConfirm();
   const [statusFilter, setStatusFilter] = useState("all");
   const params = statusFilter !== "all" ? { status: statusFilter } : {};
   const { leads, loading, error, reload, remove, update } = useAdminLeads(params);
@@ -24,12 +27,14 @@ export default function LeadsManagePage() {
   }, []);
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this lead?")) return;
+    const confirmed = await confirm("Are you sure you want to delete this lead? This action cannot be undone.", "Delete lead");
+    if (!confirmed) return;
     try {
       await remove(id);
+      toast.success("Lead deleted");
     } catch (err) {
       console.error(err);
-      alert("Failed to delete lead");
+      toast.error("Failed to delete lead");
     }
   };
 
@@ -57,7 +62,7 @@ export default function LeadsManagePage() {
       setEditingId(null);
     } catch (err) {
       console.error(err);
-      alert("Failed to update lead");
+      toast.error("Failed to update lead");
     }
   };
 
@@ -154,6 +159,7 @@ export default function LeadsManagePage() {
           ))}
         </div>
       )}
+      {ConfirmDialog}
     </main>
   );
 }

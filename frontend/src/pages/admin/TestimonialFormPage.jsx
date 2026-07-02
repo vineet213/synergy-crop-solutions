@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import testimonialService from "../../services/testimonialService.js";
 
 export default function TestimonialFormPage() {
@@ -36,7 +37,7 @@ export default function TestimonialFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        alert("Failed to load testimonial");
+        toast.error("Failed to load testimonial");
         navigate("/admin/testimonials");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -58,7 +59,7 @@ export default function TestimonialFormPage() {
       navigate("/admin/testimonials");
     } catch (err) {
       console.error(err);
-      alert("Failed to save testimonial");
+      toast.error("Failed to save testimonial");
     }
   };
 

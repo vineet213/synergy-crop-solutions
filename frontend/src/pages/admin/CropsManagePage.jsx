@@ -1,8 +1,11 @@
 ﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import useConfirm from "../../hooks/useConfirm.jsx";
 import cropService from "../../services/cropService.js";
 
 export default function CropsManagePage() {
+  const { confirm, ConfirmDialog } = useConfirm();
   const [crops, setCrops] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,13 +26,15 @@ export default function CropsManagePage() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this crop?")) return;
+    const confirmed = await confirm("Are you sure you want to delete this crop? This action cannot be undone.", "Delete crop");
+    if (!confirmed) return;
     try {
       await cropService.adminDeleteCrop(id);
       setCrops((p) => p.filter((x) => x._id !== id));
+      toast.success("Crop deleted");
     } catch (err) {
       console.error(err);
-      alert("Failed to delete crop");
+      toast.error("Failed to delete crop");
     }
   };
 
@@ -74,6 +79,7 @@ export default function CropsManagePage() {
           ))}
         </div>
       )}
+      {ConfirmDialog}
     </main>
   );
 }

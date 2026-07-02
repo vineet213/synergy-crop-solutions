@@ -1,8 +1,11 @@
 ﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import useConfirm from "../../hooks/useConfirm.jsx";
 import certificationService from "../../services/certificationService.js";
 
 export default function CertificationsManagePage() {
+  const { confirm, ConfirmDialog } = useConfirm();
   const [certifications, setCertifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,13 +26,15 @@ export default function CertificationsManagePage() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this certification?")) return;
+    const confirmed = await confirm("Are you sure you want to delete this certification? This action cannot be undone.", "Delete certification");
+    if (!confirmed) return;
     try {
       await certificationService.adminDeleteCertification(id);
       setCertifications((p) => p.filter((x) => x._id !== id));
+      toast.success("Certification deleted");
     } catch (err) {
       console.error(err);
-      alert("Failed to delete certification");
+      toast.error("Failed to delete certification");
     }
   };
 
@@ -75,6 +80,7 @@ export default function CertificationsManagePage() {
           ))}
         </div>
       )}
+      {ConfirmDialog}
     </main>
   );
 }

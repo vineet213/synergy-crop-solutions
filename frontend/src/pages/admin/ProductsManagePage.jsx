@@ -1,8 +1,11 @@
 ﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import useConfirm from "../../hooks/useConfirm.jsx";
 import productService from "../../services/productService.js";
 
 export default function ProductsManagePage() {
+  const { confirm, ConfirmDialog } = useConfirm();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,13 +26,15 @@ export default function ProductsManagePage() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this product?")) return;
+    const confirmed = await confirm("Are you sure you want to delete this product? This action cannot be undone.", "Delete product");
+    if (!confirmed) return;
     try {
       await productService.adminDeleteProduct(id);
       setProducts((p) => p.filter((x) => x._id !== id));
+      toast.success("Product deleted");
     } catch (err) {
       console.error(err);
-      alert("Failed to delete product");
+      toast.error("Failed to delete product");
     }
   };
 
@@ -73,6 +78,7 @@ export default function ProductsManagePage() {
           ))}
         </div>
       )}
+      {ConfirmDialog}
     </main>
   );
 }

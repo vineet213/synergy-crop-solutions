@@ -31,10 +31,12 @@ function ListSection({ title, items }) {
 export default function ProductDetail({ product }) {
   const { t } = useTranslation("products");
 
-  const imageUrl =
-    product.images?.[0]
-      ? `/${product.images[0].replace(/^\/+/, "")}`
-      : null;
+  const raw = product.images?.[0];
+  const imageUrl = raw
+    ? raw.startsWith("http") || raw.startsWith("/")
+      ? raw
+      : `/${raw}`
+    : null;
 
   return (
     <div className="product-detail-shell">
@@ -204,27 +206,20 @@ export default function ProductDetail({ product }) {
         )}
 
       {product.images && product.images.length > 1 && (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "1rem",
-          }}
-        >
-          {product.images.slice(1).map((url, index) => (
-            <img
-              key={index}
-              src={`/${url.replace(/^\/+/, "")}`}
-              alt={`${product.name} ${index + 2}`}
-              style={{
-                borderRadius: "16px",
-                width: "100%",
-                height: "auto",
-                display: "block",
-              }}
-            />
-          ))}
+        <div className="product-detail-gallery">
+          {product.images.slice(1).map((url, index) => {
+            const src = url.startsWith("http") || url.startsWith("/")
+              ? url
+              : `/${url}`;
+            return (
+              <img
+                key={index}
+                src={src}
+                alt={`${product.name} ${index + 2}`}
+                className="product-detail-gallery-img"
+              />
+            );
+          })}
         </div>
       )}
     </div>

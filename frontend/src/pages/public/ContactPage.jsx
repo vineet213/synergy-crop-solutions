@@ -20,8 +20,8 @@ export default function ContactPage() {
               <p style={{ margin: 0 }}><strong>{t("page.contact.email")}</strong>{" "}
                 <a href="mailto:contact@synergycrops.com" style={{ color: "var(--brand)" }}>contact@synergycrops.com</a>
               </p>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.phone")}</strong> Phone Number – To Be Updated</p>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.office")}</strong> Office Address – To Be Updated</p>
+              <p style={{ margin: 0 }}><strong>{t("page.contact.phone")}</strong> Available on request</p>
+              <p style={{ margin: 0 }}><strong>{t("page.contact.office")}</strong> Available on request</p>
             </div>
           </div>
         </div>
