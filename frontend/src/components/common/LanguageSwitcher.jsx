@@ -20,14 +20,7 @@ export default function LanguageSwitcher() {
     <select
       value={i18n.language}
       onChange={handleChange}
-      style={{
-        padding: "0.4rem 0.6rem",
-        borderRadius: "8px",
-        border: "1px solid var(--border)",
-        background: "var(--surface)",
-        fontSize: "0.85rem",
-        cursor: "pointer",
-      }}
+      className="nav-lang"
       aria-label="Select language"
     >
       {LANGUAGES.map((l) => (

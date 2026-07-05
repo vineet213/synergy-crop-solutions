@@ -3,10 +3,8 @@
   "links": {
     "home": "होम",
     "products": "उत्पाद",
+    "about": "About",
     "categories": "श्रेणियाँ",
-    "cropDiscovery": "फसल खोज",
-    "diseaseDiscovery": "रोग खोज",
-    "locator": "लोकेटर",
     "blog": "ब्लॉग",
     "contact": "संपर्क"
   },

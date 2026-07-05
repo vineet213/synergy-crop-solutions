@@ -1,31 +1,65 @@
 ﻿import { useTranslation } from "react-i18next";
-import SectionContainer from "../../components/ui/SectionContainer.jsx";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import ContactForm from "../../components/leads/ContactForm.jsx";
 import useSEO from "../../hooks/useSEO.js";
 
 export default function ContactPage() {
   const { t } = useTranslation("common");
   useSEO({ title: t("page.contact.title"), description: t("page.contact.intro"), canonical: "/contact" });
+
   return (
-    <main className="page-container" style={{ padding: "2rem 0" }}>
-      <SectionContainer title={t("page.contact.title")} subtitle={t("page.contact.subtitle")}>
-        <p className="product-intro-copy">
-          {t("page.contact.intro")}
-        </p>
-        <div style={{ display: "grid", gap: "2rem", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
-          <ContactForm />
-          <div className="card-shell" style={{ padding: "2rem", alignSelf: "start" }}>
-            <h3 style={{ margin: "0 0 1rem" }}>{t("page.contact.otherWays")}</h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.email")}</strong>{" "}
-                <a href="mailto:contact@synergycrops.com" style={{ color: "var(--brand)" }}>contact@synergycrops.com</a>
-              </p>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.phone")}</strong> Available on request</p>
-              <p style={{ margin: 0 }}><strong>{t("page.contact.office")}</strong> Available on request</p>
+    <div>
+      <section className="prem">
+        <div className="prem-container">
+          <header className="prem-header">
+            <span className="prem-header__label">{t("page.contact.subtitle")}</span>
+            <h1 className="prem-header__title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>{t("page.contact.title")}</h1>
+            <p className="prem-header__text">{t("page.contact.intro")}</p>
+          </header>
+
+          <div className="contact-grid">
+            <div className="contact-card">
+              <ContactForm />
+            </div>
+
+            <div className="contact-card" style={{ alignSelf: "start" }}>
+              <h3>{t("page.contact.otherWays")}</h3>
+              <div>
+                <div className="contact-detail">
+                  <span className="contact-detail-icon"><Mail size={16} /></span>
+                  <div className="contact-detail-body">
+                    <span className="contact-detail-label">{t("page.contact.email")}</span>
+                    <span className="contact-detail-value">
+                      <a href="mailto:contact@synergycrops.com">contact@synergycrops.com</a>
+                    </span>
+                  </div>
+                </div>
+                <div className="contact-detail">
+                  <span className="contact-detail-icon"><Phone size={16} /></span>
+                  <div className="contact-detail-body">
+                    <span className="contact-detail-label">{t("page.contact.phone")}</span>
+                    <span className="contact-detail-value">Available on request</span>
+                  </div>
+                </div>
+                <div className="contact-detail">
+                  <span className="contact-detail-icon"><MapPin size={16} /></span>
+                  <div className="contact-detail-body">
+                    <span className="contact-detail-label">{t("page.contact.office")}</span>
+                    <span className="contact-detail-value">Available on request</span>
+                  </div>
+                </div>
+                <div className="contact-detail">
+                  <span className="contact-detail-icon"><Clock size={16} /></span>
+                  <div className="contact-detail-body">
+                    <span className="contact-detail-label">Business Hours</span>
+                    <span className="contact-detail-value">Mon – Sat, 9:00 AM – 6:00 PM</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </SectionContainer>
-    </main>
+      </section>
+    </div>
   );
 }

@@ -6,12 +6,64 @@
     "quote": "देशभर के किसानों द्वारा विश्वसनीय। हम खेतों को टिकाऊ तरीके से बढ़ने में मदद करते हैं।",
     "visual": "नवाचार के माध्यम से फसल बुद्धिमत्ता"
   },
-  "vision": {
-    "title": "हमारी दृष्टि",
-    "statement": "कृषि में एक मजबूत विरासत बनाने के लिए नवीन अवशेष-मुक्त समाधान लाकर जो हर भागीदार के लिए विश्वास, विकास और समृद्धि पैदा करें।"
+  "carousel": {
+    "region": "Featured images",
+    "controls": "Slide controls",
+    "slide": "Slide",
+    "of": "of",
+    "goTo": "Go to slide"
   },
-  "mission": {
-    "title": "हमारा मिशन",
-    "statement": "नई पीढ़ी के फसल सुरक्षा उत्पाद प्रदान करना जो सुरक्षित, प्रभावी और अवशेष-मुक्त हों, किसानों को फसल सुधारने और वितरकों व डीलरों को स्थायी व्यवसाय बनाने में मदद करें।"
+  "about": {
+    "label": "About Synergy",
+    "title": "Driving Residue-Free Agriculture Across India",
+    "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom. Our team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.",
+    "cta": "Learn more about us"
+  },
+  "trust": {
+    "label": "Why Farmers Trust Us",
+    "title": "Built for the Challenges of Modern Agriculture",
+    "stats": [
+      { "value": "100%", "label": "Bio-Based Solutions — formulated from natural sources with zero chemical residues." },
+      { "value": "Pan-India", "label": "Distribution network serving farmers across multiple states." },
+      { "value": "Residue-Free", "label": "Guarantee — every product meets rigorous quality standards." },
+      { "value": "Trusted", "label": "By thousands of growers for consistent quality and visible results." }
+    ]
+  },
+  "categories": {
+    "label": "Product Categories",
+    "title": "Specialised in Residue-Free Agriculture",
+    "cards": [
+      { "title": "Bio Fertilizers", "description": "Advanced bio-based nutrient solutions that enrich soil health and boost crop yields naturally." },
+      { "title": "Bio Pesticides / Fungicides", "description": "Effective residue-free pest and disease control products derived from natural sources." },
+      { "title": "Consortia Products", "description": "Synergistic microbial consortia for enhanced soil fertility, plant growth, and stress tolerance." },
+      { "title": "Liquid Nutrition", "description": "Ready-to-use liquid formulations for targeted nutrient delivery and rapid crop response." },
+      { "title": "Organic Inputs", "description": "Certified organic soil amendments and natural inputs for sustainable farming systems." }
+    ]
+  },
+  "featured": {
+    "label": "Featured Products",
+    "title": "Our Premium Product Range"
+  },
+  "innovation": {
+    "label": "Technology & Innovation",
+    "title": "Bringing Science to the Soil",
+    "body": "Our research and development team works continuously to develop new-generation crop protection products that are safe, effective, and residue-free. We combine agronomic research with field-level insights to create solutions that address the real challenges faced by Indian farmers. From microbial consortia to advanced liquid nutrition, every product is formulated using cutting-edge agricultural science."
+  },
+  "certifications": {
+    "label": "Licences & Certifications",
+    "title": "Trusted standards for every field",
+    "empty": "No certifications yet."
+  },
+  "testimonials": {
+    "label": "What Growers Say",
+    "title": "Real results from field leaders",
+    "empty": "No testimonials yet."
+  },
+  "cta": {
+    "label": "Partner with Synergy",
+    "title": "Ready to grow with confidence?",
+    "text": "Switch to bio-based, residue-free crop protection today. Our team is ready to help you build a more resilient and profitable crop program.",
+    "contact": "Contact our team",
+    "explore": "Explore products"
   }
 }

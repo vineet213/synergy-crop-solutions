@@ -5,10 +5,12 @@
     "location": "Location"
   },
   "cta": {
-    "exploreSolutions": "Explore solutions",
-    "viewOurStory": "View our story",
+    "exploreSolutions": "Explore products",
+    "viewOurStory": "Our story",
     "visitLocator": "Visit locator",
-    "contactOurTeam": "Contact our team"
+    "contactOurTeam": "Contact our team",
+    "viewProducts": "View Products",
+    "getInTouch": "Get in Touch"
   },
   "about": {
     "visionStatement": "We are committed to building a strong legacy in agriculture by bringing innovative residue-free solutions that create trust, growth, and prosperity for every partner."

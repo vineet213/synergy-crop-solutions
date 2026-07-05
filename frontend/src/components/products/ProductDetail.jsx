@@ -1,227 +1,222 @@
-﻿import { useTranslation } from "react-i18next";
-import Badge from "../ui/Badge.jsx";
-import Card from "../ui/Card.jsx";
+﻿import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import {
+  FileText, CheckCircle, Sprout, FlaskConical,
+  Droplet, Thermometer, Shield, Download,
+  Tag, Package, MapPin, Box, Image as ImageIcon
+} from "lucide-react";
 
-function DetailRow({ label, value }) {
-  if (!value) return null;
-
+function QuickInfoCard({ icon: Icon, label, value }) {
   return (
-    <div className="product-spec-row">
-      <span>{label}</span>
-      <strong>{value}</strong>
+    <div className="pd-qcard">
+      <span className="pd-qcard-icon"><Icon size={16} /></span>
+      <div className="pd-qcard-body">
+        <span className="pd-qcard-label">{label}</span>
+        <strong className="pd-qcard-value">{value}</strong>
+      </div>
     </div>
   );
 }
 
-function ListSection({ title, items }) {
-  if (!items || items.length === 0) return null;
-
+function DetailSection({ icon: Icon, title, children }) {
   return (
-    <Card>
-      <h2>{title}</h2>
-      <ul style={{ paddingLeft: "1.25rem", lineHeight: 1.8 }}>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-    </Card>
+    <section className="pd-section">
+      <div className="pd-section-head">
+        <span className="pd-section-icon"><Icon size={20} /></span>
+        <h2 className="pd-section-title">{title}</h2>
+      </div>
+      <div className="pd-section-body">{children}</div>
+    </section>
   );
+}
+
+function imageUrl(raw) {
+  if (!raw) return null;
+  return raw.startsWith("http") || raw.startsWith("/") ? raw : `/${raw}`;
 }
 
 export default function ProductDetail({ product }) {
   const { t } = useTranslation("products");
+  const na = t("detail.availableOnRequest");
 
-  const raw = product.images?.[0];
-  const imageUrl = raw
-    ? raw.startsWith("http") || raw.startsWith("/")
-      ? raw
-      : `/${raw}`
-    : null;
+  const images = (product.images || []).map(imageUrl).filter(Boolean);
+  const [selectedImg, setSelectedImg] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
+
+  function val(v) {
+    return v || na;
+  }
 
   return (
-    <div className="product-detail-shell">
-      {imageUrl && (
-        <div style={{ marginBottom: "1.5rem" }}>
-          <img
-            src={imageUrl}
-            alt={product.name}
-            style={{
-              borderRadius: "16px",
-              width: "100%",
-              maxWidth: "400px",
-              height: "auto",
-              display: "block",
-            }}
-          />
-        </div>
-      )}
-
-      <div className="product-detail-summary">
-        <Badge variant="brand">{product.category}</Badge>
-
-        <h1>{product.name}</h1>
-
-        {product.tagline && (
-          <p
-            className="product-detail-lead"
-            style={{ fontStyle: "italic" }}
-          >
-            {product.tagline}
-          </p>
-        )}
-
-        {product.shortDescription && (
-          <p className="product-detail-lead">
-            {product.shortDescription}
-          </p>
-        )}
-
-        {product.description && (
-          <p>{product.description}</p>
-        )}
-
-        <div className="product-detail-meta">
-          {product.scientificName && (
-            <div>
-              <p className="muted-label">
-                {t("detail.scientificName")}
-              </p>
-              <strong>
-                <em>{product.scientificName}</em>
-              </strong>
-            </div>
-          )}
-
-          {product.productType && (
-            <div>
-              <p className="muted-label">
-                {t("detail.productType")}
-              </p>
-              <strong>{product.productType}</strong>
-            </div>
-          )}
-
-          <div>
-            <p className="muted-label">
-              {t("detail.category")}
-            </p>
-            <strong>{product.category}</strong>
-          </div>
-
-          {product.price && (
-            <div>
-              <p className="muted-label">
-                {t("detail.price")}
-              </p>
-              <strong>₹{product.price}</strong>
-            </div>
-          )}
-
-          {product.createdAt && (
-            <div>
-              <p className="muted-label">
-                {t("detail.added")}
-              </p>
-              <strong>
-                {new Date(product.createdAt).toLocaleDateString()}
-              </strong>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="product-detail-grid">
-        <DetailRow
-          label={t("detail.composition")}
-          value={product.composition}
-        />
-
-        <DetailRow
-          label={t("detail.dosage")}
-          value={product.dosage}
-        />
-
-        <DetailRow
-          label={t("detail.applicationMethod")}
-          value={product.applicationMethod}
-        />
-
-        <DetailRow
-          label={t("detail.storage")}
-          value={product.storage}
-        />
-
-        <DetailRow
-          label={t("detail.shelfLife")}
-          value={product.shelfLife}
-        />
-
-        <DetailRow
-          label={t("detail.compatibility")}
-          value={product.compatibility}
-        />
-
-        <DetailRow
-          label={t("detail.packSize")}
-          value={product.packSize?.join(", ")}
-        />
-      </div>
-
-      <ListSection
-        title={t("detail.benefits")}
-        items={product.benefits}
-      />
-
-      <ListSection
-        title={t("detail.targetCrops")}
-        items={product.targetCrops}
-      />
-
-      {product.longDescription && (
-        <Card>
-          <h2>{t("detail.longDescription")}</h2>
-          <p>{product.longDescription}</p>
-        </Card>
-      )}
-
-      {product.metadata &&
-        Object.keys(product.metadata).length > 0 && (
-          <Card>
-            <h2>{t("detail.specs")}</h2>
-
-            <div className="product-specs">
-              {Object.entries(product.metadata).map(
-                ([key, value]) => (
-                  <div
-                    key={key}
-                    className="product-spec-row"
-                  >
-                    <span>{key}</span>
-                    <strong>{String(value)}</strong>
-                  </div>
-                )
+    <div className="pd-wrapper">
+      {/* ===== HERO ===== */}
+      <div className="pd-hero">
+        {/* LEFT: Image */}
+        <div className="pd-hero-visual">
+          {images.length > 0 ? (
+            <>
+              <div
+                className={`pd-main-img ${zoomed ? "zoomed" : ""}`}
+                onMouseEnter={() => setZoomed(true)}
+                onMouseLeave={() => setZoomed(false)}
+              >
+                <img src={images[selectedImg]} alt={product.name} />
+              </div>
+              {images.length > 1 && (
+                <div className="pd-thumbs" role="tablist" aria-label="Product image thumbnails">
+                  {images.map((url, i) => (
+                    <button
+                      key={i}
+                      role="tab"
+                      aria-selected={i === selectedImg}
+                      className={`pd-thumb ${i === selectedImg ? "active" : ""}`}
+                      onClick={() => setSelectedImg(i)}
+                    >
+                      <img src={url} alt={`${product.name} view ${i + 1}`} />
+                    </button>
+                  ))}
+                </div>
               )}
+            </>
+          ) : (
+            <div className="pd-noimg">
+              <ImageIcon size={48} />
+              <span className="pd-qcard-value">{na}</span>
             </div>
-          </Card>
-        )}
-
-      {product.images && product.images.length > 1 && (
-        <div className="product-detail-gallery">
-          {product.images.slice(1).map((url, index) => {
-            const src = url.startsWith("http") || url.startsWith("/")
-              ? url
-              : `/${url}`;
-            return (
-              <img
-                key={index}
-                src={src}
-                alt={`${product.name} ${index + 2}`}
-                className="product-detail-gallery-img"
-              />
-            );
-          })}
+          )}
         </div>
-      )}
+
+        {/* RIGHT: Info */}
+        <div className="pd-hero-info">
+          <span className="pd-badge">{product.category}</span>
+          <h1 className="pd-name">{product.name}</h1>
+          {product.scientificName && (
+            <p className="pd-sci-name"><em>{product.scientificName}</em></p>
+          )}
+          {product.shortDescription && (
+            <p className="pd-desc">{product.shortDescription}</p>
+          )}
+          <div className="pd-qgrid">
+            <QuickInfoCard icon={Tag} label={t("detail.category")} value={product.category} />
+            <QuickInfoCard icon={Package} label={t("detail.productType")} value={val(product.productType)} />
+            <QuickInfoCard icon={MapPin} label={t("detail.origin")} value={na} />
+            <QuickInfoCard icon={Box} label={t("detail.packSize")} value={product.packSize?.length ? product.packSize.join(", ") : na} />
+          </div>
+        </div>
+      </div>
+
+      {/* ===== DETAIL SECTIONS ===== */}
+      <DetailSection icon={FileText} title={t("detail.overview")}>
+        {product.longDescription || product.description || product.shortDescription ? (
+          <p className="pd-section-p">{product.longDescription || product.description || product.shortDescription}</p>
+        ) : (
+          <p className="pd-na">{na}</p>
+        )}
+      </DetailSection>
+
+      <DetailSection icon={CheckCircle} title={t("detail.benefits")}>
+        {product.benefits?.length > 0 ? (
+          <ul className="pd-ul">
+            {product.benefits.map((b, i) => <li key={i}>{b}</li>)}
+          </ul>
+        ) : (
+          <p className="pd-na">{na}</p>
+        )}
+      </DetailSection>
+
+      <DetailSection icon={Sprout} title={t("detail.targetCrops")}>
+        {product.targetCrops?.length > 0 ? (
+          <div className="pd-tags">
+            {product.targetCrops.map((c, i) => <span key={i} className="pd-tag">{c}</span>)}
+          </div>
+        ) : (
+          <p className="pd-na">{na}</p>
+        )}
+      </DetailSection>
+
+      <DetailSection icon={FlaskConical} title={t("detail.composition")}>
+        {product.composition ? (
+          <p className="pd-section-p">{product.composition}</p>
+        ) : (
+          <p className="pd-na">{na}</p>
+        )}
+      </DetailSection>
+
+      <DetailSection icon={Droplet} title={t("detail.dosageApplication")}>
+        {product.dosage || product.applicationMethod ? (
+          <div className="pd-specs">
+            {product.dosage && (
+              <div className="pd-spec">
+                <span className="pd-spec-l">{t("detail.dosage")}</span>
+                <strong className="pd-spec-v">{product.dosage}</strong>
+              </div>
+            )}
+            {product.applicationMethod && (
+              <div className="pd-spec">
+                <span className="pd-spec-l">{t("detail.applicationMethod")}</span>
+                <strong className="pd-spec-v">{product.applicationMethod}</strong>
+              </div>
+            )}
+          </div>
+        ) : (
+          <p className="pd-na">{na}</p>
+        )}
+      </DetailSection>
+
+      <DetailSection icon={Thermometer} title={t("detail.storageShelfLife")}>
+        {product.storage || product.shelfLife ? (
+          <div className="pd-specs">
+            {product.storage && (
+              <div className="pd-spec">
+                <span className="pd-spec-l">{t("detail.storage")}</span>
+                <strong className="pd-spec-v">{product.storage}</strong>
+              </div>
+            )}
+            {product.shelfLife && (
+              <div className="pd-spec">
+                <span className="pd-spec-l">{t("detail.shelfLife")}</span>
+                <strong className="pd-spec-v">{product.shelfLife}</strong>
+              </div>
+            )}
+          </div>
+        ) : (
+          <p className="pd-na">{na}</p>
+        )}
+      </DetailSection>
+
+      <DetailSection icon={Shield} title={t("detail.safety")}>
+        {product.compatibility || (product.metadata && Object.keys(product.metadata).length > 0) ? (
+          <div className="pd-specs">
+            {product.compatibility && (
+              <div className="pd-spec">
+                <span className="pd-spec-l">{t("detail.compatibility")}</span>
+                <strong className="pd-spec-v">{product.compatibility}</strong>
+              </div>
+            )}
+            {product.metadata && Object.keys(product.metadata).length > 0 && Object.entries(product.metadata).map(([k, v]) => (
+              <div key={k} className="pd-spec">
+                <span className="pd-spec-l">{k}</span>
+                <strong className="pd-spec-v">{String(v)}</strong>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="pd-na">{na}</p>
+        )}
+      </DetailSection>
+
+      <DetailSection icon={Download} title={t("detail.downloads")}>
+        <div className="pd-dl">
+          <div className="pd-dl-body">
+            <Download size={24} className="pd-dl-icon" />
+            <div>
+              <p className="pd-dl-title">{t("detail.downloadBrochure")}</p>
+              <p className="pd-dl-desc">{t("detail.brochureNotAvailable")}</p>
+            </div>
+          </div>
+          <button type="button" className="button-base button-secondary" disabled>{t("detail.downloadBrochure")}</button>
+        </div>
+      </DetailSection>
     </div>
   );
 }

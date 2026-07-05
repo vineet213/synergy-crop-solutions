@@ -3,10 +3,8 @@
   "links": {
     "home": "मुखपृष्ठ",
     "products": "उत्पादने",
+    "about": "About",
     "categories": "श्रेण्या",
-    "cropDiscovery": "पीक शोध",
-    "diseaseDiscovery": "रोग शोध",
-    "locator": "लोकेटर",
     "blog": "ब्लॉग",
     "contact": "संपर्क"
   },
