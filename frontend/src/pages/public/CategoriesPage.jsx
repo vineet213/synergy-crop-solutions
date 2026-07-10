@@ -7,15 +7,15 @@ const categoryIcons = [Sprout, ShieldCheck, FlaskConical, Droplets, Leaf];
 
 export default function CategoriesPage() {
   const { t } = useTranslation("common");
-  useSEO({ title: "Categories", canonical: "/categories" });
+  useSEO({ title: t("page.categories.title"), canonical: "/categories" });
   const navigate = useNavigate();
 
-  const cats = [
-    { title: "Bio Fertilizers", description: "Advanced bio-based nutrient solutions that enrich soil health and boost crop yields naturally.", productCount: "Multiple variants" },
-    { title: "Bio Pesticides / Fungicides", description: "Effective residue-free pest and disease control products derived from natural sources.", productCount: "Multiple variants" },
-    { title: "Consortia Products", description: "Synergistic microbial consortia for enhanced soil fertility, plant growth, and stress tolerance.", productCount: "Multiple variants" },
-    { title: "Liquid Nutrition", description: "Ready-to-use liquid formulations for targeted nutrient delivery and rapid crop response.", productCount: "Multiple variants" },
-    { title: "Organic Inputs", description: "Certified organic soil amendments and natural inputs for sustainable farming systems.", productCount: "Multiple variants" },
+  const cats = t("page.categoriesPage.items", { returnObjects: true }) || [
+    { title: "Bio Fertilizers", description: "Advanced bio-based nutrient solutions.", productCount: "Multiple variants" },
+    { title: "Bio Pesticides / Fungicides", description: "Effective residue-free pest control.", productCount: "Multiple variants" },
+    { title: "Consortia Products", description: "Synergistic microbial consortia.", productCount: "Multiple variants" },
+    { title: "Liquid Nutrition", description: "Ready-to-use liquid formulations.", productCount: "Multiple variants" },
+    { title: "Organic Inputs", description: "Certified organic soil amendments.", productCount: "Multiple variants" },
   ];
 
   return (
@@ -29,7 +29,7 @@ export default function CategoriesPage() {
               {t("page.categories.subtitle")}
             </span>
             <h1 className="prem-hero-title">{t("page.categories.title")}</h1>
-            <p className="prem-hero-sub">Explore our complete range of agricultural solutions organized by category. Each category contains specialized products for specific farming needs.</p>
+            <p className="prem-hero-sub">{t("page.categoriesPage.heroSubtitle")}</p>
           </div>
           <div className="prem-hero-visual" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Leaf size={64} strokeWidth={1} style={{ color: "rgba(255,255,255,0.1)" }} />
@@ -41,8 +41,8 @@ export default function CategoriesPage() {
       <section className="prem prem-alt">
         <div className="prem-container">
           <header className="prem-header center">
-            <span className="prem-header__label">Product Range</span>
-            <h2 className="prem-header__title">Specialised in Residue-Free Agriculture</h2>
+            <span className="prem-header__label">{t("page.categoriesPage.productRange")}</span>
+            <h2 className="prem-header__title">{t("page.categoriesPage.specialisation")}</h2>
           </header>
           <div style={{ display: "grid", gap: "1.5rem", maxWidth: "800px", margin: "0 auto" }}>
             {cats.map((cat, i) => {
@@ -76,7 +76,7 @@ export default function CategoriesPage() {
                   <div style={{ flex: 1 }}>
                     <h3 style={{ margin: "0 0 0.35rem", fontSize: "1.1rem", fontWeight: 700, color: "var(--brand-strong)" }}>{cat.title}</h3>
                     <p style={{ margin: "0 0 0.35rem", fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{cat.description}</p>
-                    <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: 600 }}>{cat.productCount}</span>
+                    <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: 600 }}>{t("page.categoriesPage.multipleVariants")}</span>
                   </div>
                   <ChevronRight size={20} style={{ color: "var(--text-muted)", flexShrink: 0 }} />
                 </button>

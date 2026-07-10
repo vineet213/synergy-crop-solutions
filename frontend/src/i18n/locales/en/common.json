@@ -2,7 +2,25 @@
   "footer": {
     "tagline": "Modern agricultural solutions for sustainable growth.",
     "contact": "Contact",
-    "location": "Location"
+    "location": "Location",
+    "quickLinks": "Quick Links",
+    "productCategories": "Products",
+    "email": "contact@synergycrops.com",
+    "phone": "Available on request",
+    "address": "Pune, Maharashtra, India",
+    "copyright": "All rights reserved.",
+    "taglineShort": "Residue-Free Agriculture",
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "aboutUs": "About Us",
+    "blog": "Blog",
+    "contactUs": "Contact",
+    "bioFertilizers": "Bio Fertilizers",
+    "bioPesticides": "Bio Pesticides",
+    "consortiaProducts": "Consortia Products",
+    "liquidNutrition": "Liquid Nutrition",
+    "organicInputs": "Organic Inputs"
   },
   "cta": {
     "exploreSolutions": "Explore products",
@@ -38,52 +56,41 @@
       "title": "Our Commitment",
       "subtitle": "Quality, Sustainability, and Farmer Success",
       "items": [
-        {
-          "title": "Quality Assurance",
-          "description": "Every product undergoes rigorous testing to ensure purity, potency, and safety before reaching the field."
-        },
-        {
-          "title": "Sustainable Agriculture",
-          "description": "We champion farming practices that protect soil health, biodiversity, and water resources for future generations."
-        },
-        {
-          "title": "Farmer-Centric Approach",
-          "description": "Our solutions are designed with the farmer in mind — affordable, easy to apply, and backed by field-level technical support."
-        },
-        {
-          "title": "Distributor Enablement",
-          "description": "We empower our channel partners with training, marketing support, and reliable supply chains to build thriving agricultural businesses."
-        }
+        { "title": "Quality Assurance", "description": "Every product undergoes rigorous testing to ensure purity, potency, and safety before reaching the field." },
+        { "title": "Sustainable Agriculture", "description": "We champion farming practices that protect soil health, biodiversity, and water resources for future generations." },
+        { "title": "Farmer-Centric Approach", "description": "Our solutions are designed with the farmer in mind — affordable, easy to apply, and backed by field-level technical support." },
+        { "title": "Distributor Enablement", "description": "We empower our channel partners with training, marketing support, and reliable supply chains to build thriving agricultural businesses." }
       ]
     },
     "whyChoose": {
       "title": "Why Choose Synergy Crop Solutions",
       "subtitle": "Built for the Challenges of Modern Agriculture",
       "items": [
-        {
-          "title": "100% Bio-Based Solutions",
-          "description": "Our products are formulated from natural and biological sources, ensuring effective crop protection without chemical residues."
-        },
-        {
-          "title": "Residue-Free Guarantee",
-          "description": "We are committed to helping farmers achieve residue-free produce that meets domestic and international quality standards."
-        },
-        {
-          "title": "Pan-India Distribution Network",
-          "description": "With a growing network of distributors and dealers across multiple states, we ensure timely product availability in every region."
-        },
-        {
-          "title": "Farmer Training & Support",
-          "description": "We conduct regular training sessions, field demonstrations, and advisory programs to help farmers adopt best practices."
-        },
-        {
-          "title": "Trusted by Growers",
-          "description": "Thousands of farmers trust Synergy Crop Solutions for consistent quality, visible results, and dedicated customer service."
-        },
-        {
-          "title": "Environmentally Responsible",
-          "description": "Every product we develop is designed to minimize environmental impact while maximizing agricultural productivity."
-        }
+        { "title": "100% Bio-Based Solutions", "description": "Our products are formulated from natural and biological sources, ensuring effective crop protection without chemical residues." },
+        { "title": "Residue-Free Guarantee", "description": "We are committed to helping farmers achieve residue-free produce that meets domestic and international quality standards." },
+        { "title": "Pan-India Distribution Network", "description": "With a growing network of distributors and dealers across multiple states, we ensure timely product availability in every region." },
+        { "title": "Farmer Training & Support", "description": "We conduct regular training sessions, field demonstrations, and advisory programs to help farmers adopt best practices." },
+        { "title": "Trusted by Growers", "description": "Thousands of farmers trust Synergy Crop Solutions for consistent quality, visible results, and dedicated customer service." },
+        { "title": "Environmentally Responsible", "description": "Every product we develop is designed to minimize environmental impact while maximizing agricultural productivity." }
+      ]
+    },
+    "technology": {
+      "title": "Our Technology",
+      "subtitle": "Powered by Science, Proven in the Field",
+      "lyophilization": { "title": "Japanese Lyophilization Technology", "description": "Our flagship products are developed using advanced Japanese Lyophilization Technology — a freeze-drying process that preserves the viability and potency of beneficial microorganisms at room temperature, ensuring longer shelf life and field-level effectiveness without cold chain dependency." },
+      "nutrition": { "title": "Imported Liquid Nutrition", "description": "We import advanced liquid nutrition formulations designed for high-absorption foliar and soil application, delivering essential micronutrients in chelated forms that plants can absorb immediately." },
+      "bioSolutions": { "title": "Bio-Based Crop Protection", "description": "Our bio-pesticides and bio-fungicides harness naturally occurring microorganisms — including Trichoderma, Pseudomonas, and Bacillus thuringiensis — to provide effective, residue-free protection against diseases and pests." },
+      "sustainable": { "title": "Sustainable Agriculture", "description": "Every product we develop is rooted in sustainability — reducing chemical dependency, restoring soil health, and building long-term productivity for generations of farmers." }
+    },
+    "values": {
+      "title": "Our Core Values",
+      "subtitle": "The Principles That Guide Us",
+      "items": [
+        { "title": "Innovation", "description": "Continuous R&D to develop next-generation bio-based solutions that address real farming challenges through advanced technologies like Japanese Lyophilization." },
+        { "title": "Sustainability", "description": "Committed to residue-free farming and environmental stewardship, ensuring every product protects soil health and biodiversity for future generations." },
+        { "title": "Farmer First", "description": "Every decision we make starts with the farmer. Our products are affordable, easy to apply, and backed by field-level technical support to maximize real-world impact." },
+        { "title": "Quality", "description": "Rigorous testing and quality assurance protocols ensure every product meets the highest standards of purity, potency, and safety before reaching the field." },
+        { "title": "Scientific Excellence", "description": "We combine deep agronomic expertise with cutting-edge biotechnology, partnering with research institutions to deliver products rooted in proven science." }
       ]
     },
     "cta": {
@@ -126,7 +133,9 @@
       "messagePlaceholder": "How can we help you?",
       "submitting": "Submitting…",
       "submit": "Send Inquiry",
-      "failed": "Failed to submit. Please try again."
+      "failed": "Failed to submit. Please try again.",
+      "emailInvalid": "Invalid email address",
+      "phoneInvalid": "Invalid phone number"
     },
     "cropDiscovery": {
       "title": "Crop Discovery",
@@ -175,9 +184,45 @@
       "subtitle": "Crop categories we support",
       "featured": "Featured"
     },
+    "categoriesPage": {
+      "heroSubtitle": "Explore our complete range of agricultural solutions organized by category. Each category contains specialized products for specific farming needs.",
+      "productRange": "Product Range",
+      "specialisation": "Specialised in Residue-Free Agriculture",
+      "multipleVariants": "Multiple variants",
+      "items": [
+        { "title": "Bio Fertilizers", "description": "Advanced bio-based nutrient solutions.", "productCount": "Multiple variants" },
+        { "title": "Bio Pesticides / Fungicides", "description": "Effective residue-free pest control.", "productCount": "Multiple variants" },
+        { "title": "Consortia Products", "description": "Synergistic microbial consortia.", "productCount": "Multiple variants" },
+        { "title": "Liquid Nutrition", "description": "Ready-to-use liquid formulations.", "productCount": "Multiple variants" },
+        { "title": "Organic Inputs", "description": "Certified organic soil amendments.", "productCount": "Multiple variants" }
+      ]
+    },
     "blog": {
       "title": "Blog",
       "subtitle": "Insights for modern agriculture"
+    },
+    "blogPage": {
+      "entries": [
+        { "title": "Harvest planning for a resilient season", "description": "Practical strategies to reduce risk and improve outcomes." },
+        { "title": "Sustainable field protection methods", "description": "How integrated approaches preserve yield and soil health." },
+        { "title": "Building distribution partnerships", "description": "Grow your supply network with trusted logistics partners." }
+      ]
+    },
+    "blogDetailPage": {
+      "title": "Blog Detail",
+      "placeholder": "This is the blog detail placeholder."
+    },
+    "contactPage": {
+      "sendMessage": "Send us a message",
+      "businessHours": "Business Hours",
+      "hours": "Mon – Sat, 9:00 AM – 6:00 PM",
+      "distributorInquiries": "For Distributor & Dealer Inquiries",
+      "distributorDescription": "Interested in becoming a distribution partner? Reach out to our team for partnership opportunities, product training, and supply chain information."
+    },
+    "placeholders": {
+      "stateProducts": { "title": "State Products", "placeholder": "This is the state products placeholder." },
+      "cropProducts": { "title": "Crop Products", "placeholder": "This is the crop products placeholder." },
+      "diseaseProducts": { "title": "Disease Products", "placeholder": "This is the disease products placeholder." }
     },
     "distributor": {
       "title": "Distributor Locator",
@@ -188,5 +233,12 @@
       "empty": "No distributors found",
       "emptyMessage": "Try a different search term or check back later as our network grows."
     }
-  }
+  },
+  "loading": "Loading...",
+  "retry": "Retry",
+  "imported": "Imported",
+  "featured": "Featured",
+  "all": "All",
+  "count": { "product": "product", "products": "products", "found": "found" },
+  "confirmDialog": { "confirm": "Confirm", "cancel": "Cancel", "close": "Close", "title": "Confirm" }
 }

@@ -6,10 +6,11 @@ import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import diseaseService from "../../services/diseaseService.js";
+import { formatCategory } from "../../utils/formatters.js";
 
 export default function DiseaseDetailPage() {
   const { id } = useParams();
-  const { t } = useTranslation(["common", "home"]);
+  const { t } = useTranslation(["common", "home", "products"]);
   const [disease, setDisease] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,7 +27,7 @@ export default function DiseaseDetailPage() {
   if (loading) {
     return (
       <main className="page-container" style={{ padding: "2rem 0" }}>
-        <p>{"Loading…"}</p>
+        <p>{t("common:loading")}</p>
       </main>
     );
   }
@@ -86,7 +87,7 @@ export default function DiseaseDetailPage() {
             {activeProducts.map((product) => (
               <Card key={product._id} className="product-card">
                 <div className="product-card-head">
-                  <Badge variant="soft">{product.category}</Badge>
+                  <Badge variant="soft">{formatCategory(product.category, t)}</Badge>
                   <h3 className="product-card-title">{product.name}</h3>
                 </div>
                 <div className="product-card-body">

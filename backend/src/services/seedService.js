@@ -13,13 +13,19 @@ async function ensureAdminExists() {
   const email = ADMIN_EMAIL.toLowerCase().trim();
 
   try {
-    const existing = await Admin.findOne({ email });
+    const existing = await Admin.findOne({ email }).select("+password");
     if (existing) {
-      logger.info("Admin user already exists", { email });
+      if (existing.role !== "superadmin") {
+        existing.role = "superadmin";
+        await existing.save();
+        logger.info("Existing admin promoted to superadmin", { email });
+      } else {
+        logger.info("Admin user already exists", { email });
+      }
       return;
     }
 
-    const admin = new Admin({ name: ADMIN_NAME || "Admin", email, password: ADMIN_PASSWORD });
+    const admin = new Admin({ name: ADMIN_NAME || "Admin", email, password: ADMIN_PASSWORD, role: "superadmin" });
     await admin.save();
 
     logger.info("Admin user created by seeder", { email });

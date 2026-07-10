@@ -33,6 +33,8 @@ import LeadsManagePage from "../pages/admin/LeadsManagePage.jsx";
 import ProductsManagePage from "../pages/admin/ProductsManagePage.jsx";
 import ProductFormPage from "../pages/admin/ProductFormPage.jsx";
 import SettingsPage from "../pages/admin/SettingsPage.jsx";
+import AdminManagePage from "../pages/admin/AdminManagePage.jsx";
+import AdminFormPage from "../pages/admin/AdminFormPage.jsx";
 import TestimonialsManagePage from "../pages/admin/TestimonialsManagePage.jsx";
 import TestimonialFormPage from "../pages/admin/TestimonialFormPage.jsx";
 import CertificationFormPage from "../pages/admin/CertificationFormPage.jsx";
@@ -98,8 +100,11 @@ export default function AppRoutes() {
         <Route path="products" element={<ProductsManagePage />} />
         <Route path="products/new" element={<ProductFormPage />} />
         <Route path="products/:id/edit" element={<ProductFormPage />} />
-        <Route path="settings" element={<SettingsPage />} />
-        <Route path="testimonials" element={<TestimonialsManagePage />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="admins" element={<AdminManagePage />} />
+          <Route path="admins/new" element={<AdminFormPage />} />
+          <Route path="admins/:id/edit" element={<AdminFormPage />} />
+          <Route path="testimonials" element={<TestimonialsManagePage />} />
         <Route path="testimonials/new" element={<TestimonialFormPage />} />
         <Route path="testimonials/:id/edit" element={<TestimonialFormPage />} />
       </Route>

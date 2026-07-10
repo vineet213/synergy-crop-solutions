@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, Outlet } from "react-router-dom";
-import { Menu, X, LogOut, LayoutDashboard, Package, Truck, MessageSquare, Star, Award, Sprout, Bug } from "lucide-react";
+import { Menu, X, LogOut, LayoutDashboard, Package, Truck, MessageSquare, Star, Award, Bug, Users, Settings } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 import toast from "react-hot-toast";
 
@@ -17,14 +17,15 @@ export default function AdminLayout() {
 
   const sidebarLinks = [
     { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-    { label: "Crops", href: "/admin/crops", icon: Sprout },
+    { label: "Crops", href: "/admin/crops", icon: Award },
     { label: "Diseases", href: "/admin/diseases", icon: Bug },
     { label: "Certifications", href: "/admin/certifications", icon: Award },
     { label: "Products", href: "/admin/products", icon: Package },
     { label: "Distributors", href: "/admin/distributors", icon: Truck },
     { label: "Testimonials", href: "/admin/testimonials", icon: Star },
     { label: "Leads", href: "/admin/leads", icon: MessageSquare },
-
+    ...(user?.role === "superadmin" ? [{ label: "Admins", href: "/admin/admins", icon: Users }] : []),
+    { label: "Settings", href: "/admin/settings", icon: Settings },
   ];
 
   return (
@@ -33,9 +34,11 @@ export default function AdminLayout() {
       <aside className={`admin-sidebar ${sidebarOpen ? "open" : "collapsed"}`}>
         {/* Logo */}
         <div className="admin-sidebar-logo">
-          <h1 className={`admin-sidebar-title ${!sidebarOpen && "hidden"}`}>
-            Agri Platform
-          </h1>
+          <img
+            src="/client-assets/logo/official-logo.jpeg"
+            alt="Synergy Crop Solutions"
+            className={`admin-logo-img ${!sidebarOpen && "hidden"}`}
+          />
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="admin-sidebar-toggle"

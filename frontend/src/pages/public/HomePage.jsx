@@ -12,20 +12,17 @@ import { usePublicTestimonials } from "../../hooks/useTestimonials.js";
 import { usePublicCertifications } from "../../hooks/useCertifications.js";
 import { usePublicProducts } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
+import { formatCategory } from "../../utils/formatters.js";
 
 const categoryIcons = [Sprout, ShieldCheck, Droplets, FlaskConical, Leaf];
 
-const techItems = [
-  { icon: Microscope, title: "Japanese Lyophilization", desc: "Advanced freeze-drying technology preserving high CFU counts for maximum efficacy." },
-  { icon: FlaskConical, title: "High CFU Formulations", desc: "Concentrated microbial counts ensuring robust performance in diverse soil conditions." },
-  { icon: Recycle, title: "Organic Formulations", desc: "100% bio-based compositions with zero chemical residues for safe agriculture." },
-  { icon: TrendingUp, title: "Bio-Enhancers & Consortia", desc: "Synergistic microbial blends that boost plant growth and soil regeneration." },
-];
+const techIcons = [Microscope, FlaskConical, Recycle, TrendingUp];
 
 export default function HomePage() {
   useSEO({ canonical: "/" });
   const { t } = useTranslation("home");
   const { t: tc } = useTranslation("common");
+  const { t: tp } = useTranslation("products");
   const navigate = useNavigate();
   const { testimonials, loading: loadingTestimonials } = usePublicTestimonials();
   const { certifications, loading: loadingCertifications } = usePublicCertifications();
@@ -66,26 +63,17 @@ export default function HomePage() {
       <section className="prem">
         <div className="prem-container">
           <div className="prem-cap-grid">
-            <div className="prem-cap-item">
-              <span className="prem-cap-icon"><Sprout size={22} /></span>
-              <p className="prem-cap-value">50+</p>
-              <p className="prem-cap-label">Bio-Based Products</p>
-            </div>
-            <div className="prem-cap-item">
-              <span className="prem-cap-icon"><Globe size={22} /></span>
-              <p className="prem-cap-value">Pan-India</p>
-              <p className="prem-cap-label">Distribution Network</p>
-            </div>
-            <div className="prem-cap-item">
-              <span className="prem-cap-icon"><Award size={22} /></span>
-              <p className="prem-cap-value">100%</p>
-              <p className="prem-cap-label">Residue-Free Guarantee</p>
-            </div>
-            <div className="prem-cap-item">
-              <span className="prem-cap-icon"><Users size={22} /></span>
-              <p className="prem-cap-value">10K+</p>
-              <p className="prem-cap-label">Trusted Growers</p>
-            </div>
+            {t("capabilities.items", { returnObjects: true }).map((cap, i) => {
+              const icons = [Sprout, Globe, Award, Users];
+              const Icon = icons[i] || Sprout;
+              return (
+                <div key={i} className="prem-cap-item">
+                  <span className="prem-cap-icon"><Icon size={22} /></span>
+                  <p className="prem-cap-value">{cap.value}</p>
+                  <p className="prem-cap-label">{cap.label}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -98,22 +86,12 @@ export default function HomePage() {
             <h2 className="prem-header__title" style={{ margin: 0 }}>{t("about.title")}</h2>
             <p className="prem-split__body">{t("about.body")}</p>
             <div className="prem-intro-stats">
-              <div className="prem-intro-stat">
-                <p className="prem-intro-stat-value">2018</p>
-                <p className="prem-intro-stat-label">Founded in Pune</p>
-              </div>
-              <div className="prem-intro-stat">
-                <p className="prem-intro-stat-value">5+</p>
-                <p className="prem-intro-stat-label">Product Categories</p>
-              </div>
-              <div className="prem-intro-stat">
-                <p className="prem-intro-stat-value">12+</p>
-                <p className="prem-intro-stat-label">States Covered</p>
-              </div>
-              <div className="prem-intro-stat">
-                <p className="prem-intro-stat-value">R&D</p>
-                <p className="prem-intro-stat-label">Continuous Innovation</p>
-              </div>
+              {t("aboutStats", { returnObjects: true }).map((stat, i) => (
+                <div key={i} className="prem-intro-stat">
+                  <p className="prem-intro-stat-value">{stat.value}</p>
+                  <p className="prem-intro-stat-label">{stat.label}</p>
+                </div>
+              ))}
             </div>
             <Link to="/about" className="button-base button-primary" style={{ alignSelf: "flex-start", marginTop: "0.5rem" }}>
               {t("about.cta")}
@@ -196,7 +174,7 @@ export default function HomePage() {
                       </div>
                     )}
                     <div className="prem-feat-prod-body">
-                      <span className="prem-feat-prod-badge">{p.category}</span>
+                      <span className="prem-feat-prod-badge">{formatCategory(p.category, tp)}</span>
                       <h3 className="prem-feat-prod-name">{p.name}</h3>
                       {p.shortDescription && <p className="prem-feat-prod-desc">{p.shortDescription}</p>}
                     </div>
@@ -220,8 +198,8 @@ export default function HomePage() {
             <p className="prem-header__text">{t("innovation.body")}</p>
           </header>
           <div className="prem-tech-grid">
-            {techItems.map((item, i) => {
-              const Icon = item.icon;
+            {t("tech.items", { returnObjects: true }).map((item, i) => {
+              const Icon = techIcons[i] || Microscope;
               return (
                 <div key={i} className="prem-tech-card">
                   <span className="prem-tech-icon"><Icon size={22} /></span>
@@ -244,7 +222,7 @@ export default function HomePage() {
             <h2 className="prem-header__title">{t("certifications.title")}</h2>
           </header>
           {loadingCertifications ? (
-            <div style={{ textAlign: "center", padding: "3rem 0", color: "var(--text-muted)" }}>Loading...</div>
+            <div style={{ textAlign: "center", padding: "3rem 0", color: "var(--text-muted)" }}>{tc("loading")}</div>
           ) : certifications.length === 0 ? (
             <p style={{ textAlign: "center", color: "var(--text-muted)" }}>{t("certifications.empty")}</p>
           ) : (
@@ -271,7 +249,7 @@ export default function HomePage() {
             <h2 className="prem-header__title">{t("testimonials.title")}</h2>
           </header>
           {loadingTestimonials ? (
-            <div style={{ textAlign: "center", padding: "3rem 0", color: "var(--text-muted)" }}>Loading...</div>
+            <div style={{ textAlign: "center", padding: "3rem 0", color: "var(--text-muted)" }}>{tc("loading")}</div>
           ) : testimonials.length === 0 ? (
             <p style={{ textAlign: "center", color: "var(--text-muted)" }}>{t("testimonials.empty")}</p>
           ) : (
@@ -302,13 +280,13 @@ export default function HomePage() {
       <section className="prem">
         <div className="prem-container prem-coverage">
           <div className="prem-coverage-text">
-            <span className="prem-header__label">Our Reach</span>
-            <h2 className="prem-header__title" style={{ margin: 0 }}>Pan-India Distribution Network</h2>
+            <span className="prem-header__label">{t("coverage.label")}</span>
+            <h2 className="prem-header__title" style={{ margin: 0 }}>{t("coverage.title")}</h2>
             <p className="prem-header__text">
-              From the fertile fields of Punjab to the plantations of Karnataka, our products reach farmers across India through a robust network of distributors and dealers.
+              {t("coverage.description")}
             </p>
             <ul className="prem-coverage-list">
-              {["Maharashtra", "Karnataka", "Madhya Pradesh", "Rajasthan", "Uttar Pradesh", "Gujarat", "Telangana", "Andhra Pradesh"].map((state) => (
+              {t("coverage.states", { returnObjects: true }).map((state) => (
                 <li key={state} className="prem-coverage-item">
                   <MapPin size={14} />
                   {state}
@@ -319,7 +297,7 @@ export default function HomePage() {
           <div className="prem-coverage-visual">
             <div style={{ textAlign: "center", color: "var(--text-muted)", padding: "2rem" }}>
               <Globe size={64} strokeWidth={1} style={{ opacity: 0.3, marginBottom: "1rem" }} />
-              <p style={{ fontWeight: 600, fontSize: "0.9rem" }}>Pan-India Presence</p>
+              <p style={{ fontWeight: 600, fontSize: "0.9rem" }}>{t("coverage.label")}</p>
             </div>
           </div>
         </div>

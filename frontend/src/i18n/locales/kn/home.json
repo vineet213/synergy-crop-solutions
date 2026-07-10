@@ -1,69 +1,50 @@
 {
-  "hero": {
-    "badge": "ಕೃಷಿ ಬುದ್ಧಿಮತ್ತೆ",
-    "title": "ಸ್ಥಿತಿಸ್ಥಾಪಕ, ಲಾಭದಾಯಕ ಸುಗ್ಗಿಗಾಗಿ ಆಧುನಿಕ ಕೃಷಿ.",
-    "subtitle": "ಸಿನರ್ಜಿ ಕ್ರಾಪ್ ಸೊಲ್ಯೂಷನ್ಸ್ ಬೆಳೆ ವಿಜ್ಞಾನ, ಡಿಜಿಟಲ್ ಒಳನೋಟಗಳು ಮತ್ತು ವಿತರಣಾ ಪರಿಣತಿಯನ್ನು ಸಂಯೋಜಿಸಿ ಪ್ರತಿ ಋತುವಿನಲ್ಲಿ ರೈತರನ್ನು ಸಶಕ್ತಗೊಳಿಸುತ್ತದೆ.",
-    "quote": "ದೇಶಾದ್ಯಂತದ ಬೆಳೆಗಾರರಿಂದ ನಂಬಲಾಗಿದೆ. ನಾವು ಜಮೀನುಗಳು ಸುಸ್ಥಿರವಾಗಿ ಬೆಳೆಯಲು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.",
-    "visual": "ನಾವೀನ್ಯತೆಯ ಮೂಲಕ ಬೆಳೆ ಬುದ್ಧಿಮತ್ತೆ"
+  "hero": { "badge": "ಅವಶೇಷ-ಮುಕ್ತ ಕೃಷಿ", "title": "ಆರೋಗ್ಯಕರ ಬೆಳೆಗಳಿಗಾಗಿ ಜೈವ-ಆಧಾರಿತ ಬೆಳೆ ರಕ್ಷಣೆ.", "subtitle": "ಸಿನರ್ಜಿ ಕ್ರಾಪ್ ಸೊಲ್ಯೂಷನ್ಸ್ ನವೀನ ಜೈವ ಗೊಬ್ಬರಗಳು, ಜೈವ ಕೀಟನಾಶಕಗಳು ಮತ್ತು ಅವಶೇಷ-ಮುಕ್ತ ಬೆಳೆ ರಕ್ಷಣಾ ಉತ್ಪನ್ನಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.", "quote": "ಅವಶೇಷ-ಮುಕ್ತ ಕೃಷಿಗೆ ಬದ್ಧರಾಗಿದ್ದೇವೆ. ದೇಶಾದ್ಯಂತದ ಬೆಳೆಗಾರರಿಂದ ನಂಬಲಾಗಿದೆ.", "visual": "ನಾವೀನ್ಯತೆಯ ಮೂಲಕ ಬೆಳೆ ಬುದ್ಧಿಮತ್ತೆ" },
+  "carousel": { "region": "ಆಯ್ದ ಚಿತ್ರಗಳು", "controls": "ಸ್ಲೈಡ್ ನಿಯಂತ್ರಣಗಳು", "slide": "ಸ್ಲೈಡ್", "of": "ರಲ್ಲಿ", "goTo": "ಸ್ಲೈಡ್‌ಗೆ ಹೋಗಿ" },
+  "about": { "label": "ಸಿನರ್ಜಿ ಬಗ್ಗೆ", "title": "ಭಾರತಾದ್ಯಂತ ಅವಶೇಷ-ಮುಕ್ತ ಕೃಷಿಯನ್ನು ಉತ್ತೇಜಿಸುವುದು", "body": "ಸಿನರ್ಜಿ ಕ್ರಾಪ್ ಸೊಲ್ಯೂಷನ್ಸ್ ಜೈವ ಗೊಬ್ಬರಗಳು, ಜೈವ ಕೀಟನಾಶಕಗಳು ಮತ್ತು ಅವಶೇಷ-ಮುಕ್ತ ಬೆಳೆ ರಕ್ಷಣಾ ಉತ್ಪನ್ನಗಳ ಅಭಿವೃದ್ಧಿ ಮತ್ತು ವಿತರಣೆಯಲ್ಲಿ ಕೇಂದ್ರೀಕೃತವಾಗಿದೆ.", "cta": "ನಮ್ಮ ಬಗ್ಗೆ ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ" },
+  "aboutStats": [
+    { "value": "2018", "label": "ಪುಣೆಯಲ್ಲಿ ಸ್ಥಾಪಿತ" },
+    { "value": "5+", "label": "ಉತ್ಪನ್ನ ವರ್ಗಗಳು" },
+    { "value": "12+", "label": "ರಾಜ್ಯ ಕವರೇಜ್" },
+    { "value": "R&D", "label": "ನಿರಂತರ ನಾವೀನ್ಯತೆ" }
+  ],
+  "trust": { "label": "ರೈತರು ನಮ್ಮನ್ನು ಏಕೆ ನಂಬುತ್ತಾರೆ", "title": "ಆಧುನಿಕ ಕೃಷಿಯ ಸವಾಲುಗಳಿಗಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ", "stats": [
+    { "value": "100%", "label": "ಜೈವ-ಆಧಾರಿತ ಪರಿಹಾರಗಳು — ಶೂನ್ಯ ರಾಸಾಯನಿಕ ಅವಶೇಷಗಳು." },
+    { "value": "ಪ್ಯಾನ್-ಇಂಡಿಯಾ", "label": "ಹಲವಾರು ರಾಜ್ಯಗಳಲ್ಲಿ ರೈತರಿಗೆ ಸೇವೆ ಸಲ್ಲಿಸುವ ವಿತರಣಾ ನೆಟ್‌ವರ್ಕ್." },
+    { "value": "ಅವಶೇಷ-ಮುಕ್ತ", "label": "ಖಾತರಿ — ಪ್ರತಿ ಉತ್ಪನ್ನವು ಕಠಿಣ ಗುಣಮಟ್ಟದ ಮಾನದಂಡಗಳನ್ನು ಪೂರೈಸುತ್ತದೆ." },
+    { "value": "ನಂಬಲಾಗಿದೆ", "label": "ಸ್ಥಿರ ಗುಣಮಟ್ಟ ಮತ್ತು ಕಾಣುವ ಫಲಿತಾಂಶಗಳಿಗಾಗಿ ಸಾವಿರಾರು ಬೆಳೆಗಾರರಿಂದ ನಂಬಲಾಗಿದೆ." }
+  ] },
+  "categories": { "label": "ಉತ್ಪನ್ನ ವರ್ಗಗಳು", "title": "ಅವಶೇಷ-ಮುಕ್ತ ಕೃಷಿಯಲ್ಲಿ ಪರಿಣತಿ", "cards": [
+    { "title": "ಜೈವ ಗೊಬ್ಬರಗಳು", "description": "ಮಣ್ಣಿನ ಆರೋಗ್ಯವನ್ನು ಸಮೃದ್ಧಗೊಳಿಸುವ ಮತ್ತು ಬೆಳೆ ಇಳುವರಿಯನ್ನು ಸ್ವಾಭಾವಿಕವಾಗಿ ಹೆಚ್ಚಿಸುವ ಸುಧಾರಿತ ಜೈವ-ಆಧಾರಿತ ಪೋಷಕಾಂಶ ಪರಿಹಾರಗಳು." },
+    { "title": "ಜೈವ ಕೀಟನಾಶಕಗಳು / ಶಿಲೀಂಧ್ರನಾಶಕಗಳು", "description": "ನೈಸರ್ಗಿಕ ಮೂಲಗಳಿಂದ ಪಡೆದ ಪರಿಣಾಮಕಾರಿ ಅವಶೇಷ-ಮುಕ್ತ ಕೀಟ ಮತ್ತು ರೋಗ ನಿಯಂತ್ರಣ ಉತ್ಪನ್ನಗಳು." },
+    { "title": "ಕಾನ್ಸೋರ್ಟಿಯಾ ಉತ್ಪನ್ನಗಳು", "description": "ಮೆರುಗುಗೊಳಿಸಿದ ಮಣ್ಣಿನ ಸಾರವತ್ತೆ, ಸಸ್ಯ ಬೆಳವಣಿಗೆ ಮತ್ತು ಒತ್ತಡ ಸಹಿಷ್ಣುತೆಗಾಗಿ ಸಹಕಾರಿ ಸೂಕ್ಷ್ಮಜೀವಿ ಕಾನ್ಸೋರ್ಟಿಯಾ." },
+    { "title": "ದ್ರವ ಪೋಷಣೆ", "description": "ಗುರಿಯಿಟ್ಟ ಪೋಷಕಾಂಶ ವಿತರಣೆಗಾಗಿ ಬಳಸಲು ಸಿದ್ಧ ದ್ರವ ತಯಾರಿಗಳು." },
+    { "title": "ಸಾವಯವ ಇನ್‌ಪುಟ್‌ಗಳು", "description": "ಸುಸ್ಥಿರ ಕೃಷಿ ವ್ಯವಸ್ಥೆಗಳಿಗಾಗಿ ಪ್ರಮಾಣೀಕೃತ ಸಾವಯವ ಮಣ್ಣು ಸುಧಾರಣೆಗಳು." }
+  ] },
+  "featured": { "label": "ವೈಶಿಷ್ಟ್ಯಗೊಳಿಸಿದ ಉತ್ಪನ್ನಗಳು", "title": "ನಮ್ಮ ಪ್ರೀಮಿಯಂ ಉತ್ಪನ್ನ ಶ್ರೇಣಿ" },
+  "innovation": { "label": "ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ನಾವೀನ್ಯತೆ", "title": "ಮಣ್ಣಿಗೆ ವಿಜ್ಞಾನ ತರುವುದು", "body": "ನಮ್ಮ ಸಂಶೋಧನೆ ಮತ್ತು ಅಭಿವೃದ್ಧಿ ತಂಡವು ನಿರಂತರವಾಗಿ ಹೊಸ ಪೀಳಿಗೆಯ ಬೆಳೆ ರಕ್ಷಣಾ ಉತ್ಪನ್ನಗಳನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸುತ್ತದೆ." },
+  "tech": { "label": "ನಮ್ಮ ತಂತ್ರಜ್ಞಾನಗಳು", "title": "ಮುಂದುವರಿದ ಕೃಷಿ ವಿಜ್ಞಾನ", "items": [
+    { "title": "ಜಪಾನೀಸ್ ಲಿಯೋಫಿಲೈಜೇಶನ್", "desc": "ಗರಿಷ್ಠ ಪರಿಣಾಮಕಾರಿತ್ವಕ್ಕಾಗಿ ಹೆಚ್ಚಿನ CFU ಎಣಿಕೆಯನ್ನು ಸಂರಕ್ಷಿಸುವ ಸುಧಾರಿತ ಫ್ರೀಜ್-ಡ್ರೈಯಿಂಗ್ ತಂತ್ರಜ್ಞಾನ." },
+    { "title": "ಹೆಚ್ಚಿನ CFU ತಯಾರಿಗಳು", "desc": "ವಿವಿಧ ಮಣ್ಣಿನ ಪರಿಸ್ಥಿತಿಗಳಲ್ಲಿ ದೃಢ ಕಾರ್ಯಕ್ಷಮತೆಯನ್ನು ಖಾತರಿಪಡಿಸುವ ಸಾಂದ್ರೀಕೃತ ಸೂಕ್ಷ್ಮಜೀವಿ ಎಣಿಕೆಗಳು." },
+    { "title": "ಸಾವಯವ ತಯಾರಿಗಳು", "desc": "ಸುರಕ್ಷಿತ ಕೃಷಿಗಾಗಿ ಶೂನ್ಯ ರಾಸಾಯನಿಕ ಅವಶೇಷಗಳೊಂದಿಗೆ 100% ಜೈವ-ಆಧಾರಿತ ರಚನೆಗಳು." },
+    { "title": "ಜೈವ-ಎನ್‌ಹ್ಯಾನ್ಸರ್‌ಗಳು ಮತ್ತು ಕಾನ್ಸೋರ್ಟಿಯಾ", "desc": "ಸಸ್ಯ ಬೆಳವಣಿಗೆ ಮತ್ತು ಮಣ್ಣಿನ ಪುನರುತ್ಪಾದನೆಯನ್ನು ಹೆಚ್ಚಿಸುವ ಸಹಕಾರಿ ಸೂಕ್ಷ್ಮಜೀವಿ ಮಿಶ್ರಣಗಳು." }
+  ] },
+  "capabilities": { "items": [
+    { "value": "50+", "label": "ಜೈವ-ಆಧಾರಿತ ಉತ್ಪನ್ನಗಳು" },
+    { "value": "ಪ್ಯಾನ್-ಇಂಡಿಯಾ", "label": "ವಿತರಣಾ ನೆಟ್‌ವರ್ಕ್" },
+    { "value": "100%", "label": "ಅವಶೇಷ-ಮುಕ್ತ ಖಾತರಿ" },
+    { "value": "10K+", "label": "ನಂಬಲಾದ ಬೆಳೆಗಾರರು" }
+  ] },
+  "coverage": { "label": "ನಮ್ಮ ತಲುಪುವಿಕೆ", "title": "ಪ್ಯಾನ್-ಇಂಡಿಯಾ ವಿತರಣಾ ನೆಟ್‌ವರ್ಕ್", "description": "ಪಂಜಾಬ್‌ನ ಸಮೃದ್ಧ ಹೊಲಗಳಿಂದ ಕರ್ನಾಟಕದ ತೋಟಗಳವರೆಗೆ, ನಮ್ಮ ಉತ್ಪನ್ನಗಳು ವಿತರಕರು ಮತ್ತು ಡೀಲರ್‌ಗಳ ಬಲವಾದ ನೆಟ್‌ವರ್ಕ್ ಮೂಲಕ ಭಾರತಾದ್ಯಂತ ರೈತರನ್ನು ತಲುಪುತ್ತವೆ.", "states": ["ಮಹಾರಾಷ್ಟ್ರ", "ಕರ್ನಾಟಕ", "ಮಧ್ಯ ಪ್ರದೇಶ", "ರಾಜಸ್ಥಾನ", "ಉತ್ತರ ಪ್ರದೇಶ", "ಗುಜರಾತ್", "ತೆಲಂಗಾಣ", "ಆಂಧ್ರ ಪ್ರದೇಶ"], "presence": "ಪ್ಯಾನ್-ಇಂಡಿಯಾ ಉಪಸ್ಥಿತಿ" },
+  "certifications": { "label": "ಪರವಾನಗಿಗಳು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರಗಳು", "title": "ಪ್ರತಿ ಹೊಲಕ್ಕೂ ನಂಬಲಾದ ಮಾನದಂಡಗಳು", "empty": "ಇನ್ನೂ ಯಾವುದೇ ಪ್ರಮಾಣಪತ್ರಗಳಿಲ್ಲ." },
+  "testimonials": { "label": "ಬೆಳೆಗಾರರು ಏನು ಹೇಳುತ್ತಾರೆ", "title": "ಹೊಲದ ನಾಯಕರಿಂದ ನೈಜ ಫಲಿತಾಂಶಗಳು", "empty": "ಇನ್ನೂ ಯಾವುದೇ ಪ್ರಶಂಸಾಪತ್ರಗಳಿಲ್ಲ." },
+  "cta": { "label": "ಸಿನರ್ಜಿಯೊಂದಿಗೆ ಪಾಲುದಾರಿಕೆ ಮಾಡಿ", "title": "ಆತ್ಮವಿಶ್ವಾಸದಿಂದ ಬೆಳೆಯಲು ಸಿದ್ಧರೇ?", "text": "ಇಂದೇ ಜೈವ-ಆಧಾರಿತ, ಅವಶೇಷ-ಮುಕ್ತ ಬೆಳೆ ರಕ್ಷಣೆಯನ್ನು ಅಳವಡಿಸಿ.", "contact": "ನಮ್ಮ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ", "explore": "ಉತ್ಪನ್ನಗಳನ್ನು ನೋಡಿ" },
+  "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+  "detail": { "viewDetails": "ವಿವರಗಳನ್ನು ನೋಡಿ" },
+  "carouselPlaceholder": {
+    "farmers": "ಹಚ್ಚ ಹಸಿರು ಹೊಲಗಳಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತಿರುವ ರೈತರು",
+    "bioProducts": "ಜೈವ-ಆಧಾರಿತ ಬೆಳೆ ರಕ್ಷಣಾ ಉತ್ಪನ್ನಗಳು",
+    "harvest": "ಆರೋಗ್ಯಕರ, ಅವಶೇಷ-ಮುಕ್ತ ಬೆಳೆ"
   },
-  "carousel": {
-    "region": "Featured images",
-    "controls": "Slide controls",
-    "slide": "Slide",
-    "of": "of",
-    "goTo": "Go to slide"
-  },
-  "about": {
-    "label": "About Synergy",
-    "title": "Driving Residue-Free Agriculture Across India",
-    "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom. Our team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.",
-    "cta": "Learn more about us"
-  },
-  "trust": {
-    "label": "Why Farmers Trust Us",
-    "title": "Built for the Challenges of Modern Agriculture",
-    "stats": [
-      { "value": "100%", "label": "Bio-Based Solutions — formulated from natural sources with zero chemical residues." },
-      { "value": "Pan-India", "label": "Distribution network serving farmers across multiple states." },
-      { "value": "Residue-Free", "label": "Guarantee — every product meets rigorous quality standards." },
-      { "value": "Trusted", "label": "By thousands of growers for consistent quality and visible results." }
-    ]
-  },
-  "categories": {
-    "label": "Product Categories",
-    "title": "Specialised in Residue-Free Agriculture",
-    "cards": [
-      { "title": "Bio Fertilizers", "description": "Advanced bio-based nutrient solutions that enrich soil health and boost crop yields naturally." },
-      { "title": "Bio Pesticides / Fungicides", "description": "Effective residue-free pest and disease control products derived from natural sources." },
-      { "title": "Consortia Products", "description": "Synergistic microbial consortia for enhanced soil fertility, plant growth, and stress tolerance." },
-      { "title": "Liquid Nutrition", "description": "Ready-to-use liquid formulations for targeted nutrient delivery and rapid crop response." },
-      { "title": "Organic Inputs", "description": "Certified organic soil amendments and natural inputs for sustainable farming systems." }
-    ]
-  },
-  "featured": {
-    "label": "Featured Products",
-    "title": "Our Premium Product Range"
-  },
-  "innovation": {
-    "label": "Technology & Innovation",
-    "title": "Bringing Science to the Soil",
-    "body": "Our research and development team works continuously to develop new-generation crop protection products that are safe, effective, and residue-free. We combine agronomic research with field-level insights to create solutions that address the real challenges faced by Indian farmers. From microbial consortia to advanced liquid nutrition, every product is formulated using cutting-edge agricultural science."
-  },
-  "certifications": {
-    "label": "Licences & Certifications",
-    "title": "Trusted standards for every field",
-    "empty": "No certifications yet."
-  },
-  "testimonials": {
-    "label": "What Growers Say",
-    "title": "Real results from field leaders",
-    "empty": "No testimonials yet."
-  },
-  "cta": {
-    "label": "Partner with Synergy",
-    "title": "Ready to grow with confidence?",
-    "text": "Switch to bio-based, residue-free crop protection today. Our team is ready to help you build a more resilient and profitable crop program.",
-    "contact": "Contact our team",
-    "explore": "Explore products"
-  }
+  "viewProducts": "{{title}} ಉತ್ಪನ್ನಗಳನ್ನು ನೋಡಿ"
 }

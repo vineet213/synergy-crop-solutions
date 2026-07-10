@@ -23,6 +23,10 @@ const productSchema = new mongoose.Schema(
 		price: { type: Number },
 		images: [{ type: String }],
 		status: { type: String, enum: ["draft", "published", "archived"], default: "published" },
+		isFeatured: { type: Boolean, default: false },
+		isImported: { type: Boolean, default: false },
+		brochure: { type: String, default: "" },
+		relatedProducts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
 		metadata: { type: Object },
 	},
 	{ timestamps: true }

@@ -1,192 +1,64 @@
 {
-  "footer": {
-    "tagline": "शाश्वत विकासासाठी आधुनिक कृषी उपाय.",
-    "contact": "संपर्क",
-    "location": "स्थान"
-  },
-  "cta": {
-    "exploreSolutions": "उपाय पहा",
-    "viewOurStory": "आमची कथा पहा",
-    "visitLocator": "लोकेटरला भेट द्या",
-    "contactOurTeam": "आमच्या टीमशी संपर्क साधा",
-    "viewProducts": "उत्पादने पहा",
-    "getInTouch": "संपर्क करा"
-  },
-  "about": {
-    "visionStatement": "शेतीत मजबूत वारसा निर्माण करण्यासाठी नाविन्यपूर्ण अवशेष-मुक्त उपाय आणून प्रत्येक भागीदारासाठी विश्वास, वाढ आणि समृद्धी निर्माण करण्यासाठी आम्ही वचनबद्ध आहोत."
-  },
+  "footer": { "tagline": "शाश्वत विकासासाठी आधुनिक कृषी उपाय.", "contact": "संपर्क", "location": "स्थान", "quickLinks": "जलद दुवे", "productCategories": "उत्पादने", "email": "contact@synergycrops.com", "phone": "विनंतीवर उपलब्ध", "address": "पुणे, महाराष्ट्र, भारत", "copyright": "सर्व हक्क राखीव.", "taglineShort": "अवशेष-मुक्त शेती", "home": "मुखपृष्ठ", "products": "उत्पादने", "categories": "श्रेण्या", "aboutUs": "आमच्याबद्दल", "blog": "ब्लॉग", "contactUs": "संपर्क", "bioFertilizers": "जैव खते", "bioPesticides": "जैव कीटकनाशके", "consortiaProducts": "कंसोर्शियम उत्पादने", "liquidNutrition": "तरल पोषण", "organicInputs": "सेंद्रिय इनपुट" },
+  "cta": { "exploreSolutions": "उपाय पहा", "viewOurStory": "आमची कथा पहा", "visitLocator": "लोकेटरला भेट द्या", "contactOurTeam": "आमच्या टीमशी संपर्क साधा", "viewProducts": "उत्पादने पहा", "getInTouch": "संपर्क करा" },
+  "about": { "visionStatement": "शेतीत मजबूत वारसा निर्माण करण्यासाठी नाविन्यपूर्ण अवशेष-मुक्त उपाय आणून प्रत्येक भागीदारासाठी विश्वास, वाढ आणि समृद्धी निर्माण करण्यासाठी आम्ही वचनबद्ध आहोत." },
   "aboutPage": {
-    "hero": {
-      "subtitle": "Building a Residue-Free Tomorrow",
-      "title": "Driving Residue-Free Agriculture Across India",
-      "description": "Synergy Crop Solutions is a trusted agri-input company dedicated to bio-based crop protection, farmer prosperity, and sustainable agriculture. We partner with distributors, dealers, and growers to deliver innovative solutions that leave no harmful residues."
-    },
-    "overview": {
-      "title": "Company Overview",
-      "subtitle": "Who We Are",
-      "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom.\n\nOur team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.\n\nFrom smallholder farms to large agricultural enterprises, our solutions are designed to improve yields, reduce chemical dependency, and build long-term soil health."
-    },
-    "vision": {
-      "title": "Our Vision",
-      "body": "To build a strong legacy in agriculture by bringing innovative residue-free solutions that create trust, growth, and prosperity for every partner."
-    },
-    "mission": {
-      "title": "Our Mission",
-      "body": "To deliver new-generation crop protection products that are safe, effective, and residue-free, helping farmers improve harvests and helping distributors and dealers build lasting business."
-    },
-    "commitment": {
-      "title": "Our Commitment",
-      "subtitle": "Quality, Sustainability, and Farmer Success",
-      "items": [
-        {
-          "title": "Quality Assurance",
-          "description": "Every product undergoes rigorous testing to ensure purity, potency, and safety before reaching the field."
-        },
-        {
-          "title": "Sustainable Agriculture",
-          "description": "We champion farming practices that protect soil health, biodiversity, and water resources for future generations."
-        },
-        {
-          "title": "Farmer-Centric Approach",
-          "description": "Our solutions are designed with the farmer in mind — affordable, easy to apply, and backed by field-level technical support."
-        },
-        {
-          "title": "Distributor Enablement",
-          "description": "We empower our channel partners with training, marketing support, and reliable supply chains to build thriving agricultural businesses."
-        }
-      ]
-    },
-    "whyChoose": {
-      "title": "Why Choose Synergy Crop Solutions",
-      "subtitle": "Built for the Challenges of Modern Agriculture",
-      "items": [
-        {
-          "title": "100% Bio-Based Solutions",
-          "description": "Our products are formulated from natural and biological sources, ensuring effective crop protection without chemical residues."
-        },
-        {
-          "title": "Residue-Free Guarantee",
-          "description": "We are committed to helping farmers achieve residue-free produce that meets domestic and international quality standards."
-        },
-        {
-          "title": "Pan-India Distribution Network",
-          "description": "With a growing network of distributors and dealers across multiple states, we ensure timely product availability in every region."
-        },
-        {
-          "title": "Farmer Training & Support",
-          "description": "We conduct regular training sessions, field demonstrations, and advisory programs to help farmers adopt best practices."
-        },
-        {
-          "title": "Trusted by Growers",
-          "description": "Thousands of farmers trust Synergy Crop Solutions for consistent quality, visible results, and dedicated customer service."
-        },
-        {
-          "title": "Environmentally Responsible",
-          "description": "Every product we develop is designed to minimize environmental impact while maximizing agricultural productivity."
-        }
-      ]
-    },
-    "cta": {
-      "title": "Partner with Us",
-      "subtitle": "Let's Grow Together",
-      "description": "Whether you are a farmer looking for effective crop protection, a distributor seeking reliable partners, or a dealer wanting to stock quality products — we are here to help.",
-      "button": "Contact Our Team"
-    }
+    "hero": { "subtitle": "अवशेष-मुक्त उद्याचे निर्माण", "title": "भारतभर अवशेष-मुक्त शेतीला प्रोत्साहन", "description": "सिनर्जी क्रॉप सोल्यूशन्स एक विश्वसनीय कृषी इनपुट कंपनी आहे." },
+    "overview": { "title": "कंपनी आढावा", "subtitle": "आम्ही कोण आहोत", "body": "सिनर्जी क्रॉप सोल्यूशन्स ही एक भारतीय कृषी इनपुट कंपनी आहे जी जैव खते, जैव कीटकनाशके आणि अवशेष-मुक्त पीक संरक्षण उत्पादनांच्या विकास आणि वितरणावर केंद्रित आहे.\n\nआमची टीम खोल कृषी कौशल्य आणि शाश्वत शेतीच्या उत्साहाला जोडते.\nछोट्या शेतकऱ्यांच्या शेतांपासून मोठ्या कृषी उपक्रमांपर्यंत, आमचे उपाय उत्पादन वाढवण्यासाठी डिझाइन केले आहेत." },
+    "vision": { "title": "आमचा ध्येय", "body": "शेतीत मजबूत वारसा निर्माण करणे." },
+    "mission": { "title": "आमचे ध्येय", "body": "सुरक्षित, प्रभावी आणि अवशेष-मुक्त नवीन पिढीची पीक संरक्षण उत्पादने प्रदान करणे." },
+    "commitment": { "title": "आमची वचनबद्धता", "subtitle": "गुणवत्ता, शाश्वतता आणि शेतकरी यश", "items": [
+      { "title": "गुणवत्ता आश्वासन", "description": "प्रत्येक उत्पादन खेत पोहोचण्यापूर्वी कडक चाचणी देते." },
+      { "title": "शाश्वत शेती", "description": "माती आरोग्य, जैवविविधता आणि जलसंपदेचे संरक्षण करणाऱ्या शेती पद्धतींची आम्ही वकालत करतो." },
+      { "title": "शेतकरी-केंद्रित दृष्टिकोन", "description": "आमचे उपाय शेतकऱ्याला लक्षात ठेवून डिझाइन केले आहेत." },
+      { "title": "वितरक सक्षमीकरण", "description": "आम्ही आमच्या चॅनेल भागीदारांना प्रशिक्षण आणि विश्वसनीय पुरवठा साखळी प्रदान करतो." }
+    ] },
+    "whyChoose": { "title": "सिनर्जी क्रॉप सोल्यूशन्स का निवडावे", "subtitle": "आधुनिक शेतीच्या आव्हानांसाठी तयार", "items": [
+      { "title": "100% जैव-आधारित उपाय", "description": "नैसर्गिक स्रोतांमधून बनवलेले, रासायनिक अवशेषांविना प्रभावी पीक संरक्षण." },
+      { "title": "अवशेष-मुक्त हमी", "description": "शेतकऱ्यांना अवशेष-मुक्त उत्पादन प्राप्त करण्यात मदत करण्यासाठी वचनबद्ध." },
+      { "title": "पॅन-इंडिया वितरण नेटवर्क", "description": "अनेक राज्यांमध्ये वितरक आणि डीलरांच्या वाढत्या नेटवर्कसह." },
+      { "title": "शेतकरी प्रशिक्षण आणि सहाय्य", "description": "नियमित प्रशिक्षण सत्र आणि खेत प्रदर्शने आयोजित करतो." },
+      { "title": "शेतकऱ्यांद्वारा विश्वसनीय", "description": "हजारो शेतकरी सातत्याच्या गुणवत्तेवर विश्वास ठेवतात." },
+      { "title": "पर्यावरणीयदृष्ट्या जबाबदार", "description": "पर्यावरणीय परिणाम कमी करण्यासाठी डिझाइन केलेले." }
+    ] },
+    "technology": { "title": "आमचे तंत्रज्ञान", "subtitle": "शास्त्राने संचालित, खेतात सिद्ध", "lyophilization": { "title": "जपानी लायोफिलाइझेशन तंत्रज्ञान", "description": "उन्नत जपानी लायोफिलाइझेशन तंत्रज्ञानाचा वापर." }, "nutrition": { "title": "आयातित तरल पोषण", "description": "उच्च-शोषण पर्ण आणि माती अनुप्रयोगासाठी डिझाइन." }, "bioSolutions": { "title": "जैव-आधारित पीक संरक्षण", "description": "नैसर्गिक सूक्ष्मजीवांचा वापर करून प्रभावी, अवशेष-मुक्त संरक्षण." }, "sustainable": { "title": "शाश्वत शेती", "description": "रासायनिक निर्भरता कमी करणे, माती आरोग्य पुनर्संचयित करणे." } },
+    "values": { "title": "आमचे मूलभूत मूल्य", "subtitle": "आमचे मार्गदर्शन करणारे तत्त्व", "items": [
+      { "title": "नवोन्मेष", "description": "वास्तविक शेती आव्हानांचे उपाय शोधण्यासाठी सतत संशोधन." },
+      { "title": "शाश्वतता", "description": "अवशेष-मुक्त शेती आणि पर्यावरण संवर्धनासाठी वचनबद्ध." },
+      { "title": "शेतकरी पहिले", "description": "आमचा प्रत्येक निर्णय शेतकऱ्यापासून सुरू होतो." },
+      { "title": "गुणवत्ता", "description": "कडक चाचणी आणि गुणवत्ता खात्री." },
+      { "title": "वैज्ञानिक उत्कृष्टता", "description": "खोल कृषी कौशल्य आणि अत्याधुनिक जैवतंत्रज्ञान जोडणे." }
+    ] },
+    "cta": { "title": "आमच्यासोबत भागीदारी करा", "subtitle": "आओ मिळून वाढू", "description": "तुम्ही शेतकरी असाल, वितरक असाल किंवा डीलर — आम्ही मदतीसाठी इथे आहोत.", "button": "आमच्या टीमशी संपर्क साधा" }
   },
   "page": {
-    "notFound": {
-      "title": "पृष्ठ सापडले नाही",
-      "message": "आपण शोधत असलेले पृष्ठ अस्तित्वात नाही किंवा हलविले गेले आहे.",
-      "goHome": "मुख्यपृष्ठावर जा",
-      "browseProducts": "उत्पादने पहा"
-    },
-    "contact": {
-      "title": "संपर्क करा",
-      "subtitle": "तुमची पुढील कृषी भागीदारी सुरू करा",
-      "intro": "आमची टीम तुम्हाला अधिक लवचिक आणि फायदेशीर पीक कार्यक्रम तयार करण्यात मदत करण्यास तयार आहे. प्राथमिक सल्लामसलतीसाठी संपर्क साधा.",
-      "otherWays": "आमच्यापर्यंत पोहोचण्याचे इतर मार्ग",
-      "email": "ईमेल:",
-      "phone": "फोन:",
-      "office": "कार्यालय:"
-    },
-    "contactForm": {
-      "thankYou": "धन्यवाद!",
-      "successMessage": "आम्हाला तुमची चौकशी मिळाली आहे आणि लवकरच तुमच्याशी संपर्क साधू.",
-      "name": "नाव *",
-      "namePlaceholder": "तुमचे पूर्ण नाव",
-      "nameRequired": "नाव आवश्यक आहे",
-      "email": "ईमेल *",
-      "emailPlaceholder": "your@email.com",
-      "emailRequired": "ईमेल आवश्यक आहे",
-      "phone": "फोन",
-      "phonePlaceholder": "+91-9876543210",
-      "company": "कंपनी / शेताचे नाव",
-      "companyPlaceholder": "तुमचे शेत किंवा संस्था",
-      "message": "संदेश",
-      "messagePlaceholder": "आम्ही तुम्हाला कशी मदत करू शकतो?",
-      "submitting": "सबमिट होत आहे…",
-      "submit": "चौकशी पाठवा",
-      "failed": "सबमिट करण्यात अयशस्वी. कृपया पुन्हा प्रयत्न करा."
-    },
-    "cropDiscovery": {
-      "title": "पीक शोध",
-      "subtitle": "शेतकऱ्यांसाठी प्रतिसादात्मक पीक नियोजन",
-      "description": "माहिती शोधण्यासाठी आणि प्रत्येक पीक प्रकारासाठी संबंधित उत्पादने शोधण्यासाठी आमची पीक सूची ब्राउझ करा.",
-      "loading": "लोड होत आहे…",
-      "fallback": "या पिकाबद्दल आणि त्याच्या उत्पादनांबद्दल अधिक जाणून घ्या.",
-      "empty": "अद्याप कोणतीही पिके उपलब्ध नाहीत."
-    },
-    "cropDetail": {
-      "failed": "पीक लोड करण्यात अयशस्वी",
-      "back": "पिकांवर परत जा",
-      "notFound": "पीक सापडले नाही",
-      "notFoundMessage": "तुम्ही शोधत असलेले पीक अस्तित्वात नाही.",
-      "info": "पीक माहिती",
-      "noDescription": "कोणतेही वर्णन उपलब्ध नाही.",
-      "relatedProducts": "संबंधित उत्पादने",
-      "productsAvailable": "उत्पादने उपलब्ध",
-      "noProducts": "या पिकासाठी अद्याप कोणतीही उत्पादने सूचीबद्ध नाहीत.",
-      "contactForPrice": "किंमतीसाठी संपर्क साधा",
-      "viewDetails": "तपशील पहा"
-    },
-    "diseaseDiscovery": {
-      "title": "रोग शोध",
-      "subtitle": "पसरण्यापूर्वी पीक हानी टाळा",
-      "description": "समस्या ओळखण्यासाठी आणि संबंधित उपचार आणि उत्पादने शोधण्यासाठी आमची रोग सूची ब्राउझ करा.",
-      "loading": "लोड होत आहे…",
-      "fallback": "या रोगाबद्दल आणि त्याच्या उपचारांबद्दल अधिक जाणून घ्या.",
-      "empty": "अद्याप कोणतेही रोग उपलब्ध नाहीत."
-    },
-    "diseaseDetail": {
-      "failed": "रोग लोड करण्यात अयशस्वी",
-      "back": "रोगांवर परत जा",
-      "notFound": "रोग सापडला नाही",
-      "notFoundMessage": "तुम्ही शोधत असलेला रोग अस्तित्वात नाही.",
-      "info": "रोग माहिती",
-      "symptoms": "लक्षणे",
-      "relatedProducts": "संबंधित उत्पादने",
-      "productsAvailable": "उत्पादने उपलब्ध",
-      "noProducts": "या रोगासाठी अद्याप कोणतीही उत्पादने सूचीबद्ध नाहीत.",
-      "contactForPrice": "किंमतीसाठी संपर्क साधा",
-      "viewDetails": "तपशील पहा"
-    },
-    "categories": {
-      "title": "श्रेण्या",
-      "subtitle": "आम्ही समर्थन करत असलेल्या पीक श्रेण्या",
-      "featured": "वैशिष्ट्यीकृत"
-    },
-    "blog": {
-      "title": "ब्लॉग",
-      "subtitle": "आधुनिक शेतीसाठी अंतर्दृष्टी"
-    },
-    "distributor": {
-      "title": "वितरक लोकेटर",
-      "subtitle": "तुमच्या जवळ विश्वसनीय भागीदार शोधा",
-      "intro": "प्रमाणित वितरक शोधा आणि आत्मविश्वासाने तुमची पुरवठा साखळी व्यवस्थापित करा. आमचे नेटवर्क वेळेवर समर्थन, विश्वसनीय इन्व्हेंटरी आणि शेत-तयार वितरणासाठी तयार केले आहे.",
-      "searchPlaceholder": "नाव, कंपनी, शहर किंवा राज्यानुसार शोधा…",
-      "clear": "साफ करा",
-      "empty": "कोणतेही वितरक सापडले नाहीत",
-      "emptyMessage": "वेगळी शोध संज्ञा वापरून पहा किंवा नंतर पुन्हा तपासा."
-    }
-  }
+    "notFound": { "title": "पृष्ठ सापडले नाही", "message": "तुम्ही शोधत असलेले पृष्ठ अस्तित्वात नाही.", "goHome": "मुख्यपृष्ठावर जा", "browseProducts": "उत्पादने पहा" },
+    "contact": { "title": "संपर्क करा", "subtitle": "तुमची पुढील कृषी भागीदारी सुरू करा", "intro": "आमची टीम तुम्हाला मदत करण्यास तयार आहे.", "otherWays": "आमच्यापर्यंत पोहोचण्याचे इतर मार्ग", "email": "ईमेल:", "phone": "फोन:", "office": "कार्यालय:" },
+    "contactForm": { "thankYou": "धन्यवाद!", "successMessage": "आम्हाला तुमची चौकशी मिळाली आहे.", "name": "नाव *", "namePlaceholder": "तुमचे पूर्ण नाव", "nameRequired": "नाव आवश्यक आहे", "email": "ईमेल *", "emailPlaceholder": "your@email.com", "emailRequired": "ईमेल आवश्यक आहे", "phone": "फोन", "phonePlaceholder": "+91-9876543210", "company": "कंपनी / शेताचे नाव", "companyPlaceholder": "तुमचे शेत किंवा संस्था", "message": "संदेश", "messagePlaceholder": "आम्ही तुम्हाला कशी मदत करू शकतो?", "submitting": "सबमिट होत आहे…", "submit": "चौकशी पाठवा", "failed": "सबमिट करण्यात अयशस्वी.", "emailInvalid": "अवैध ईमेल पत्ता", "phoneInvalid": "अवैध फोन नंबर" },
+    "cropDiscovery": { "title": "पीक शोध", "subtitle": "शेतकऱ्यांसाठी प्रतिसादात्मक पीक नियोजन", "description": "माहिती शोधण्यासाठी आमची पीक सूची ब्राउझ करा.", "loading": "लोड होत आहे…", "fallback": "या पिकाबद्दल अधिक जाणून घ्या.", "empty": "अद्याप कोणतीही पिके उपलब्ध नाहीत." },
+    "cropDetail": { "failed": "पीक लोड करण्यात अयशस्वी", "back": "पिकांवर परत जा", "notFound": "पीक सापडले नाही", "notFoundMessage": "तुम्ही शोधत असलेले पीक अस्तित्वात नाही.", "info": "पीक माहिती", "noDescription": "कोणतेही वर्णन उपलब्ध नाही.", "relatedProducts": "संबंधित उत्पादने", "productsAvailable": "उत्पादने उपलब्ध", "noProducts": "या पिकासाठी अद्याप कोणतीही उत्पादने नाहीत.", "contactForPrice": "किंमतीसाठी संपर्क साधा", "viewDetails": "तपशील पहा" },
+    "diseaseDiscovery": { "title": "रोग शोध", "subtitle": "पसरण्यापूर्वी पीक हानी टाळा", "description": "समस्या ओळखण्यासाठी आमची रोग सूची ब्राउझ करा.", "loading": "लोड होत आहे…", "fallback": "या रोगाबद्दल अधिक जाणून घ्या.", "empty": "अद्याप कोणतेही रोग उपलब्ध नाहीत." },
+    "diseaseDetail": { "failed": "रोग लोड करण्यात अयशस्वी", "back": "रोगांवर परत जा", "notFound": "रोग सापडला नाही", "notFoundMessage": "तुम्ही शोधत असलेला रोग अस्तित्वात नाही.", "info": "रोग माहिती", "symptoms": "लक्षणे", "relatedProducts": "संबंधित उत्पादने", "productsAvailable": "उत्पादने उपलब्ध", "noProducts": "या रोगासाठी अद्याप कोणतीही उत्पादने नाहीत.", "contactForPrice": "किंमतीसाठी संपर्क साधा", "viewDetails": "तपशील पहा" },
+    "categories": { "title": "श्रेण्या", "subtitle": "आम्ही समर्थन करत असलेल्या पीक श्रेण्या", "featured": "वैशिष्ट्यीकृत" },
+    "categoriesPage": { "heroSubtitle": "श्रेणीनुसार व्यवस्थित आमच्या कृषी उपायांची संपूर्ण श्रेणी ब्राउझ करा.", "productRange": "उत्पाद श्रेणी", "specialisation": "अवशेष-मुक्त शेतीमध्ये विशेषज्ञता", "multipleVariants": "अनेक व्हेरिएंट", "items": [
+        { "title": "जैव खते", "description": "उन्नत जैव-आधारित पोषक उपाय.", "productCount": "अनेक व्हेरिएंट" },
+        { "title": "जैव कीटकनाशके / कवकनाशके", "description": "प्रभावी अवशेष-मुक्त कीट नियंत्रण.", "productCount": "अनेक व्हेरिएंट" },
+        { "title": "कंसोर्शियम उत्पादने", "description": "सहक्रियात्मक सूक्ष्मजीव कंसोर्शियम.", "productCount": "अनेक व्हेरिएंट" },
+        { "title": "तरल पोषण", "description": "वापरायोग्य तरल सूत्रे.", "productCount": "अनेक व्हेरिएंट" },
+        { "title": "सेंद्रिय इनपुट", "description": "प्रमाणित सेंद्रिय माती संशोधन.", "productCount": "अनेक व्हेरिएंट" }
+      ] },
+    "blog": { "title": "ब्लॉग", "subtitle": "आधुनिक शेतीसाठी अंतर्दृष्टी" },
+    "blogPage": { "entries": [{ "title": "लवचिक हंगामासाठी कापणी नियोजन", "description": "धोका कमी करण्यासाठी आणि निकाल सुधारण्यासाठी व्यावहारिक रणनीती." }, { "title": "शाश्वत खेत संरक्षण पद्धती", "description": "एकत्रित दृष्टिकोन उत्पादन आणि माती आरोग्य कसे जतन करतात." }, { "title": "वितरण भागीदारी निर्माण करणे", "description": "विश्वसनीय लॉजिस्टिक्स भागीदारांसह आपले पुरवठा नेटवर्क वाढवा." }] },
+    "blogDetailPage": { "title": "ब्लॉग तपशील", "placeholder": "हा ब्लॉग तपशील प्लेसहोल्डर आहे." },
+    "contactPage": { "sendMessage": "आम्हाला संदेश पाठवा", "businessHours": "व्यापारिक तास", "hours": "सोम – शनि, सकाळी 9:00 – सायंकाळी 6:00", "distributorInquiries": "वितरक आणि डीलर चौकशीसाठी", "distributorDescription": "वितरण भागीदार बनण्यात रुची आहे? सहभागिता संधींसाठी आमच्या टीमशी संपर्क साधा." },
+    "placeholders": { "stateProducts": { "title": "राज्य उत्पादने", "placeholder": "हे राज्य उत्पादन प्लेसहोल्डर आहे." }, "cropProducts": { "title": "पीक उत्पादने", "placeholder": "हे पीक उत्पादन प्लेसहोल्डर आहे." }, "diseaseProducts": { "title": "रोग उत्पादने", "placeholder": "हे रोग उत्पादन प्लेसहोल्डर आहे." } },
+    "distributor": { "title": "वितरक लोकेटर", "subtitle": "तुमच्या जवळ विश्वसनीय भागीदार शोधा", "intro": "प्रमाणित वितरक शोधा.", "searchPlaceholder": "नाव, कंपनी, शहर किंवा राज्यानुसार शोधा…", "clear": "साफ करा", "empty": "कोणतेही वितरक सापडले नाहीत", "emptyMessage": "वेगळी शोध संज्ञा वापरून पहा." }
+  },
+  "loading": "लोड होत आहे...",
+  "retry": "पुन्हा प्रयत्न करा",
+  "imported": "आयातित",
+  "featured": "वैशिष्ट्यीकृत",
+  "all": "सर्व",
+  "count": { "product": "उत्पाद", "products": "उत्पादने", "found": "सापडले" },
+  "confirmDialog": { "confirm": "पुष्टी करा", "cancel": "रद्द करा", "close": "बंद करा", "title": "पुष्टी करा" }
 }

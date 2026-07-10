@@ -1,69 +1,110 @@
 {
   "hero": {
-    "badge": "कृषि बुद्धिमत्ता",
-    "title": "लचीली, लाभदायक फसल के लिए आधुनिक खेती।",
-    "subtitle": "सिनर्जी क्रॉप सॉल्यूशंस फसल विज्ञान, डिजिटल अंतर्दृष्टि और वितरण विशेषज्ञता को मिलाकर किसानों को हर मौसम में सशक्त बनाता है।",
-    "quote": "देशभर के किसानों द्वारा विश्वसनीय। हम खेतों को टिकाऊ तरीके से बढ़ने में मदद करते हैं।",
+    "badge": "अवशेष-मुक्त कृषि",
+    "title": "स्वस्थ फसलों के लिए जैव-आधारित फसल सुरक्षा।",
+    "subtitle": "सिनर्जी क्रॉप सॉल्यूशंस नवीन जैव उर्वरक, जैव कीटनाशक और अवशेष-मुक्त फसल सुरक्षा उत्पाद प्रदान करता है जो किसानों को भविष्य की पीढ़ियों के लिए भूमि की रक्षा करते हुए अधिक उत्पादन करने में मदद करते हैं।",
+    "quote": "अवशेष-मुक्त कृषि के लिए प्रतिबद्ध। भारत भर के किसानों द्वारा विश्वसनीय।",
     "visual": "नवाचार के माध्यम से फसल बुद्धिमत्ता"
   },
   "carousel": {
-    "region": "Featured images",
-    "controls": "Slide controls",
-    "slide": "Slide",
-    "of": "of",
-    "goTo": "Go to slide"
+    "region": "चयनित चित्र",
+    "controls": "स्लाइड नियंत्रण",
+    "slide": "स्लाइड",
+    "of": "में से",
+    "goTo": "स्लाइड पर जाएँ"
   },
   "about": {
-    "label": "About Synergy",
-    "title": "Driving Residue-Free Agriculture Across India",
-    "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom. Our team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.",
-    "cta": "Learn more about us"
+    "label": "सिनर्जी के बारे में",
+    "title": "भारत भर में अवशेष-मुक्त कृषि को बढ़ावा देना",
+    "body": "सिनर्जी क्रॉप सॉल्यूशंस एक भारतीय कृषि इनपुट कंपनी है जो जैव उर्वरक, जैव कीटनाशक और अवशेष-मुक्त फसल सुरक्षा उत्पादों के विकास और वितरण पर केंद्रित है। भारतीय कृषि को बदलने के दृष्टिकोण के साथ स्थापित, हम आधुनिक फसल विज्ञान और पारंपरिक कृषि ज्ञान के बीच की खाई को पाटते हैं।",
+    "cta": "हमारे बारे में और जानें"
   },
+  "aboutStats": [
+    { "value": "2018", "label": "पुणे में स्थापित" },
+    { "value": "5+", "label": "उत्पाद श्रेणियाँ" },
+    { "value": "12+", "label": "राज्य कवरेज" },
+    { "value": "R&D", "label": "निरंतर नवाचार" }
+  ],
   "trust": {
-    "label": "Why Farmers Trust Us",
-    "title": "Built for the Challenges of Modern Agriculture",
+    "label": "किसान हम पर क्यों भरोसा करते हैं",
+    "title": "आधुनिक कृषि की चुनौतियों के लिए निर्मित",
     "stats": [
-      { "value": "100%", "label": "Bio-Based Solutions — formulated from natural sources with zero chemical residues." },
-      { "value": "Pan-India", "label": "Distribution network serving farmers across multiple states." },
-      { "value": "Residue-Free", "label": "Guarantee — every product meets rigorous quality standards." },
-      { "value": "Trusted", "label": "By thousands of growers for consistent quality and visible results." }
+      { "value": "100%", "label": "जैव-आधारित समाधान — प्राकृतिक स्रोतों से बने, शूनय रासायनिक अवशेष।" },
+      { "value": "पैन-इंडिया", "label": "कई राज्यों में किसानों की सेवा करने वाला वितरण नेटवर्क।" },
+      { "value": "अवशेष-मुक्त", "label": "गारंटी — हर उत्पाद कठोर गुणवत्ता मानकों को पूरा करता है।" },
+      { "value": "विश्वसनीय", "label": "निरंतर गुणवत्ता और दिखने योग्य परिणामों के लिए हजारों किसानों द्वारा भरोसेमंद।" }
     ]
   },
   "categories": {
-    "label": "Product Categories",
-    "title": "Specialised in Residue-Free Agriculture",
+    "label": "उत्पाद श्रेणियाँ",
+    "title": "अवशेष-मुक्त कृषि में विशेषज्ञता",
     "cards": [
-      { "title": "Bio Fertilizers", "description": "Advanced bio-based nutrient solutions that enrich soil health and boost crop yields naturally." },
-      { "title": "Bio Pesticides / Fungicides", "description": "Effective residue-free pest and disease control products derived from natural sources." },
-      { "title": "Consortia Products", "description": "Synergistic microbial consortia for enhanced soil fertility, plant growth, and stress tolerance." },
-      { "title": "Liquid Nutrition", "description": "Ready-to-use liquid formulations for targeted nutrient delivery and rapid crop response." },
-      { "title": "Organic Inputs", "description": "Certified organic soil amendments and natural inputs for sustainable farming systems." }
+      { "title": "जैव उर्वरक", "description": "मिट्टी के स्वास्थ्य को समृद्ध करने और फसल उत्पादन को प्राकृतिक रूप से बढ़ाने वाले उन्नत जैव-आधारित पोषक तत्व समाधान।" },
+      { "title": "जैव कीटनाशक / कवकनाशक", "description": "प्राकृतिक स्रोतों से प्राप्त प्रभावी अवशेष-मुक्त कीट और रोग नियंत्रण उत्पाद।" },
+      { "title": "कंसोर्टिया उत्पाद", "description": "बेहतर मिट्टी की उर्वरता, पौधे की वृद्धि और तनाव सहनशीलता के लिए सहक्रियात्मक सूक्ष्मजीव कंसोर्टिया।" },
+      { "title": "तरल पोषण", "description": "लक्षित पोषक तत्व वितरण और तेज़ फसल प्रतिक्रिया के लिए तैयार-उपयोग तरल तैयारियाँ।" },
+      { "title": "जैविक इनपुट", "description": "टिकाऊ कृषि प्रणालियों के लिए प्रमाणित जैविक मिट्टी सुधार और प्राकृतिक इनपुट।" }
     ]
   },
   "featured": {
-    "label": "Featured Products",
-    "title": "Our Premium Product Range"
+    "label": "चयनित उत्पाद",
+    "title": "हमारी प्रीमियम उत्पाद श्रेणी"
   },
   "innovation": {
-    "label": "Technology & Innovation",
-    "title": "Bringing Science to the Soil",
-    "body": "Our research and development team works continuously to develop new-generation crop protection products that are safe, effective, and residue-free. We combine agronomic research with field-level insights to create solutions that address the real challenges faced by Indian farmers. From microbial consortia to advanced liquid nutrition, every product is formulated using cutting-edge agricultural science."
+    "label": "प्रौद्योगिकी और नवाचार",
+    "title": "मिट्टी तक विज्ञान लाना",
+    "body": "हमारी अनुसंधान और विकास टीम लगातार नई पीढ़ी के फसल सुरक्षा उत्पाद विकसित करने का काम करती है जो सुरक्षित, प्रभावी और अवशेष-मुक्त हैं। हम कृषि अनुसंधान और क्षेत्र-स्तरीय अंतर्दृष्टि को जोड़कर भारतीय किसानों की वास्तविक चुनौतियों का समाधान करते हैं।"
+  },
+  "tech": {
+    "label": "हमारी प्रौद्योगिकियाँ",
+    "title": "अत्याधुनिक कृषि विज्ञान",
+    "items": [
+      { "title": "जापानी लायोफिलाइज़ेशन", "desc": "अधिकतम प्रभावशीलता के लिए उच्च CFU गिनती को संरक्षित करने वाली उन्नत फ्रीज-सुखाने की तकनीक।" },
+      { "title": "उच्च CFU तैयारियाँ", "diverse": "विविध मिट्टी की स्थितियों में मजबूत प्रदर्शन सुनिश्चित करने वाली सांद्रित सूक्ष्मजीव गिनती।", "desc": "विविध मिट्टी की स्थितियों में मजबूत प्रदर्शन सुनिश्चित करने वाली सांद्रित सूक्ष्मजीव गिनती।" },
+      { "title": "जैविक तैयारियाँ", "desc": "सुरक्षित कृषि के लिए शूनय रासायनिक अवशेषों के साथ 100% जैव-आधारित संरचनाएँ।" },
+      { "title": "जैव-एन्हांसर और कंसोर्टिया", "desc": "पौधे की वृद्धि और मिट्टी के पुनर्जनन को बढ़ाने वाले सहक्रियात्मक सूक्ष्मजीव मिश्रण।" }
+    ]
+  },
+  "capabilities": {
+    "items": [
+      { "value": "50+", "label": "जैव-आधारित उत्पाद" },
+      { "value": "पैन-इंडिया", "label": "वितरण नेटवर्क" },
+      { "value": "100%", "label": "अवशेष-मुक्त गारंटी" },
+      { "value": "10K+", "label": "विश्वसनीय किसान" }
+    ]
+  },
+  "coverage": {
+    "label": "हमारी पहुँच",
+    "title": "पैन-इंडिया वितरण नेटवर्क",
+    "description": "पंजाब के उपजाऊ खेतों से लेकर कर्नाटक के बागानों तक, हमारे उत्पाद वितरकों और डीलरों के मजबूत नेटवर्क के माध्यम से भारत भर के किसानों तक पहुँचते हैं।",
+    "states": ["महाराष्ट्र", "कर्नाटक", "मध्य प्रदेश", "राजस्थान", "उत्तर प्रदेश", "गुजरात", "तेलंगाना", "आंध्र प्रदेश"],
+    "presence": "पैन-इंडिया उपस्थिति"
   },
   "certifications": {
-    "label": "Licences & Certifications",
-    "title": "Trusted standards for every field",
-    "empty": "No certifications yet."
+    "label": "लाइसेंस और प्रमाणपत्र",
+    "title": "हर खेत के लिए विश्वसनीय मानक",
+    "empty": "अभी तक कोई प्रमाणपत्र नहीं।"
   },
   "testimonials": {
-    "label": "What Growers Say",
-    "title": "Real results from field leaders",
-    "empty": "No testimonials yet."
+    "label": "किसान क्या कहते हैं",
+    "title": "खेत के नेताओं से वास्तविक परिणाम",
+    "empty": "अभी तक कोई प्रशंसापत्र नहीं।"
   },
   "cta": {
-    "label": "Partner with Synergy",
-    "title": "Ready to grow with confidence?",
-    "text": "Switch to bio-based, residue-free crop protection today. Our team is ready to help you build a more resilient and profitable crop program.",
-    "contact": "Contact our team",
-    "explore": "Explore products"
-  }
+    "label": "सिनर्जी के साथ साझेदारी करें",
+    "title": "आत्मविश्वास के साथ बढ़ने के लिए तैयार?",
+    "text": "आज ही जैव-आधारित, अवशेष-मुक्त फसल सुरक्षा अपनाएँ। हमारी टीम आपको अधिक लचीला और लाभदायक फसल कार्यक्रम बनाने में मदद करने के लिए तैयार है।",
+    "contact": "हमारी टीम से संपर्क करें",
+    "explore": "उत्पाद देखें"
+  },
+  "loading": "लोड हो रहा है...",
+  "detail": {
+    "viewDetails": "विवरण देखें"
+  },
+  "carouselPlaceholder": {
+    "farmers": "हरे-भरे खेतों में काम करते किसान",
+    "bioProducts": "जैव-आधारित फसल सुरक्षा उत्पाद",
+    "harvest": "स्वस्थ, अवशेष-मुक्त फसल"
+  },
+  "viewProducts": "{{title}} उत्पाद देखें"
 }

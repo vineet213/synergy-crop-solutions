@@ -7,7 +7,7 @@ import { usePublicCertifications } from "../../hooks/useCertifications.js";
 const DEFAULT_IMAGE = "/client-assets/default-cert.png";
 
 export default function CertificationsPage() {
-  useSEO({ title: "Certifications", description: "Trusted standards for every field. View our certifications including quality assurance, sustainable practices, and traceability credentials.", canonical: "/certifications" });
+  useSEO({ title: t("page.title"), description: t("page.description"), canonical: "/certifications" });
   const { t } = useTranslation("certifications");
   const { certifications, loading, error } = usePublicCertifications();
 

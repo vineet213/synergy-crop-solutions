@@ -1,15 +1,23 @@
 ﻿import { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Search, ArrowRight, Sprout, MapPin, Droplets, FlaskConical } from "lucide-react";
+import { Search, ArrowRight, Sprout, MapPin, Droplets, FlaskConical, Zap } from "lucide-react";
 import { usePublicProducts } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
+import { formatCategory, resolveMethodIcon } from "../../utils/formatters.js";
 
-const methodIcons = { "Soil Application": <Sprout size={12} />, "Foliar Spray": <Droplets size={12} />, "Seed Treatment": <FlaskConical size={12} /> };
+const METHOD_ICONS = {
+  soil: <Sprout size={12} />,
+  foliar: <Droplets size={12} />,
+  seed: <FlaskConical size={12} />,
+  drip: <Droplets size={12} />,
+  multi: <Zap size={12} />,
+};
 
 export default function ProductsPage() {
-  useSEO({ title: "Products", canonical: "/products" });
   const { t } = useTranslation("products");
+  const { t: tc } = useTranslation("common");
+  useSEO({ title: t("title"), canonical: "/products" });
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
@@ -83,7 +91,7 @@ export default function ProductsPage() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`prem-filter-pill ${cat === selectedCategory ? "active" : ""}`}
                 >
-                  {cat}
+                  {cat === "All" ? tc("all") : formatCategory(cat, t)}
                 </button>
               ))}
               {selectedCategory !== "All" && (
@@ -100,7 +108,7 @@ export default function ProductsPage() {
           </div>
 
           <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", margin: "0 0 0.5rem" }}>
-            {count} {count === 1 ? "product" : "products"} found
+            {count} {count === 1 ? tc("count.product") : tc("count.products")} {tc("count.found")}
           </p>
         </div>
       </section>
@@ -118,7 +126,7 @@ export default function ProductsPage() {
             <div style={{ textAlign: "center", padding: "4rem 0" }}>
               <h2 style={{ margin: "0 0 0.5rem", color: "var(--text)" }}>{t("errors.load")}</h2>
               <p style={{ margin: "0 0 1.5rem", color: "var(--text-muted)" }}>{error}</p>
-              <button type="button" className="button-base button-primary" onClick={reload}>Retry</button>
+              <button type="button" className="button-base button-primary" onClick={reload}>{tc("retry")}</button>
             </div>
           ) : count === 0 ? (
             <div style={{ textAlign: "center", padding: "4rem 0" }}>
@@ -131,7 +139,7 @@ export default function ProductsPage() {
               {/* Featured products row */}
               {featuredProducts.length > 0 && (
                 <div style={{ marginBottom: "3rem" }}>
-                  <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--brand-strong)", margin: "0 0 1rem" }}>Featured</h3>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--brand-strong)", margin: "0 0 1rem" }}>{tc("featured")}</h3>
                   <div className="prem-feat-prod-row">
                     {featuredProducts.map((p) => {
                       const img = imageUrl(p.images?.[0]);
@@ -143,7 +151,7 @@ export default function ProductsPage() {
                             </div>
                           )}
                           <div className="prem-feat-prod-body">
-                            <span className="prem-feat-prod-badge">{p.category}</span>
+                            <span className="prem-feat-prod-badge">{formatCategory(p.category, t)}</span>
                             <h3 className="prem-feat-prod-name">{p.name}</h3>
                             {p.shortDescription && <p className="prem-feat-prod-desc">{p.shortDescription}</p>}
                           </div>
@@ -162,8 +170,8 @@ export default function ProductsPage() {
                 {(regularProducts.length > 0 ? regularProducts : filteredProducts).map((p) => {
                   const img = imageUrl(p.images?.[0]);
                   const crops = p.targetCrops?.slice(0, 3) || [];
-                  const method = p.applicationMethod;
-                  const MethodIcon = methodIcons[method] || null;
+                  const methodKey = resolveMethodIcon(p.applicationMethod);
+                  const MethodIcon = methodKey ? METHOD_ICONS[methodKey] : null;
                   return (
                     <Link key={p._id} to={`/products/${p.slug}`} className="prem-prod-card no-underline">
                       <div className="prem-prod-card-img">
@@ -174,8 +182,9 @@ export default function ProductsPage() {
                             <Sprout size={32} strokeWidth={1} />
                           </div>
                         )}
-                        <span className="prem-prod-card-cat">{p.category}</span>
-                        {p.isImported && <span className="prem-prod-card-imported">Imported</span>}
+                        <span className="prem-prod-card-cat">{formatCategory(p.category, t)}</span>
+                        {MethodIcon && <span className="prem-prod-card-method">{MethodIcon}</span>}
+                        {p.isImported && <span className="prem-prod-card-imported">{tc("imported")}</span>}
                       </div>
                       <div className="prem-prod-card-body">
                         <h3 className="prem-prod-card-name">{p.name}</h3>

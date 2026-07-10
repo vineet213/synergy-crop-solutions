@@ -10,6 +10,7 @@ import {
   Calendar, HelpCircle, Bug, Beaker, Maximize2
 } from "lucide-react";
 import useEnrichedProduct from "../../hooks/useEnrichedProduct.js";
+import { formatCategory } from "../../utils/formatters.js";
 
 function imageUrl(raw) {
   if (!raw) return null;
@@ -73,7 +74,7 @@ export default function ProductDetail({ product }) {
                 <span className="pd-gallery-zoom"><Maximize2 size={16} /></span>
               </div>
               {images.length > 1 && (
-                <div className="pd-gallery-thumbs" role="tablist" aria-label="Product image thumbnails">
+                <div className="pd-gallery-thumbs" role="tablist" aria-label={t("detail.productImageThumbnails")}>
                   {images.map((url, i) => (
                     <button
                       key={i}
@@ -82,7 +83,7 @@ export default function ProductDetail({ product }) {
                       className={`pd-gallery-thumb ${i === selectedImg ? "active" : ""}`}
                       onClick={() => setSelectedImg(i)}
                     >
-                      <img src={url} alt={`${p.name} view ${i + 1}`} />
+                      <img src={url} alt={t("detail.thumbnailAlt", { name: p.name, index: i + 1 })} />
                     </button>
                   ))}
                 </div>
@@ -98,7 +99,7 @@ export default function ProductDetail({ product }) {
 
         {/* RIGHT: Info */}
         <div className="pd-info-v2">
-          <span className="pd-info-badge">{p.category}</span>
+          <span className="pd-info-badge">{formatCategory(p.category, t)}</span>
           <h1 className="pd-info-name">{p.name}</h1>
           {p.scientificName && (
             <p className="pd-info-sci"><em>{p.scientificName}</em></p>
@@ -118,7 +119,7 @@ export default function ProductDetail({ product }) {
               <span className="pd-info-cell-icon"><Tag size={16} /></span>
               <div className="pd-info-cell-body">
                 <span className="pd-info-cell-label">{t("detail.category")}</span>
-                <span className="pd-info-cell-value">{p.category}</span>
+                <span className="pd-info-cell-value">{formatCategory(p.category, t)}</span>
               </div>
             </div>
             {p.productType && (
@@ -142,16 +143,16 @@ export default function ProductDetail({ product }) {
           </div>
 
           {/* USPs */}
-          {p.usps && p.usps.length > 0 && (
+          {p.metadata?.usp && p.metadata.usp.length > 0 && (
             <div className="pd-usps">
-              {p.usps.map((usp, i) => <span key={i} className="pd-usp">{usp}</span>)}
+              {p.metadata.usp.map((usp, i) => <span key={i} className="pd-usp">{usp}</span>)}
             </div>
           )}
 
           {/* CTA */}
           <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.5rem", flexWrap: "wrap" }}>
             <Link to="/contact" className="button-base button-primary">
-              Enquire Now <ArrowRight size={16} style={{ marginLeft: "0.35rem" }} />
+              {t("detail.enquireNow")} <ArrowRight size={16} style={{ marginLeft: "0.35rem" }} />
             </Link>
             {product.brochure && (
               <a href={product.brochure} target="_blank" rel="noopener noreferrer" className="button-base button-secondary">
@@ -218,13 +219,13 @@ export default function ProductDetail({ product }) {
               <span className="pd-section-icon"><FlaskConical size={20} /></span>
               <h2 className="pd-section-title">{t("detail.composition")}</h2>
             </div>
-            <div className="pd-comp-table-wrap">
+                <div className="pd-comp-table-wrap">
               <table className="pd-comp-table">
                 <tbody>
-                  <tr><td className="pd-comp-label">Composition</td><td className="pd-comp-value">{p.composition}</td></tr>
-                  {p.scientificName && <tr><td className="pd-comp-label">Scientific Name</td><td className="pd-comp-value"><em>{p.scientificName}</em></td></tr>}
-                  {p.cfu && <tr><td className="pd-comp-label">CFU Count</td><td className="pd-comp-value">{p.cfu}</td></tr>}
-                  {p.productType && <tr><td className="pd-comp-label">Formulation</td><td className="pd-comp-value">{p.productType}</td></tr>}
+                  <tr><td className="pd-comp-label">{t("detail.compositionLabel")}</td><td className="pd-comp-value">{p.composition}</td></tr>
+                  {p.scientificName && <tr><td className="pd-comp-label">{t("detail.scientificNameLabel")}</td><td className="pd-comp-value"><em>{p.scientificName}</em></td></tr>}
+                  {p.cfu && <tr><td className="pd-comp-label">{t("detail.cfuCountLabel")}</td><td className="pd-comp-value">{p.cfu}</td></tr>}
+                  {p.productType && <tr><td className="pd-comp-label">{t("detail.formulationLabel")}</td><td className="pd-comp-value">{p.productType}</td></tr>}
                 </tbody>
               </table>
             </div>
@@ -303,7 +304,7 @@ export default function ProductDetail({ product }) {
                 <span className="pd-section-icon"><Sprout size={20} /></span>
                 <h2 className="pd-section-title">{t("detail.targetCrops")}</h2>
               </div>
-              <p className="pd-section-p" style={{ marginBottom: "1rem" }}>Recommended for the following crops:</p>
+              <p className="pd-section-p" style={{ marginBottom: "1rem" }}>{t("detail.recommendedForCrops")}</p>
               <div className="pd-tags">
                 {p.targetCrops.map((c, i) => <span key={i} className="pd-tag">{c}</span>)}
               </div>
@@ -332,14 +333,14 @@ export default function ProductDetail({ product }) {
       </div>
 
       {/* ===== FAQ ACCORDION ===== */}
-      {p.faqs && p.faqs.length > 0 && (
+      {p.metadata?.faqs && p.metadata.faqs.length > 0 && (
         <section className="pd-section" style={{ marginTop: "1.5rem" }}>
           <div className="pd-section-head">
             <span className="pd-section-icon"><HelpCircle size={20} /></span>
             <h2 className="pd-section-title">{t("detail.frequentlyAskedQuestions") || "Frequently Asked Questions"}</h2>
           </div>
           <div className="pd-faqs">
-            {p.faqs.map((faq, i) => (
+            {p.metadata.faqs.map((faq, i) => (
               <div key={i} className={`pd-faq ${openFaq === i ? "open" : ""}`}>
                 <button className="pd-faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                   <span>{faq.question}</span>
@@ -366,7 +367,7 @@ export default function ProductDetail({ product }) {
           <div className="pd-video-wrap">
             <iframe
               src={p.videoUrl}
-              title={`${p.name} video`}
+              title={t("detail.videoTitle", { name: p.name })}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               loading="lazy"
@@ -387,14 +388,14 @@ export default function ProductDetail({ product }) {
             <div>
               <p className="pd-dl-title">{t("detail.downloadBrochure")}</p>
               <p className="pd-dl-desc">
-                {product.brochure ? "Download product brochure for detailed specifications" : t("detail.brochureNotAvailable")}
+                {product.brochure ? t("detail.downloadDescription") : t("detail.brochureNotAvailable")}
               </p>
             </div>
           </div>
           {product.brochure ? (
             <a href={product.brochure} target="_blank" rel="noopener noreferrer" className="button-base button-primary">
               <Download size={16} style={{ marginRight: "0.35rem" }} />
-              Download
+              {t("detail.download")}
             </a>
           ) : (
             <button type="button" className="button-base button-secondary" disabled>{t("detail.downloadBrochure")}</button>
@@ -405,7 +406,7 @@ export default function ProductDetail({ product }) {
       {/* ===== RELATED PRODUCTS ===== */}
       {relatedProducts.length > 0 && (
         <section style={{ marginTop: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--brand-strong)", margin: "0 0 1rem" }}>Related Products</h2>
+          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--brand-strong)", margin: "0 0 1rem" }}>{t("detail.relatedProducts")}</h2>
           <div className="pd-related">
             {relatedProducts.map((rp) => (
               <Link key={rp._id || rp.slug} to={`/products/${rp.slug}`} className="pd-related-card no-underline">
@@ -415,7 +416,7 @@ export default function ProductDetail({ product }) {
                   </div>
                 )}
                 <div className="pd-related-body">
-                  <span className="pd-related-cat">{rp.category}</span>
+                  <span className="pd-related-cat">{formatCategory(rp.category, t)}</span>
                   <h3 className="pd-related-name">{rp.name}</h3>
                 </div>
               </Link>
@@ -428,16 +429,16 @@ export default function ProductDetail({ product }) {
       <section style={{ marginTop: "2.5rem" }}>
         <div className="prem-cta-card" style={{ padding: "2.5rem" }}>
           <header className="prem-header center">
-            <span className="prem-header__label" style={{ color: "rgba(255,255,255,0.6)" }}>Interested in this product?</span>
-            <h2 className="prem-header__title" style={{ fontSize: "1.5rem" }}>Get detailed information and pricing</h2>
-            <p className="prem-header__text">Our team can provide technical specifications, field trial data, and distributor information.</p>
+            <span className="prem-header__label" style={{ color: "rgba(255,255,255,0.6)" }}>{t("detail.ctaLabel")}</span>
+            <h2 className="prem-header__title" style={{ fontSize: "1.5rem" }}>{t("detail.ctaTitle")}</h2>
+            <p className="prem-header__text">{t("detail.ctaDescription")}</p>
           </header>
           <div className="prem-cta-actions">
             <Link to="/contact" className="button-base button-primary">
-              Contact Our Team <ArrowRight size={16} style={{ marginLeft: "0.35rem" }} />
+              {t("detail.enquireNow")} <ArrowRight size={16} style={{ marginLeft: "0.35rem" }} />
             </Link>
             <Link to="/distributors" className="button-base button-secondary" style={{ borderColor: "rgba(255,255,255,0.3)", color: "var(--text-inverse)" }}>
-              Find a Distributor
+              {t("detail.findDistributor")}
             </Link>
           </div>
         </div>
@@ -448,7 +449,7 @@ export default function ProductDetail({ product }) {
         <div className="pd-sticky-cta">
           <Link to="/contact" className="pd-sticky-btn">
             <Phone size={16} />
-            Enquire Now
+            {t("detail.stickyEnquireNow")}
           </Link>
           <button className="pd-sticky-close" onClick={() => setShowSticky(false)}><X size={16} /></button>
         </div>

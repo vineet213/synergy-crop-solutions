@@ -1,69 +1,50 @@
 {
-  "hero": {
-    "badge": "कृषी बुद्धिमत्ता",
-    "title": "लवचिक, फायदेशीर कापणीसाठी आधुनिक शेती.",
-    "subtitle": "सिनर्जी क्रॉप सोल्यूशन्स पीक विज्ञान, डिजिटल अंतर्दृष्टी आणि वितरण कौशल्य एकत्र करून प्रत्येक हंगामात शेतकऱ्यांना सक्षम करते.",
-    "quote": "देशभरातील शेतकऱ्यांद्वारे विश्वसनीय. आम्ही शेतांना टिकाऊपणे वाढण्यास मदत करतो.",
-    "visual": "नवोपक्रमाद्वारे पीक बुद्धिमत्ता"
+  "hero": { "badge": "अवशेष-मुक्त शेती", "title": "निरोगी कापण्यांसाठी जैव-आधारित पीक संरक्षण.", "subtitle": "सिनर्जी क्रॉप सोल्यूशन्स नवीन जैव खते, जैव कीटकनाशके आणि अवशेष-मुक्त पीक संरक्षण उत्पादने प्रदान करते.", "quote": "अवशेष-मुक्त शेतीसाठी वचनबद्ध. देशभरातील शेतकऱ्यांद्वारे विश्वसनीय.", "visual": "नवोपक्रमाद्वारे पीक बुद्धिमत्ता" },
+  "carousel": { "region": "निवडलेले चित्रे", "controls": "स्लाइड नियंत्रण", "slide": "स्लाइड", "of": "मधील", "goTo": "स्लाइडवर जा" },
+  "about": { "label": "सिनर्जीबद्दल", "title": "भारतभर अवशेष-मुक्त शेतीला प्रोत्साहन", "body": "सिनर्जी क्रॉप सोल्यूशन्स ही एक भारतीय कृषी इनपुट कंपनी आहे जी जैव खते, जैव कीटकनाशके आणि अवशेष-मुक्त पीक संरक्षण उत्पादनांच्या विकास आणि वितरणावर केंद्रित आहे.", "cta": "आमच्याबद्दल अधिक जाणून घ्या" },
+  "aboutStats": [
+    { "value": "2018", "label": "पुण्यात स्थापित" },
+    { "value": "5+", "label": "उत्पाद श्रेण्या" },
+    { "value": "12+", "label": "राज्य कव्हरेज" },
+    { "value": "R&D", "label": "सतत नवोन्मेष" }
+  ],
+  "trust": { "label": "शेतकरी आम्हावर का विश्वास ठेवतात", "title": "आधुनिक शेतीच्या आव्हानांसाठी तयार", "stats": [
+    { "value": "100%", "label": "जैव-आधारित उपाय — शून्य रासायनिक अवशेष." },
+    { "value": "पॅन-इंडिया", "label": "अनेक राज्यांमध्ये शेतकऱ्यांना सेवा देणारे वितरण नेटवर्क." },
+    { "value": "अवशेष-मुक्त", "label": "हमी — प्रत्येक उत्पादन कडक गुणवत्ता मानके पूर्ण करते." },
+    { "value": "विश्वसनीय", "label": "सातत्याच्या गुणवत्तेसाठी हजारो शेतकऱ्यांद्वारा विश्वसनीय." }
+  ] },
+  "categories": { "label": "उत्पाद श्रेण्या", "title": "अवशेष-मुक्त शेतीमध्ये विशेषज्ञता", "cards": [
+    { "title": "जैव खते", "description": "मातीचे आरोग्य समृद्ध करणारे आणि पीक उत्पादन वाढवणारे उन्नत जैव-आधारित पोषक तत्व उपाय." },
+    { "title": "जैव कीटकनाशके / कवकनाशके", "description": "नैसर्गिक स्रोतांमधून प्राप्त प्रभावी अवशेष-मुक्त कीट आणि रोग नियंत्रण उत्पादने." },
+    { "title": "कंसोर्शियम उत्पादने", "description": "सुधारित मातीची सुपीकता, वनस्पती वाढ आणि तणाव सहनशीलतेसाठी सहक्रियात्मक सूक्ष्मजीव कंसोर्शियम." },
+    { "title": "तरल पोषण", "description": "लक्षित पोषक तत्व वितरणासाठी तयार-वापरायोग्य तरल तयारी." },
+    { "title": "सेंद्रिय इनपुट", "description": "शाश्वत शेती प्रणालींसाठी प्रमाणित सेंद्रिय माती सुधारणा." }
+  ] },
+  "featured": { "label": "विशेष उत्पादने", "title": "आमच्या प्रीमियम उत्पाद श्रेणी" },
+  "innovation": { "label": "तंत्रज्ञान आणि नवोन्मेष", "title": "मातीपर्यंत शास्त्र आणणे", "body": "आमच्या संशोधन आणि विकास टीम सतत नवीन पिढीची पीक संरक्षण उत्पादने विकसित करते." },
+  "tech": { "label": "आमच्या तंत्रज्ञाने", "title": "अत्याधुनिक कृषी शास्त्र", "items": [
+    { "title": "जपानी लायोफिलाइझेशन", "desc": "कमाल कार्यक्षमतेसाठी उच्च CFU संख्या जतन करणारे उन्नत फ्रीज-ड्रायिंग तंत्रज्ञान." },
+    { "title": "उच्च CFU तयारी", "desc": "विविध माती परिस्थितींमध्ये मजबूत कार्यक्षमता सुनिश्चित करणारी सांद्रित सूक्ष्मजीव संख्या." },
+    { "title": "सेंद्रिय तयारी", "desc": "सुरक्षित शेतीसाठी शून्य रासायनिक अवशेषांसह 100% जैव-आधारित संरचना." },
+    { "title": "जैव-एन्हान्सर आणि कंसोर्शियम", "desc": "वनस्पती वाढ आणि माती पुनर्जनन वाढवणारे सहक्रियात्मक सूक्ष्मजीव मिश्रण." }
+  ] },
+  "capabilities": { "items": [
+    { "value": "50+", "label": "जैव-आधारित उत्पादने" },
+    { "value": "पॅन-इंडिया", "label": "वितरण नेटवर्क" },
+    { "value": "100%", "label": "अवशेष-मुक्त हमी" },
+    { "value": "10K+", "label": "विश्वसनीय शेतकरी" }
+  ] },
+  "coverage": { "label": "आमची पोहोच", "title": "पॅन-इंडिया वितरण नेटवर्क", "description": "पंजाबातील सुपीक शेतांपासून कर्नाटकातील बागांपर्यंत, आमची उत्पादने वितरक आणि डीलरांच्या मजबूत नेटवर्कद्वारे शेतकऱ्यांपर्यंत पोहोचतात.", "states": ["महाराष्ट्र", "कर्नाटक", "मध्य प्रदेश", "राजस्थान", "उत्तर प्रदेश", "गुजरात", "तेलंगाना", "आंध्र प्रदेश"], "presence": "पॅन-इंडिया उपस्थिती" },
+  "certifications": { "label": "परवाने आणि प्रमाणपत्रे", "title": "प्रत्येक शेतासाठी विश्वसनीय मानके", "empty": "अद्याप कोणतेही प्रमाणपत्र नाही." },
+  "testimonials": { "label": "शेतकरी काय म्हणतात", "title": "शेत नेत्यांकडून वास्तव परिणाम", "empty": "अद्याप कोणतेही प्रशंसापत्र नाही." },
+  "cta": { "label": "सिनर्जीसोबत भागीदारी करा", "title": "आत्मविश्वासाने वाढण्यास तयार?", "text": "आजच जैव-आधारित, अवशेष-मुक्त पीक संरक्षण अवलंबा.", "contact": "आमच्या टीमशी संपर्क साधा", "explore": "उत्पादने पहा" },
+  "loading": "लोड होत आहे...",
+  "detail": { "viewDetails": "तपशील पहा" },
+  "carouselPlaceholder": {
+    "farmers": "हिरव्यागार शेतात काम करत असलेले शेतकरी",
+    "bioProducts": "जैव-आधारित पीक संरक्षण उत्पादने",
+    "harvest": "निरोगी, अवशेष-मुक्त पिके"
   },
-  "carousel": {
-    "region": "Featured images",
-    "controls": "Slide controls",
-    "slide": "Slide",
-    "of": "of",
-    "goTo": "Go to slide"
-  },
-  "about": {
-    "label": "About Synergy",
-    "title": "Driving Residue-Free Agriculture Across India",
-    "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom. Our team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.",
-    "cta": "Learn more about us"
-  },
-  "trust": {
-    "label": "Why Farmers Trust Us",
-    "title": "Built for the Challenges of Modern Agriculture",
-    "stats": [
-      { "value": "100%", "label": "Bio-Based Solutions — formulated from natural sources with zero chemical residues." },
-      { "value": "Pan-India", "label": "Distribution network serving farmers across multiple states." },
-      { "value": "Residue-Free", "label": "Guarantee — every product meets rigorous quality standards." },
-      { "value": "Trusted", "label": "By thousands of growers for consistent quality and visible results." }
-    ]
-  },
-  "categories": {
-    "label": "Product Categories",
-    "title": "Specialised in Residue-Free Agriculture",
-    "cards": [
-      { "title": "Bio Fertilizers", "description": "Advanced bio-based nutrient solutions that enrich soil health and boost crop yields naturally." },
-      { "title": "Bio Pesticides / Fungicides", "description": "Effective residue-free pest and disease control products derived from natural sources." },
-      { "title": "Consortia Products", "description": "Synergistic microbial consortia for enhanced soil fertility, plant growth, and stress tolerance." },
-      { "title": "Liquid Nutrition", "description": "Ready-to-use liquid formulations for targeted nutrient delivery and rapid crop response." },
-      { "title": "Organic Inputs", "description": "Certified organic soil amendments and natural inputs for sustainable farming systems." }
-    ]
-  },
-  "featured": {
-    "label": "Featured Products",
-    "title": "Our Premium Product Range"
-  },
-  "innovation": {
-    "label": "Technology & Innovation",
-    "title": "Bringing Science to the Soil",
-    "body": "Our research and development team works continuously to develop new-generation crop protection products that are safe, effective, and residue-free. We combine agronomic research with field-level insights to create solutions that address the real challenges faced by Indian farmers. From microbial consortia to advanced liquid nutrition, every product is formulated using cutting-edge agricultural science."
-  },
-  "certifications": {
-    "label": "Licences & Certifications",
-    "title": "Trusted standards for every field",
-    "empty": "No certifications yet."
-  },
-  "testimonials": {
-    "label": "What Growers Say",
-    "title": "Real results from field leaders",
-    "empty": "No testimonials yet."
-  },
-  "cta": {
-    "label": "Partner with Synergy",
-    "title": "Ready to grow with confidence?",
-    "text": "Switch to bio-based, residue-free crop protection today. Our team is ready to help you build a more resilient and profitable crop program.",
-    "contact": "Contact our team",
-    "explore": "Explore products"
-  }
+  "viewProducts": "{{title}} उत्पादने पहा"
 }

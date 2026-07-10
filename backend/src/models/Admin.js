@@ -23,8 +23,13 @@ const adminSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["admin"],
+      enum: ["superadmin", "admin"],
       default: "admin",
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Admin",
+      default: null,
     },
   },
   {

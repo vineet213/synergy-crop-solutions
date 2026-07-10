@@ -20,7 +20,12 @@ export default function ProductDetailPage() {
   const { t } = useTranslation("products");
   const { slug } = useParams();
   const { product, loading, error } = useProductBySlug(slug);
-  useSEO({ title: product ? product.name : "Product Details", description: product?.shortDescription || product?.description, canonical: `/products/${slug}` });
+  useSEO({
+    title: product?.metadata?.seo?.title?.replace(" | Synergy Crop Solutions", "") || product?.name || t("title"),
+    description: product?.metadata?.seo?.description || product?.shortDescription || product?.description,
+    keywords: product?.metadata?.seo?.keywords?.join(", "),
+    canonical: `/products/${slug}`
+  });
 
   return (
     <main className="page-container pd-page" style={{ paddingBottom: "4rem" }}>

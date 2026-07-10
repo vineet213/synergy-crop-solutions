@@ -5,7 +5,7 @@ import useSEO from "../../hooks/useSEO.js";
 import { usePublicTestimonials } from "../../hooks/useTestimonials.js";
 
 export default function TestimonialsPage() {
-  useSEO({ title: "Testimonials", description: "Read real results from field leaders. See how Synergy Crop Solutions helps growers improve yield, reduce waste, and scale sustainably.", canonical: "/testimonials" });
+  useSEO({ title: t("page.title"), description: t("page.description"), canonical: "/testimonials" });
   const { t } = useTranslation("testimonials");
   const { testimonials, loading, error } = usePublicTestimonials();
 

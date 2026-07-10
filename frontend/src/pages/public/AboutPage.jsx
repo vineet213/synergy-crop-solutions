@@ -3,24 +3,19 @@ import { Link } from "react-router-dom";
 import {
   Leaf, ShieldCheck, Users, Award, TreePine, Sprout,
   Target, HeartHandshake, ChevronRight, Lightbulb, FlaskConical,
-  Building2, ArrowRight
+  Building2, ArrowRight, Microscope, Sun, Dna, Tractor
 } from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
 import useSEO from "../../hooks/useSEO.js";
 
+const valueIcons = [Lightbulb, Leaf, Users, ShieldCheck, FlaskConical];
+const whyIcons = [Leaf, Award, Sprout, Users, Target, TreePine];
 const commitmentIcons = [ShieldCheck, TreePine, Users, HeartHandshake];
-const whyIcons = [Leaf, Award, Sprout, Users, Target, Leaf];
-
-const values = [
-  { icon: Lightbulb, title: "Innovation", desc: "Continuous R&D to develop next-generation bio-based solutions that address real farming challenges." },
-  { icon: ShieldCheck, title: "Quality", desc: "Rigorous testing and quality assurance protocols ensure every product meets the highest standards." },
-  { icon: HeartHandshake, title: "Partnership", desc: "Building lasting relationships with farmers, distributors, and dealers through trust and transparency." },
-  { icon: Leaf, title: "Sustainability", desc: "Committed to residue-free farming and environmental stewardship for future generations." },
-];
+const techIcons = [Dna, Sun, Microscope, Sprout];
 
 export default function AboutPage() {
-  useSEO({ title: "About Us", canonical: "/about" });
   const { t } = useTranslation("common");
+  useSEO({ title: t("aboutPage.hero.title"), canonical: "/about" });
 
   const commitments = [0, 1, 2, 3].map((i) => ({
     title: t(`aboutPage.commitment.items[${i}].title`),
@@ -32,30 +27,48 @@ export default function AboutPage() {
     description: t(`aboutPage.whyChoose.items[${i}].description`),
   }));
 
+  const values = [0, 1, 2, 3, 4].map((i) => ({
+    title: t(`aboutPage.values.items[${i}].title`),
+    description: t(`aboutPage.values.items[${i}].description`),
+  }));
+
+  const tech = [
+    { key: "lyophilization", icon: techIcons[0] },
+    { key: "nutrition", icon: techIcons[1] },
+    { key: "bioSolutions", icon: techIcons[2] },
+    { key: "sustainable", icon: techIcons[3] },
+  ].map((item) => ({
+    title: t(`aboutPage.technology.${item.key}.title`),
+    description: t(`aboutPage.technology.${item.key}.description`),
+    icon: item.icon,
+  }));
+
   return (
     <div>
       {/* ============ HERO ============ */}
-      <section className="prem-hero" style={{ padding: "5rem 0 4rem" }}>
-        <div className="prem-container prem-hero-content">
-          <div className="prem-hero-text">
-            <span className="prem-hero-badge">
-              <Sprout size={14} />
-              {t("aboutPage.hero.subtitle")}
-            </span>
-            <h1 className="prem-hero-title">{t("aboutPage.hero.title")}</h1>
-            <p className="prem-hero-sub">{t("aboutPage.hero.description")}</p>
-            <div className="prem-hero-actions">
-              <Link to="/products" className="no-underline"><Button>{t("cta.exploreSolutions")}</Button></Link>
-              <Link to="/contact" className="no-underline"><Button variant="secondary">{t("cta.contactOurTeam")}</Button></Link>
-            </div>
+      <section className="about-hero">
+        <div className="about-hero__text">
+          <span className="about-hero__label">
+            <Sprout size={14} style={{ marginRight: "0.4rem", verticalAlign: "middle" }} />
+            {t("aboutPage.hero.subtitle")}
+          </span>
+          <h1 className="about-hero__title">{t("aboutPage.hero.title")}</h1>
+          <p>{t("aboutPage.hero.description")}</p>
+          <div className="about-hero__actions">
+            <Link to="/products" className="no-underline"><Button>{t("cta.exploreSolutions")}</Button></Link>
+            <Link to="/contact" className="no-underline"><Button variant="secondary">{t("cta.contactOurTeam")}</Button></Link>
           </div>
-          <div className="prem-hero-visual" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Sprout size={80} strokeWidth={1} style={{ color: "rgba(255,255,255,0.1)" }} />
-          </div>
+        </div>
+        <div className="about-hero__media">
+          <img
+            src="/client-assets/logo/official-logo.jpeg"
+            alt="Synergy Crop Solutions"
+            style={{ objectFit: "contain", padding: "3rem", background: "var(--brand-gradient)" }}
+          />
         </div>
       </section>
 
-      {/* ============ COMPANY OVERVIEW ============ */}
+      {/* ============ COMPANY STORY ============ */}
       <section className="prem prem-alt">
         <div className="prem-container prem-intro">
           <div className="prem-intro-text">
@@ -71,16 +84,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ OUR VALUES ============ */}
+      {/* ============ VISION & MISSION ============ */}
+      <section className="prem prem-dark">
+        <div className="prem-container">
+          <header className="prem-header center" style={{ marginBottom: "3rem" }}>
+            <span className="prem-header__label" style={{ color: "rgba(255,255,255,0.5)" }}>{t("aboutPage.vision.title")} & {t("aboutPage.mission.title")}</span>
+            <h2 className="prem-header__title">{t("aboutPage.vision.title")} & {t("aboutPage.mission.title")}</h2>
+          </header>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3rem" }}>
+            <div style={{ padding: "2rem", background: "rgba(255,255,255,0.04)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)" }}>
+              <Target size={28} style={{ marginBottom: "1rem", opacity: 0.7 }} />
+              <h2 style={{ margin: "0 0 1rem", fontSize: "1.5rem", fontWeight: 700 }}>{t("aboutPage.vision.title")}</h2>
+              <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, opacity: 0.8 }}>{t("aboutPage.vision.body")}</p>
+            </div>
+            <div style={{ padding: "2rem", background: "rgba(255,255,255,0.04)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)" }}>
+              <HeartHandshake size={28} style={{ marginBottom: "1rem", opacity: 0.7 }} />
+              <h2 style={{ margin: "0 0 1rem", fontSize: "1.5rem", fontWeight: 700 }}>{t("aboutPage.mission.title")}</h2>
+              <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, opacity: 0.8 }}>{t("aboutPage.mission.body")}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CORE VALUES ============ */}
       <section className="prem">
         <div className="prem-container">
           <header className="prem-header center">
-            <span className="prem-header__label">Our Core Values</span>
-            <h2 className="prem-header__title">What Drives Us</h2>
+            <span className="prem-header__label">{t("aboutPage.values.subtitle")}</span>
+            <h2 className="prem-header__title">{t("aboutPage.values.title")}</h2>
           </header>
           <div className="prem-values-grid">
             {values.map((v, i) => {
-              const Icon = v.icon;
+              const Icon = valueIcons[i] || Leaf;
               return (
                 <div key={i} className="prem-value-card">
                   <p className="prem-value-number">{String(i + 1).padStart(2, "0")}</p>
@@ -88,7 +123,7 @@ export default function AboutPage() {
                     <Icon size={22} />
                   </span>
                   <h3 className="prem-value-title">{v.title}</h3>
-                  <p className="prem-value-desc">{v.desc}</p>
+                  <p className="prem-value-desc">{v.description}</p>
                 </div>
               );
             })}
@@ -96,20 +131,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ VISION & MISSION ============ */}
-      <section className="prem prem-dark">
+      {/* ============ TECHNOLOGY ============ */}
+      <section className="prem prem-alt">
         <div className="prem-container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem" }}>
-            <div>
-              <Target size={28} style={{ marginBottom: "1rem", opacity: 0.7 }} />
-              <h2 style={{ margin: "0 0 1rem", fontSize: "1.5rem", fontWeight: 700 }}>{t("aboutPage.vision.title")}</h2>
-              <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, opacity: 0.8 }}>{t("aboutPage.vision.body")}</p>
-            </div>
-            <div>
-              <HeartHandshake size={28} style={{ marginBottom: "1rem", opacity: 0.7 }} />
-              <h2 style={{ margin: "0 0 1rem", fontSize: "1.5rem", fontWeight: 700 }}>{t("aboutPage.mission.title")}</h2>
-              <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, opacity: 0.8 }}>{t("aboutPage.mission.body")}</p>
-            </div>
+          <header className="prem-header center">
+            <span className="prem-header__label">{t("aboutPage.technology.subtitle")}</span>
+            <h2 className="prem-header__title">{t("aboutPage.technology.title")}</h2>
+          </header>
+          <div className="prem-feat-grid">
+            {tech.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} className="prem-feat">
+                  <span className="prem-feat-icon"><Icon size={20} /></span>
+                  <div className="prem-feat-body">
+                    <h3 className="prem-feat-title">{item.title}</h3>
+                    <p className="prem-feat-desc">{item.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -174,6 +174,12 @@ button {
   box-shadow: 0 2px 8px rgba(27, 67, 50, 0.15);
 }
 
+.brand-logo {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+}
+
 .brand-text {
   letter-spacing: -0.02em;
 }
@@ -443,6 +449,12 @@ button {
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.01em;
+}
+
+.footer-logo {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-heading {
@@ -1761,6 +1773,17 @@ select.input-field {
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid #16a34a;
+}
+
+.admin-logo-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 2rem;
+  object-fit: contain;
+}
+
+.admin-logo-img.hidden {
+  display: none;
 }
 
 .admin-sidebar-title {
@@ -3607,6 +3630,22 @@ select.input-field {
   color: var(--brand-strong);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.prem-prod-card-method {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 .prem-prod-card-imported {

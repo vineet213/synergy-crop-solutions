@@ -4,7 +4,7 @@
     "slug": "aceto",
     "category": "Bio Fertilizer",
     "scientificName": "Gluconacetobacter diazotrophicus",
-    "composition": "",
+    "composition": "Gluconacetobacter diazotrophicus 1 × 10⁸ CFU/gm minimum.\nCarrier based lyophilized formulation.",
     "shortDescription": "Aceto is a premium nitrogen fixing biofertilizer containing Gluconacetobacter diazotrophicus that improves nitrogen availability, root development and crop productivity.",
     "longDescription": "Aceto contains highly efficient Gluconacetobacter diazotrophicus capable of fixing atmospheric nitrogen in association with plant roots. Regular application improves nitrogen availability, stimulates root development, enhances vegetative growth and reduces dependence on chemical nitrogen fertilizers.",
     "benefits": [
@@ -19,8 +19,8 @@
       "Supports higher yield potential.",
       "Enhances overall crop productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Sugarcane",
       "Paddy",
@@ -31,7 +31,9 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -46,6 +48,12 @@
       "subcategory": "Nitrogen Fixing Biofertilizer",
       "technology": "Japanese Lyophilization Technology",
       "certifications": [],
+      "usp": [
+        "Nitrogen Fixing Technology",
+        "Japanese Lyophilization",
+        "Improves Crop Vigour",
+        "Reduces Chemical Nitrogen Requirement"
+      ],
       "seo": {
         "title": "Aceto Gluconacetobacter diazotrophicus Biofertilizer | Synergy Crop Solutions",
         "description": "Premium nitrogen fixing biofertilizer containing Gluconacetobacter diazotrophicus for improved nitrogen availability, root development and crop productivity.",
@@ -85,7 +93,7 @@
     "slug": "azospi",
     "category": "Bio Fertilizer",
     "scientificName": "Azospirillum",
-    "composition": "",
+    "composition": "Azospirillum 1 × 10⁸ CFU/gm minimum.\nCarrier based lyophilized formulation.",
     "shortDescription": "Azospi is a premium Azospirillum based biofertilizer that fixes atmospheric nitrogen, stimulates root growth and improves nutrient uptake for healthy crop development.",
     "longDescription": "Azospi contains highly efficient Azospirillum bacteria that colonize plant roots and enhance biological nitrogen fixation. The product promotes vigorous root development, improves nutrient absorption, enhances vegetative growth and supports sustainable crop production while reducing dependence on chemical nitrogen fertilizers.",
     "benefits": [
@@ -100,8 +108,8 @@
       "Reduces dependence on chemical nitrogen fertilizers.",
       "Enhances overall crop productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Paddy",
       "Wheat",
@@ -113,7 +121,9 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -128,6 +138,12 @@
       "subcategory": "Nitrogen Fixing Biofertilizer",
       "technology": "Japanese Lyophilization Technology",
       "certifications": [],
+      "usp": [
+        "Nitrogen Fixing Technology",
+        "Japanese Lyophilization",
+        "Stimulates Root Growth",
+        "Reduces Chemical Nitrogen Requirement"
+      ],
       "seo": {
         "title": "Azospi Azospirillum Biofertilizer | Synergy Crop Solutions",
         "description": "Premium Azospirillum based biofertilizer that fixes atmospheric nitrogen, stimulates root growth and improves nutrient uptake for healthy crop development.",
@@ -167,7 +183,7 @@
     "slug": "azoto",
     "category": "Bio Fertilizer",
     "scientificName": "Azotobacter",
-    "composition": "",
+    "composition": "Azotobacter 1 × 10⁸ CFU/gm minimum.\nCarrier based lyophilized formulation.",
     "shortDescription": "Azoto is a premium Azotobacter based biofertilizer developed to fix atmospheric nitrogen, improve soil fertility and enhance healthy crop growth.",
     "longDescription": "Azoto contains highly efficient Azotobacter capable of fixing atmospheric nitrogen and producing plant growth promoting substances. It improves soil microbial activity, promotes root development, enhances nutrient uptake and helps reduce dependence on chemical nitrogen fertilizers.",
     "benefits": [
@@ -182,8 +198,8 @@
       "Supports higher yield potential.",
       "Enhances overall crop productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Cotton",
       "Wheat",
@@ -195,7 +211,9 @@
       "Oilseeds",
       "Pulses"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -240,6 +258,12 @@
           "question": "How should Azoto be stored?",
           "answer": "Store in a cool and dry place, protected from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Nitrogen Fixing Technology",
+        "Japanese Lyophilization",
+        "Improves Soil Fertility",
+        "Reduces Chemical Nitrogen Requirement"
       ]
     },
     "status": "published"
@@ -249,7 +273,7 @@
     "slug": "basu",
     "category": "Bio Fertilizer",
     "scientificName": "Bacillus subtilis",
-    "composition": "",
+    "composition": "Bacillus subtilis 1 × 10⁸ CFU/gm minimum.\nCarrier based lyophilized formulation.",
     "shortDescription": "Basu is a premium Bacillus subtilis based biofertilizer developed to improve soil microbial activity, nutrient availability and healthy crop growth.",
     "longDescription": "Basu contains beneficial Bacillus subtilis that colonizes the rhizosphere, promotes root development and enhances nutrient availability. The product improves soil biological activity, stimulates healthy plant growth and supports sustainable crop production.",
     "benefits": [
@@ -264,8 +288,8 @@
       "Improves overall soil fertility.",
       "Supports higher yield potential."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Cereals",
       "Pulses",
@@ -275,7 +299,9 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -320,6 +346,12 @@
           "question": "How should Basu be stored?",
           "answer": "Store in a cool and dry place, protected from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "PGPR Technology",
+        "Japanese Lyophilization",
+        "Improves Soil Microbial Activity",
+        "Enhances Nutrient Availability"
       ]
     },
     "status": "published"
@@ -328,8 +360,8 @@
     "name": "Phosphate",
     "slug": "phosphate",
     "category": "Bio Fertilizer",
-    "scientificName": "",
-    "composition": "",
+    "scientificName": "Phosphate Solubilizing Bacteria (PSB)",
+    "composition": "Phosphate Solubilizing Bacteria 1 × 10⁸ CFU/gm minimum.\nCarrier based lyophilized formulation.",
     "shortDescription": "Phosphate is a premium phosphate solubilizing biofertilizer that converts unavailable soil phosphorus into plant available form, improving nutrient uptake and crop productivity.",
     "longDescription": "Phosphate contains highly efficient phosphate solubilizing microorganisms that release fixed phosphorus from the soil. Regular application improves root development, flowering, nutrient efficiency and overall crop performance while reducing dependence on chemical phosphorus fertilizers.",
     "benefits": [
@@ -344,8 +376,8 @@
       "Reduces dependence on chemical phosphorus fertilizers.",
       "Enhances overall crop productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Cereals",
       "Pulses",
@@ -355,7 +387,9 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -399,6 +433,12 @@
           "question": "How should Phosphate be stored?",
           "answer": "Store in a cool and dry place, protected from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Phosphate Solubilizing Technology",
+        "Japanese Lyophilization",
+        "Improves Phosphorus Availability",
+        "Reduces Chemical Phosphorus Requirement"
       ]
     },
     "status": "published"
@@ -407,8 +447,8 @@
     "name": "Potash",
     "slug": "potash",
     "category": "Bio Fertilizer",
-    "scientificName": "",
-    "composition": "",
+    "scientificName": "Potash Mobilizing Bacteria (KMB)",
+    "composition": "Potash Mobilizing Bacteria 1 × 10⁸ CFU/gm minimum.\nCarrier based lyophilized formulation.",
     "shortDescription": "Potash is a premium potash mobilizing biofertilizer that converts unavailable potassium into plant available form for improved crop growth, quality and productivity.",
     "longDescription": "Potash contains highly efficient potassium mobilizing microorganisms that release fixed potassium from soil minerals. Regular application improves nutrient uptake, crop vigour, fruit quality, drought tolerance and fertilizer use efficiency while reducing dependence on chemical potash fertilizers.",
     "benefits": [
@@ -423,8 +463,8 @@
       "Supports higher yield potential.",
       "Reduces dependence on chemical potash fertilizers."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Cereals",
       "Pulses",
@@ -434,7 +474,9 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -479,6 +521,12 @@
           "question": "How should Potash be stored?",
           "answer": "Store in a cool and dry place, protected from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Potash Mobilizing Technology",
+        "Japanese Lyophilization",
+        "Improves Potassium Availability",
+        "Reduces Chemical Potash Requirement"
       ]
     },
     "status": "published"
@@ -488,8 +536,8 @@
     "slug": "rhizo",
     "category": "Bio Fertilizer",
     "scientificName": "Rhizobium",
-    "composition": "",
-    "shortDescription": "Lyophilized Rhizobium - Nitrogen Fixing Bacteria",
+    "composition": "Rhizobium 1 × 10⁸ CFU/gm minimum.\nCarrier based lyophilized formulation.",
+    "shortDescription": "Rhizo is a premium nitrogen fixing biofertilizer containing Rhizobium that colonizes root nodules of leguminous crops, improving nitrogen availability and crop productivity.",
     "longDescription": "Rhizo contains highly efficient Rhizobium bacteria that colonize root nodules of leguminous crops and fix atmospheric nitrogen into plant usable form. The biological nitrogen fixation improves soil fertility, promotes vigorous plant growth, enhances protein content in grains and reduces dependence on chemical nitrogen fertilizers. Regular application ensures better nodulation, increased biomass production and higher crop yields in legume-based cropping systems.",
     "benefits": [
       "Colonizes legume root nodules effectively.",
@@ -503,8 +551,8 @@
       "Improves soil fertility for subsequent crops.",
       "Environmentally sustainable nitrogen management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Pigeon Pea",
       "Chickpea",
@@ -517,11 +565,13 @@
       "Cowpea",
       "Bean"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
-    "productType": "Lyophilized",
+    "productType": "Rhizobium Nitrogen Fixing Biofertilizer",
     "tagline": "Nitrogen Power, Microbial Magic",
     "images": [
       "client-assets/products/biofertilizers/rhizo.jpeg"
@@ -558,7 +608,13 @@
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "certifications": []
+      "certifications": [],
+      "usp": [
+        "Nitrogen Fixing Technology",
+        "Japanese Lyophilization",
+        "Improves Root Nodulation",
+        "Reduces Chemical Nitrogen Requirement"
+      ]
     },
     "status": "published"
   },
@@ -566,8 +622,8 @@
     "name": "Secure-P",
     "slug": "secure-p",
     "category": "Bio Fertilizer",
-    "scientificName": "",
-    "composition": "",
+    "scientificName": "Phosphate Solubilizing Microbes",
+    "composition": "Phosphate Solubilizing Microbes 1 × 10⁸ CFU/gm minimum.\nJapanese lyophilized carrier based formulation.",
     "shortDescription": "Secure-P is a Japanese lyophilized phosphate solubilizing biofertilizer designed to convert insoluble phosphorus present in soil into plant available form for improved crop growth and nutrient uptake.",
     "longDescription": "Secure-P contains highly efficient phosphate solubilizing microorganisms that release bound phosphorus from the soil and make it available to crops. Improved phosphorus availability promotes stronger root development, better flowering, improved nutrient utilization and higher crop productivity.",
     "benefits": [
@@ -582,8 +638,8 @@
       "Improves fertilizer efficiency.",
       "Reduces phosphorus fertilizer wastage."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "All field crops",
       "Sugarcane",
@@ -600,7 +656,9 @@
       "Grapes",
       "Citrus"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -647,6 +705,12 @@
           "question": "Can Secure-P be used with other biofertilizers?",
           "answer": "Yes. Secure-P is compatible with organic inputs and other biofertilizers. Avoid mixing directly with chemical bactericides or fungicides."
         }
+      ],
+      "usp": [
+        "Japanese Lyophilization",
+        "Phosphate Solubilizing Technology",
+        "Improves Phosphorus Uptake",
+        "Enhances Root Development"
       ]
     },
     "status": "published"
@@ -655,10 +719,9 @@
     "name": "Tri Immune",
     "slug": "tri-immune",
     "category": "Bio Fertilizer",
-    "scientificName": "",
-    "composition": "",
-    "shortDescription": "Lyophilized Phosphate Solubilizing Fungal Bio Fertilizer",
-    "longDescription": "Tri Immune is a powerful triple-action consortium containing Trichoderma viride, Pseudomonas fluorescens and Bacillus subtilis — three beneficial microorganisms that work synergistically to suppress soil borne diseases, enhance nutrient availability and promote vigorous plant growth. Trichoderma viride controls fungal pathogens through mycoparasitism and competition. Pseudomonas fluorescens produces antimicrobial compounds and induces systemic resistance. Bacillus subtilis colonizes the rhizosphere, improves nutrient cycling and supports root health. This unique combination provides comprehensive plant protection and growth promotion in a single formulation.",
+    "scientificName": "Trichoderma + Pseudomonas + Bacillus Consortium",
+    "composition": "Trichoderma viride + Pseudomonas fluorescens + Bacillus subtilis consortium.\nLyophilized carrier based formulation.",
+    "shortDescription": "Tri Immune is a powerful triple-action consortium biofertilizer containing Trichoderma viride, Pseudomonas fluorescens and Bacillus subtilis for comprehensive plant protection and growth promotion.",    "longDescription": "Tri Immune is a powerful triple-action consortium containing Trichoderma viride, Pseudomonas fluorescens and Bacillus subtilis — three beneficial microorganisms that work synergistically to suppress soil borne diseases, enhance nutrient availability and promote vigorous plant growth. Trichoderma viride controls fungal pathogens through mycoparasitism and competition. Pseudomonas fluorescens produces antimicrobial compounds and induces systemic resistance. Bacillus subtilis colonizes the rhizosphere, improves nutrient cycling and supports root health. This unique combination provides comprehensive plant protection and growth promotion in a single formulation.",
     "benefits": [
       "Triple microbial consortium for comprehensive protection.",
       "Suppresses soil borne fungal pathogens.",
@@ -671,8 +734,8 @@
       "Reduces dependence on chemical fungicides.",
       "Supports sustainable crop production."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Cotton",
       "Sugarcane",
@@ -683,11 +746,13 @@
       "Fruit crops",
       "Plantation crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
-    "productType": "Lyophilized",
+    "productType": "Triple Consortium Biofertilizer",
     "tagline": "Triple Defence, Maximum Growth",
     "images": [
       "client-assets/products/biofertilizers/tri-immune.jpeg"
@@ -695,11 +760,11 @@
     "metadata": {
       "brand": "SHEER",
       "company": "Synergy Crop Solutions",
-      "subcategory": "Phosphate Solubilizing Biofertilizer",
+      "subcategory": "Triple Consortium Biofertilizer",
       "technology": "Japanese Lyophilization Technology",
       "seo": {
         "title": "Tri Immune Triple Consortium Biofertilizer | Synergy Crop Solutions",
-        "description": "Lyophilized Phosphate Solubilizing Fungal Bio Fertilizer",
+        "description": "Triple consortium biofertilizer containing Trichoderma viride, Pseudomonas fluorescens and Bacillus subtilis for comprehensive plant protection and growth promotion.",
         "keywords": [
           "tri immune",
           "bio fertilizer",
@@ -724,7 +789,13 @@
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "certifications": []
+      "certifications": [],
+      "usp": [
+        "Triple Consortium Technology",
+        "Japanese Lyophilization",
+        "Biocontrol + Nutrition",
+        "Improves Soil Health"
+      ]
     },
     "status": "published"
   },
@@ -732,9 +803,9 @@
     "name": "VAM",
     "slug": "vam",
     "category": "Bio Fertilizer",
-    "scientificName": "",
-    "composition": "",
-    "shortDescription": "Mycorrhizal Bio-Fertilizer - Endosymbiotic Endomycorrhizae",
+    "scientificName": "Vesicular Arbuscular Mycorrhizal Fungi",
+    "composition": "Vesicular Arbuscular Mycorrhizal fungi.\nCarrier based formulation.",
+    "shortDescription": "VAM is a mycorrhizal biofertilizer containing endomycorrhizal fungi that extend the root absorption zone, improving phosphorus uptake, water absorption and plant tolerance to drought.",
     "longDescription": "VAM contains highly infective endomycorrhizal fungi (Vesicular Arbuscular Mycorrhiza) that form a symbiotic association with plant roots, extending the root absorption zone by up to 100 times. The mycorrhizal network improves phosphorus and micronutrient uptake, enhances water absorption and increases plant tolerance to drought and salinity stress. VAM also improves soil aggregation, enhances beneficial rhizosphere microbial activity and supports healthier, more resilient crop production.",
     "benefits": [
       "Extends root absorption zone significantly.",
@@ -748,8 +819,8 @@
       "Reduces requirement for chemical phosphorus fertilizers.",
       "Promotes sustainable soil health management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose near root zone.",
+    "applicationMethod": "Soil application.\nApply near root zone and incorporate into soil.",
     "targetCrops": [
       "Cereals",
       "Pulses",
@@ -766,11 +837,13 @@
       "Banana",
       "Floriculture crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
-    "productType": "Lyophilized",
+    "productType": "Mycorrhizal Biofertilizer",
     "tagline": "Root Extension, Natural Nutrition",
     "images": [
       "client-assets/products/biofertilizers/vam.jpeg"
@@ -807,7 +880,13 @@
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "certifications": []
+      "certifications": [],
+      "usp": [
+        "Mycorrhizal Technology",
+        "Improves Root Colonization",
+        "Enhances Phosphorus Uptake",
+        "Promotes Plant Vigour"
+      ]
     },
     "status": "published"
   },
@@ -833,7 +912,7 @@
       "Helps reduce chemical fertilizer requirement by approximately 30–40%."
     ],
     "dosage": "Apply 4 kg per acre.",
-    "applicationMethod": "",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Cereals",
       "Pulses",
@@ -848,7 +927,9 @@
       "Chilli",
       "Onion"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and organic inputs.\nAvoid direct mixing with chemical bactericides.",
@@ -866,6 +947,12 @@
         "100% Organic",
         "FCO Approved",
         "ISO 9001:2008 Company"
+      ],
+      "usp": [
+        "Speciality Consortium Technology",
+        "Japanese Lyophilization",
+        "Multi-Micronutrient Mobilization",
+        "Reduces Chemical Micronutrient Requirement"
       ],
       "seo": {
         "title": "Zinc Speciality Biofertilizer | Synergy Crop Solutions",
@@ -897,7 +984,13 @@
           "answer": "Store in a cool and dry place, protected from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "technology": "Japanese Lyophilization Technology"
+      "technology": "Japanese Lyophilization Technology",
+      "usp": [
+        "Speciality Consortium Technology",
+        "Japanese Lyophilization",
+        "Multi-Micronutrient Mobilization",
+        "Reduces Chemical Micronutrient Requirement"
+      ]
     },
     "status": "published"
   },
@@ -907,7 +1000,7 @@
     "category": "Bio Pesticide",
     "scientificName": "Metarhizium anisopliae",
     "composition": "Metarhizium anisopliae 1% W.P. (1X10⁹ CFU/gm min.)",
-    "shortDescription": "Entomopathogenic fungi - Bio-Pesticide",
+    "shortDescription": "Meta is a biological insecticide based on Metarhizium anisopliae that naturally infects and controls a wide range of soil and foliage insect pests without chemical residues.",
     "longDescription": "Meta is a potent biological insecticide based on Metarhizium anisopliae 1% WP, an entomopathogenic fungus that naturally infects and controls a wide range of soil and foliage insect pests. The fungal spores germinate on the insect cuticle, penetrate the body cavity and proliferate internally, causing death through nutrient depletion and toxin production. Meta is an ideal tool for integrated pest management programs, providing effective biological control without chemical residues.",
     "benefits": [
       "Naturally infects and controls insect pests.",
@@ -921,8 +1014,8 @@
       "Can be used in organic farming systems.",
       "Long residual activity in soil environment."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2.5 kg per acre through soil application.\nMix with fine sand or farmyard manure for uniform broadcast.",
+    "applicationMethod": "Soil application.\nMix with fine sand or farmyard manure and broadcast uniformly.",
     "targetCrops": [
       "Sugarcane",
       "Cotton",
@@ -981,6 +1074,12 @@
           "question": "Can Meta be mixed with chemical pesticides?",
           "answer": "Meta is compatible with most organic inputs and biopesticides. Avoid direct mixing with chemical fungicides as they may reduce spore viability."
         }
+      ],
+      "usp": [
+        "Entomopathogenic Fungi",
+        "No Chemical Residues",
+        "Broad Spectrum Control",
+        "Safe for Beneficial Insects"
       ]
     },
     "status": "published"
@@ -991,7 +1090,7 @@
     "category": "Bio Pesticide",
     "scientificName": "Pseudomonas fluorescens",
     "composition": "Pseudomonas fluorescens 1.0% WP (CFU Count: 1 x 10⁹/gm minimum)",
-    "shortDescription": "Bio-Pesticide",
+    "shortDescription": "Pseudo is a biological fungicide based on Pseudomonas fluorescens that suppresses plant diseases, promotes root growth and improves nutrient availability through phosphate solubilization.",
     "longDescription": "Pseudo is a highly effective biological fungicide based on Pseudomonas fluorescens 1% WP that naturally suppresses soil-borne and foliar plant diseases while actively promoting plant growth. The beneficial bacteria colonize the rhizosphere and produce antibiotics, siderophores and hydrolytic enzymes that inhibit pathogen growth. Pseudo also induces systemic resistance in plants, strengthens natural defence mechanisms and improves nutrient availability through phosphate solubilization and iron chelation. Regular application ensures healthier root systems, reduced disease pressure and improved crop productivity.",
     "benefits": [
       "Suppresses soil and foliar plant diseases.",
@@ -1005,8 +1104,8 @@
       "Promotes overall plant growth and vigour.",
       "Compatible with integrated disease management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2.5 kg per acre through soil application.\nFor foliar spray: 5 gm per litre of water.",
+    "applicationMethod": "Soil application or foliar spray.\nMix with fine sand for soil broadcast. Dissolve in water for foliar spray.",
     "targetCrops": [
       "Vegetables",
       "Fruit crops",
@@ -1064,6 +1163,12 @@
           "question": "Can Pseudo be mixed with chemical fungicides?",
           "answer": "Pseudo is compatible with most bio-inputs. Avoid direct mixing with chemical fungicides as they may adversely affect the beneficial bacterial population."
         }
+      ],
+      "usp": [
+        "Bio-Fungicide + Bio-Insecticide",
+        "Dual Mode of Action",
+        "No Chemical Residues",
+        "Safe for Beneficial Microbes"
       ]
     },
     "status": "published"
@@ -1074,7 +1179,7 @@
     "category": "Bio Pesticide",
     "scientificName": "Trichoderma viride",
     "composition": "Trichoderma viride 1.5% WP (CFU Count: 2 x 10⁹/gm minimum)",
-    "shortDescription": "Bio-Pesticide",
+    "shortDescription": "Tricho is a high-potency biological fungicide based on Trichoderma viride that controls soil-borne fungal diseases through mycoparasitism and induces systemic resistance in plants.",
     "longDescription": "Tricho is a high-potency biological fungicide based on Trichoderma viride 1.5% WP (2 × 10⁹ CFU/gm) that effectively controls soil-borne fungal diseases through multiple mechanisms of action. The fungal spores colonize the root zone aggressively, competing with pathogens for space and nutrients. Trichoderma viride parasitizes fungal pathogens directly through mycoparasitism, secreting cell wall degrading enzymes that break down pathogen structures. It also produces antifungal metabolites that inhibit pathogen growth and induces systemic resistance in the plant. Regular application improves root health, enhances nutrient uptake and supports vigorous crop growth.",
     "benefits": [
       "Controls soil borne fungal diseases effectively.",
@@ -1088,8 +1193,8 @@
       "Promotes vigorous crop growth.",
       "Compatible with integrated disease management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2.5 kg per acre through soil application.\nMix with fine sand or farmyard manure.",
+    "applicationMethod": "Soil application.\nMix with fine sand or farmyard manure and broadcast uniformly.",
     "targetCrops": [
       "Cotton",
       "Sugarcane",
@@ -1146,6 +1251,12 @@
           "question": "Can Tricho be mixed with chemical fungicides?",
           "answer": "Tricho is compatible with most bio-inputs. Avoid direct mixing with chemical fungicides as they may harm the viable fungal spores."
         }
+      ],
+      "usp": [
+        "Broad Spectrum Bio-Fungicide",
+        "Soil Born Disease Management",
+        "No Chemical Residues",
+        "Enhances Root Health"
       ]
     },
     "status": "published"
@@ -1168,8 +1279,8 @@
       "Improves crop vigour.",
       "Supports sustainable disease management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2.5 kg per acre through soil application.\nMix with fine sand or farmyard manure.",
+    "applicationMethod": "Soil application.\nMix with fine sand or farmyard manure and broadcast uniformly.",
     "targetDiseases": [
       "Damping off",
       "Root rot",
@@ -1188,7 +1299,9 @@
       "Oilseeds",
       "Plantation crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "1 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most bio-inputs.\nAvoid direct mixing with chemical fungicides.",
@@ -1233,6 +1346,12 @@
           "question": "Can Tricho-H be mixed with chemical fungicides?",
           "answer": "Tricho-H is compatible with most bio-inputs. Avoid direct mixing with chemical fungicides as they may harm the viable fungal spores."
         }
+      ],
+      "usp": [
+        "Biological Fungicide",
+        "Soil Born Disease Control",
+        "No Chemical Residues",
+        "Improves Soil Microbial Flora"
       ]
     },
     "status": "published"
@@ -1254,8 +1373,8 @@
       "Better crop vigour.",
       "Sustainable biological nematode management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2.5 kg per acre through soil application.\nApply near root zone for nematode management.",
+    "applicationMethod": "Soil application.\nApply near root zone and incorporate into soil.",
     "targetPests": [
       "Root-knot nematodes",
       "Cyst nematodes",
@@ -1273,7 +1392,9 @@
       "Tomato",
       "Chilli"
     ],
-    "packSize": [],
+    "packSize": [
+      "1 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most bio-inputs.\nAvoid direct mixing with chemical fungicides.",
@@ -1318,6 +1439,12 @@
           "question": "Can Verti-C be mixed with chemical fungicides?",
           "answer": "Verti-C is compatible with most bio-inputs. Avoid direct mixing with chemical fungicides as they may harm the viable fungal spores."
         }
+      ],
+      "usp": [
+        "Biological Nematicide",
+        "Nematode Management",
+        "No Chemical Residues",
+        "Safe for Beneficial Organisms"
       ]
     },
     "status": "published"
@@ -1423,9 +1550,9 @@
     "name": "Life",
     "slug": "life",
     "category": "Consortium",
-    "scientificName": "",
-    "composition": "",
-    "shortDescription": "Lyophilized Carrier Based Consortia - Consortium of Phyllospheric Microbes",
+    "scientificName": "Consortium of Phyllospheric Microbes",
+    "composition": "Consortium of Phyllospheric Microbes.\nLyophilized carrier based formulation.",
+    "shortDescription": "Life is a Japanese lyophilized consortium of phyllospheric and rhizospheric microorganisms that promotes comprehensive plant growth through nutrient mobilization and pathogen suppression.",
     "longDescription": "Life is a Japanese lyophilized carrier based consortium containing a synergistic blend of phyllospheric and rhizospheric microorganisms that colonize the plant surface and root zone to promote comprehensive plant growth and protection. The microbial consortium produces plant growth promoting substances including auxins, gibberellins and cytokinins, enhances nutrient availability through phosphate solubilization and nitrogen fixation, and suppresses harmful pathogens through competitive exclusion and antimicrobial metabolite production. Regular application improves plant vigour, enhances stress tolerance and supports sustainable crop production.",
     "benefits": [
       "Synergistic blend of beneficial microorganisms.",
@@ -1439,8 +1566,8 @@
       "Compatible with integrated nutrient management.",
       "Supports overall crop health and productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Sugarcane",
       "Cotton",
@@ -1457,11 +1584,13 @@
       "Pomegranate",
       "Citrus"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and biopesticides.\nAvoid direct mixing with chemical inputs.",
-    "productType": "Lyophilized",
+    "productType": "Phyllospheric Microbe Consortium Biofertilizer",
     "tagline": "Life for Your Crops",
     "images": [
       "client-assets/products/consortia/life.jpeg"
@@ -1498,7 +1627,13 @@
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "certifications": []
+      "certifications": [],
+      "usp": [
+        "Phyllospheric Microbe Technology",
+        "Japanese Lyophilization",
+        "Improves Nutrient Cycling",
+        "Enhances Crop Vigour"
+      ]
     },
     "status": "published"
   },
@@ -1612,9 +1747,9 @@
     "name": "Plant Cure",
     "slug": "plant-cure",
     "category": "Consortium",
-    "scientificName": "",
-    "composition": "",
-    "shortDescription": "Lyophilized Carrier Based Consortia - Consortium Phyllospheric Microbes",
+    "scientificName": "Consortium of Phyllospheric Microbes",
+    "composition": "Consortium of Phyllospheric Microbes.\nLyophilized carrier based formulation.",
+    "shortDescription": "Plant Cure is a Japanese lyophilized consortium of Trichoderma viride and Pseudomonas fluorescens that provides dual-action disease protection and promotes healthy plant growth.",
     "longDescription": "Plant Cure is a Japanese lyophilized consortium of Trichoderma viride and Pseudomonas fluorescens, two powerful biocontrol agents that work in synergy to suppress plant diseases and promote healthy growth. Trichoderma viride parasitizes fungal pathogens through mycoparasitism, while Pseudomonas fluorescens produces antimicrobial compounds and induces systemic resistance in plants. This dual-action consortium provides comprehensive disease protection in the root zone and on the plant surface. Regular application reduces disease incidence, improves root health and supports sustainable crop production without chemical fungicides.",
     "benefits": [
       "Dual-action consortium for disease suppression.",
@@ -1628,8 +1763,8 @@
       "Supports sustainable disease management.",
       "Safe for beneficial organisms and environment."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Cotton",
       "Sugarcane",
@@ -1640,11 +1775,13 @@
       "Cereals",
       "Plantation crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and biopesticides.\nAvoid direct mixing with chemical inputs.",
-    "productType": "Lyophilized",
+    "productType": "Phyllospheric Microbe Consortium Biofertilizer",
     "tagline": "Double Defence, Double Growth",
     "images": [
       "client-assets/products/consortia/plant-cure.jpeg"
@@ -1681,7 +1818,13 @@
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "certifications": []
+      "certifications": [],
+      "usp": [
+        "Phyllospheric Microbe Technology",
+        "Japanese Lyophilization",
+        "Improves Plant Health",
+        "Enhances Disease Resistance"
+      ]
     },
     "status": "published"
   },
@@ -1857,9 +2000,9 @@
     "name": "Root Cure Plus",
     "slug": "root-cure-plus",
     "category": "Consortium",
-    "scientificName": "",
-    "composition": "",
-    "shortDescription": "Lyophilized Carrier Based Consortia - Consortium Microbials for Soil Detoxification",
+    "scientificName": "Consortium of Soil Detoxification Microbes",
+    "composition": "Consortium Microbials for Soil Detoxification.\nLyophilized carrier based formulation.",
+    "shortDescription": "Root Cure Plus is a Japanese lyophilized consortium of beneficial microorganisms developed for soil detoxification, residue degradation and restoration of soil health.",
     "longDescription": "Root Cure Plus is a Japanese lyophilized carrier based consortium of beneficial microorganisms specially developed for soil detoxification and restoration of soil health. The microbial consortium degrades harmful chemical residues, breaks down accumulated salts and toxins, improves soil structure and reactivates beneficial soil biological activity. Regular application helps rejuvenate tired and degraded soils, improves root zone environment, enhances nutrient availability and supports healthier crop growth in soils affected by continuous cultivation and chemical overuse.",
     "benefits": [
       "Detoxifies chemical residues in soil.",
@@ -1873,8 +2016,8 @@
       "Reduces the impact of continuous cultivation.",
       "Promotes sustainable soil management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Sugarcane",
       "Cotton",
@@ -1890,11 +2033,13 @@
       "Potato",
       "Tomato"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and biopesticides.\nAvoid direct mixing with chemical inputs.",
-    "productType": "Lyophilized",
+    "productType": "Soil Detoxification Consortium Biofertilizer",
     "tagline": "Soil Detox, Root Rejuvenation",
     "images": [
       "client-assets/products/consortia/root-cure-plus.jpeg"
@@ -1931,7 +2076,13 @@
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "certifications": []
+      "certifications": [],
+      "usp": [
+        "Soil Detoxification Technology",
+        "Japanese Lyophilization",
+        "Restores Soil Health",
+        "Improves Microbial Diversity"
+      ]
     },
     "status": "published"
   },
@@ -1939,9 +2090,9 @@
     "name": "Zeal",
     "slug": "zeal",
     "category": "Consortium",
-    "scientificName": "",
-    "composition": "",
-    "shortDescription": "Lyophilized Carrier Based Consortia",
+    "scientificName": "Lyophilized Carrier Based Consortium",
+    "composition": "Lyophilized Carrier Based Consortium.\nBeneficial microbial formulation.",
+    "shortDescription": "Zeal is a Japanese lyophilized consortium that combines biofertilizer microorganisms with phytohormone producing microbes for enhanced plant growth stimulation and higher crop yields.",
     "longDescription": "Zeal is a Japanese lyophilized carrier based consortium that uniquely combines biofertilizer microorganisms with phytohormone producing microbes for enhanced plant growth stimulation and higher crop yields. The microbial consortium produces natural plant growth regulators including auxins, gibberellins and cytokinins that stimulate cell division, root elongation, shoot growth and flowering. Combined with nutrient mobilizing and fixing microorganisms, Zeal provides comprehensive growth promotion and improved nutrient availability. Regular application results in more vigorous plant growth, better flowering, improved fruit setting and significantly higher yields across a wide range of crops.",
     "benefits": [
       "Produces natural auxins, gibberellins and cytokinins.",
@@ -1955,8 +2106,8 @@
       "Supports comprehensive plant growth promotion.",
       "Compatible with integrated crop management."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "4 kg per acre.\nApply during basal dose through soil application.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly and incorporate into soil.",
     "targetCrops": [
       "Sugarcane",
       "Cotton",
@@ -1975,11 +2126,13 @@
       "Tomato",
       "Chilli"
     ],
-    "packSize": [],
+    "packSize": [
+      "4 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers and biopesticides.\nAvoid direct mixing with chemical inputs.",
-    "productType": "Lyophilized",
+    "productType": "Lyophilized Carrier Based Consortium Biofertilizer",
     "tagline": "Growth Hormones, Maximum Yield",
     "images": [
       "client-assets/products/consortia/zeal.jpeg"
@@ -2016,7 +2169,13 @@
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
       ],
-      "certifications": []
+      "certifications": [],
+      "usp": [
+        "Consortium Technology",
+        "Japanese Lyophilization",
+        "Multi-Strain Formulation",
+        "Improves Overall Crop Health"
+      ]
     },
     "status": "published"
   },
@@ -2025,7 +2184,7 @@
     "slug": "agri-best-plus",
     "category": "Liquid Nutrition",
     "scientificName": "",
-    "composition": "",
+    "composition": "Premium imported liquid plant nutrition formulation.\nConcentrated liquid nutrition.",
     "shortDescription": "AgriBest Plus is a premium imported liquid plant nutrition formulation developed for improving plant metabolism, crop growth, flowering, fruit development and overall productivity.",
     "longDescription": "AgriBest Plus is an advanced imported liquid nutrient formulation supplying essential nutrients required throughout crop development. The formulation promotes vigorous growth, improves flowering, enhances fruit quality and supports higher marketable yield under intensive cultivation.",
     "benefits": [
@@ -2040,7 +2199,7 @@
       "Supports crops under intensive cultivation.",
       "Improves overall crop productivity."
     ],
-    "dosage": "",
+    "dosage": "2–3 ml per litre of water.\nFoliar spray at vegetative and reproductive stages.",
     "applicationMethod": "Shake before use",
     "targetCrops": [
       "Grapes",
@@ -2057,7 +2216,11 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "250 ml",
+      "500 ml",
+      "1 L"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most fertilizers and micronutrients.\nPerform a compatibility test before tank mixing.",
@@ -2103,6 +2266,12 @@
           "question": "How should AgriBest Plus be stored?",
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Imported Liquid Nutrition",
+        "Improves Plant Metabolism",
+        "Quick Absorption",
+        "Multi-Nutrient Formulation"
       ]
     },
     "status": "published"
@@ -2112,7 +2281,7 @@
     "slug": "algafert",
     "category": "Liquid Nutrition",
     "scientificName": "",
-    "composition": "",
+    "composition": "Concentrated marine seaweed extract (Ascophyllum nodosum).\nLiquid biostimulant formulation.",
     "shortDescription": "Algafert is a premium seaweed extract based liquid biostimulant that promotes vigorous root growth, vegetative development, flowering, fruit setting and improved crop quality.",
     "longDescription": "Algafert is a concentrated marine seaweed extract formulated to improve nutrient uptake, plant metabolism and stress tolerance. The naturally occurring bioactive compounds stimulate healthy root development, enhance vegetative growth, improve flowering and fruit setting while increasing crop productivity and quality.",
     "benefits": [
@@ -2127,8 +2296,8 @@
       "Improves chlorophyll activity and photosynthesis.",
       "Supports overall crop productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2–3 ml per litre of water.\nFoliar spray or drip application.",
+    "applicationMethod": "Foliar spray or drip irrigation.\nDilute in water and apply uniformly.",
     "targetCrops": [
       "Vegetables",
       "Fruits",
@@ -2146,7 +2315,11 @@
       "Potato",
       "Floriculture crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "250 ml",
+      "500 ml",
+      "1 L"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.\nKeep container tightly closed after use.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most fertilizers and micronutrients.\nPerform a compatibility test before tank mixing.",
@@ -2192,6 +2365,12 @@
           "question": "How should Algafert be stored?",
           "answer": "Store in a cool and dry place away from direct sunlight. Keep the container tightly closed after use. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Seaweed Extract Technology",
+        "Natural Biostimulant",
+        "Improves Root Growth",
+        "Enhances Stress Tolerance"
       ]
     },
     "status": "published"
@@ -2201,7 +2380,7 @@
     "slug": "biofat-600",
     "category": "Liquid Nutrition",
     "scientificName": "",
-    "composition": "",
+    "composition": "Liquid calcium formulation.\nConcentrated calcium nutrient solution.",
     "shortDescription": "Biofat 600 is a premium liquid calcium formulation developed to improve cell wall strength, fruit firmness, flowering and overall crop quality.",
     "longDescription": "Biofat 600 supplies readily available calcium for improving plant structural strength, reducing physiological disorders, improving fruit firmness and extending shelf life. The formulation supports vigorous plant growth and enhances crop quality under intensive cultivation.",
     "benefits": [
@@ -2214,8 +2393,8 @@
       "Enhances crop quality.",
       "Improves structural strength of plants."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2–3 ml per litre of water.\nFoliar spray during vegetative and fruit development stages.",
+    "applicationMethod": "Foliar spray.\nDilute in water and spray uniformly on foliage.",
     "targetCrops": [
       "Grapes",
       "Pomegranate",
@@ -2230,7 +2409,11 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "250 ml",
+      "500 ml",
+      "1 L"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most fertilizers.\nAvoid mixing with highly alkaline products without compatibility testing.",
@@ -2275,6 +2458,12 @@
           "question": "How should Biofat 600 be stored?",
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Advanced Calcium Technology",
+        "Improves Fruit Firmness",
+        "Reduces Blossom End Rot",
+        "Extends Shelf Life"
       ]
     },
     "status": "published"
@@ -2284,7 +2473,7 @@
     "slug": "boratech-mo-plus",
     "category": "Liquid Nutrition",
     "scientificName": "",
-    "composition": "",
+    "composition": "Liquid Boron and Molybdenum micronutrient formulation.\nChelated micronutrient solution.",
     "shortDescription": "Boratech MO+ is a premium liquid micronutrient formulation supplying Boron and Molybdenum to improve flowering, pollen viability, fruit setting and nitrogen metabolism.",
     "longDescription": "Boratech MO+ provides highly available Boron and Molybdenum required for reproductive growth, pollen tube development, flower retention, seed formation and efficient nitrogen metabolism. The formulation improves crop quality, fruit development and overall productivity.",
     "benefits": [
@@ -2299,8 +2488,8 @@
       "Improves crop quality.",
       "Enhances overall productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2–3 ml per litre of water.\nFoliar spray at flowering and fruit setting stages.",
+    "applicationMethod": "Foliar spray.\nDilute in water and spray uniformly on foliage.",
     "targetCrops": [
       "Vegetables",
       "Fruit crops",
@@ -2316,7 +2505,11 @@
       "Citrus",
       "Banana"
     ],
-    "packSize": [],
+    "packSize": [
+      "250 ml",
+      "500 ml",
+      "1 L"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most fertilizers and micronutrients.\nAvoid strongly alkaline mixtures.",
@@ -2363,6 +2556,12 @@
           "question": "How should Boratech MO+ be stored?",
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Chelated Micronutrient Technology",
+        "Improves Flowering",
+        "Enhances Fruit Setting",
+        "Dual Micronutrient Formulation"
       ]
     },
     "status": "published"
@@ -2372,7 +2571,7 @@
     "slug": "lignocomplex-plus-zn",
     "category": "Liquid Nutrition",
     "scientificName": "",
-    "composition": "",
+    "composition": "Lignosulphonate chelated zinc.\nLiquid chelated zinc formulation.",
     "shortDescription": "Lignocomplex + Zn is a premium lignosulphonate chelated zinc fertilizer developed for correcting zinc deficiency and improving plant growth, flowering and crop productivity.",
     "longDescription": "Lignocomplex + Zn supplies highly available chelated zinc required for enzyme activation, chlorophyll formation, auxin synthesis and efficient crop metabolism. The formulation rapidly corrects zinc deficiency while improving vegetative growth, flowering, fruit quality and overall yield.",
     "benefits": [
@@ -2387,8 +2586,8 @@
       "Supports efficient crop metabolism.",
       "Improves overall crop yield."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2–3 ml per litre of water.\nFoliar spray at vegetative stage.",
+    "applicationMethod": "Foliar spray.\nDilute in water and spray uniformly on foliage.",
     "targetCrops": [
       "Grapes",
       "Pomegranate",
@@ -2405,7 +2604,11 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "250 ml",
+      "500 ml",
+      "1 L"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most fertilizers and micronutrients.\nPerform compatibility test before tank mixing.",
@@ -2451,6 +2654,12 @@
           "question": "How should Lignocomplex + Zn be stored?",
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Lignosulphonate Chelation",
+        "Rapid Zinc Absorption",
+        "Corrects Zinc Deficiency",
+        "Improves Crop Quality"
       ]
     },
     "status": "published"
@@ -2460,7 +2669,7 @@
     "slug": "synbiok-plus",
     "category": "Liquid Nutrition",
     "scientificName": "",
-    "composition": "",
+    "composition": "Liquid potassium formulation.\nConcentrated potassium nutrient solution.",
     "shortDescription": "Syn BioK Plus is a premium liquid potassium fertilizer developed to improve fruit quality, colour development, sugar accumulation and overall crop productivity.",
     "longDescription": "Syn BioK Plus supplies highly available potassium required during flowering, fruit development and crop maturation. It enhances sugar movement, improves fruit colour, firmness, size and market quality while increasing tolerance against environmental stress.",
     "benefits": [
@@ -2475,8 +2684,8 @@
       "Supports overall crop productivity.",
       "Improves post-harvest shelf quality."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "2–3 ml per litre of water.\nFoliar spray during flowering and fruit development.",
+    "applicationMethod": "Foliar spray.\nDilute in water and spray uniformly on foliage.",
     "targetCrops": [
       "Grapes",
       "Pomegranate",
@@ -2492,7 +2701,11 @@
       "Vegetables",
       "Fruit crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "250 ml",
+      "500 ml",
+      "1 L"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with most fertilizers and micronutrients.\nPerform a compatibility test before tank mixing.",
@@ -2538,6 +2751,12 @@
           "question": "How should Syn BioK Plus be stored?",
           "answer": "Store in a cool and dry place away from direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Advanced Liquid Potassium",
+        "Improves Fruit Colour",
+        "Enhances Sugar Accumulation",
+        "Strengthens Plant Structure"
       ]
     },
     "status": "published"
@@ -2547,7 +2766,7 @@
     "slug": "spectrum",
     "category": "Organic Inputs",
     "scientificName": "",
-    "composition": "",
+    "composition": "Premium organic soil conditioner.\nOrganic carbon enriched formulation.",
     "shortDescription": "Spectrum is a premium organic soil conditioner developed to improve soil fertility, microbial activity, root development and long-term crop productivity.",
     "longDescription": "Spectrum improves soil structure, enhances organic carbon, increases microbial activity and improves nutrient availability. Regular application promotes healthy root systems, better water retention and sustainable crop production while improving overall soil health.",
     "benefits": [
@@ -2562,8 +2781,8 @@
       "Enhances nutrient uptake efficiency.",
       "Promotes overall crop productivity."
     ],
-    "dosage": "",
-    "applicationMethod": "",
+    "dosage": "200–250 kg per acre.\nApply during land preparation.",
+    "applicationMethod": "Soil application.\nBroadcast uniformly during land preparation and incorporate into soil.",
     "targetCrops": [
       "Cereals",
       "Pulses",
@@ -2575,7 +2794,11 @@
       "Floriculture",
       "Plantation crops"
     ],
-    "packSize": [],
+    "packSize": [
+      "5 Kg",
+      "10 Kg",
+      "25 Kg"
+    ],
     "storage": "Store in a cool and dry place.\nProtect from moisture and direct sunlight.",
     "shelfLife": "24 months under recommended storage conditions.",
     "compatibility": "Compatible with biofertilizers, organic manures and most fertilizers.",
@@ -2621,6 +2844,12 @@
           "question": "How should Spectrum be stored?",
           "answer": "Store in a cool and dry place, protected from moisture and direct sunlight. Shelf life is 24 months under recommended storage conditions."
         }
+      ],
+      "usp": [
+        "Organic Carbon Enrichment",
+        "Improves Soil Structure",
+        "Enhances Microbial Activity",
+        "Long-Term Soil Health"
       ]
     },
     "status": "published"

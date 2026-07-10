@@ -1,8 +1,11 @@
-﻿export default function CropProductsPage() {
+﻿import { useTranslation } from "react-i18next";
+
+export default function CropProductsPage() {
+  const { t } = useTranslation("common");
   return (
     <main className="page-container">
-      <h1 className="page-title">CropProductsPage</h1>
-      <p className="page-description">This is the crop products placeholder.</p>
+      <h1 className="page-title">{t("page.placeholders.cropProducts.title")}</h1>
+      <p className="page-description">{t("page.placeholders.cropProducts.placeholder")}</p>
     </main>
   );
 }

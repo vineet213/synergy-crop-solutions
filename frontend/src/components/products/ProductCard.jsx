@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import Badge from "../ui/Badge.jsx";
 import Card from "../ui/Card.jsx";
+import { formatCategory } from "../../utils/formatters.js";
 
 export default function ProductCard({ product }) {
   const { t } = useTranslation("products");
@@ -15,7 +16,7 @@ export default function ProductCard({ product }) {
         </div>
       )}
       <div className="product-card-head">
-        <Badge variant="soft">{product.category}</Badge>
+        <Badge variant="soft">{formatCategory(product.category, t)}</Badge>
         <h3 className="product-card-title">{product.name}</h3>
       </div>
       <div className="product-card-body">

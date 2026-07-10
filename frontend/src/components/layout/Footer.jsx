@@ -1,26 +1,26 @@
 ﻿import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Sprout, Mail, MapPin, Phone, ChevronRight } from "lucide-react";
+import { Mail, MapPin, Phone, ChevronRight } from "lucide-react";
 
 export default function Footer() {
   const { t } = useTranslation("common");
   const year = new Date().getFullYear();
 
   const quickLinks = [
-    { to: "/", label: "Home" },
-    { to: "/products", label: "Products" },
-    { to: "/categories", label: "Categories" },
-    { to: "/about", label: "About Us" },
-    { to: "/blog", label: "Blog" },
-    { to: "/contact", label: "Contact" },
+    { to: "/", label: t("footer.home") },
+    { to: "/products", label: t("footer.products") },
+    { to: "/categories", label: t("footer.categories") },
+    { to: "/about", label: t("footer.aboutUs") },
+    { to: "/blog", label: t("footer.blog") },
+    { to: "/contact", label: t("footer.contactUs") },
   ];
 
   const productLinks = [
-    { to: "/products?category=Bio+Fertilizers", label: "Bio Fertilizers" },
-    { to: "/products?category=Bio+Pesticides", label: "Bio Pesticides" },
-    { to: "/products?category=Consortia", label: "Consortia Products" },
-    { to: "/products?category=Liquid+Nutrition", label: "Liquid Nutrition" },
-    { to: "/products?category=Organic+Inputs", label: "Organic Inputs" },
+    { to: "/products?category=Bio+Fertilizers", label: t("footer.bioFertilizers") },
+    { to: "/products?category=Bio+Pesticides", label: t("footer.bioPesticides") },
+    { to: "/products?category=Consortia", label: t("footer.consortiaProducts") },
+    { to: "/products?category=Liquid+Nutrition", label: t("footer.liquidNutrition") },
+    { to: "/products?category=Organic+Inputs", label: t("footer.organicInputs") },
   ];
 
   return (
@@ -30,9 +30,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-about">
             <p className="footer-brand" style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.75rem" }}>
-              <span style={{ display: "inline-flex", padding: "0.4rem", borderRadius: "8px", background: "linear-gradient(135deg, #1b4332 0%, #0d2818 100%)", color: "#ffffff" }}>
-                <Sprout size={18} />
-              </span>
+              <img
+                src="/client-assets/logo/official-logo.jpeg"
+                alt="Synergy Crop Solutions"
+                className="footer-logo"
+              />
               Synergy Crop Solutions
             </p>
             <p>{t("footer.tagline")}</p>
@@ -41,7 +43,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <p className="footer-heading">Quick Links</p>
+            <p className="footer-heading">{t("footer.quickLinks")}</p>
             <ul className="footer-links">
               {quickLinks.map((link) => (
                 <li key={link.to}>
@@ -56,7 +58,7 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <p className="footer-heading">Products</p>
+            <p className="footer-heading">{t("footer.productCategories")}</p>
             <ul className="footer-links">
               {productLinks.map((link) => (
                 <li key={link.to}>
@@ -76,19 +78,19 @@ export default function Footer() {
               <li>
                 <a href="mailto:contact@synergycrops.com" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   <Mail size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
-                  <span>contact@synergycrops.com</span>
+                  <span>{t("footer.email")}</span>
                 </a>
               </li>
               <li>
                 <span style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#9ca3af" }}>
                   <Phone size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
-                  <span>Available on request</span>
+                  <span>{t("footer.phone")}</span>
                 </span>
               </li>
               <li>
                 <span style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", color: "#9ca3af" }}>
                   <MapPin size={14} style={{ opacity: 0.4, flexShrink: 0, marginTop: "0.2rem" }} />
-                  <span>Pune, Maharashtra, India</span>
+                  <span>{t("footer.address")}</span>
                 </span>
               </li>
             </ul>
@@ -96,8 +98,8 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>&copy; {year} Synergy Crop Solutions. All rights reserved.</span>
-          <span style={{ opacity: 0.6 }}>Residue-Free Agriculture</span>
+          <span>&copy; {year} Synergy Crop Solutions. {t("footer.copyright")}</span>
+          <span style={{ opacity: 0.6 }}>{t("footer.taglineShort")}</span>
         </div>
       </div>
     </footer>

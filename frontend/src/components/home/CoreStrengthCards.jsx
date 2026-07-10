@@ -26,7 +26,7 @@ export default function CoreStrengthCards() {
             key={slug}
             className="core-strength-card"
             onClick={() => navigate(`/products?category=${encodeURIComponent(slug)}`)}
-            aria-label={`View ${card.title} products`}
+            aria-label={t("viewProducts", { title: card.title })}
           >
             <span className="core-strength-icon">{ICONS[slug]}</span>
             <h3 className="core-strength-title">{card.title}</h3>

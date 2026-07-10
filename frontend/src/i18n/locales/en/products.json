@@ -38,11 +38,39 @@
     "brochureNotAvailable": "Brochure not yet available. Contact our team for detailed product information.",
     "technology": "Technology Details",
     "frequentlyAskedQuestions": "Frequently Asked Questions",
-    "video": "Product Video"
+    "video": "Product Video",
+    "cfuCount": "CFU Count",
+    "recommendedForCrops": "Recommended for the following crops:",
+    "downloadDescription": "Download product brochure for detailed specifications",
+    "download": "Download",
+    "relatedProducts": "Related Products",
+    "enquireNow": "Enquire Now",
+    "ctaLabel": "Interested in this product?",
+    "ctaTitle": "Get detailed information and pricing",
+    "ctaDescription": "Our team can provide technical specifications, field trial data, and distributor information.",
+    "findDistributor": "Find a Distributor",
+    "stickyEnquireNow": "Enquire Now",
+    "compositionLabel": "Composition",
+    "scientificNameLabel": "Scientific Name",
+    "cfuCountLabel": "CFU Count",
+    "formulationLabel": "Formulation",
+    "productImageThumbnails": "Product image thumbnails",
+    "thumbnailAlt": "{{name}} view {{index}}",
+    "videoTitle": "{{name}} video"
   },
   "empty": {
     "title": "No products match your search",
     "description": "Try a different keyword or clear the category filter to see more agricultural products."
+  },
+  "categories": {
+    "biofertilizers": "Bio Fertilizers",
+    "biopesticides": "Bio Pesticides",
+    "consortia": "Consortium Products",
+    "liquid-nutrition": "Liquid Nutrition",
+    "organic-inputs": "Organic Inputs",
+    "bio-fertilizer": "Bio Fertilizers",
+    "bio-pesticide": "Bio Pesticides",
+    "consortium": "Consortium Products"
   },
   "errors": {
     "load": "Failed to load products",

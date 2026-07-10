@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Menu, X, Sprout } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
 
 export default function Navbar() {
@@ -38,16 +38,17 @@ export default function Navbar() {
     { to: "/about", label: t("links.about") },
     { to: "/categories", label: t("links.categories") },
     { to: "/blog", label: t("links.blog") },
-    { to: "/contact", label: t("links.contact") },
   ];
 
   return (
     <header className="site-header">
       <div className="nav-inner page-container">
         <NavLink to="/" className="brand">
-          <div className="brand-icon-wrap">
-            <Sprout size={22} />
-          </div>
+          <img
+            src="/client-assets/logo/official-logo.jpeg"
+            alt="Synergy Crop Solutions"
+            className="brand-logo"
+          />
           <span className="brand-text">{t("brand")}</span>
         </NavLink>
 
@@ -96,9 +97,11 @@ export default function Navbar() {
       >
         <div className="mobile-panel-header">
           <NavLink to="/" className="brand" onClick={close} tabIndex={open ? 0 : -1}>
-            <div className="brand-icon-wrap">
-              <Sprout size={22} />
-            </div>
+            <img
+              src="/client-assets/logo/official-logo.jpeg"
+              alt="Synergy Crop Solutions"
+              className="brand-logo"
+            />
             <span className="brand-text">{t("brand")}</span>
           </NavLink>
           <button

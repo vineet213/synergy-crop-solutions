@@ -65,7 +65,7 @@ export default function DistributorLocatorPage() {
                 className={`filter-pill ${selectedState === state ? "active" : ""}`}
                 onClick={() => setSelectedState(state)}
               >
-                {state}
+                {state === "All" ? t("all") : state}
               </button>
             ))}
             {selectedState !== "All" && (

@@ -3,10 +3,8 @@
   "links": {
     "home": "Home",
     "products": "Products",
+    "about": "About",
     "categories": "Categories",
-    "cropDiscovery": "Crop Discovery",
-    "diseaseDiscovery": "Disease Discovery",
-    "locator": "Locator",
     "blog": "Blog",
     "contact": "Contact"
   },

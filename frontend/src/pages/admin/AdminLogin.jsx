@@ -53,7 +53,7 @@ export default function AdminLogin() {
       <div className="admin-login-card">
         <div className="card-shell">
           <div className="admin-login-header">
-            <h1 className="page-title">Agri Platform</h1>
+            <h1 className="page-title">Synergy Crop Solutions</h1>
             <p className="page-description" style={{ marginTop: "0.5rem" }}>Admin Login</p>
           </div>
 

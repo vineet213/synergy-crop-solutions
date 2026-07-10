@@ -33,7 +33,7 @@ export default function ContactPage() {
             {/* Form */}
             <div>
               <div className="prem-contact-form">
-                <h3 style={{ margin: "0 0 1.25rem", fontSize: "1.15rem", fontWeight: 700, color: "var(--brand-strong)" }}>Send us a message</h3>
+                <h3 style={{ margin: "0 0 1.25rem", fontSize: "1.15rem", fontWeight: 700, color: "var(--brand-strong)" }}>{t("page.contactPage.sendMessage")}</h3>
                 <ContactForm />
               </div>
             </div>
@@ -55,29 +55,29 @@ export default function ContactPage() {
                   <span className="prem-contact-row-icon"><Phone size={16} /></span>
                   <div className="prem-contact-row-body">
                     <span className="prem-contact-row-label">{t("page.contact.phone")}</span>
-                    <span className="prem-contact-row-value">Available on request</span>
+                    <span className="prem-contact-row-value">{t("footer.phone")}</span>
                   </div>
                 </div>
                 <div className="prem-contact-row">
                   <span className="prem-contact-row-icon"><MapPin size={16} /></span>
                   <div className="prem-contact-row-body">
                     <span className="prem-contact-row-label">{t("page.contact.office")}</span>
-                    <span className="prem-contact-row-value">Pune, Maharashtra, India</span>
+                    <span className="prem-contact-row-value">{t("footer.address")}</span>
                   </div>
                 </div>
                 <div className="prem-contact-row">
                   <span className="prem-contact-row-icon"><Clock size={16} /></span>
                   <div className="prem-contact-row-body">
-                    <span className="prem-contact-row-label">Business Hours</span>
-                    <span className="prem-contact-row-value">Mon – Sat, 9:00 AM – 6:00 PM</span>
+                    <span className="prem-contact-row-label">{t("page.contactPage.businessHours")}</span>
+                    <span className="prem-contact-row-value">{t("page.contactPage.hours")}</span>
                   </div>
                 </div>
               </div>
 
               <div className="prem-contact-card">
-                <h3>For Distributor & Dealer Inquiries</h3>
+                <h3>{t("page.contactPage.distributorInquiries")}</h3>
                 <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.7 }}>
-                  Interested in becoming a distribution partner? Reach out to our team for partnership opportunities, product training, and supply chain information.
+                  {t("page.contactPage.distributorDescription")}
                 </p>
                 <a href="mailto:partners@synergycrops.com" style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem", color: "var(--brand)", fontWeight: 600, fontSize: "0.9rem", marginTop: "0.5rem" }}>
                   partners@synergycrops.com <ChevronRight size={14} />
