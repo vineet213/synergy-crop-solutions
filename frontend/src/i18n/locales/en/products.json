@@ -35,7 +35,10 @@
     "availableOnRequest": "Available on request",
     "origin": "Origin",
     "downloadBrochure": "Download Brochure",
-    "brochureNotAvailable": "Brochure not yet available. Contact our team for detailed product information."
+    "brochureNotAvailable": "Brochure not yet available. Contact our team for detailed product information.",
+    "technology": "Technology Details",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "video": "Product Video"
   },
   "empty": {
     "title": "No products match your search",

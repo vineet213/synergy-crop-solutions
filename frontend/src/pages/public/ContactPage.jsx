@@ -1,5 +1,5 @@
 ﻿import { useTranslation } from "react-i18next";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Sprout, ChevronRight } from "lucide-react";
 import ContactForm from "../../components/leads/ContactForm.jsx";
 import useSEO from "../../hooks/useSEO.js";
 
@@ -9,52 +9,79 @@ export default function ContactPage() {
 
   return (
     <div>
-      <section className="prem">
-        <div className="prem-container">
-          <header className="prem-header">
-            <span className="prem-header__label">{t("page.contact.subtitle")}</span>
-            <h1 className="prem-header__title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>{t("page.contact.title")}</h1>
-            <p className="prem-header__text">{t("page.contact.intro")}</p>
-          </header>
+      {/* ============ HERO ============ */}
+      <section className="prem-hero" style={{ padding: "5rem 0 4rem" }}>
+        <div className="prem-container prem-hero-content">
+          <div className="prem-hero-text">
+            <span className="prem-hero-badge">
+              <Sprout size={14} />
+              {t("page.contact.subtitle")}
+            </span>
+            <h1 className="prem-hero-title">{t("page.contact.title")}</h1>
+            <p className="prem-hero-sub">{t("page.contact.intro")}</p>
+          </div>
+          <div className="prem-hero-visual" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Mail size={64} strokeWidth={1} style={{ color: "rgba(255,255,255,0.1)" }} />
+          </div>
+        </div>
+      </section>
 
-          <div className="contact-grid">
-            <div className="contact-card">
-              <ContactForm />
+      {/* ============ CONTENT ============ */}
+      <section className="prem prem-alt" style={{ paddingTop: "3rem" }}>
+        <div className="prem-container">
+          <div className="prem-contact-grid">
+            {/* Form */}
+            <div>
+              <div className="prem-contact-form">
+                <h3 style={{ margin: "0 0 1.25rem", fontSize: "1.15rem", fontWeight: 700, color: "var(--brand-strong)" }}>Send us a message</h3>
+                <ContactForm />
+              </div>
             </div>
 
-            <div className="contact-card" style={{ alignSelf: "start" }}>
-              <h3>{t("page.contact.otherWays")}</h3>
-              <div>
-                <div className="contact-detail">
-                  <span className="contact-detail-icon"><Mail size={16} /></span>
-                  <div className="contact-detail-body">
-                    <span className="contact-detail-label">{t("page.contact.email")}</span>
-                    <span className="contact-detail-value">
+            {/* Info */}
+            <div className="prem-contact-info">
+              <div className="prem-contact-card">
+                <h3>{t("page.contact.otherWays")}</h3>
+                <div className="prem-contact-row">
+                  <span className="prem-contact-row-icon"><Mail size={16} /></span>
+                  <div className="prem-contact-row-body">
+                    <span className="prem-contact-row-label">{t("page.contact.email")}</span>
+                    <span className="prem-contact-row-value">
                       <a href="mailto:contact@synergycrops.com">contact@synergycrops.com</a>
                     </span>
                   </div>
                 </div>
-                <div className="contact-detail">
-                  <span className="contact-detail-icon"><Phone size={16} /></span>
-                  <div className="contact-detail-body">
-                    <span className="contact-detail-label">{t("page.contact.phone")}</span>
-                    <span className="contact-detail-value">Available on request</span>
+                <div className="prem-contact-row">
+                  <span className="prem-contact-row-icon"><Phone size={16} /></span>
+                  <div className="prem-contact-row-body">
+                    <span className="prem-contact-row-label">{t("page.contact.phone")}</span>
+                    <span className="prem-contact-row-value">Available on request</span>
                   </div>
                 </div>
-                <div className="contact-detail">
-                  <span className="contact-detail-icon"><MapPin size={16} /></span>
-                  <div className="contact-detail-body">
-                    <span className="contact-detail-label">{t("page.contact.office")}</span>
-                    <span className="contact-detail-value">Available on request</span>
+                <div className="prem-contact-row">
+                  <span className="prem-contact-row-icon"><MapPin size={16} /></span>
+                  <div className="prem-contact-row-body">
+                    <span className="prem-contact-row-label">{t("page.contact.office")}</span>
+                    <span className="prem-contact-row-value">Pune, Maharashtra, India</span>
                   </div>
                 </div>
-                <div className="contact-detail">
-                  <span className="contact-detail-icon"><Clock size={16} /></span>
-                  <div className="contact-detail-body">
-                    <span className="contact-detail-label">Business Hours</span>
-                    <span className="contact-detail-value">Mon – Sat, 9:00 AM – 6:00 PM</span>
+                <div className="prem-contact-row">
+                  <span className="prem-contact-row-icon"><Clock size={16} /></span>
+                  <div className="prem-contact-row-body">
+                    <span className="prem-contact-row-label">Business Hours</span>
+                    <span className="prem-contact-row-value">Mon – Sat, 9:00 AM – 6:00 PM</span>
                   </div>
                 </div>
+              </div>
+
+              <div className="prem-contact-card">
+                <h3>For Distributor & Dealer Inquiries</h3>
+                <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.7 }}>
+                  Interested in becoming a distribution partner? Reach out to our team for partnership opportunities, product training, and supply chain information.
+                </p>
+                <a href="mailto:partners@synergycrops.com" style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem", color: "var(--brand)", fontWeight: 600, fontSize: "0.9rem", marginTop: "0.5rem" }}>
+                  partners@synergycrops.com <ChevronRight size={14} />
+                </a>
               </div>
             </div>
           </div>

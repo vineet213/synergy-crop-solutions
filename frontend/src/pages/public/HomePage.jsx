@@ -1,16 +1,26 @@
 ﻿import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Sprout, ShieldCheck, Users, Award, TreePine, Droplets, Leaf, Star, ChevronRight, ArrowRight } from "lucide-react";
+import {
+  Sprout, ShieldCheck, Users, Award, TreePine, Droplets, Leaf,
+  Star, ChevronRight, ArrowRight, FlaskConical, Microscope,
+  Globe, Recycle, CheckCircle, MapPin, Quote, TrendingUp
+} from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import HeroCarousel from "../../components/home/HeroCarousel.jsx";
-import CoreStrengthCards from "../../components/home/CoreStrengthCards.jsx";
 import { usePublicTestimonials } from "../../hooks/useTestimonials.js";
 import { usePublicCertifications } from "../../hooks/useCertifications.js";
 import { usePublicProducts } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
 
-const categoryIcons = [Sprout, Leaf, TreePine, Droplets, Award];
+const categoryIcons = [Sprout, ShieldCheck, Droplets, FlaskConical, Leaf];
+
+const techItems = [
+  { icon: Microscope, title: "Japanese Lyophilization", desc: "Advanced freeze-drying technology preserving high CFU counts for maximum efficacy." },
+  { icon: FlaskConical, title: "High CFU Formulations", desc: "Concentrated microbial counts ensuring robust performance in diverse soil conditions." },
+  { icon: Recycle, title: "Organic Formulations", desc: "100% bio-based compositions with zero chemical residues for safe agriculture." },
+  { icon: TrendingUp, title: "Bio-Enhancers & Consortia", desc: "Synergistic microbial blends that boost plant growth and soil regeneration." },
+];
 
 export default function HomePage() {
   useSEO({ canonical: "/" });
@@ -24,59 +34,115 @@ export default function HomePage() {
 
   const cats = t("categories.cards", { returnObjects: true });
 
+  function imageUrl(raw) {
+    if (!raw) return null;
+    return raw.startsWith("http") || raw.startsWith("/") ? raw : `/${raw}`;
+  }
+
   return (
     <div>
-      {/* ──────── HERO ──────── */}
-      <section className="hero-panel page-container">
-        <div className="hero-copy">
-          <Badge variant="brand">{t("hero.badge")}</Badge>
-          <h1 className="hero-title">{t("hero.title")}</h1>
-          <p className="hero-text">{t("hero.subtitle")}</p>
-          <div className="hero-actions">
-            <Button onClick={() => navigate("/products")}>{tc("cta.exploreSolutions")}</Button>
-            <Button variant="secondary" onClick={() => navigate("/about")}>{tc("cta.viewOurStory")}</Button>
+      {/* ============ HERO ============ */}
+      <section className="prem-hero">
+        <div className="prem-container prem-hero-content">
+          <div className="prem-hero-text">
+            <span className="prem-hero-badge">
+              <Sprout size={14} />
+              {t("hero.badge")}
+            </span>
+            <h1 className="prem-hero-title">{t("hero.title")}</h1>
+            <p className="prem-hero-sub">{t("hero.subtitle")}</p>
+            <div className="prem-hero-actions">
+              <Button onClick={() => navigate("/products")}>{tc("cta.exploreSolutions")}</Button>
+              <Button variant="secondary" onClick={() => navigate("/about")}>{tc("cta.viewOurStory")}</Button>
+            </div>
           </div>
-        </div>
-        <div className="hero-visual">
-          <HeroCarousel />
+          <div className="prem-hero-visual">
+            <HeroCarousel />
+          </div>
         </div>
       </section>
 
-      {/* ──────── ABOUT SYNERGY ──────── */}
-      <section className="prem prem-alt">
-        <div className="prem-container prem-split">
-          <div className="prem-split__text">
-            <span className="prem-header__label">{t("about.label")}</span>
-            <h2 className="prem-header__title">{t("about.title")}</h2>
-            <p className="prem-split__body">{t("about.body")}</p>
-            <Link to="/about" className="button-base button-primary" style={{ alignSelf: "flex-start", marginTop: "0.5rem" }}>
-              {t("about.cta")}
-            </Link>
-          </div>
-          <div className="prem-split__media" style={{ background: "var(--brand-gradient)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ color: "rgba(255,255,255,0.15)", textAlign: "center", padding: "2rem" }}>
-              <Leaf size={80} strokeWidth={1} />
+      {/* ============ CAPABILITIES ============ */}
+      <section className="prem">
+        <div className="prem-container">
+          <div className="prem-cap-grid">
+            <div className="prem-cap-item">
+              <span className="prem-cap-icon"><Sprout size={22} /></span>
+              <p className="prem-cap-value">50+</p>
+              <p className="prem-cap-label">Bio-Based Products</p>
+            </div>
+            <div className="prem-cap-item">
+              <span className="prem-cap-icon"><Globe size={22} /></span>
+              <p className="prem-cap-value">Pan-India</p>
+              <p className="prem-cap-label">Distribution Network</p>
+            </div>
+            <div className="prem-cap-item">
+              <span className="prem-cap-icon"><Award size={22} /></span>
+              <p className="prem-cap-value">100%</p>
+              <p className="prem-cap-label">Residue-Free Guarantee</p>
+            </div>
+            <div className="prem-cap-item">
+              <span className="prem-cap-icon"><Users size={22} /></span>
+              <p className="prem-cap-value">10K+</p>
+              <p className="prem-cap-label">Trusted Growers</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ──────── WHY FARMERS TRUST US ──────── */}
+      {/* ============ COMPANY INTRODUCTION ============ */}
+      <section className="prem prem-alt">
+        <div className="prem-container prem-intro">
+          <div className="prem-intro-text">
+            <span className="prem-header__label">{t("about.label")}</span>
+            <h2 className="prem-header__title" style={{ margin: 0 }}>{t("about.title")}</h2>
+            <p className="prem-split__body">{t("about.body")}</p>
+            <div className="prem-intro-stats">
+              <div className="prem-intro-stat">
+                <p className="prem-intro-stat-value">2018</p>
+                <p className="prem-intro-stat-label">Founded in Pune</p>
+              </div>
+              <div className="prem-intro-stat">
+                <p className="prem-intro-stat-value">5+</p>
+                <p className="prem-intro-stat-label">Product Categories</p>
+              </div>
+              <div className="prem-intro-stat">
+                <p className="prem-intro-stat-value">12+</p>
+                <p className="prem-intro-stat-label">States Covered</p>
+              </div>
+              <div className="prem-intro-stat">
+                <p className="prem-intro-stat-value">R&D</p>
+                <p className="prem-intro-stat-label">Continuous Innovation</p>
+              </div>
+            </div>
+            <Link to="/about" className="button-base button-primary" style={{ alignSelf: "flex-start", marginTop: "0.5rem" }}>
+              {t("about.cta")}
+            </Link>
+          </div>
+          <div className="prem-intro-visual" style={{ background: "var(--brand-gradient)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ color: "rgba(255,255,255,0.12)", textAlign: "center", padding: "2rem" }}>
+              <Sprout size={80} strokeWidth={1} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ WHY CHOOSE US ============ */}
       <section className="prem">
         <div className="prem-container">
           <header className="prem-header center">
             <span className="prem-header__label">{t("trust.label")}</span>
             <h2 className="prem-header__title">{t("trust.title")}</h2>
           </header>
-          <div className="prem-stat-grid">
+          <div className="prem-why-grid">
             {t("trust.stats", { returnObjects: true }).map((stat, i) => {
-              const StatIcons = [ShieldCheck, Users, Award, Star];
-              const StatIcon = StatIcons[i] || ShieldCheck;
+              const icons = [ShieldCheck, Globe, Award, Star, Users, Leaf];
+              const Icon = icons[i] || ShieldCheck;
               return (
-                <div key={i} className="prem-stat">
-                  <span className="prem-stat-icon"><StatIcon size={20} /></span>
-                  <p className="prem-stat-value">{stat.value}</p>
-                  <p className="prem-stat-label">{stat.label}</p>
+                <div key={i} className="prem-why-card">
+                  <span className="prem-why-icon"><Icon size={22} /></span>
+                  <h3 className="prem-why-title">{stat.value}</h3>
+                  <p className="prem-why-desc">{stat.label}</p>
                 </div>
               );
             })}
@@ -84,7 +150,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ──────── PRODUCT CATEGORIES ──────── */}
+      {/* ============ PRODUCT CATEGORIES ============ */}
       <section className="prem prem-alt">
         <div className="prem-container">
           <header className="prem-header">
@@ -96,7 +162,7 @@ export default function HomePage() {
               const Icon = categoryIcons[i] || Leaf;
               return (
                 <button key={i} type="button" className="prem-cat-btn" onClick={() => navigate(`/products?category=${encodeURIComponent(cat.title)}`)}>
-                  <span className="prem-cat-icon"><Icon size={20} /></span>
+                  <span className="prem-cat-icon"><Icon size={22} /></span>
                   <h3 className="prem-cat-title">{cat.title}</h3>
                   <p className="prem-cat-desc">{cat.description}</p>
                 </button>
@@ -106,7 +172,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ──────── FEATURED PRODUCTS ──────── */}
+      {/* ============ FEATURED PRODUCTS ============ */}
       {visibleProducts.length > 0 && (
         <section className="prem">
           <div className="prem-container">
@@ -119,26 +185,23 @@ export default function HomePage() {
                 {tc("cta.viewProducts")} <ChevronRight size={16} />
               </Link>
             </div>
-            <div className="prem-prod-grid">
+            <div className="prem-feat-prod-row">
               {visibleProducts.slice(0, 3).map((p) => {
-                const img = p.images?.[0]
-                  ? (p.images[0].startsWith("http") || p.images[0].startsWith("/") ? p.images[0] : `/${p.images[0]}`)
-                  : null;
+                const img = imageUrl(p.images?.[0]);
                 return (
-                  <Link key={p._id} to={`/products/${p.slug}`} className="prem-prod no-underline">
+                  <Link key={p._id} to={`/products/${p.slug}`} className="prem-feat-prod-card no-underline">
                     {img && (
-                      <div className="prem-prod-img">
-                        <img src={img} alt={p.name} />
+                      <div className="prem-feat-prod-img">
+                        <img src={img} alt={p.name} loading="lazy" />
                       </div>
                     )}
-                    <div className="prem-prod-body">
-                      <span className="prem-prod-cat">{p.category}</span>
-                      <h3 className="prem-prod-name">{p.name}</h3>
-                      {p.shortDescription && <p className="prem-prod-desc">{p.shortDescription}</p>}
+                    <div className="prem-feat-prod-body">
+                      <span className="prem-feat-prod-badge">{p.category}</span>
+                      <h3 className="prem-feat-prod-name">{p.name}</h3>
+                      {p.shortDescription && <p className="prem-feat-prod-desc">{p.shortDescription}</p>}
                     </div>
-                    <div className="prem-prod-foot">
-                      <p className="prem-prod-price">{p.price ? `₹${p.price}` : tc("cta.getInTouch")}</p>
-                      <span className="prem-prod-link">{tc("cta.viewProducts")} <ArrowRight size={14} /></span>
+                    <div className="prem-feat-prod-foot">
+                      <span className="prem-prod-link">{t("detail.viewDetails", "View Details")} <ArrowRight size={14} /></span>
                     </div>
                   </Link>
                 );
@@ -148,26 +211,32 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* ──────── TECHNOLOGY & INNOVATION ──────── */}
+      {/* ============ TECHNOLOGY & RESEARCH ============ */}
       <section className="prem prem-alt">
-        <div className="prem-container prem-split flip">
-          <div className="prem-split__text">
+        <div className="prem-container">
+          <header className="prem-header">
             <span className="prem-header__label">{t("innovation.label")}</span>
             <h2 className="prem-header__title">{t("innovation.title")}</h2>
-            <p className="prem-split__body">{t("innovation.body")}</p>
-            <Link to="/about" className="prem-prod-link" style={{ alignSelf: "flex-start", marginTop: "0.5rem" }}>
-              {tc("cta.viewOurStory")} <ChevronRight size={16} />
-            </Link>
-          </div>
-          <div className="prem-split__media" style={{ background: "linear-gradient(135deg, var(--secondary) 0%, var(--brand) 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ color: "rgba(255,255,255,0.12)", textAlign: "center", padding: "2rem" }}>
-              <Sprout size={80} strokeWidth={1} />
-            </div>
+            <p className="prem-header__text">{t("innovation.body")}</p>
+          </header>
+          <div className="prem-tech-grid">
+            {techItems.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} className="prem-tech-card">
+                  <span className="prem-tech-icon"><Icon size={22} /></span>
+                  <div className="prem-tech-body">
+                    <h3 className="prem-tech-title">{item.title}</h3>
+                    <p className="prem-tech-desc">{item.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ──────── LICENCES / CERTIFICATIONS ──────── */}
+      {/* ============ CERTIFICATIONS ============ */}
       <section className="prem">
         <div className="prem-container">
           <header className="prem-header center">
@@ -179,11 +248,14 @@ export default function HomePage() {
           ) : certifications.length === 0 ? (
             <p style={{ textAlign: "center", color: "var(--text-muted)" }}>{t("certifications.empty")}</p>
           ) : (
-            <div className="prem-logos">
+            <div className="prem-cert-grid">
               {certifications.map((c) => (
-                <div key={c._id} className="prem-logo-item">
-                  <Award size={20} />
-                  <span>{c.title}</span>
+                <div key={c._id} className="prem-cert-card">
+                  <span className="prem-cert-icon"><Award size={22} /></span>
+                  <div className="prem-cert-body">
+                    <h3 className="prem-cert-title">{c.title}</h3>
+                    {c.description && <p className="prem-cert-desc">{c.description}</p>}
+                  </div>
                 </div>
               ))}
             </div>
@@ -191,7 +263,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ──────── TESTIMONIALS ──────── */}
+      {/* ============ TESTIMONIALS ============ */}
       <section className="prem prem-alt">
         <div className="prem-container">
           <header className="prem-header center">
@@ -206,11 +278,17 @@ export default function HomePage() {
             <div className="prem-testi-grid">
               {testimonials.slice(0, 3).map((item) => (
                 <div key={item._id} className="prem-testi">
+                  <span style={{ color: "var(--brand)", opacity: 0.3 }}><Quote size={32} /></span>
                   <p className="prem-testi-text">"{item.testimonial}"</p>
                   <div className="prem-testi-author">
-                    <div>
-                      <p className="prem-testi-name">{item.customerName}</p>
-                      {item.location && <p className="prem-testi-role">{item.location}</p>}
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", width: "100%" }}>
+                      <div style={{ width: "44px", height: "44px", borderRadius: "999px", background: "var(--brand-soft)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <Users size={20} style={{ color: "var(--brand-strong)" }} />
+                      </div>
+                      <div>
+                        <p className="prem-testi-name">{item.customerName}</p>
+                        {item.location && <p className="prem-testi-role">{item.location}</p>}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -220,17 +298,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ──────── CTA ──────── */}
-      <section className="prem-cta">
+      {/* ============ COVERAGE ============ */}
+      <section className="prem">
+        <div className="prem-container prem-coverage">
+          <div className="prem-coverage-text">
+            <span className="prem-header__label">Our Reach</span>
+            <h2 className="prem-header__title" style={{ margin: 0 }}>Pan-India Distribution Network</h2>
+            <p className="prem-header__text">
+              From the fertile fields of Punjab to the plantations of Karnataka, our products reach farmers across India through a robust network of distributors and dealers.
+            </p>
+            <ul className="prem-coverage-list">
+              {["Maharashtra", "Karnataka", "Madhya Pradesh", "Rajasthan", "Uttar Pradesh", "Gujarat", "Telangana", "Andhra Pradesh"].map((state) => (
+                <li key={state} className="prem-coverage-item">
+                  <MapPin size={14} />
+                  {state}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="prem-coverage-visual">
+            <div style={{ textAlign: "center", color: "var(--text-muted)", padding: "2rem" }}>
+              <Globe size={64} strokeWidth={1} style={{ opacity: 0.3, marginBottom: "1rem" }} />
+              <p style={{ fontWeight: 600, fontSize: "0.9rem" }}>Pan-India Presence</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CTA ============ */}
+      <section className="prem">
         <div className="prem-container">
-          <header className="prem-header center">
-            <span className="prem-header__label">{t("cta.label")}</span>
-            <h2 className="prem-header__title">{t("cta.title")}</h2>
-            <p className="prem-header__text">{t("cta.text")}</p>
-          </header>
-          <div className="prem-cta-actions">
-            <Button onClick={() => navigate("/contact")}>{t("cta.contact")}</Button>
-            <Button variant="secondary" onClick={() => navigate("/products")}>{t("cta.explore")}</Button>
+          <div className="prem-cta-card">
+            <header className="prem-header center">
+              <span className="prem-header__label" style={{ color: "rgba(255,255,255,0.6)" }}>{t("cta.label")}</span>
+              <h2 className="prem-header__title">{t("cta.title")}</h2>
+              <p className="prem-header__text">{t("cta.text")}</p>
+            </header>
+            <div className="prem-cta-actions">
+              <Button onClick={() => navigate("/contact")}>{t("cta.contact")}</Button>
+              <Button variant="secondary" onClick={() => navigate("/products")}>{t("cta.explore")}</Button>
+            </div>
           </div>
         </div>
       </section>

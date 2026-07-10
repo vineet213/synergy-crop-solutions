@@ -1,222 +1,458 @@
 ﻿import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import {
   FileText, CheckCircle, Sprout, FlaskConical,
   Droplet, Thermometer, Shield, Download,
-  Tag, Package, MapPin, Box, Image as ImageIcon
+  Tag, Package, MapPin, Box, Image as ImageIcon,
+  ArrowRight, Leaf, AlertTriangle, Clock,
+  X, ChevronDown, Award, Film, ExternalLink, Phone, Info, Microscope,
+  Calendar, HelpCircle, Bug, Beaker, Maximize2
 } from "lucide-react";
-
-function QuickInfoCard({ icon: Icon, label, value }) {
-  return (
-    <div className="pd-qcard">
-      <span className="pd-qcard-icon"><Icon size={16} /></span>
-      <div className="pd-qcard-body">
-        <span className="pd-qcard-label">{label}</span>
-        <strong className="pd-qcard-value">{value}</strong>
-      </div>
-    </div>
-  );
-}
-
-function DetailSection({ icon: Icon, title, children }) {
-  return (
-    <section className="pd-section">
-      <div className="pd-section-head">
-        <span className="pd-section-icon"><Icon size={20} /></span>
-        <h2 className="pd-section-title">{title}</h2>
-      </div>
-      <div className="pd-section-body">{children}</div>
-    </section>
-  );
-}
+import useEnrichedProduct from "../../hooks/useEnrichedProduct.js";
 
 function imageUrl(raw) {
   if (!raw) return null;
   return raw.startsWith("http") || raw.startsWith("/") ? raw : `/${raw}`;
 }
 
+const TABS = [
+  { id: "overview", icon: FileText, labelKey: "detail.overview" },
+  { id: "benefits", icon: CheckCircle, labelKey: "detail.benefits" },
+  { id: "crops", icon: Sprout, labelKey: "detail.targetCrops" },
+  { id: "composition", icon: FlaskConical, labelKey: "detail.composition" },
+  { id: "application", icon: Droplet, labelKey: "detail.dosageApplication" },
+  { id: "storage", icon: Thermometer, labelKey: "detail.storageShelfLife" },
+  { id: "safety", icon: Shield, labelKey: "detail.safety" },
+];
+
 export default function ProductDetail({ product }) {
   const { t } = useTranslation("products");
+  const p = useEnrichedProduct(product);
   const na = t("detail.availableOnRequest");
 
-  const images = (product.images || []).map(imageUrl).filter(Boolean);
+  const images = (p.images || []).map(imageUrl).filter(Boolean);
   const [selectedImg, setSelectedImg] = useState(0);
-  const [zoomed, setZoomed] = useState(false);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [fullscreenImg, setFullscreenImg] = useState(null);
+  const [openFaq, setOpenFaq] = useState(null);
+  const [showSticky, setShowSticky] = useState(true);
 
-  function val(v) {
-    return v || na;
+  const relatedProducts = p.relatedProducts || [];
+
+  function SectionBlock({ icon: Icon, title, children }) {
+    return (
+      <section className="pd-section" style={{ marginBottom: "1rem" }}>
+        <div className="pd-section-head">
+          <span className="pd-section-icon"><Icon size={20} /></span>
+          <h2 className="pd-section-title">{title}</h2>
+        </div>
+        <div className="pd-section-body">{children}</div>
+      </section>
+    );
   }
 
   return (
-    <div className="pd-wrapper">
-      {/* ===== HERO ===== */}
-      <div className="pd-hero">
-        {/* LEFT: Image */}
-        <div className="pd-hero-visual">
+    <div>
+      {/* ===== FULLSCREEN MODAL ===== */}
+      {fullscreenImg !== null && (
+        <div className="pd-fs-overlay" onClick={() => setFullscreenImg(null)}>
+          <button className="pd-fs-close" onClick={() => setFullscreenImg(null)}><X size={24} /></button>
+          <img src={images[fullscreenImg]} alt={p.name} className="pd-fs-img" />
+        </div>
+      )}
+
+      {/* ===== HERO V2 ===== */}
+      <div className="pd-hero-v2">
+        {/* LEFT: Gallery */}
+        <div className="pd-gallery">
           {images.length > 0 ? (
             <>
-              <div
-                className={`pd-main-img ${zoomed ? "zoomed" : ""}`}
-                onMouseEnter={() => setZoomed(true)}
-                onMouseLeave={() => setZoomed(false)}
-              >
-                <img src={images[selectedImg]} alt={product.name} />
+              <div className="pd-gallery-main" style={{ cursor: "pointer" }} onClick={() => setFullscreenImg(selectedImg)}>
+                <img src={images[selectedImg]} alt={p.name} />
+                <span className="pd-gallery-zoom"><Maximize2 size={16} /></span>
               </div>
               {images.length > 1 && (
-                <div className="pd-thumbs" role="tablist" aria-label="Product image thumbnails">
+                <div className="pd-gallery-thumbs" role="tablist" aria-label="Product image thumbnails">
                   {images.map((url, i) => (
                     <button
                       key={i}
                       role="tab"
                       aria-selected={i === selectedImg}
-                      className={`pd-thumb ${i === selectedImg ? "active" : ""}`}
+                      className={`pd-gallery-thumb ${i === selectedImg ? "active" : ""}`}
                       onClick={() => setSelectedImg(i)}
                     >
-                      <img src={url} alt={`${product.name} view ${i + 1}`} />
+                      <img src={url} alt={`${p.name} view ${i + 1}`} />
                     </button>
                   ))}
                 </div>
               )}
             </>
           ) : (
-            <div className="pd-noimg">
+            <div className="pd-noimg" style={{ minHeight: "340px" }}>
               <ImageIcon size={48} />
-              <span className="pd-qcard-value">{na}</span>
+              <span>{na}</span>
             </div>
           )}
         </div>
 
         {/* RIGHT: Info */}
-        <div className="pd-hero-info">
-          <span className="pd-badge">{product.category}</span>
-          <h1 className="pd-name">{product.name}</h1>
-          {product.scientificName && (
-            <p className="pd-sci-name"><em>{product.scientificName}</em></p>
+        <div className="pd-info-v2">
+          <span className="pd-info-badge">{p.category}</span>
+          <h1 className="pd-info-name">{p.name}</h1>
+          {p.scientificName && (
+            <p className="pd-info-sci"><em>{p.scientificName}</em></p>
           )}
-          {product.shortDescription && (
-            <p className="pd-desc">{product.shortDescription}</p>
+          {p.shortDescription && (
+            <p className="pd-info-desc">{p.shortDescription}</p>
           )}
-          <div className="pd-qgrid">
-            <QuickInfoCard icon={Tag} label={t("detail.category")} value={product.category} />
-            <QuickInfoCard icon={Package} label={t("detail.productType")} value={val(product.productType)} />
-            <QuickInfoCard icon={MapPin} label={t("detail.origin")} value={na} />
-            <QuickInfoCard icon={Box} label={t("detail.packSize")} value={product.packSize?.length ? product.packSize.join(", ") : na} />
+
+          {p.cfu && (
+            <div className="pd-info-badges">
+              <span className="pd-cert-badge"><Beaker size={14} /> {p.cfu}</span>
+            </div>
+          )}
+
+          <div className="pd-info-grid">
+            <div className="pd-info-cell">
+              <span className="pd-info-cell-icon"><Tag size={16} /></span>
+              <div className="pd-info-cell-body">
+                <span className="pd-info-cell-label">{t("detail.category")}</span>
+                <span className="pd-info-cell-value">{p.category}</span>
+              </div>
+            </div>
+            {p.productType && (
+              <div className="pd-info-cell">
+                <span className="pd-info-cell-icon"><Package size={16} /></span>
+                <div className="pd-info-cell-body">
+                  <span className="pd-info-cell-label">{t("detail.productType")}</span>
+                  <span className="pd-info-cell-value">{p.productType}</span>
+                </div>
+              </div>
+            )}
+            {p.packSize?.length > 0 && (
+              <div className="pd-info-cell">
+                <span className="pd-info-cell-icon"><Box size={16} /></span>
+                <div className="pd-info-cell-body">
+                  <span className="pd-info-cell-label">{t("detail.packSize")}</span>
+                  <span className="pd-info-cell-value">{p.packSize.join(", ")}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* USPs */}
+          {p.usps && p.usps.length > 0 && (
+            <div className="pd-usps">
+              {p.usps.map((usp, i) => <span key={i} className="pd-usp">{usp}</span>)}
+            </div>
+          )}
+
+          {/* CTA */}
+          <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.5rem", flexWrap: "wrap" }}>
+            <Link to="/contact" className="button-base button-primary">
+              Enquire Now <ArrowRight size={16} style={{ marginLeft: "0.35rem" }} />
+            </Link>
+            {product.brochure && (
+              <a href={product.brochure} target="_blank" rel="noopener noreferrer" className="button-base button-secondary">
+                <Download size={16} style={{ marginRight: "0.35rem" }} />
+                {t("detail.downloadBrochure")}
+              </a>
+            )}
           </div>
         </div>
       </div>
 
-      {/* ===== DETAIL SECTIONS ===== */}
-      <DetailSection icon={FileText} title={t("detail.overview")}>
-        {product.longDescription || product.description || product.shortDescription ? (
-          <p className="pd-section-p">{product.longDescription || product.description || product.shortDescription}</p>
-        ) : (
-          <p className="pd-na">{na}</p>
-        )}
-      </DetailSection>
+      {/* ===== TABS ===== */}
+      <div className="pd-tabs">
+        {TABS.map((tab) => {
+          const Icon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              className={`pd-tab ${activeTab === tab.id ? "active" : ""}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              <Icon size={16} style={{ marginRight: "0.4rem", verticalAlign: "middle" }} />
+              {t(tab.labelKey)}
+            </button>
+          );
+        })}
+      </div>
 
-      <DetailSection icon={CheckCircle} title={t("detail.benefits")}>
-        {product.benefits?.length > 0 ? (
-          <ul className="pd-ul">
-            {product.benefits.map((b, i) => <li key={i}>{b}</li>)}
-          </ul>
-        ) : (
-          <p className="pd-na">{na}</p>
-        )}
-      </DetailSection>
+      {/* ===== TAB CONTENT ===== */}
+      <div style={{ marginTop: "1.5rem" }}>
 
-      <DetailSection icon={Sprout} title={t("detail.targetCrops")}>
-        {product.targetCrops?.length > 0 ? (
-          <div className="pd-tags">
-            {product.targetCrops.map((c, i) => <span key={i} className="pd-tag">{c}</span>)}
-          </div>
-        ) : (
-          <p className="pd-na">{na}</p>
-        )}
-      </DetailSection>
-
-      <DetailSection icon={FlaskConical} title={t("detail.composition")}>
-        {product.composition ? (
-          <p className="pd-section-p">{product.composition}</p>
-        ) : (
-          <p className="pd-na">{na}</p>
-        )}
-      </DetailSection>
-
-      <DetailSection icon={Droplet} title={t("detail.dosageApplication")}>
-        {product.dosage || product.applicationMethod ? (
-          <div className="pd-specs">
-            {product.dosage && (
-              <div className="pd-spec">
-                <span className="pd-spec-l">{t("detail.dosage")}</span>
-                <strong className="pd-spec-v">{product.dosage}</strong>
-              </div>
+        {/* ── Overview ── */}
+        {activeTab === "overview" && (
+          <div>
+            {(p.longDescription || p.description || p.shortDescription) && (
+              <SectionBlock icon={FileText} title={t("detail.overview")}>
+                <p className="pd-section-p">{p.longDescription || p.description || p.shortDescription}</p>
+              </SectionBlock>
             )}
-            {product.applicationMethod && (
-              <div className="pd-spec">
-                <span className="pd-spec-l">{t("detail.applicationMethod")}</span>
-                <strong className="pd-spec-v">{product.applicationMethod}</strong>
-              </div>
+
+            {p.benefits?.length > 0 && (
+              <SectionBlock icon={CheckCircle} title={t("detail.benefits")}>
+                <ul className="pd-ul">
+                  {p.benefits.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
+              </SectionBlock>
+            )}
+
+            {p.targetCrops?.length > 0 && (
+              <SectionBlock icon={Sprout} title={t("detail.targetCrops")}>
+                <div className="pd-tags">
+                  {p.targetCrops.map((c, i) => <span key={i} className="pd-tag">{c}</span>)}
+                </div>
+              </SectionBlock>
             )}
           </div>
-        ) : (
-          <p className="pd-na">{na}</p>
         )}
-      </DetailSection>
 
-      <DetailSection icon={Thermometer} title={t("detail.storageShelfLife")}>
-        {product.storage || product.shelfLife ? (
-          <div className="pd-specs">
-            {product.storage && (
-              <div className="pd-spec">
-                <span className="pd-spec-l">{t("detail.storage")}</span>
-                <strong className="pd-spec-v">{product.storage}</strong>
-              </div>
-            )}
-            {product.shelfLife && (
-              <div className="pd-spec">
-                <span className="pd-spec-l">{t("detail.shelfLife")}</span>
-                <strong className="pd-spec-v">{product.shelfLife}</strong>
-              </div>
-            )}
-          </div>
-        ) : (
-          <p className="pd-na">{na}</p>
+        {/* ── Composition ── */}
+        {activeTab === "composition" && p.composition && (
+          <section className="pd-section">
+            <div className="pd-section-head">
+              <span className="pd-section-icon"><FlaskConical size={20} /></span>
+              <h2 className="pd-section-title">{t("detail.composition")}</h2>
+            </div>
+            <div className="pd-comp-table-wrap">
+              <table className="pd-comp-table">
+                <tbody>
+                  <tr><td className="pd-comp-label">Composition</td><td className="pd-comp-value">{p.composition}</td></tr>
+                  {p.scientificName && <tr><td className="pd-comp-label">Scientific Name</td><td className="pd-comp-value"><em>{p.scientificName}</em></td></tr>}
+                  {p.cfu && <tr><td className="pd-comp-label">CFU Count</td><td className="pd-comp-value">{p.cfu}</td></tr>}
+                  {p.productType && <tr><td className="pd-comp-label">Formulation</td><td className="pd-comp-value">{p.productType}</td></tr>}
+                </tbody>
+              </table>
+            </div>
+          </section>
         )}
-      </DetailSection>
 
-      <DetailSection icon={Shield} title={t("detail.safety")}>
-        {product.compatibility || (product.metadata && Object.keys(product.metadata).length > 0) ? (
-          <div className="pd-specs">
-            {product.compatibility && (
+        {/* ── Application ── */}
+        {activeTab === "application" && (p.dosage || p.applicationMethod) && (
+          <section className="pd-section" style={{ marginBottom: "1rem" }}>
+            <div className="pd-section-head">
+              <span className="pd-section-icon"><Droplet size={20} /></span>
+              <h2 className="pd-section-title">{t("detail.dosageApplication")}</h2>
+            </div>
+            <div className="pd-specs">
+              {p.dosage && (
+                <div className="pd-spec">
+                  <span className="pd-spec-l">{t("detail.dosage")}</span>
+                  <strong className="pd-spec-v">{p.dosage}</strong>
+                </div>
+              )}
+              {p.applicationMethod && (
+                <div className="pd-spec">
+                  <span className="pd-spec-l">{t("detail.applicationMethod")}</span>
+                  <strong className="pd-spec-v">{p.applicationMethod}</strong>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* ── Storage ── */}
+        {activeTab === "storage" && (p.storage || p.shelfLife) && (
+          <section className="pd-section" style={{ marginBottom: "1rem" }}>
+            <div className="pd-section-head">
+              <span className="pd-section-icon"><Thermometer size={20} /></span>
+              <h2 className="pd-section-title">{t("detail.storageShelfLife")}</h2>
+            </div>
+            <div className="pd-specs">
+              {p.storage && (
+                <div className="pd-spec">
+                  <span className="pd-spec-l">{t("detail.storage")}</span>
+                  <strong className="pd-spec-v">{p.storage}</strong>
+                </div>
+              )}
+              {p.shelfLife && (
+                <div className="pd-spec">
+                  <span className="pd-spec-l">{t("detail.shelfLife")}</span>
+                  <strong className="pd-spec-v">{p.shelfLife}</strong>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* ── Safety / Compatibility ── */}
+        {activeTab === "safety" && p.compatibility && (
+          <section className="pd-section" style={{ marginBottom: "1rem" }}>
+            <div className="pd-section-head">
+              <span className="pd-section-icon"><Shield size={20} /></span>
+              <h2 className="pd-section-title">{t("detail.safety")}</h2>
+            </div>
+            <div className="pd-specs">
               <div className="pd-spec">
                 <span className="pd-spec-l">{t("detail.compatibility")}</span>
-                <strong className="pd-spec-v">{product.compatibility}</strong>
+                <strong className="pd-spec-v">{p.compatibility}</strong>
               </div>
-            )}
-            {product.metadata && Object.keys(product.metadata).length > 0 && Object.entries(product.metadata).map(([k, v]) => (
-              <div key={k} className="pd-spec">
-                <span className="pd-spec-l">{k}</span>
-                <strong className="pd-spec-v">{String(v)}</strong>
+            </div>
+          </section>
+        )}
+
+        {/* ── Crops tab ── */}
+        {activeTab === "crops" && p.targetCrops?.length > 0 && (
+          <>
+            <section className="pd-section" style={{ marginBottom: "1rem" }}>
+              <div className="pd-section-head">
+                <span className="pd-section-icon"><Sprout size={20} /></span>
+                <h2 className="pd-section-title">{t("detail.targetCrops")}</h2>
+              </div>
+              <p className="pd-section-p" style={{ marginBottom: "1rem" }}>Recommended for the following crops:</p>
+              <div className="pd-tags">
+                {p.targetCrops.map((c, i) => <span key={i} className="pd-tag">{c}</span>)}
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* ── Benefits tab ── */}
+        {activeTab === "benefits" && p.benefits?.length > 0 && (
+          <section className="pd-section" style={{ marginBottom: "1rem" }}>
+            <div className="pd-section-head">
+              <span className="pd-section-icon"><CheckCircle size={20} /></span>
+              <h2 className="pd-section-title">{t("detail.benefits")}</h2>
+            </div>
+            <div className="pd-benefits-rich">
+              {p.benefits.map((b, i) => (
+                <div key={i} className="pd-benefit-card">
+                  <CheckCircle size={18} className="pd-benefit-icon" />
+                  <span>{b}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+      </div>
+
+      {/* ===== FAQ ACCORDION ===== */}
+      {p.faqs && p.faqs.length > 0 && (
+        <section className="pd-section" style={{ marginTop: "1.5rem" }}>
+          <div className="pd-section-head">
+            <span className="pd-section-icon"><HelpCircle size={20} /></span>
+            <h2 className="pd-section-title">{t("detail.frequentlyAskedQuestions") || "Frequently Asked Questions"}</h2>
+          </div>
+          <div className="pd-faqs">
+            {p.faqs.map((faq, i) => (
+              <div key={i} className={`pd-faq ${openFaq === i ? "open" : ""}`}>
+                <button className="pd-faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                  <span>{faq.question}</span>
+                  <ChevronDown size={18} className="pd-faq-chevron" />
+                </button>
+                {openFaq === i && (
+                  <div className="pd-faq-a">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
-        ) : (
-          <p className="pd-na">{na}</p>
-        )}
-      </DetailSection>
+        </section>
+      )}
 
-      <DetailSection icon={Download} title={t("detail.downloads")}>
+      {/* ===== VIDEO EMBED ===== */}
+      {p.videoUrl && (
+        <section className="pd-section" style={{ marginTop: "1.5rem" }}>
+          <div className="pd-section-head">
+            <span className="pd-section-icon"><Film size={20} /></span>
+            <h2 className="pd-section-title">{t("detail.video") || "Product Video"}</h2>
+          </div>
+          <div className="pd-video-wrap">
+            <iframe
+              src={p.videoUrl}
+              title={`${p.name} video`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </section>
+      )}
+
+      {/* ===== DOWNLOADS ===== */}
+      <section className="pd-section" style={{ marginTop: "1.5rem" }}>
+        <div className="pd-section-head">
+          <span className="pd-section-icon"><Download size={20} /></span>
+          <h2 className="pd-section-title">{t("detail.downloads")}</h2>
+        </div>
         <div className="pd-dl">
           <div className="pd-dl-body">
             <Download size={24} className="pd-dl-icon" />
             <div>
               <p className="pd-dl-title">{t("detail.downloadBrochure")}</p>
-              <p className="pd-dl-desc">{t("detail.brochureNotAvailable")}</p>
+              <p className="pd-dl-desc">
+                {product.brochure ? "Download product brochure for detailed specifications" : t("detail.brochureNotAvailable")}
+              </p>
             </div>
           </div>
-          <button type="button" className="button-base button-secondary" disabled>{t("detail.downloadBrochure")}</button>
+          {product.brochure ? (
+            <a href={product.brochure} target="_blank" rel="noopener noreferrer" className="button-base button-primary">
+              <Download size={16} style={{ marginRight: "0.35rem" }} />
+              Download
+            </a>
+          ) : (
+            <button type="button" className="button-base button-secondary" disabled>{t("detail.downloadBrochure")}</button>
+          )}
         </div>
-      </DetailSection>
+      </section>
+
+      {/* ===== RELATED PRODUCTS ===== */}
+      {relatedProducts.length > 0 && (
+        <section style={{ marginTop: "2.5rem" }}>
+          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--brand-strong)", margin: "0 0 1rem" }}>Related Products</h2>
+          <div className="pd-related">
+            {relatedProducts.map((rp) => (
+              <Link key={rp._id || rp.slug} to={`/products/${rp.slug}`} className="pd-related-card no-underline">
+                {rp.images?.[0] && (
+                  <div className="pd-related-img">
+                    <img src={imageUrl(rp.images[0])} alt={rp.name} loading="lazy" />
+                  </div>
+                )}
+                <div className="pd-related-body">
+                  <span className="pd-related-cat">{rp.category}</span>
+                  <h3 className="pd-related-name">{rp.name}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ===== ENQUIRY CTA ===== */}
+      <section style={{ marginTop: "2.5rem" }}>
+        <div className="prem-cta-card" style={{ padding: "2.5rem" }}>
+          <header className="prem-header center">
+            <span className="prem-header__label" style={{ color: "rgba(255,255,255,0.6)" }}>Interested in this product?</span>
+            <h2 className="prem-header__title" style={{ fontSize: "1.5rem" }}>Get detailed information and pricing</h2>
+            <p className="prem-header__text">Our team can provide technical specifications, field trial data, and distributor information.</p>
+          </header>
+          <div className="prem-cta-actions">
+            <Link to="/contact" className="button-base button-primary">
+              Contact Our Team <ArrowRight size={16} style={{ marginLeft: "0.35rem" }} />
+            </Link>
+            <Link to="/distributors" className="button-base button-secondary" style={{ borderColor: "rgba(255,255,255,0.3)", color: "var(--text-inverse)" }}>
+              Find a Distributor
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== STICKY MOBILE CTA ===== */}
+      {showSticky && (
+        <div className="pd-sticky-cta">
+          <Link to="/contact" className="pd-sticky-btn">
+            <Phone size={16} />
+            Enquire Now
+          </Link>
+          <button className="pd-sticky-close" onClick={() => setShowSticky(false)}><X size={16} /></button>
+        </div>
+      )}
     </div>
   );
 }
