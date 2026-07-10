@@ -22,6 +22,26 @@ const leadService = {
     const res = await api.delete(`/admin/leads/${id}`);
     return res.data.data;
   },
+
+  adminExportLeads: async (params = {}, format = "excel") => {
+    const res = await api.get("/admin/leads/export", {
+      params: { ...params, format },
+      responseType: "blob",
+    });
+    const disposition = res.headers["content-disposition"] || "";
+    const ext = format === "csv" ? "csv" : "xlsx";
+    const filenameMatch = disposition.match(/filename="?([^";\n]+)"?/);
+    const filename = filenameMatch ? filenameMatch[1] : `leads-export.${ext}`;
+
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  },
 };
 
 export default leadService;
