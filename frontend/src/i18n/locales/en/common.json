@@ -36,13 +36,13 @@
   "aboutPage": {
     "hero": {
       "subtitle": "Building a Residue-Free Tomorrow",
-      "title": "Driving Residue-Free Agriculture Across India",
+      "title": "Driving Residue-Free Agriculture in Maharashtra & Karnataka",
       "description": "Synergy Crop Solutions is a trusted agri-input company dedicated to bio-based crop protection, farmer prosperity, and sustainable agriculture. We partner with distributors, dealers, and growers to deliver innovative solutions that leave no harmful residues."
     },
     "overview": {
       "title": "Company Overview",
       "subtitle": "Who We Are",
-      "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom.\n\nOur team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.\n\nFrom smallholder farms to large agricultural enterprises, our solutions are designed to improve yields, reduce chemical dependency, and build long-term soil health."
+      "body": "Synergy Crop Solutions is a regional agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform agriculture in Maharashtra and Karnataka, we bridge the gap between modern crop science and traditional farming wisdom.\n\nOur team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.\n\nFrom smallholder farms to large agricultural enterprises, our solutions are designed to improve yields, reduce chemical dependency, and build long-term soil health."
     },
     "vision": {
       "title": "Our Vision",
@@ -56,22 +56,22 @@
       "title": "Our Commitment",
       "subtitle": "Quality, Sustainability, and Farmer Success",
       "items": [
-        { "title": "Quality Assurance", "description": "Every product undergoes rigorous testing to ensure purity, potency, and safety before reaching the field." },
-        { "title": "Sustainable Agriculture", "description": "We champion farming practices that protect soil health, biodiversity, and water resources for future generations." },
-        { "title": "Farmer-Centric Approach", "description": "Our solutions are designed with the farmer in mind — affordable, easy to apply, and backed by field-level technical support." },
-        { "title": "Distributor Enablement", "description": "We empower our channel partners with training, marketing support, and reliable supply chains to build thriving agricultural businesses." }
+        { "title": "Product Quality", "description": "Every product undergoes rigorous quality testing before reaching farmers." },
+        { "title": "Sustainable Agriculture", "description": "Promoting environmentally responsible farming practices through biological solutions." },
+        { "title": "Technical Support", "description": "Dedicated guidance for distributors, dealers and farmers." },
+        { "title": "Long-Term Farmer Success", "description": "Helping growers build healthier crops and sustainable agricultural growth." }
       ]
     },
     "whyChoose": {
       "title": "Why Choose Synergy Crop Solutions",
       "subtitle": "Built for the Challenges of Modern Agriculture",
       "items": [
-        { "title": "100% Bio-Based Solutions", "description": "Our products are formulated from natural and biological sources, ensuring effective crop protection without chemical residues." },
-        { "title": "Residue-Free Guarantee", "description": "We are committed to helping farmers achieve residue-free produce that meets domestic and international quality standards." },
-        { "title": "Pan-India Distribution Network", "description": "With a growing network of distributors and dealers across multiple states, we ensure timely product availability in every region." },
-        { "title": "Farmer Training & Support", "description": "We conduct regular training sessions, field demonstrations, and advisory programs to help farmers adopt best practices." },
-        { "title": "Trusted by Growers", "description": "Thousands of farmers trust Synergy Crop Solutions for consistent quality, visible results, and dedicated customer service." },
-        { "title": "Environmentally Responsible", "description": "Every product we develop is designed to minimize environmental impact while maximizing agricultural productivity." }
+        { "title": "Japanese Lyophilization Technology", "description": "Industry-leading lyophilized microbial formulations ensure longer shelf life, higher microbial viability and superior field performance." },
+        { "title": "Scientifically Developed Products", "description": "Every formulation is developed using modern biotechnology and extensive agricultural research for consistent crop performance." },
+        { "title": "Strong Regional Network", "description": "Trusted distributor network across Maharashtra and Karnataka ensuring product availability and technical guidance." },
+        { "title": "Residue-Free Agriculture", "description": "Biological crop solutions that reduce chemical residues while improving soil and crop health." },
+        { "title": "Farmer-Centric Approach", "description": "Practical crop solutions backed by technical support and field assistance." },
+        { "title": "Proven Field Performance", "description": "Reliable performance demonstrated through successful field applications across Maharashtra and Karnataka." }
       ]
     },
     "technology": {
@@ -86,11 +86,11 @@
       "title": "Our Core Values",
       "subtitle": "The Principles That Guide Us",
       "items": [
-        { "title": "Innovation", "description": "Continuous R&D to develop next-generation bio-based solutions that address real farming challenges through advanced technologies like Japanese Lyophilization." },
-        { "title": "Sustainability", "description": "Committed to residue-free farming and environmental stewardship, ensuring every product protects soil health and biodiversity for future generations." },
-        { "title": "Farmer First", "description": "Every decision we make starts with the farmer. Our products are affordable, easy to apply, and backed by field-level technical support to maximize real-world impact." },
-        { "title": "Quality", "description": "Rigorous testing and quality assurance protocols ensure every product meets the highest standards of purity, potency, and safety before reaching the field." },
-        { "title": "Scientific Excellence", "description": "We combine deep agronomic expertise with cutting-edge biotechnology, partnering with research institutions to deliver products rooted in proven science." }
+        { "title": "Innovation", "description": "Continuous research drives every formulation." },
+        { "title": "Sustainability", "description": "Protecting both crops and nature." },
+        { "title": "Farmer First", "description": "Every solution begins with farmers' needs." },
+        { "title": "Quality", "description": "Reliable products through strict quality standards." },
+        { "title": "Scientific Excellence", "description": "Built on biotechnology, research and continuous improvement." }
       ]
     },
     "cta": {

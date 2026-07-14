@@ -1,22 +1,25 @@
 ﻿import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
-  Sprout, ShieldCheck, Users, Award, TreePine, Droplets, Leaf,
+  Sprout, ShieldCheck, Users, Award, Leaf,
   Star, ChevronRight, ArrowRight, FlaskConical, Microscope,
-  Globe, Recycle, CheckCircle, MapPin, Quote, TrendingUp
+  Globe, Recycle, MapPin, TrendingUp
 } from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
-import Badge from "../../components/ui/Badge.jsx";
 import HeroCarousel from "../../components/home/HeroCarousel.jsx";
-import { usePublicTestimonials } from "../../hooks/useTestimonials.js";
+import VideoStoriesSection from "../../components/home/VideoStoriesSection.jsx";
 import { usePublicCertifications } from "../../hooks/useCertifications.js";
 import { usePublicProducts } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
 import { formatCategory } from "../../utils/formatters.js";
 
-const categoryIcons = [Sprout, ShieldCheck, Droplets, FlaskConical, Leaf];
-
 const techIcons = [Microscope, FlaskConical, Recycle, TrendingUp];
+
+const heroImages = [
+  { src: "/client-assets/hero/hero-1.jpeg", alt: "Farmers working in lush green bio-crop fields" },
+  { src: "/client-assets/hero/hero-2.jpeg", alt: "Bio-based crop protection products in the field" },
+  { src: "/client-assets/hero/hero-3.jpeg", alt: "Healthy, residue-free harvest ready for market" },
+];
 
 export default function HomePage() {
   useSEO({ canonical: "/" });
@@ -24,12 +27,9 @@ export default function HomePage() {
   const { t: tc } = useTranslation("common");
   const { t: tp } = useTranslation("products");
   const navigate = useNavigate();
-  const { testimonials, loading: loadingTestimonials } = usePublicTestimonials();
   const { certifications, loading: loadingCertifications } = usePublicCertifications();
   const { products } = usePublicProducts({ limit: 3 });
   const visibleProducts = products || [];
-
-  const cats = t("categories.cards", { returnObjects: true });
 
   function imageUrl(raw) {
     if (!raw) return null;
@@ -54,7 +54,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="prem-hero-visual">
-            <HeroCarousel />
+            <HeroCarousel images={heroImages} interval={5500} />
           </div>
         </div>
       </section>
@@ -122,28 +122,6 @@ export default function HomePage() {
                   <h3 className="prem-why-title">{stat.value}</h3>
                   <p className="prem-why-desc">{stat.label}</p>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ PRODUCT CATEGORIES ============ */}
-      <section className="prem prem-alt">
-        <div className="prem-container">
-          <header className="prem-header">
-            <span className="prem-header__label">{t("categories.label")}</span>
-            <h2 className="prem-header__title">{t("categories.title")}</h2>
-          </header>
-          <div className="prem-cat-grid">
-            {Array.isArray(cats) && cats.map((cat, i) => {
-              const Icon = categoryIcons[i] || Leaf;
-              return (
-                <button key={i} type="button" className="prem-cat-btn" onClick={() => navigate(`/products?category=${encodeURIComponent(cat.title)}`)}>
-                  <span className="prem-cat-icon"><Icon size={22} /></span>
-                  <h3 className="prem-cat-title">{cat.title}</h3>
-                  <p className="prem-cat-desc">{cat.description}</p>
-                </button>
               );
             })}
           </div>
@@ -241,40 +219,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ TESTIMONIALS ============ */}
-      <section className="prem prem-alt">
-        <div className="prem-container">
-          <header className="prem-header center">
-            <span className="prem-header__label">{t("testimonials.label")}</span>
-            <h2 className="prem-header__title">{t("testimonials.title")}</h2>
-          </header>
-          {loadingTestimonials ? (
-            <div style={{ textAlign: "center", padding: "3rem 0", color: "var(--text-muted)" }}>{tc("loading")}</div>
-          ) : testimonials.length === 0 ? (
-            <p style={{ textAlign: "center", color: "var(--text-muted)" }}>{t("testimonials.empty")}</p>
-          ) : (
-            <div className="prem-testi-grid">
-              {testimonials.slice(0, 3).map((item) => (
-                <div key={item._id} className="prem-testi">
-                  <span style={{ color: "var(--brand)", opacity: 0.3 }}><Quote size={32} /></span>
-                  <p className="prem-testi-text">"{item.testimonial}"</p>
-                  <div className="prem-testi-author">
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", width: "100%" }}>
-                      <div style={{ width: "44px", height: "44px", borderRadius: "999px", background: "var(--brand-soft)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <Users size={20} style={{ color: "var(--brand-strong)" }} />
-                      </div>
-                      <div>
-                        <p className="prem-testi-name">{item.customerName}</p>
-                        {item.location && <p className="prem-testi-role">{item.location}</p>}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      {/* ============ FARMER SUCCESS STORIES (VIDEO) ============ */}
+      <VideoStoriesSection />
 
       {/* ============ COVERAGE ============ */}
       <section className="prem">

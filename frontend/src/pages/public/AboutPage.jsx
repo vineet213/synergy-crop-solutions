@@ -17,30 +17,16 @@ export default function AboutPage() {
   const { t } = useTranslation("common");
   useSEO({ title: t("aboutPage.hero.title"), canonical: "/about" });
 
-  const commitments = [0, 1, 2, 3].map((i) => ({
-    title: t(`aboutPage.commitment.items[${i}].title`),
-    description: t(`aboutPage.commitment.items[${i}].description`),
-  }));
+  const commitments = t("aboutPage.commitment.items", { returnObjects: true });
+  const whyChoose = t("aboutPage.whyChoose.items", { returnObjects: true });
+  const values = t("aboutPage.values.items", { returnObjects: true });
 
-  const whyChoose = [0, 1, 2, 3, 4, 5].map((i) => ({
-    title: t(`aboutPage.whyChoose.items[${i}].title`),
-    description: t(`aboutPage.whyChoose.items[${i}].description`),
-  }));
-
-  const values = [0, 1, 2, 3, 4].map((i) => ({
-    title: t(`aboutPage.values.items[${i}].title`),
-    description: t(`aboutPage.values.items[${i}].description`),
-  }));
-
-  const tech = [
-    { key: "lyophilization", icon: techIcons[0] },
-    { key: "nutrition", icon: techIcons[1] },
-    { key: "bioSolutions", icon: techIcons[2] },
-    { key: "sustainable", icon: techIcons[3] },
-  ].map((item) => ({
-    title: t(`aboutPage.technology.${item.key}.title`),
-    description: t(`aboutPage.technology.${item.key}.description`),
-    icon: item.icon,
+  const techKeys = ["lyophilization", "nutrition", "bioSolutions", "sustainable"];
+  const techItems = t("aboutPage.technology", { returnObjects: true });
+  const tech = techKeys.map((key, i) => ({
+    title: techItems[key]?.title || "",
+    description: techItems[key]?.description || "",
+    icon: techIcons[i],
   }));
 
   return (
@@ -58,13 +44,6 @@ export default function AboutPage() {
             <Link to="/products" className="no-underline"><Button>{t("cta.exploreSolutions")}</Button></Link>
             <Link to="/contact" className="no-underline"><Button variant="secondary">{t("cta.contactOurTeam")}</Button></Link>
           </div>
-        </div>
-        <div className="about-hero__media">
-          <img
-            src="/client-assets/logo/official-logo.jpeg"
-            alt="Synergy Crop Solutions"
-            style={{ objectFit: "contain", padding: "3rem", background: "var(--brand-gradient)" }}
-          />
         </div>
       </section>
 

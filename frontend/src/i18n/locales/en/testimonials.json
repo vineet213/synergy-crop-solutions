@@ -1,9 +1,40 @@
 {
   "page": {
     "title": "Testimonials",
-    "subtitle": "Grower stories and results",
-    "description": "Read real results from field leaders. See how Synergy Crop Solutions helps growers improve yield, reduce waste, and scale sustainably.",
+    "subtitle": "Grower stories, video reviews, and field results",
+    "description": "Watch video testimonials from farmers and explore our gallery of residue-free agriculture in action across Maharashtra and Karnataka.",
     "loading": "Loading…",
-    "empty": "No testimonials yet."
+    "empty": "No testimonials yet.",
+    "loadError": "Failed to load testimonials"
+  },
+  "hero": {
+    "label": "Testimonials",
+    "title": "See What Our Growers Have to Say",
+    "subtitle": "Real stories from real farms across Maharashtra and Karnataka."
+  },
+  "videos": {
+    "label": "Video Testimonials",
+    "title": "Farmer Testimonials",
+    "description": "",
+    "cardLabel": "Farmer Testimonial",
+    "play": "Watch Video"
+  },
+  "gallery": {
+    "label": "Field Gallery",
+    "title": "Agricultural Gallery",
+    "description": "",
+    "viewImage": "View image"
+  },
+  "cta": {
+    "label": "Partner with Synergy",
+    "title": "Want to see results like these?",
+    "text": "Get in touch with our team to learn how Synergy's bio-based solutions can work on your farm.",
+    "contact": "Contact our team"
+  },
+  "lightbox": {
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next",
+    "of": "of"
   }
 }

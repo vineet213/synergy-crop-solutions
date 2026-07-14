@@ -1,11 +1,15 @@
+import fs from "fs";
+import path from "path";
 import Lead from "../models/Lead.js";
 import { AppError } from "../middleware/errorHandler.js";
 import ExcelJS from "exceljs";
+import logger from "../utils/logger.js";
 
 export async function createPublicLead(req, res, next) {
   try {
     const { assignedDistributor, assignedAt, ...payload } = req.body;
     const lead = await Lead.create(payload);
+    await appendLeadToExcel(lead);
     res.status(201).json({ success: true, data: lead });
   } catch (error) {
     next(error);
@@ -106,6 +110,102 @@ function formatDate(date) {
 function formatTime(date) {
   if (!date) return "";
   return new Date(date).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+}
+
+const AUTO_LOG_COLUMNS = [
+  { header: "Lead ID", key: "leadId", width: 28 },
+  { header: "Date", key: "date", width: 14 },
+  { header: "Time", key: "time", width: 14 },
+  { header: "Name", key: "name", width: 20 },
+  { header: "Phone", key: "phone", width: 16 },
+  { header: "Alternate Phone", key: "alternatePhone", width: 18 },
+  { header: "Email", key: "email", width: 28 },
+  { header: "Company / Farm", key: "company", width: 22 },
+  { header: "State", key: "state", width: 16 },
+  { header: "District", key: "district", width: 16 },
+  { header: "Village", key: "village", width: 16 },
+  { header: "Crop", key: "crop", width: 16 },
+  { header: "Product", key: "product", width: 18 },
+  { header: "Message", key: "message", width: 30 },
+  { header: "Source Page", key: "source", width: 16 },
+  { header: "Status", key: "status", width: 14 },
+  { header: "Notes", key: "notes", width: 28 },
+  { header: "Assigned Distributor", key: "assignedDistributor", width: 24 },
+  { header: "Assigned Date", key: "assignedDate", width: 14 },
+  { header: "Created At", key: "createdDate", width: 14 },
+];
+
+const EXCEL_EXPORTS_DIR = path.join(process.cwd(), "exports");
+const EXCEL_LEADS_PATH = path.join(EXCEL_EXPORTS_DIR, "leads.xlsx");
+
+function mapLeadForAutoLog(lead) {
+  let distributorName = "";
+  if (lead.assignedDistributor) {
+    if (typeof lead.assignedDistributor === "object" && lead.assignedDistributor.name) {
+      distributorName = `${lead.assignedDistributor.name} (${lead.assignedDistributor.company || ""})`;
+    } else {
+      distributorName = lead.assignedDistributor.toString();
+    }
+  }
+
+  return {
+    leadId: lead._id.toString(),
+    date: formatDate(lead.createdAt),
+    time: formatTime(lead.createdAt),
+    name: lead.name || "",
+    phone: lead.phone || "",
+    alternatePhone: lead.alternatePhone || "",
+    email: lead.email || "",
+    company: lead.company || "",
+    state: lead.state || "",
+    district: lead.district || "",
+    village: lead.village || "",
+    crop: lead.crop || "",
+    product: lead.product || "",
+    message: lead.message || "",
+    source: lead.source || "",
+    status: lead.status || "",
+    notes: lead.notes || "",
+    assignedDistributor: distributorName,
+    assignedDate: formatDate(lead.assignedAt),
+    createdDate: formatDate(lead.createdAt),
+  };
+}
+
+async function appendLeadToExcel(lead) {
+  try {
+    if (!fs.existsSync(EXCEL_EXPORTS_DIR)) {
+      fs.mkdirSync(EXCEL_EXPORTS_DIR, { recursive: true });
+    }
+
+    const workbook = new ExcelJS.Workbook();
+
+    if (fs.existsSync(EXCEL_LEADS_PATH)) {
+      await workbook.xlsx.readFile(EXCEL_LEADS_PATH);
+    } else {
+      workbook.creator = "Agri Platform";
+      workbook.created = new Date();
+      const sheet = workbook.addWorksheet("Leads", {
+        views: [{ state: "frozen", ySplit: 1 }],
+      });
+      sheet.columns = AUTO_LOG_COLUMNS;
+      const headerRow = sheet.getRow(1);
+      headerRow.font = { bold: true, color: { argb: "FFFFFFFF" } };
+      headerRow.fill = {
+        type: "pattern",
+        pattern: "solid",
+        fgColor: { argb: "FF2E7D32" },
+      };
+      headerRow.alignment = { vertical: "middle", horizontal: "center" };
+      headerRow.height = 24;
+    }
+
+    const sheet = workbook.getWorksheet("Leads");
+    sheet.addRow(mapLeadForAutoLog(lead));
+    await workbook.xlsx.writeFile(EXCEL_LEADS_PATH);
+  } catch (err) {
+    logger.error("[Excel Auto-Log] Failed to append lead to Excel:", err.message);
+  }
 }
 
 const EXPORT_COLUMNS = [

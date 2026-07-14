@@ -3,7 +3,7 @@
     "badge": "Residue-Free Agriculture",
     "title": "Bio-based crop protection for healthier harvests.",
     "subtitle": "Synergy Crop Solutions delivers innovative bio-fertilizers, bio-pesticides, and residue-free crop protection products that help farmers grow more while protecting the land for future generations.",
-    "quote": "Committed to residue-free farming. Trusted by growers across India. We partner with distributors and dealers to build a sustainable agricultural future.",
+    "quote": "Committed to residue-free farming. Trusted by growers across Maharashtra and Karnataka. We partner with distributors and dealers to build a sustainable agricultural future.",
     "visual": "Crop intelligence through innovation"
   },
   "carousel": {
@@ -15,14 +15,14 @@
   },
   "about": {
     "label": "About Synergy",
-    "title": "Driving Residue-Free Agriculture Across India",
-    "body": "Synergy Crop Solutions is an Indian agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform Indian agriculture, we bridge the gap between modern crop science and traditional farming wisdom. Our team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.",
+    "title": "Driving Residue-Free Agriculture in Maharashtra & Karnataka",
+    "body": "Synergy Crop Solutions is a regional agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform agriculture in Maharashtra and Karnataka, we bridge the gap between modern crop science and traditional farming wisdom. Our team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.",
     "cta": "Learn more about us"
   },
   "aboutStats": [
     { "value": "2018", "label": "Founded in Pune" },
     { "value": "5+", "label": "Product Categories" },
-    { "value": "12+", "label": "States Covered" },
+    { "value": "2", "label": "States Covered" },
     { "value": "R&D", "label": "Continuous Innovation" }
   ],
   "trust": {
@@ -34,8 +34,8 @@
         "label": "Bio-Based Solutions — formulated from natural sources with zero chemical residues."
       },
       {
-        "value": "Pan-India",
-        "label": "Distribution network serving farmers across multiple states."
+        "value": "Regional",
+        "label": "Distribution network serving farmers across Maharashtra and Karnataka."
       },
       {
         "value": "Residue-Free",
@@ -80,7 +80,7 @@
   "innovation": {
     "label": "Technology & Innovation",
     "title": "Bringing Science to the Soil",
-    "body": "Our research and development team works continuously to develop new-generation crop protection products that are safe, effective, and residue-free. We combine agronomic research with field-level insights to create solutions that address the real challenges faced by Indian farmers. From microbial consortia to advanced liquid nutrition, every product is formulated using cutting-edge agricultural science."
+    "body": "Our research and development team works continuously to develop new-generation crop protection products that are safe, effective, and residue-free. We combine agronomic research with field-level insights to create solutions that address the real challenges faced by farmers in Maharashtra and Karnataka. From microbial consortia to advanced liquid nutrition, every product is formulated using cutting-edge agricultural science."
   },
   "tech": {
     "label": "Our Technologies",
@@ -95,17 +95,17 @@
   "capabilities": {
     "items": [
       { "value": "50+", "label": "Bio-Based Products" },
-      { "value": "Pan-India", "label": "Distribution Network" },
+      { "value": "Regional", "label": "Distribution Network" },
       { "value": "100%", "label": "Residue-Free Guarantee" },
       { "value": "10K+", "label": "Trusted Growers" }
     ]
   },
   "coverage": {
     "label": "Our Reach",
-    "title": "Pan-India Distribution Network",
-    "description": "From the fertile fields of Punjab to the plantations of Karnataka, our products reach farmers across India through a robust network of distributors and dealers.",
-    "states": ["Maharashtra", "Karnataka", "Madhya Pradesh", "Rajasthan", "Uttar Pradesh", "Gujarat", "Telangana", "Andhra Pradesh"],
-    "presence": "Pan-India Presence"
+    "title": "Regional Distribution Network",
+    "description": "From the farms of Maharashtra to the plantations of Karnataka, our products reach farmers through a robust network of distributors and dealers.",
+    "states": ["Maharashtra", "Karnataka"],
+    "presence": "Maharashtra & Karnataka"
   },
   "certifications": {
     "label": "Licences & Certifications",
@@ -116,6 +116,13 @@
     "label": "What Growers Say",
     "title": "Real results from field leaders",
     "empty": "No testimonials yet."
+  },
+  "stories": {
+    "label": "Farmer Success Stories",
+    "title": "Hear From Our Growers",
+    "cardLabel": "Farmer Testimonial",
+    "play": "Watch Video",
+    "viewAll": "View All Testimonials"
   },
   "cta": {
     "label": "Partner with Synergy",

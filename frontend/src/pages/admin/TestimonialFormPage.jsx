@@ -17,7 +17,12 @@ export default function TestimonialFormPage() {
       testimonial: "",
       rating: "",
       crop: "",
+      video: "",
+      videoType: "",
+      thumbnail: "",
+      image: "",
       isFeatured: false,
+      displayOrder: 0,
       status: "active",
     },
   });
@@ -32,7 +37,12 @@ export default function TestimonialFormPage() {
         reset({
           ...data,
           rating: data.rating ?? "",
+          video: data.video ?? "",
+          videoType: data.videoType ?? "",
+          thumbnail: data.thumbnail ?? "",
+          image: data.image ?? "",
           isFeatured: data.isFeatured ?? false,
+          displayOrder: data.displayOrder ?? 0,
         });
       })
       .catch((err) => {
@@ -49,7 +59,12 @@ export default function TestimonialFormPage() {
       const payload = {
         ...data,
         rating: data.rating ? Number(data.rating) : undefined,
+        displayOrder: data.displayOrder ? Number(data.displayOrder) : 0,
         isFeatured: Boolean(data.isFeatured),
+        video: data.video || undefined,
+        videoType: data.videoType || undefined,
+        thumbnail: data.thumbnail || undefined,
+        image: data.image || undefined,
       };
       if (isEdit) {
         await testimonialService.adminUpdateTestimonial(id, payload);
@@ -76,7 +91,7 @@ export default function TestimonialFormPage() {
         </div>
         <div>
           <label className="block text-sm font-medium">Location</label>
-          <input {...register("location")} className="input-field" placeholder="e.g. Maharashtra, India" />
+          <input {...register("location")} className="input-field" placeholder="e.g. Pune, Maharashtra" />
         </div>
         <div>
           <label className="block text-sm font-medium">Testimonial *</label>
@@ -84,12 +99,38 @@ export default function TestimonialFormPage() {
           {errors.testimonial && <p className="text-sm text-red-600">{errors.testimonial.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Rating (1-5)</label>
-          <input type="number" min="1" max="5" {...register("rating")} className="input-field" placeholder="5" />
-        </div>
-        <div>
           <label className="block text-sm font-medium">Crop</label>
           <input {...register("crop")} className="input-field" placeholder="e.g. Rice, Wheat" />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium">Rating (1-5)</label>
+            <input type="number" min="1" max="5" {...register("rating")} className="input-field" placeholder="5" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium">Display Order</label>
+            <input type="number" min="0" {...register("displayOrder")} className="input-field" placeholder="0" />
+          </div>
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Video URL (optional)</label>
+          <input {...register("video")} className="input-field" placeholder="/client-assets/testimonials/Videos/testimonial-1.mp4" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Video Type</label>
+          <select {...register("videoType")} className="input-field">
+            <option value="">None</option>
+            <option value="mp4">MP4</option>
+            <option value="youtube">YouTube</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Thumbnail URL (optional)</label>
+          <input {...register("thumbnail")} className="input-field" placeholder="/client-assets/testimonials/Images/testimonial-1.jpeg" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Image URL (optional)</label>
+          <input {...register("image")} className="input-field" placeholder="/client-assets/testimonials/Images/testimonial-1.jpeg" />
         </div>
         <div>
           <label className="flex items-center gap-2 text-sm font-medium">

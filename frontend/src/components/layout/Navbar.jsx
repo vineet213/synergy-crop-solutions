@@ -36,7 +36,6 @@ export default function Navbar() {
     { to: "/", label: t("links.home") },
     { to: "/products", label: t("links.products") },
     { to: "/about", label: t("links.about") },
-    { to: "/categories", label: t("links.categories") },
     { to: "/blog", label: t("links.blog") },
   ];
 

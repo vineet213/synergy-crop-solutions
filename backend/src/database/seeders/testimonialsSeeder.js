@@ -4,7 +4,7 @@ import Testimonial from "../../models/Testimonial.js";
 const testimonials = [
   {
     customerName: "Sample Data — Rajesh Kumar",
-    location: "Punjab, India",
+    location: "Nashik, Maharashtra",
     testimonial: "Sample Data: Synergy's crop protection products have significantly improved our yield this season. The residue-free solutions give us peace of mind.",
     rating: 5,
     crop: "Wheat",
@@ -22,7 +22,7 @@ const testimonials = [
   },
   {
     customerName: "Sample Data — Amit Singh",
-    location: "Uttar Pradesh, India",
+    location: "Bengaluru, Karnataka",
     testimonial: "Sample Data: The disease management solutions from Synergy helped us save an entire rice crop from blast infection. Highly recommend their team.",
     rating: 4,
     crop: "Rice",

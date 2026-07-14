@@ -4,7 +4,6 @@ import HomePage from "../pages/public/HomePage.jsx";
 import AboutPage from "../pages/public/AboutPage.jsx";
 import BlogPage from "../pages/public/BlogPage.jsx";
 import BlogDetailPage from "../pages/public/BlogDetailPage.jsx";
-import CategoriesPage from "../pages/public/CategoriesPage.jsx";
 import CertificationsPage from "../pages/public/CertificationsPage.jsx";
 import ContactPage from "../pages/public/ContactPage.jsx";
 import CropDiscoveryPage from "../pages/public/CropDiscoveryPage.jsx";
@@ -51,7 +50,6 @@ export default function AppRoutes() {
         <Route path="about" element={<AboutPage />} />
         <Route path="blog" element={<BlogPage />} />
         <Route path="blog/:id" element={<BlogDetailPage />} />
-        <Route path="categories" element={<CategoriesPage />} />
         <Route path="certifications" element={<CertificationsPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="crops" element={<CropDiscoveryPage />} />
