@@ -520,13 +520,26 @@ button {
 }
 
 .cta-block .button-secondary {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.35);
   color: var(--text-inverse);
 }
 
 .cta-block .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: #ffffff;
+  color: var(--brand-strong);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cta-block .button-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-block .button-secondary:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
 .section-header {
@@ -909,6 +922,7 @@ button {
   background: transparent;
   color: var(--brand-strong);
   border: 1.5px solid var(--border);
+  cursor: pointer;
 }
 
 .button-secondary:hover {
@@ -920,6 +934,12 @@ button {
 
 .button-secondary:active {
   transform: translateY(0);
+  box-shadow: none;
+}
+
+.button-secondary:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 .button-danger {
@@ -2390,13 +2410,26 @@ select.input-field {
 }
 
 .prem-cta .button-secondary {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.35);
   color: var(--text-inverse);
 }
 
 .prem-cta .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: #ffffff;
+  color: var(--brand-strong);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.prem-cta .button-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prem-cta .button-secondary:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
 /* Products catalogue page header */
@@ -2623,8 +2656,9 @@ select.input-field {
 }
 
 .about-hero__actions .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.7);
+  background: #ffffff;
+  color: var(--brand-strong);
+  border-color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
@@ -3099,8 +3133,9 @@ select.input-field {
 }
 
 .prem-hero-actions .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: #ffffff;
+  color: var(--brand-strong);
+  border-color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
@@ -3436,6 +3471,14 @@ select.input-field {
   justify-content: center;
 }
 
+.prem-coverage-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
 /* Enhanced CTA section */
 .prem-cta-card {
   padding: 4rem;
@@ -3469,6 +3512,29 @@ select.input-field {
 
 .prem-cta-card .prem-header__text {
   color: rgba(255, 255, 255, 0.7);
+}
+
+.prem-cta-card .button-secondary {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+
+.prem-cta-card .button-secondary:hover {
+  background: #ffffff;
+  color: var(--brand-strong);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.prem-cta-card .button-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prem-cta-card .button-secondary:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
 /* Products page — enhanced filters */

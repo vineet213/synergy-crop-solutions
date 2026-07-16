@@ -19,6 +19,7 @@ export default function ProductFormPage() {
       price: "",
       images: "",
       status: "published",
+      isFeatured: false,
     },
   });
 
@@ -81,9 +82,9 @@ export default function ProductFormPage() {
         <div>
           <label className="block text-sm font-medium">Category *</label>
           <select {...register("category", { required: true })} className="input-field">
-            <option>Bio Fertilizers</option>
-            <option>Bio Pesticides</option>
-            <option>Consortia Products</option>
+            <option>Bio Fertilizer</option>
+            <option>Bio Pesticide</option>
+            <option>Consortium</option>
             <option>Liquid Nutrition</option>
             <option>Organic Inputs</option>
           </select>
@@ -107,6 +108,10 @@ export default function ProductFormPage() {
             <option value="draft">Draft</option>
             <option value="archived">Archived</option>
           </select>
+        </div>
+        <div className="flex items-center gap-2">
+          <input type="checkbox" id="isFeatured" {...register("isFeatured")} className="h-4 w-4" />
+          <label htmlFor="isFeatured" className="text-sm font-medium">Featured Product</label>
         </div>
         <div className="flex gap-2">
           <button type="submit" disabled={isSubmitting} className="button-base button-primary">

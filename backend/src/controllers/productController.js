@@ -3,10 +3,13 @@ import { AppError } from "../middleware/errorHandler.js";
 
 export async function listPublicProducts(req, res, next) {
 	try {
-		const { search, category, page = 1, limit = 12, sort = "createdAt", order = "desc" } = req.query;
+		const { search, category, featured, page = 1, limit = 12, sort = "createdAt", order = "desc" } = req.query;
 
 		const filter = { status: "published" };
 		if (category) filter.category = category;
+		if (featured !== undefined) {
+			filter.isFeatured = featured === "true" || featured === true;
+		}
 
 		if (search) {
 			const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -19,11 +22,20 @@ export async function listPublicProducts(req, res, next) {
 
 		const pageNum = Math.max(1, parseInt(page, 10) || 1);
 		const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 12));
-		const sortOrder = order === "asc" ? 1 : -1;
+
+		let sortObj = { createdAt: -1 };
+		if (sort) {
+			sortObj = {};
+			sort.split(",").forEach((field) => {
+				const desc = field.startsWith("-");
+				const name = desc ? field.slice(1) : field;
+				sortObj[name] = desc ? -1 : 1;
+			});
+		}
 
 		const [products, total] = await Promise.all([
 			Product.find(filter)
-				.sort({ [sort]: sortOrder })
+				.sort(sortObj)
 				.skip((pageNum - 1) * limitNum)
 				.limit(limitNum)
 				.lean(),

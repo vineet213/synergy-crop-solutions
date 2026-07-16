@@ -27,3 +27,6 @@ frontend/.env
 
 # Auto-generated Excel exports
 backend/exports/
+
+# Uploaded files
+backend/uploads/

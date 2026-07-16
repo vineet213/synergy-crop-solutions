@@ -1,6 +1,11 @@
 import { required, isIn, isNumeric, matches } from "./common.js";
 
 const VALID_CATEGORIES = [
+  "Bio Fertilizer",
+  "Bio Pesticide",
+  "Consortium",
+  "Liquid Nutrition",
+  "Organic Inputs",
   "biofertilizers",
   "biopesticides",
   "consortia",

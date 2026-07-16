@@ -8,7 +8,6 @@ import {
 import Button from "../../components/ui/Button.jsx";
 import HeroCarousel from "../../components/home/HeroCarousel.jsx";
 import VideoStoriesSection from "../../components/home/VideoStoriesSection.jsx";
-import { usePublicCertifications } from "../../hooks/useCertifications.js";
 import { usePublicProducts } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
 import { formatCategory } from "../../utils/formatters.js";
@@ -27,9 +26,8 @@ export default function HomePage() {
   const { t: tc } = useTranslation("common");
   const { t: tp } = useTranslation("products");
   const navigate = useNavigate();
-  const { certifications, loading: loadingCertifications } = usePublicCertifications();
-  const { products } = usePublicProducts({ limit: 3 });
-  const visibleProducts = products || [];
+	const { products } = usePublicProducts({ featured: "true", limit: 6, sort: "displayOrder,-createdAt" });
+	const visibleProducts = products || [];
 
   function imageUrl(raw) {
     if (!raw) return null;
@@ -97,10 +95,8 @@ export default function HomePage() {
               {t("about.cta")}
             </Link>
           </div>
-          <div className="prem-intro-visual" style={{ background: "var(--brand-gradient)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ color: "rgba(255,255,255,0.12)", textAlign: "center", padding: "2rem" }}>
-              <Sprout size={80} strokeWidth={1} />
-            </div>
+          <div className="prem-intro-visual">
+            <img src="/client-assets/testimonials/Images/testimonial-4.jpeg" alt="Residue-free agriculture in Maharashtra & Karnataka" />
           </div>
         </div>
       </section>
@@ -141,8 +137,8 @@ export default function HomePage() {
                 {tc("cta.viewProducts")} <ChevronRight size={16} />
               </Link>
             </div>
-            <div className="prem-feat-prod-row">
-              {visibleProducts.slice(0, 3).map((p) => {
+			<div className="prem-feat-prod-row">
+				{visibleProducts.slice(0, 6).map((p) => {
                 const img = imageUrl(p.images?.[0]);
                 return (
                   <Link key={p._id} to={`/products/${p.slug}`} className="prem-feat-prod-card no-underline">
@@ -192,33 +188,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ CERTIFICATIONS ============ */}
-      <section className="prem">
-        <div className="prem-container">
-          <header className="prem-header center">
-            <span className="prem-header__label">{t("certifications.label")}</span>
-            <h2 className="prem-header__title">{t("certifications.title")}</h2>
-          </header>
-          {loadingCertifications ? (
-            <div style={{ textAlign: "center", padding: "3rem 0", color: "var(--text-muted)" }}>{tc("loading")}</div>
-          ) : certifications.length === 0 ? (
-            <p style={{ textAlign: "center", color: "var(--text-muted)" }}>{t("certifications.empty")}</p>
-          ) : (
-            <div className="prem-cert-grid">
-              {certifications.map((c) => (
-                <div key={c._id} className="prem-cert-card">
-                  <span className="prem-cert-icon"><Award size={22} /></span>
-                  <div className="prem-cert-body">
-                    <h3 className="prem-cert-title">{c.title}</h3>
-                    {c.description && <p className="prem-cert-desc">{c.description}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
       {/* ============ FARMER SUCCESS STORIES (VIDEO) ============ */}
       <VideoStoriesSection />
 
@@ -241,10 +210,10 @@ export default function HomePage() {
             </ul>
           </div>
           <div className="prem-coverage-visual">
-            <div style={{ textAlign: "center", color: "var(--text-muted)", padding: "2rem" }}>
-              <Globe size={64} strokeWidth={1} style={{ opacity: 0.3, marginBottom: "1rem" }} />
-              <p style={{ fontWeight: 600, fontSize: "0.9rem" }}>{t("coverage.label")}</p>
-            </div>
+            <img
+              src="/client-assets/home/regional-network.jpeg"
+              alt="Regional distribution network across Maharashtra and Karnataka"
+            />
           </div>
         </div>
       </section>

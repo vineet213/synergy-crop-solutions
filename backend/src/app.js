@@ -1,4 +1,6 @@
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import helmet from "helmet";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
@@ -6,6 +8,9 @@ import corsMiddleware from "./config/cors.js";
 import env from "./config/env.js";
 import { notFoundHandler, errorHandler } from "./middleware/errorHandler.js";
 import apiRoutes from "./routes/index.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -40,6 +45,9 @@ app.use(corsMiddleware);
 
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/client-assets", express.static(path.join(__dirname, "../../frontend/public/client-assets")));
 
 app.use("/api", apiRoutes);
 

@@ -17,6 +17,7 @@ export default function ProductCard({ product }) {
       )}
       <div className="product-card-head">
         <Badge variant="soft">{formatCategory(product.category, t)}</Badge>
+        {product.isFeatured && <Badge variant="brand">Featured</Badge>}
         <h3 className="product-card-title">{product.name}</h3>
       </div>
       <div className="product-card-body">

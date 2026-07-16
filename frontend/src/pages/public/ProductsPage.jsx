@@ -52,14 +52,6 @@ export default function ProductsPage() {
     return raw.startsWith("http") || raw.startsWith("/") ? raw : `/${raw}`;
   }
 
-  const featuredProducts = useMemo(() => {
-    return (filteredProducts || []).filter((p) => p.isFeatured).slice(0, 3);
-  }, [filteredProducts]);
-
-  const regularProducts = useMemo(() => {
-    return (filteredProducts || []).filter((p) => !p.isFeatured);
-  }, [filteredProducts]);
-
   return (
     <div>
       {/* ============ HERO ============ */}
@@ -136,38 +128,9 @@ export default function ProductsPage() {
             </div>
           ) : (
             <>
-              {/* Featured products row */}
-              {featuredProducts.length > 0 && (
-                <div style={{ marginBottom: "3rem" }}>
-                  <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--brand-strong)", margin: "0 0 1rem" }}>{tc("featured")}</h3>
-                  <div className="prem-feat-prod-row">
-                    {featuredProducts.map((p) => {
-                      const img = imageUrl(p.images?.[0]);
-                      return (
-                        <Link key={p._id} to={`/products/${p.slug}`} className="prem-feat-prod-card no-underline">
-                          {img && (
-                            <div className="prem-feat-prod-img">
-                              <img src={img} alt={p.name} loading="lazy" />
-                            </div>
-                          )}
-                          <div className="prem-feat-prod-body">
-                            <span className="prem-feat-prod-badge">{formatCategory(p.category, t)}</span>
-                            <h3 className="prem-feat-prod-name">{p.name}</h3>
-                            {p.shortDescription && <p className="prem-feat-prod-desc">{p.shortDescription}</p>}
-                          </div>
-                          <div className="prem-feat-prod-foot">
-                            <span className="prem-prod-link">{t("viewDetails")} <ArrowRight size={14} /></span>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
               {/* Product grid */}
               <div className="prem-prod-grid-v2">
-                {(regularProducts.length > 0 ? regularProducts : filteredProducts).map((p) => {
+                {filteredProducts.map((p) => {
                   const img = imageUrl(p.images?.[0]);
                   const crops = p.targetCrops?.slice(0, 3) || [];
                   const methodKey = resolveMethodIcon(p.applicationMethod);
@@ -183,6 +146,7 @@ export default function ProductsPage() {
                           </div>
                         )}
                         <span className="prem-prod-card-cat">{formatCategory(p.category, t)}</span>
+                        {p.isFeatured && <span className="prem-prod-card-featured" style={{ position: "absolute", top: "0.5rem", right: "0.5rem", background: "var(--brand)", color: "#fff", fontSize: "0.7rem", fontWeight: 600, padding: "0.2rem 0.5rem", borderRadius: "9999px", lineHeight: 1.4 }}>Featured</span>}
                         {MethodIcon && <span className="prem-prod-card-method">{MethodIcon}</span>}
                         {p.isImported && <span className="prem-prod-card-imported">{tc("imported")}</span>}
                       </div>

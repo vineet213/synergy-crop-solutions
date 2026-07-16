@@ -5,7 +5,7 @@ const BASE_URL = "https://synergycrops.com";
 const DEFAULTS = {
   title: "Synergy Crop Solutions",
   description:
-    "Synergy Crop Solutions provides innovative agricultural products, crop protection solutions, bio fertilizers, bio pesticides, fungicides, micronutrients, and distributor support across India.",
+    "Synergy Crop Solutions provides innovative agricultural products, crop protection solutions, bio fertilizers, bio pesticides, fungicides, micronutrients, and distributor support in Maharashtra & Karnataka.",
   keywords:
     "Agriculture, Bio Fertilizers, Bio Pesticides, Fungicides, Micronutrients, Crop Protection, Farming Solutions, Synergy Crop Solutions",
 };

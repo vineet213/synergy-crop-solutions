@@ -20,8 +20,12 @@ export default function ContactPage() {
             <h1 className="prem-hero-title">{t("page.contact.title")}</h1>
             <p className="prem-hero-sub">{t("page.contact.intro")}</p>
           </div>
-          <div className="prem-hero-visual" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Mail size={64} strokeWidth={1} style={{ color: "rgba(255,255,255,0.1)" }} />
+          <div className="prem-hero-visual">
+            <img
+              src="/client-assets/contact/contact-hero.jpeg"
+              alt="Agricultural expert consulting with farmers in a crop field"
+              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "inherit" }}
+            />
           </div>
         </div>
       </section>

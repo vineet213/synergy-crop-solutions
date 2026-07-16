@@ -24,6 +24,7 @@ const productSchema = new mongoose.Schema(
 		images: [{ type: String }],
 		status: { type: String, enum: ["draft", "published", "archived"], default: "published" },
 		isFeatured: { type: Boolean, default: false },
+		displayOrder: { type: Number, default: 0 },
 		isImported: { type: Boolean, default: false },
 		brochure: { type: String, default: "" },
 		relatedProducts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],

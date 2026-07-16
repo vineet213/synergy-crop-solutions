@@ -18,12 +18,16 @@ const testimonialService = {
     const res = await api.get(`/admin/testimonials/${id}`);
     return res.data.data;
   },
-  adminCreateTestimonial: async (payload) => {
-    const res = await api.post("/admin/testimonials", payload);
+  adminCreateTestimonial: async (formData) => {
+    const res = await api.post("/admin/testimonials", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     return res.data.data;
   },
-  adminUpdateTestimonial: async (id, payload) => {
-    const res = await api.patch(`/admin/testimonials/${id}`, payload);
+  adminUpdateTestimonial: async (id, formData) => {
+    const res = await api.patch(`/admin/testimonials/${id}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     return res.data.data;
   },
   adminDeleteTestimonial: async (id) => {
