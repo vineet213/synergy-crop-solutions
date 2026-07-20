@@ -1,5 +1,6 @@
 import { connectDB, disconnectDB } from "../../config/db.js";
 import Testimonial from "../../models/Testimonial.js";
+import logger from "../../utils/logger.js";
 
 const testimonials = [
   {
@@ -43,7 +44,7 @@ async function seedTestimonials() {
       );
       count++;
     }
-    console.log(`Testimonials seeded successfully: ${count} inserted/updated`);
+    logger.info(`Testimonials seeded successfully: ${count} inserted/updated`);
     process.exit(0);
   } catch (error) {
     console.error("Testimonial seeding failed:", error);

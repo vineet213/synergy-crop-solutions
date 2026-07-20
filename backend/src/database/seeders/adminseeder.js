@@ -1,6 +1,7 @@
 import { connectDB, disconnectDB } from "../../config/db.js";
 import env from "../../config/env.js";
 import Admin from "../../models/Admin.js";
+import logger from "../../utils/logger.js";
 
 async function seedAdmin() {
   try {
@@ -11,7 +12,7 @@ async function seedAdmin() {
     });
 
     if (existingAdmin) {
-      console.log("Admin already exists");
+      logger.info("Admin already exists");
       process.exit(0);
     }
 
@@ -21,7 +22,7 @@ async function seedAdmin() {
       password: env.ADMIN_PASSWORD,
     });
 
-    console.log("Admin created successfully");
+    logger.info("Admin created successfully");
     process.exit(0);
   } catch (error) {
     console.error("Seeder failed:", error.message);

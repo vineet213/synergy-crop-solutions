@@ -1,5 +1,6 @@
 import { connectDB, disconnectDB } from "../config/db.js";
 import Product from "../models/Product.js";
+import logger from "../utils/logger.js";
 
 const products = [
   {
@@ -2636,12 +2637,12 @@ async function seedProducts() {
 
     const existingCount = await Product.countDocuments();
     if (existingCount > 0) {
-      console.log(`${existingCount} product(s) already exist — skipping seeder`);
+      logger.info(`${existingCount} product(s) already exist — skipping seeder`);
       process.exit(0);
     }
 
     await Product.insertMany(products);
-    console.log(`${products.length} products seeded successfully`);
+    logger.info(`${products.length} products seeded successfully`);
     process.exit(0);
   } catch (error) {
     console.error("Seeder failed:", error.message);

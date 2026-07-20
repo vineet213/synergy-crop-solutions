@@ -1,5 +1,6 @@
 import { connectDB, disconnectDB } from "../../config/db.js";
 import Certification from "../../models/Certification.js";
+import logger from "../../utils/logger.js";
 
 const certifications = [
   {
@@ -40,7 +41,7 @@ async function seedCertifications() {
       );
       count++;
     }
-    console.log(`Certifications seeded successfully: ${count} inserted/updated`);
+    logger.info(`Certifications seeded successfully: ${count} inserted/updated`);
     process.exit(0);
   } catch (error) {
     console.error("Certification seeding failed:", error);

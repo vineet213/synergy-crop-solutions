@@ -1,5 +1,6 @@
 import { connectDB, disconnectDB } from "../../config/db.js";
 import Testimonial from "../../models/Testimonial.js";
+import logger from "../../utils/logger.js";
 
 const testimonials = [
   {
@@ -108,15 +109,15 @@ async function seedTestimonials() {
 
     const existingCount = await Testimonial.countDocuments();
     if (existingCount > 0) {
-      console.log(`Database already has ${existingCount} testimonials. Clearing before re-seeding...`);
+      logger.info(`Database already has ${existingCount} testimonials. Clearing before re-seeding...`);
       await Testimonial.deleteMany({});
     }
 
     const result = await Testimonial.insertMany(testimonials);
-    console.log(`Testimonials seeded successfully: ${result.length} documents inserted`);
+    logger.info(`Testimonials seeded successfully: ${result.length} documents inserted`);
 
     const finalCount = await Testimonial.countDocuments();
-    console.log(`MongoDB collection 'testimonials' now has ${finalCount} documents`);
+    logger.info(`MongoDB collection 'testimonials' now has ${finalCount} documents`);
 
     process.exit(0);
   } catch (error) {

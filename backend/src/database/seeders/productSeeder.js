@@ -3,6 +3,7 @@ import Product from "../../models/Product.js";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import logger from "../../utils/logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -25,7 +26,7 @@ async function seedProducts() {
 			count++;
 		}
 
-		console.log(`Products seeded successfully: ${count} inserted/updated`);
+		logger.info(`Products seeded successfully: ${count} inserted/updated`);
 		process.exit(0);
 	} catch (error) {
 		console.error("Seeder failed:", error.message);
