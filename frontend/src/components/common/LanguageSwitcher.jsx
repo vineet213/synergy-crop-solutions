@@ -8,7 +8,7 @@ const LANGUAGES = [
 ];
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation("navigation");
 
   const handleChange = (e) => {
     const lang = e.target.value;
@@ -21,7 +21,7 @@ export default function LanguageSwitcher() {
       value={i18n.language}
       onChange={handleChange}
       className="nav-lang"
-      aria-label="Select language"
+      aria-label={t("aria.selectLanguage")}
     >
       {LANGUAGES.map((l) => (
         <option key={l.code} value={l.code}>

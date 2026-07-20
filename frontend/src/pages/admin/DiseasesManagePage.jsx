@@ -2,9 +2,11 @@
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import useConfirm from "../../hooks/useConfirm.jsx";
+import { useTranslation } from "react-i18next";
 import diseaseService from "../../services/diseaseService.js";
 
 export default function DiseasesManagePage() {
+  const { t } = useTranslation("admin");
   const { confirm, ConfirmDialog } = useConfirm();
   const [diseases, setDiseases] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,38 +28,38 @@ export default function DiseasesManagePage() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
-    const confirmed = await confirm("Are you sure you want to delete this disease? This action cannot be undone.", "Delete disease");
+    const confirmed = await confirm(t("diseases.deleteConfirmMessage"), t("diseases.deleteConfirmTitle"));
     if (!confirmed) return;
     try {
       await diseaseService.adminDeleteDisease(id);
       setDiseases((p) => p.filter((x) => x._id !== id));
-      toast.success("Disease deleted");
+      toast.success(t("diseases.deleteSuccess"));
     } catch (err) {
       console.error(err);
-      toast.error("Failed to delete disease");
+      toast.error(t("diseases.deleteFailed"));
     }
   };
 
   return (
     <main className="page-container">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="page-title">Diseases</h1>
-        <Link to="/admin/diseases/new" className="button-base button-primary">Create disease</Link>
+        <h1 className="page-title">{t("diseases.title")}</h1>
+        <Link to="/admin/diseases/new" className="button-base button-primary">{t("diseases.createButton")}</Link>
       </div>
 
       {loading ? (
-        <p>Loading&hellip;</p>
+        <p>{t("common.loading")}</p>
       ) : error ? (
         <div className="empty-state card-shell">
-          <h2>Failed to load diseases</h2>
+          <h2>{t("diseases.failedToLoad")}</h2>
           <p>{error}</p>
-          <button onClick={load} className="button-base button-primary">Retry</button>
+          <button onClick={load} className="button-base button-primary">{t("common.retry")}</button>
         </div>
       ) : diseases.length === 0 ? (
         <div className="empty-state card-shell">
-          <h2>No diseases yet</h2>
-          <p>Create your first disease to help farmers discover relevant products.</p>
-          <Link to="/admin/diseases/new" className="button-base button-primary">Create disease</Link>
+          <h2>{t("diseases.noDiseasesTitle")}</h2>
+          <p>{t("diseases.noDiseasesDescription")}</p>
+          <Link to="/admin/diseases/new" className="button-base button-primary">{t("diseases.createButton")}</Link>
         </div>
       ) : (
         <div className="space-y-4">
@@ -72,8 +74,8 @@ export default function DiseasesManagePage() {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <Link to={`/admin/diseases/${d._id}/edit`} className="button-base">Edit</Link>
-                <button onClick={() => handleDelete(d._id)} className="button-base button-danger">Delete</button>
+                <Link to={`/admin/diseases/${d._id}/edit`} className="button-base">{t("common.edit")}</Link>
+                <button onClick={() => handleDelete(d._id)} className="button-base button-danger">{t("common.delete")}</button>
               </div>
             </div>
           ))}

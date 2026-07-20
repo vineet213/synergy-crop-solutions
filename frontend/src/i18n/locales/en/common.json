@@ -1,5 +1,6 @@
 {
   "footer": {
+    "brandName": "Synergy Crop Solutions",
     "tagline": "Modern agricultural solutions for sustainable growth.",
     "contact": "Contact",
     "location": "Location",
@@ -114,7 +115,9 @@
       "otherWays": "Other ways to reach us",
       "email": "Email:",
       "phone": "Phone:",
-      "office": "Office:"
+      "office": "Office:",
+      "emailValue": "contact@synergycrops.com",
+      "partnerEmailValue": "partners@synergycrops.com"
     },
     "contactForm": {
       "thankYou": "Thank you!",
@@ -232,7 +235,9 @@
       "clear": "Clear",
       "empty": "No distributors found",
       "emptyMessage": "Try a different search term or check back later as our network grows."
-    }
+    },
+    "uncategorized": "Uncategorized",
+    "featured": "Featured"
   },
   "loading": "Loading...",
   "retry": "Retry",

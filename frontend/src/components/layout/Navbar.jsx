@@ -45,7 +45,7 @@ export default function Navbar() {
         <NavLink to="/" className="brand">
           <img
             src="/client-assets/logo/official-logo.jpeg"
-            alt="Synergy Crop Solutions"
+            alt={t("brand")}
             className="brand-logo"
           />
           <span className="brand-text">{t("brand")}</span>
@@ -55,7 +55,7 @@ export default function Navbar() {
           type="button"
           className="mobile-menu-toggle"
           onClick={() => setOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
+          aria-label={t("aria.toggleNavigation")}
           aria-expanded={open}
           aria-controls="mobile-panel"
         >
@@ -92,13 +92,13 @@ export default function Navbar() {
         className={`mobile-panel ${open ? "open" : ""}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Navigation menu"
+        aria-label={t("aria.navigationMenu")}
       >
         <div className="mobile-panel-header">
           <NavLink to="/" className="brand" onClick={close} tabIndex={open ? 0 : -1}>
             <img
               src="/client-assets/logo/official-logo.jpeg"
-              alt="Synergy Crop Solutions"
+              alt={t("brand")}
               className="brand-logo"
             />
             <span className="brand-text">{t("brand")}</span>
@@ -107,7 +107,7 @@ export default function Navbar() {
             type="button"
             className="mobile-panel-close"
             onClick={close}
-            aria-label="Close navigation"
+            aria-label={t("aria.closeNavigation")}
             tabIndex={open ? 0 : -1}
           >
             <X size={24} />

@@ -1,5 +1,6 @@
 {
   "footer": {
+    "brandName": "Synergy Crop Solutions",
     "tagline": "टिकाऊ विकास के लिए आधुनिक कृषि समाधान।",
     "contact": "संपर्क",
     "location": "स्थान",
@@ -83,7 +84,7 @@
   },
   "page": {
     "notFound": { "title": "पेज नहीं मिला", "message": "आप जिस पेज की तलाश कर रहे हैं वह मौजूद नहीं है या स्थानांतरित हो गया है।", "goHome": "होम पेज पर जाएँ", "browseProducts": "उत्पाद देखें" },
-    "contact": { "title": "संपर्क करें", "subtitle": "अपनी अगली कृषि साझेदारी शुरू करें", "intro": "हमारी टीम आपको अधिक लचीला और लाभदायक फसल कार्यक्रम बनाने में मदद करने के लिए तैयार है।", "otherWays": "हमसे संपर्क करने के अन्य तरीके", "email": "ईमेल:", "phone": "फ़ोन:", "office": "कार्यालय:" },
+    "contact": { "title": "संपर्क करें", "subtitle": "अपनी अगली कृषि साझेदारी शुरू करें", "intro": "हमारी टीम आपको अधिक लचीला और लाभदायक फसल कार्यक्रम बनाने में मदद करने के लिए तैयार है।", "otherWays": "हमसे संपर्क करने के अन्य तरीके", "email": "ईमेल:", "phone": "फ़ोन:", "office": "कार्यालय:", "emailValue": "contact@synergycrops.com", "partnerEmailValue": "partners@synergycrops.com" },
     "contactForm": { "thankYou": "धन्यवाद!", "successMessage": "हमें आपकी पूछताछ प्राप्त हो गई है और हम जल्द ही आपसे संपर्क करेंगे।", "name": "नाम *", "namePlaceholder": "आपका पूरा नाम", "nameRequired": "नाम आवश्यक है", "email": "ईमेल *", "emailPlaceholder": "your@email.com", "emailRequired": "ईमेल आवश्यक है", "phone": "फ़ोन", "phonePlaceholder": "+91-9876543210", "company": "कंपनी / फार्म का नाम", "companyPlaceholder": "आपका फार्म या संगठन", "message": "संदेश", "messagePlaceholder": "हम आपकी कैसे मदद कर सकते हैं?", "submitting": "सबमिट हो रहा है…", "submit": "पूछताछ भेजें", "failed": "सबमिट करने में विफल। कृपया पुनः प्रयास करें।", "emailInvalid": "अमान्य ईमेल पता", "phoneInvalid": "अमान्य फ़ोन नंबर" },
     "cropDiscovery": { "title": "फसल खोज", "subtitle": "किसानों के लिए उत्तरदायी फसल योजना", "description": "जानकारी खोजने और प्रत्येक फसल प्रकार के लिए प्रासंगिक उत्पाद खोजने के लिए हमारी फसल सूची ब्राउज़ करें।", "loading": "लोड हो रहा है…", "fallback": "इस फसल और इसके उत्पादों के बारे में और जानें।", "empty": "अभी तक कोई फसल उपलब्ध नहीं।" },
     "cropDetail": { "failed": "फसल लोड करने में विफल", "back": "फसलों पर वापस जाएँ", "notFound": "फसल नहीं मिली", "notFoundMessage": "आप जिस फसल की तलाश कर रहे हैं वह मौजूद नहीं है।", "info": "फसल की जानकारी", "noDescription": "कोई विवरण उपलब्ध नहीं।", "relatedProducts": "संबंधित उत्पाद", "productsAvailable": "उत्पाद उपलब्ध", "noProducts": "इस फसल के लिए अभी तक कोई उत्पाद सूचीबद्ध नहीं है।", "contactForPrice": "मूल्य के लिए संपर्क करें", "viewDetails": "विवरण देखें" },
@@ -102,7 +103,9 @@
     "blogDetailPage": { "title": "ब्लॉग विवरण", "placeholder": "यह ब्लॉग विवरण प्लेसहोल्डर है।" },
     "contactPage": { "sendMessage": "हमें संदेश भेजें", "businessHours": "व्यापारिक घंटे", "hours": "सोम – शनि, सुबह 9:00 – शाम 6:00", "distributorInquiries": "वितरक और डीलर पूछताछ के लिए", "distributorDescription": "वितरण भागीदार बनने में रुचि रखते हैं? साझेदारी के अवसरों के लिए हमारी टीम से संपर्क करें।" },
     "placeholders": { "stateProducts": { "title": "राज्य उत्पाद", "placeholder": "यह राज्य उत्पाद प्लेसहोल्डर है।" }, "cropProducts": { "title": "फसल उत्पाद", "placeholder": "यह फसल उत्पाद प्लेसहोल्डर है।" }, "diseaseProducts": { "title": "रोग उत्पाद", "placeholder": "यह रोग उत्पाद प्लेसहोल्डर है।" } },
-    "distributor": { "title": "वितरक लोकेटर", "subtitle": "अपने निकट विश्वसनीय भागीदार खोजें", "intro": "प्रमाणित वितरकों का पता लगाएं।", "searchPlaceholder": "नाम, कंपनी, शहर या राज्य द्वारा खोजें…", "clear": "साफ़ करें", "empty": "कोई वितरक नहीं मिला", "emptyMessage": "कोई अन्य खोज शब्द आज़माएं।" }
+    "distributor": { "title": "वितरक लोकेटर", "subtitle": "अपने निकट विश्वसनीय भागीदार खोजें", "intro": "प्रमाणित वितरकों का पता लगाएं।", "searchPlaceholder": "नाम, कंपनी, शहर या राज्य द्वारा खोजें…", "clear": "साफ़ करें", "empty": "कोई वितरक नहीं मिला", "emptyMessage": "कोई अन्य खोज शब्द आज़माएं।" },
+    "uncategorized": "अवर्गीकृत",
+    "featured": "विशेष रुप से प्रदर्शित"
   },
   "loading": "लोड हो रहा है...",
   "retry": "पुनः प्रयास करें",

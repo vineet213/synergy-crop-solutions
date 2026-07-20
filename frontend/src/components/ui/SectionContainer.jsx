@@ -1,9 +1,14 @@
-﻿export default function SectionContainer({ title, subtitle, children, className = "" }) {
+﻿import { textValue } from "../../utils/productHelpers.js";
+
+export default function SectionContainer({ title, subtitle, children, className = "" }) {
+  const resolvedTitle = textValue(title);
+  const resolvedSubtitle = textValue(subtitle);
+
   return (
     <section className={`section-block ${className}`.trim()}>
       <div className="section-header">
-        <p className="section-subtitle">{subtitle}</p>
-        <h2 className="section-title">{title}</h2>
+        {resolvedSubtitle && <p className="section-subtitle">{resolvedSubtitle}</p>}
+        {resolvedTitle && <h2 className="section-title">{resolvedTitle}</h2>}
       </div>
       <div className="section-content">{children}</div>
     </section>

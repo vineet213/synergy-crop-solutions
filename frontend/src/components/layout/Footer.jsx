@@ -31,10 +31,10 @@ export default function Footer() {
             <p className="footer-brand" style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.75rem" }}>
               <img
                 src="/client-assets/logo/official-logo.jpeg"
-                alt="Synergy Crop Solutions"
+                alt={t("footer.brandName")}
                 className="footer-logo"
               />
-              Synergy Crop Solutions
+              {t("footer.brandName")}
             </p>
             <p>{t("footer.tagline")}</p>
             <p>{t("about.visionStatement")}</p>
@@ -97,7 +97,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>&copy; {year} Synergy Crop Solutions. {t("footer.copyright")}</span>
+          <span>&copy; {year} {t("footer.brandName")}. {t("footer.copyright")}</span>
           <span style={{ opacity: 0.6 }}>{t("footer.taglineShort")}</span>
         </div>
       </div>

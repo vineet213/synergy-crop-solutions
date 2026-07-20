@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import i18n from "i18next";
 import productService from "../services/productService.js";
 
 export function usePublicProducts(params = {}) {
@@ -18,7 +19,7 @@ export function usePublicProducts(params = {}) {
         setProducts(data.data || []);
       } catch (err) {
         if (!mounted) return;
-        setError(err.response?.data?.message || err.message || "Failed to load products");
+        setError(err.response?.data?.message || err.message || i18n.t("products:errors.load", "Failed to load products"));
       } finally {
         if (mounted) setLoading(false);
       }
@@ -55,7 +56,7 @@ export function useProductBySlug(slug) {
         if (err.response?.status === 404) {
           setProduct(null);
         } else {
-          setError(err.response?.data?.message || err.message || "Failed to load product");
+          setError(err.response?.data?.message || err.message || i18n.t("products:errors.notFound", "Failed to load product"));
         }
       } finally {
         if (mounted) setLoading(false);
@@ -95,7 +96,7 @@ export function usePublicProduct(id) {
         if (err.response?.status === 404) {
           setProduct(null);
         } else {
-          setError(err.response?.data?.message || err.message || "Failed to load product");
+          setError(err.response?.data?.message || err.message || i18n.t("products:errors.notFound", "Failed to load product"));
         }
       } finally {
         if (mounted) setLoading(false);

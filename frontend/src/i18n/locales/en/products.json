@@ -56,7 +56,16 @@
     "formulationLabel": "Formulation",
     "productImageThumbnails": "Product image thumbnails",
     "thumbnailAlt": "{{name}} view {{index}}",
-    "videoTitle": "{{name}} video"
+    "videoTitle": "{{name}} video",
+    "noOverview": "No overview information available for this product.",
+    "noComposition": "No composition data available for this product.",
+    "noApplication": "No dosage or application information available.",
+    "noStorage": "No storage or shelf life information available.",
+    "noSafety": "No safety or compatibility information available.",
+    "noCrops": "No target crop information available.",
+    "noBenefits": "No benefits information available.",
+    "fullscreenImage": "Fullscreen image of {{name}}",
+    "closeFullscreen": "Close fullscreen view"
   },
   "empty": {
     "title": "No products match your search",

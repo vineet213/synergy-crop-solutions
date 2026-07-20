@@ -1,3 +1,5 @@
+import { textValue } from "./productHelpers.js";
+
 const CATEGORY_MAP = {
   "biofertilizers": "categories.biofertilizers",
   "biopesticides": "categories.biopesticides",
@@ -14,9 +16,10 @@ const CATEGORY_MAP = {
 };
 
 export function formatCategory(raw, t) {
-  if (!raw) return "";
-  const key = CATEGORY_MAP[raw.toLowerCase()];
-  return key ? t(key) : raw;
+  const str = textValue(raw);
+  if (!str) return "";
+  const key = CATEGORY_MAP[str.toLowerCase()];
+  return key ? t(key) : str;
 }
 
 export function resolveMethodIcon(method) {

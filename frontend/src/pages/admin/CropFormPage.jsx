@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import cropService from "../../services/cropService.js";
 import productService from "../../services/productService.js";
 
 export default function CropFormPage() {
+  const { t } = useTranslation("admin");
   const { id } = useParams();
   const isEdit = Boolean(id);
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ export default function CropFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Failed to load crop");
+        toast.error(t("cropForm.loadFailed"));
         navigate("/admin/crops");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -76,38 +78,38 @@ export default function CropFormPage() {
       navigate("/admin/crops");
     } catch (err) {
       console.error(err);
-      toast.error("Failed to save crop");
+      toast.error(t("cropForm.saveFailed"));
     }
   };
 
-  if (loading) return <main className="page-container"><p>Loading&hellip;</p></main>;
+  if (loading) return <main className="page-container"><p>{t("common.loading")}</p></main>;
 
   return (
     <main className="page-container">
-      <h1 className="page-title">{isEdit ? "Edit Crop" : "Create Crop"}</h1>
+      <h1 className="page-title">{isEdit ? t("cropForm.editTitle") : t("cropForm.createTitle")}</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg space-y-4">
         <div>
-          <label className="block text-sm font-medium">Name *</label>
-          <input {...register("name", { required: "Crop name is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("cropForm.fieldName")}</label>
+          <input {...register("name", { required: t("cropForm.errorNameRequired") })} className="input-field" />
           {errors.name && <p className="text-sm text-red-600">{errors.name.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Slug</label>
-          <input {...register("slug")} className="input-field" placeholder="Leave empty to auto-generate" />
+          <label className="block text-sm font-medium">{t("cropForm.fieldSlug")}</label>
+          <input {...register("slug")} className="input-field" placeholder={t("cropForm.helpSlug")} />
         </div>
         <div>
-          <label className="block text-sm font-medium">Description</label>
+          <label className="block text-sm font-medium">{t("cropForm.fieldDescription")}</label>
           <textarea {...register("description")} className="input-field" rows={3} />
         </div>
         <div>
-          <label className="block text-sm font-medium">Image URL</label>
-          <input {...register("imageUrl")} className="input-field" placeholder="https://..." />
+          <label className="block text-sm font-medium">{t("cropForm.fieldImageUrl")}</label>
+          <input {...register("imageUrl")} className="input-field" placeholder={t("cropForm.placeholderImageUrl")} />
         </div>
         <div>
-          <label className="block text-sm font-medium">Related Products</label>
+          <label className="block text-sm font-medium">{t("cropForm.fieldRelatedProducts")}</label>
           <div className="card-shell max-h-48 overflow-y-auto space-y-1 p-2">
             {products.length === 0 ? (
-              <p className="text-sm text-gray-500">No products available.</p>
+              <p className="text-sm text-gray-500">{t("cropForm.noProductsAvailable")}</p>
             ) : (
               products.map((p) => (
                 <label key={p._id} className="flex items-center gap-2 text-sm">
@@ -123,18 +125,18 @@ export default function CropFormPage() {
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium">Status</label>
+          <label className="block text-sm font-medium">{t("common.status")}</label>
           <select {...register("status")} className="input-field">
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
+            <option value="active">{t("common.active")}</option>
+            <option value="inactive">{t("common.inactive")}</option>
           </select>
         </div>
         <div className="flex gap-2">
           <button type="submit" disabled={isSubmitting} className="button-base button-primary">
-            {isSubmitting ? "Saving&hellip;" : isEdit ? "Update" : "Create"}
+            {isSubmitting ? t("cropForm.saving") : isEdit ? t("common.update") : t("common.create")}
           </button>
           <button type="button" onClick={() => navigate("/admin/crops")} className="button-base">
-            Cancel
+            {t("common.cancel")}
           </button>
         </div>
       </form>

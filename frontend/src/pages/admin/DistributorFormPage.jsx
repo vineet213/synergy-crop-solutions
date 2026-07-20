@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import distributorService from "../../services/distributorService.js";
 
 export default function DistributorFormPage() {
+  const { t } = useTranslation("admin");
   const { id } = useParams();
   const isEdit = Boolean(id);
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ export default function DistributorFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Failed to load distributor");
+        toast.error(t("distributorForm.loadFailed"));
         navigate("/admin/distributors");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -83,87 +85,87 @@ export default function DistributorFormPage() {
       navigate("/admin/distributors");
     } catch (err) {
       console.error(err);
-      toast.error("Failed to save distributor");
+      toast.error(t("distributorForm.saveFailed"));
     }
   };
 
-  if (loading) return <main className="page-container"><p>Loading…</p></main>;
+  if (loading) return <main className="page-container"><p>{t("common.loading")}</p></main>;
 
   return (
     <main className="page-container">
-      <h1 className="page-title">{isEdit ? "Edit Distributor" : "Add Distributor"}</h1>
+      <h1 className="page-title">{isEdit ? t("distributorForm.editTitle") : t("distributorForm.createTitle")}</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg space-y-4">
         <div>
-          <label className="block text-sm font-medium">Name *</label>
-          <input {...register("name", { required: "Name is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldName")}</label>
+          <input {...register("name", { required: t("distributorForm.errorNameRequired") })} className="input-field" />
           {errors.name && <p className="text-sm text-red-600">{errors.name.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Company *</label>
-          <input {...register("company", { required: "Company is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldCompany")}</label>
+          <input {...register("company", { required: t("distributorForm.errorCompanyRequired") })} className="input-field" />
           {errors.company && <p className="text-sm text-red-600">{errors.company.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Email *</label>
-          <input type="email" {...register("email", { required: "Email is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldEmail")}</label>
+          <input type="email" {...register("email", { required: t("distributorForm.errorEmailRequired") })} className="input-field" />
           {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Phone *</label>
-          <input {...register("phone", { required: "Phone is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldPhone")}</label>
+          <input {...register("phone", { required: t("distributorForm.errorPhoneRequired") })} className="input-field" />
           {errors.phone && <p className="text-sm text-red-600">{errors.phone.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Street</label>
+          <label className="block text-sm font-medium">{t("distributorForm.fieldStreet")}</label>
           <input {...register("address.street")} className="input-field" />
         </div>
         <div>
-          <label className="block text-sm font-medium">City *</label>
-          <input {...register("address.city", { required: "City is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldCity")}</label>
+          <input {...register("address.city", { required: t("distributorForm.errorCityRequired") })} className="input-field" />
           {errors["address.city"] && <p className="text-sm text-red-600">{errors["address.city"].message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">State *</label>
-          <input {...register("address.state", { required: "State is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldState")}</label>
+          <input {...register("address.state", { required: t("distributorForm.errorStateRequired") })} className="input-field" />
           {errors["address.state"] && <p className="text-sm text-red-600">{errors["address.state"].message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">ZIP</label>
+          <label className="block text-sm font-medium">{t("distributorForm.fieldZip")}</label>
           <input {...register("address.zip")} className="input-field" />
         </div>
         <div>
-          <label className="block text-sm font-medium">Serviceable States (comma-separated)</label>
-          <input {...register("serviceableStates")} className="input-field" placeholder="e.g. Maharashtra, Gujarat, Karnataka" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldServiceableStates")}</label>
+          <input {...register("serviceableStates")} className="input-field" placeholder={t("distributorForm.placeholderServiceableStates")} />
         </div>
         <div>
-          <label className="block text-sm font-medium">Products (comma-separated)</label>
-          <input {...register("products")} className="input-field" placeholder="e.g. Bio Pesticides, Fertilisers" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldProducts")}</label>
+          <input {...register("products")} className="input-field" placeholder={t("distributorForm.placeholderProducts")} />
         </div>
         <div>
-          <label className="block text-sm font-medium">Certifications (comma-separated)</label>
-          <input {...register("certifications")} className="input-field" placeholder="e.g. ISO 9001, Organic Certified" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldCertifications")}</label>
+          <input {...register("certifications")} className="input-field" placeholder={t("distributorForm.placeholderCertifications")} />
         </div>
         <div>
-          <label className="block text-sm font-medium">Website</label>
-          <input {...register("website")} className="input-field" placeholder="https://" />
+          <label className="block text-sm font-medium">{t("distributorForm.fieldWebsite")}</label>
+          <input {...register("website")} className="input-field" placeholder={t("distributorForm.placeholderWebsite")} />
         </div>
         <div>
-          <label className="block text-sm font-medium">Status</label>
+          <label className="block text-sm font-medium">{t("distributorForm.fieldStatus")}</label>
           <select {...register("status")} className="input-field">
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
+            <option value="active">{t("common.active")}</option>
+            <option value="inactive">{t("common.inactive")}</option>
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium">Description</label>
+          <label className="block text-sm font-medium">{t("distributorForm.fieldDescription")}</label>
           <textarea {...register("description")} className="input-field" rows={3} />
         </div>
         <div className="flex gap-2">
           <button type="submit" disabled={isSubmitting} className="button-base button-primary">
-            {isSubmitting ? "Saving…" : isEdit ? "Update" : "Create"}
+            {isSubmitting ? t("common.saving") : isEdit ? t("distributorForm.submitUpdate") : t("distributorForm.submitCreate")}
           </button>
           <button type="button" onClick={() => navigate("/admin/distributors")} className="button-base">
-            Cancel
+            {t("common.cancel")}
           </button>
         </div>
       </form>

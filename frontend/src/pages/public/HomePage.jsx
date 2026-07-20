@@ -11,14 +11,9 @@ import VideoStoriesSection from "../../components/home/VideoStoriesSection.jsx";
 import { usePublicProducts } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
 import { formatCategory } from "../../utils/formatters.js";
+import { textValue, resolveImageUrl } from "../../utils/productHelpers.js";
 
 const techIcons = [Microscope, FlaskConical, Recycle, TrendingUp];
-
-const heroImages = [
-  { src: "/client-assets/hero/hero-1.jpeg", alt: "Farmers working in lush green bio-crop fields" },
-  { src: "/client-assets/hero/hero-2.jpeg", alt: "Bio-based crop protection products in the field" },
-  { src: "/client-assets/hero/hero-3.jpeg", alt: "Healthy, residue-free harvest ready for market" },
-];
 
 export default function HomePage() {
   useSEO({ canonical: "/" });
@@ -28,11 +23,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 	const { products } = usePublicProducts({ featured: "true", limit: 6, sort: "displayOrder,-createdAt" });
 	const visibleProducts = products || [];
-
-  function imageUrl(raw) {
-    if (!raw) return null;
-    return raw.startsWith("http") || raw.startsWith("/") ? raw : `/${raw}`;
-  }
+  const heroImages = t("hero.images", { returnObjects: true });
 
   return (
     <div>
@@ -96,7 +87,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="prem-intro-visual">
-            <img src="/client-assets/testimonials/Images/testimonial-4.jpeg" alt="Residue-free agriculture in Maharashtra & Karnataka" />
+            <img src="/client-assets/testimonials/Images/testimonial-4.jpeg" alt={t("about.introImage", "Residue-free agriculture")} />
           </div>
         </div>
       </section>
@@ -138,19 +129,21 @@ export default function HomePage() {
               </Link>
             </div>
 			<div className="prem-feat-prod-row">
-				{visibleProducts.slice(0, 6).map((p) => {
-                const img = imageUrl(p.images?.[0]);
+              {visibleProducts.slice(0, 6).map((p) => {
+                const img = resolveImageUrl(p.images?.[0]);
+                const pName = textValue(p.name);
+                const pDesc = textValue(p.shortDescription);
                 return (
                   <Link key={p._id} to={`/products/${p.slug}`} className="prem-feat-prod-card no-underline">
                     {img && (
                       <div className="prem-feat-prod-img">
-                        <img src={img} alt={p.name} loading="lazy" />
+                        <img src={img} alt={pName} loading="lazy" />
                       </div>
                     )}
                     <div className="prem-feat-prod-body">
                       <span className="prem-feat-prod-badge">{formatCategory(p.category, tp)}</span>
-                      <h3 className="prem-feat-prod-name">{p.name}</h3>
-                      {p.shortDescription && <p className="prem-feat-prod-desc">{p.shortDescription}</p>}
+                      <h3 className="prem-feat-prod-name">{pName}</h3>
+                      {pDesc && <p className="prem-feat-prod-desc">{pDesc}</p>}
                     </div>
                     <div className="prem-feat-prod-foot">
                       <span className="prem-prod-link">{t("detail.viewDetails", "View Details")} <ArrowRight size={14} /></span>
@@ -212,7 +205,7 @@ export default function HomePage() {
           <div className="prem-coverage-visual">
             <img
               src="/client-assets/home/regional-network.jpeg"
-              alt="Regional distribution network across Maharashtra and Karnataka"
+              alt={t("coverage.coverageImage", "Regional distribution network")}
             />
           </div>
         </div>

@@ -3,8 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import adminService from "../../services/adminService.js";
+import { useTranslation } from "react-i18next";
 
 export default function AdminFormPage() {
+  const { t } = useTranslation("admin");
   const { id } = useParams();
   const isEdit = Boolean(id);
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ export default function AdminFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Failed to load admin");
+        toast.error(t("adminForm.loadFailed"));
         navigate("/admin/admins");
       })
       .finally(() => { if (mounted) setLoading(false); });
@@ -42,7 +44,7 @@ export default function AdminFormPage() {
       const payload = { name: data.name, email: data.email, role: data.role };
       if (!isEdit) {
         if (!data.password) {
-          toast.error("Password is required for new admins");
+          toast.error(t("adminForm.passwordRequired"));
           return;
         }
         payload.password = data.password;
@@ -58,55 +60,55 @@ export default function AdminFormPage() {
       navigate("/admin/admins");
     } catch (err) {
       console.error(err);
-      toast.error(err.response?.data?.message || "Failed to save admin");
+      toast.error(err.response?.data?.message || t("adminForm.saveFailed"));
     }
   };
 
-  if (loading) return <main className="page-container"><p>Loading…</p></main>;
+  if (loading) return <main className="page-container"><p>{t("common.loading")}</p></main>;
 
   return (
     <main className="page-container">
-      <h1 className="page-title">{isEdit ? "Edit Admin" : "Create Admin"}</h1>
+      <h1 className="page-title">{isEdit ? t("adminForm.editTitle") : t("adminForm.createTitle")}</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg space-y-4">
         <div>
-          <label className="block text-sm font-medium">Name *</label>
-          <input {...register("name", { required: "Name is required" })} className="input-field" />
+          <label className="block text-sm font-medium">{t("adminForm.name")} *</label>
+          <input {...register("name", { required: t("adminForm.nameRequired") })} className="input-field" />
           {errors.name && <p className="text-sm text-red-600">{errors.name.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Email *</label>
+          <label className="block text-sm font-medium">{t("adminForm.email")} *</label>
           <input
             type="email"
-            {...register("email", { required: "Email is required", pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" } })}
+            {...register("email", { required: t("adminForm.emailRequired"), pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: t("adminForm.emailInvalid") } })}
             className="input-field"
           />
           {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium">
-            {isEdit ? "New Password (leave blank to keep current)" : "Password *"}
+            {isEdit ? t("adminForm.newPasswordHint") : `${t("adminForm.password")} *`}
           </label>
           <input
             type="password"
-            {...register("password", !isEdit ? { required: "Password is required", minLength: { value: 6, message: "Password must be at least 6 characters" } } : { minLength: { value: 6, message: "Password must be at least 6 characters" } })}
+            {...register("password", !isEdit ? { required: t("adminForm.passwordRequired"), minLength: { value: 6, message: t("adminForm.passwordMinLength") } } : { minLength: { value: 6, message: t("adminForm.passwordMinLength") } })}
             className="input-field"
             placeholder={isEdit ? "••••••••" : ""}
           />
           {errors.password && <p className="text-sm text-red-600">{errors.password.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium">Role *</label>
-          <select {...register("role", { required: "Role is required" })} className="input-field">
-            <option value="admin">Admin</option>
-            <option value="superadmin">Superadmin</option>
+          <label className="block text-sm font-medium">{t("adminForm.role")} *</label>
+          <select {...register("role", { required: t("adminForm.roleRequired") })} className="input-field">
+            <option value="admin">{t("adminForm.roleAdmin")}</option>
+            <option value="superadmin">{t("adminForm.roleSuperadmin")}</option>
           </select>
         </div>
         <div className="flex gap-2">
           <button type="submit" disabled={isSubmitting} className="button-base button-primary">
-            {isSubmitting ? "Saving…" : isEdit ? "Update" : "Create"}
+            {isSubmitting ? t("adminForm.saving") : isEdit ? t("adminForm.update") : t("adminForm.create")}
           </button>
           <button type="button" onClick={() => navigate("/admin/admins")} className="button-base">
-            Cancel
+            {t("common.cancel")}
           </button>
         </div>
       </form>

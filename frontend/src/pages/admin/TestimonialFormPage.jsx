@@ -5,6 +5,12 @@ import toast from "react-hot-toast";
 import { Upload, X, Play, Image as ImageIcon } from "lucide-react";
 import testimonialService from "../../services/testimonialService.js";
 import mediaUrl from "../../utils/mediaUrl.js";
+import { useTranslation } from "react-i18next";
+
+function mediaPath(entry) {
+  if (!entry) return null;
+  return typeof entry === "string" ? entry : entry?.url || null;
+}
 
 function mediaPreview(file, existingPath) {
   if (file) return URL.createObjectURL(file);
@@ -12,6 +18,7 @@ function mediaPreview(file, existingPath) {
 }
 
 export default function TestimonialFormPage() {
+  const { t } = useTranslation("admin");
   const { id } = useParams();
   const isEdit = Boolean(id);
   const navigate = useNavigate();
@@ -54,7 +61,8 @@ export default function TestimonialFormPage() {
       .then((data) => {
         if (!mounted) return;
         setExistingData(data);
-        const isYouTube = data.video && data.video.startsWith("http");
+        const videoStr = mediaPath(data.video);
+        const isYouTube = videoStr && videoStr.startsWith("http");
         reset({
           customerName: data.customerName || "",
           location: data.location || "",
@@ -62,7 +70,7 @@ export default function TestimonialFormPage() {
           rating: data.rating ?? "",
           crop: data.crop || "",
           videoType: isYouTube ? "youtube" : data.videoType || "",
-          youtubeUrl: isYouTube ? data.video : "",
+          youtubeUrl: isYouTube ? videoStr : "",
           isFeatured: data.isFeatured ?? false,
           displayOrder: data.displayOrder ?? 0,
           status: data.status || "active",
@@ -70,7 +78,7 @@ export default function TestimonialFormPage() {
       })
       .catch((err) => {
         console.error(err);
-        toast.error("Failed to load testimonial");
+        toast.error(t("testimonialForm.loadFailed"));
         navigate("/admin/testimonials");
       })
       .finally(() => {
@@ -98,7 +106,7 @@ export default function TestimonialFormPage() {
       } else if (formData.videoType === "youtube" && formData.youtubeUrl) {
         fd.append("video", formData.youtubeUrl);
         fd.append("videoType", "youtube");
-      } else if (isEdit && existingData?.video && !existingData.video.startsWith("http") && !videoFile) {
+      } else if (isEdit && existingData?.video && !mediaPath(existingData.video)?.startsWith("http") && !videoFile) {
         // keep existing uploaded video — don't send video field
       }
 
@@ -118,25 +126,25 @@ export default function TestimonialFormPage() {
       navigate("/admin/testimonials");
     } catch (err) {
       console.error(err);
-      toast.error(err.response?.data?.message || "Failed to save testimonial");
+      toast.error(err.response?.data?.message || t("testimonialForm.saveFailed"));
     }
   };
 
   if (loading)
     return (
       <main className="page-container">
-        <p>Loading&hellip;</p>
+        <p>{t("common.loading")}</p>
       </main>
     );
 
   return (
     <main className="page-container">
-      <h1 className="page-title">{isEdit ? "Edit Testimonial" : "Create Testimonial"}</h1>
+      <h1 className="page-title">{isEdit ? t("testimonialForm.editTitle") : t("testimonialForm.createTitle")}</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg space-y-4">
         <div>
-          <label className="block text-sm font-medium">Customer Name *</label>
+          <label className="block text-sm font-medium">{t("testimonialForm.fieldCustomerName")}</label>
           <input
-            {...register("customerName", { required: "Customer name is required" })}
+            {...register("customerName", { required: t("testimonialForm.errorCustomerNameRequired") })}
             className="input-field"
           />
           {errors.customerName && (
@@ -144,17 +152,17 @@ export default function TestimonialFormPage() {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium">Location</label>
+          <label className="block text-sm font-medium">{t("testimonialForm.fieldLocation")}</label>
           <input
             {...register("location")}
             className="input-field"
-            placeholder="e.g. Pune, Maharashtra"
+            placeholder={t("testimonialForm.placeholderLocation")}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Testimonial *</label>
+          <label className="block text-sm font-medium">{t("testimonialForm.fieldTestimonial")}</label>
           <textarea
-            {...register("testimonial", { required: "Testimonial is required" })}
+            {...register("testimonial", { required: t("testimonialForm.errorTestimonialRequired") })}
             className="input-field"
             rows={4}
           />
@@ -163,54 +171,54 @@ export default function TestimonialFormPage() {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium">Crop</label>
+          <label className="block text-sm font-medium">{t("testimonialForm.fieldCrop")}</label>
           <input
             {...register("crop")}
             className="input-field"
-            placeholder="e.g. Rice, Wheat"
+            placeholder={t("testimonialForm.placeholderCrop")}
           />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium">Rating (1-5)</label>
+            <label className="block text-sm font-medium">{t("testimonialForm.fieldRating")}</label>
             <input
               type="number"
               min="1"
               max="5"
               {...register("rating")}
               className="input-field"
-              placeholder="5"
+              placeholder={t("testimonialForm.placeholderRating")}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium">Display Order</label>
+            <label className="block text-sm font-medium">{t("testimonialForm.fieldDisplayOrder")}</label>
             <input
               type="number"
               min="0"
               {...register("displayOrder")}
               className="input-field"
-              placeholder="0"
+              placeholder={t("testimonialForm.placeholderDisplayOrder")}
             />
           </div>
         </div>
 
         {/* Video Upload */}
         <div>
-          <label className="block text-sm font-medium">Video Type</label>
+          <label className="block text-sm font-medium">{t("testimonialForm.fieldVideoType")}</label>
           <select {...register("videoType")} className="input-field">
-            <option value="">None</option>
-            <option value="mp4">Upload MP4/MOV/WebM</option>
-            <option value="youtube">YouTube URL</option>
+            <option value="">{t("testimonialForm.videoTypeNone")}</option>
+            <option value="mp4">{t("testimonialForm.videoTypeUpload")}</option>
+            <option value="youtube">{t("testimonialForm.videoTypeYouTube")}</option>
           </select>
         </div>
 
         {watchVideoType === "youtube" && (
           <div>
-            <label className="block text-sm font-medium">YouTube URL</label>
+            <label className="block text-sm font-medium">{t("testimonialForm.fieldYouTubeUrl")}</label>
             <input
               {...register("youtubeUrl")}
               className="input-field"
-              placeholder="https://www.youtube.com/watch?v=..."
+              placeholder={t("testimonialForm.placeholderYouTubeUrl")}
             />
           </div>
         )}
@@ -218,7 +226,7 @@ export default function TestimonialFormPage() {
         {watchVideoType === "mp4" && (
           <div>
             <label className="block text-sm font-medium">
-              Video Upload <span className="font-normal text-gray-500">(MP4, MOV, WebM — max 100 MB)</span>
+              {t("testimonialForm.fieldVideoUpload")} <span className="font-normal text-gray-500">{t("testimonialForm.videoUploadHint")}</span>
             </label>
             <FileInput
               accept="video/mp4,video/quicktime,video/webm"
@@ -226,7 +234,7 @@ export default function TestimonialFormPage() {
               onChange={setVideoFile}
               existingPath={existingData?.video}
               isVideo
-              label="Choose video file"
+              label={t("testimonialForm.chooseVideoFile")}
             />
           </div>
         )}
@@ -234,39 +242,39 @@ export default function TestimonialFormPage() {
         {/* Thumbnail Upload */}
         <div>
           <label className="block text-sm font-medium">
-            Thumbnail <span className="font-normal text-gray-500">(JPG, PNG, WebP — max 10 MB)</span>
+            {t("testimonialForm.fieldThumbnail")} <span className="font-normal text-gray-500">{t("testimonialForm.thumbnailHint")}</span>
           </label>
           <FileInput
             accept="image/jpeg,image/jpg,image/png,image/webp"
             file={thumbnailFile}
             onChange={setThumbnailFile}
             existingPath={existingData?.thumbnail}
-            label="Choose thumbnail image"
+            label={t("testimonialForm.chooseThumbnailImage")}
           />
         </div>
 
         {/* Gallery Image Upload */}
         <div>
           <label className="block text-sm font-medium">
-            Gallery Image <span className="font-normal text-gray-500">(JPG, PNG, WebP — max 10 MB)</span>
+            {t("testimonialForm.fieldGalleryImage")} <span className="font-normal text-gray-500">{t("testimonialForm.galleryImageHint")}</span>
           </label>
           <FileInput
             accept="image/jpeg,image/jpg,image/png,image/webp"
             file={imageFile}
             onChange={setImageFile}
             existingPath={existingData?.image}
-            label="Choose gallery image"
+            label={t("testimonialForm.chooseGalleryImage")}
           />
         </div>
 
         <div>
           <label className="flex items-center gap-2 text-sm font-medium">
             <input type="checkbox" {...register("isFeatured")} />
-            Featured testimonial
+            {t("testimonialForm.fieldFeatured")}
           </label>
         </div>
         <div>
-          <label className="block text-sm font-medium">Status</label>
+          <label className="block text-sm font-medium">{t("testimonialForm.fieldStatus")}</label>
           <select {...register("status")} className="input-field">
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
@@ -274,14 +282,14 @@ export default function TestimonialFormPage() {
         </div>
         <div className="flex gap-2">
           <button type="submit" disabled={isSubmitting} className="button-base button-primary">
-            {isSubmitting ? "Saving\u2026" : isEdit ? "Update" : "Create"}
+            {isSubmitting ? t("testimonialForm.saving") : isEdit ? t("testimonialForm.submitUpdate") : t("testimonialForm.submitCreate")}
           </button>
           <button
             type="button"
             onClick={() => navigate("/admin/testimonials")}
             className="button-base"
           >
-            Cancel
+            {t("common.cancel")}
           </button>
         </div>
       </form>
@@ -290,9 +298,11 @@ export default function TestimonialFormPage() {
 }
 
 function FileInput({ accept, file, onChange, existingPath, isVideo, label }) {
+  const { t } = useTranslation("admin");
+  const existingStr = mediaPath(existingPath);
   const preview = file ? URL.createObjectURL(file) : mediaUrl(existingPath);
-  const hasExisting = !file && existingPath;
-  const fileName = file?.name || (hasExisting ? existingPath.split("/").pop() : null);
+  const hasExisting = !file && existingStr;
+  const fileName = file?.name || (hasExisting ? existingStr.split("/").pop() : null);
 
   const handleClear = (e) => {
     e.stopPropagation();
@@ -347,7 +357,7 @@ function FileInput({ accept, file, onChange, existingPath, isVideo, label }) {
             ) : (
               <img
                 src={preview}
-                alt="Preview"
+                alt={t("testimonialForm.previewAlt")}
                 style={{
                   width: "100%",
                   maxHeight: 160,
@@ -374,7 +384,7 @@ function FileInput({ accept, file, onChange, existingPath, isVideo, label }) {
                 cursor: "pointer",
                 color: "#fff",
               }}
-              aria-label="Remove file"
+              aria-label={t("testimonialForm.removeFile")}
             >
               <X size={14} />
             </button>

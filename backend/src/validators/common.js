@@ -52,3 +52,50 @@ export function matches(pattern, message) {
     return null;
   };
 }
+
+export function isBoolean(value, field) {
+  if (value !== undefined && value !== null && typeof value !== "boolean") {
+    return `${field} must be a boolean`;
+  }
+  return null;
+}
+
+export function isArray(value, field) {
+  if (value !== undefined && value !== null && !Array.isArray(value)) {
+    return `${field} must be an array`;
+  }
+  return null;
+}
+
+export function isArrayOfStrings(value, field) {
+  if (value !== undefined && value !== null) {
+    if (!Array.isArray(value)) return `${field} must be an array`;
+    if (!value.every((item) => typeof item === "string")) {
+      return `${field} must be an array of strings`;
+    }
+  }
+  return null;
+}
+
+function isLocalizedTextValue(v) {
+  if (typeof v === "string") return true;
+  if (typeof v === "object" && v !== null && typeof v.en === "string") return true;
+  return false;
+}
+
+export function isLocalizedText(value, field) {
+  if (value !== undefined && value !== null && !isLocalizedTextValue(value)) {
+    return `${field} must be a string or a localized object { en: "text", ... }`;
+  }
+  return null;
+}
+
+export function isArrayOfLocalizedText(value, field) {
+  if (value !== undefined && value !== null) {
+    if (!Array.isArray(value)) return `${field} must be an array`;
+    if (!value.every(isLocalizedTextValue)) {
+      return `${field} must be an array of strings or localized objects { en: "text", ... }`;
+    }
+  }
+  return null;
+}

@@ -1,11 +1,14 @@
 ﻿import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Search, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import useConfirm from "../../hooks/useConfirm.jsx";
 import productService from "../../services/productService.js";
+import { textValue } from "../../utils/productHelpers.js";
 
 export default function ProductsManagePage() {
+  const { t } = useTranslation("admin");
   const { confirm, ConfirmDialog } = useConfirm();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,30 +32,32 @@ export default function ProductsManagePage() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
-    const confirmed = await confirm("Are you sure you want to delete this product? This action cannot be undone.", "Delete product");
+    const confirmed = await confirm(t("products.deleteConfirmMessage"), t("products.deleteConfirmTitle"));
     if (!confirmed) return;
     try {
       await productService.adminDeleteProduct(id);
       setProducts((p) => p.filter((x) => x._id !== id));
-      toast.success("Product deleted");
+      toast.success(t("products.deleteSuccess"));
     } catch (err) {
       console.error(err);
-      toast.error("Failed to delete product");
+      toast.error(t("products.deleteFailed"));
     }
   };
 
   const visible = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
     return (products || []).filter((p) => {
-      if (filter === "featured" && !p.isFeatured) return false;
-      if (filter === "non-featured" && p.isFeatured) return false;
+      const isFeatured = p.featured || p.isFeatured;
+      const isPublished = p.published || p.status === "published";
+      if (filter === "featured" && !isFeatured) return false;
+      if (filter === "non-featured" && isFeatured) return false;
       if (!q) return true;
       return (
-        (p.name || "").toLowerCase().includes(q) ||
+        textValue(p.name).toLowerCase().includes(q) ||
         (p.slug || "").toLowerCase().includes(q) ||
-        (p.category || "").toLowerCase().includes(q) ||
-        (p.subcategory || "").toLowerCase().includes(q) ||
-        (p.scientificName || "").toLowerCase().includes(q)
+        textValue(p.category).toLowerCase().includes(q) ||
+        textValue(p.subCategory).toLowerCase().includes(q) ||
+        textValue(p.scientificName).toLowerCase().includes(q)
       );
     });
   }, [products, filter, searchQuery]);
@@ -60,8 +65,8 @@ export default function ProductsManagePage() {
   return (
     <main className="page-container">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="page-title">Products</h1>
-        <Link to="/admin/products/new" className="button-base button-primary">Create product</Link>
+        <h1 className="page-title">{t("products.title")}</h1>
+        <Link to="/admin/products/new" className="button-base button-primary">{t("products.createButton")}</Link>
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1.25rem", flexWrap: "wrap", alignItems: "center" }}>
@@ -80,7 +85,7 @@ export default function ProductsManagePage() {
           <input
             type="text"
             className="input-field"
-            placeholder="Search by name, slug, category, subcategory or scientific name…"
+            placeholder={t("products.searchPlaceholder")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{ paddingLeft: "2.5rem" }}
@@ -100,7 +105,7 @@ export default function ProductsManagePage() {
                 display: "flex",
                 padding: "2px",
               }}
-              aria-label="Clear search"
+              aria-label={t("common.clearSearch")}
             >
               <X size={14} />
             </button>
@@ -109,9 +114,9 @@ export default function ProductsManagePage() {
 
         <div className="flex gap-2">
           {[
-            { value: "all", label: "All" },
-            { value: "featured", label: "Featured" },
-            { value: "non-featured", label: "Non Featured" },
+            { value: "all", label: t("products.filterAll") },
+            { value: "featured", label: t("products.filterFeatured") },
+            { value: "non-featured", label: t("products.filterNonFeatured") },
           ].map((opt) => (
             <button
               key={opt.value}
@@ -125,19 +130,19 @@ export default function ProductsManagePage() {
       </div>
 
       {loading ? (
-        <p>Loading…</p>
+        <p>{t("common.loading")}</p>
       ) : error ? (
         <div className="empty-state card-shell">
-          <h2>Failed to load products</h2>
+          <h2>{t("products.failedToLoad")}</h2>
           <p>{error}</p>
-          <button onClick={load} className="button-base button-primary">Retry</button>
+          <button onClick={load} className="button-base button-primary">{t("common.retry")}</button>
         </div>
       ) : visible.length === 0 ? (
         <div className="empty-state card-shell">
-          <h2>No products found</h2>
-          <p>{searchQuery || filter !== "all" ? "No products match your search and filter." : "Create your first product to start building your catalog."}</p>
+          <h2>{t("products.noProductsTitle")}</h2>
+          <p>{searchQuery || filter !== "all" ? t("products.noProductsMatchFilter") : t("products.noProductsEmpty")}</p>
           {!searchQuery && filter === "all" && (
-            <Link to="/admin/products/new" className="button-base button-primary">Create product</Link>
+            <Link to="/admin/products/new" className="button-base button-primary">{t("products.createButton")}</Link>
           )}
         </div>
       ) : (
@@ -145,16 +150,16 @@ export default function ProductsManagePage() {
           {visible.map((prod) => (
             <div key={prod._id} className="card-shell flex items-center justify-between">
               <div>
-                <h3 className="font-semibold">{prod.name}</h3>
+                <h3 className="font-semibold">{textValue(prod.name)}</h3>
                 <p className="text-sm text-gray-600">
                   {prod.category} &middot; {prod.slug}
-                  &middot; <span className={`badge badge-${prod.status === "published" ? "brand" : "soft"}`}>{prod.status}</span>
-                  {prod.isFeatured && <span className="badge badge-brand ml-1">Featured</span>}
+                  &middot; <span className={`badge badge-${(prod.published || prod.status === "published") ? "brand" : "soft"}`}>{(prod.published || prod.status === "published") ? t("products.statusPublished") : (prod.status || t("products.statusDraft"))}</span>
+                  {(prod.featured || prod.isFeatured) && <span className="badge badge-brand ml-1">{t("products.badgeFeatured")}</span>}
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <Link to={`/admin/products/${prod._id}/edit`} className="button-base">Edit</Link>
-                <button onClick={() => handleDelete(prod._id)} className="button-base button-danger">Delete</button>
+                <Link to={`/admin/products/${prod._id}/edit`} className="button-base">{t("common.edit")}</Link>
+                <button onClick={() => handleDelete(prod._id)} className="button-base button-danger">{t("common.delete")}</button>
               </div>
             </div>
           ))}

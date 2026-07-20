@@ -7,6 +7,7 @@ import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import cropService from "../../services/cropService.js";
 import { formatCategory } from "../../utils/formatters.js";
+import { textValue } from "../../utils/productHelpers.js";
 
 export default function CropDetailPage() {
   const { id } = useParams();
@@ -73,7 +74,7 @@ export default function CropDetailPage() {
         {crop.imageUrl && (
           <img src={crop.imageUrl} alt={crop.name} style={{ maxWidth: "100%", borderRadius: "0.5rem", marginBottom: "1rem" }} />
         )}
-        <p>{crop.description || t("common:page.cropDetail.noDescription")}</p>
+        <p>{textValue(crop.description) || t("common:page.cropDetail.noDescription")}</p>
       </SectionContainer>
 
       <SectionContainer title={t("common:page.cropDetail.relatedProducts")} subtitle={`${activeProducts.length} ${t("common:page.cropDetail.productsAvailable")}`}>
@@ -85,10 +86,10 @@ export default function CropDetailPage() {
               <Card key={product._id} className="product-card">
                 <div className="product-card-head">
                   <Badge variant="soft">{formatCategory(product.category, t)}</Badge>
-                  <h3 className="product-card-title">{product.name}</h3>
+                  <h3 className="product-card-title">{textValue(product.name)}</h3>
                 </div>
                 <div className="product-card-body">
-                  <p className="product-card-lead">{product.description}</p>
+                  <p className="product-card-lead">{textValue(product.description)}</p>
                 </div>
                 <div className="product-card-footer">
                   <div>

@@ -18,7 +18,10 @@ function normalizeError(err) {
   }
 
   if (err.name === "CastError") {
-    return new AppError("Invalid resource identifier", 400);
+    return new AppError("Invalid resource identifier", 400, {
+      path: err.path,
+      value: typeof err.value === "object" ? JSON.stringify(err.value) : err.value,
+    });
   }
 
   if (err.code === 11000) {

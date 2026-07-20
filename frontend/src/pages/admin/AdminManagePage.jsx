@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import useConfirm from "../../hooks/useConfirm.jsx";
 import adminService from "../../services/adminService.js";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { useTranslation } from "react-i18next";
 
 export default function AdminManagePage() {
+  const { t } = useTranslation("admin");
   const { confirm, ConfirmDialog } = useConfirm();
   const { user } = useAuth();
   const [admins, setAdmins] = useState([]);
@@ -29,40 +31,40 @@ export default function AdminManagePage() {
 
   const handleDelete = async (id, name) => {
     const confirmed = await confirm(
-      `Are you sure you want to delete "${name}"? This action cannot be undone.`,
-      "Delete admin"
+      t("admins.deleteConfirmMessage", { name }),
+      t("admins.deleteConfirmTitle")
     );
     if (!confirmed) return;
     try {
       await adminService.adminDeleteAdmin(id);
       setAdmins((a) => a.filter((x) => x._id !== id));
-      toast.success("Admin deleted");
+      toast.success(t("admins.deleteSuccess"));
     } catch (err) {
       console.error(err);
-      toast.error(err.response?.data?.message || "Failed to delete admin");
+      toast.error(err.response?.data?.message || t("admins.deleteFailed"));
     }
   };
 
   return (
     <main className="page-container">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="page-title">Admins</h1>
-        <Link to="/admin/admins/new" className="button-base button-primary">Create admin</Link>
+        <h1 className="page-title">{t("admins.title")}</h1>
+        <Link to="/admin/admins/new" className="button-base button-primary">{t("admins.createButton")}</Link>
       </div>
 
       {loading ? (
-        <p>Loading…</p>
+        <p>{t("common.loading")}</p>
       ) : error ? (
         <div className="empty-state card-shell">
-          <h2>Failed to load admins</h2>
+          <h2>{t("admins.failedToLoad")}</h2>
           <p>{error}</p>
-          <button onClick={load} className="button-base button-primary">Retry</button>
+          <button onClick={load} className="button-base button-primary">{t("common.retry")}</button>
         </div>
       ) : admins.length === 0 ? (
         <div className="empty-state card-shell">
-          <h2>No admins yet</h2>
-          <p>Create your first admin account.</p>
-          <Link to="/admin/admins/new" className="button-base button-primary">Create admin</Link>
+          <h2>{t("admins.noAdminsTitle")}</h2>
+          <p>{t("admins.noAdminsDescription")}</p>
+          <Link to="/admin/admins/new" className="button-base button-primary">{t("admins.createButton")}</Link>
         </div>
       ) : (
         <div className="space-y-4">
@@ -80,9 +82,9 @@ export default function AdminManagePage() {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <Link to={`/admin/admins/${admin._id}/edit`} className="button-base">Edit</Link>
+                <Link to={`/admin/admins/${admin._id}/edit`} className="button-base">{t("common.edit")}</Link>
                 {String(admin._id) !== String(user?._id) && (
-                  <button onClick={() => handleDelete(admin._id, admin.name)} className="button-base button-danger">Delete</button>
+                  <button onClick={() => handleDelete(admin._id, admin.name)} className="button-base button-danger">{t("common.delete")}</button>
                 )}
               </div>
             </div>

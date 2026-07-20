@@ -2,9 +2,11 @@
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import useConfirm from "../../hooks/useConfirm.jsx";
+import { useTranslation } from "react-i18next";
 import cropService from "../../services/cropService.js";
 
 export default function CropsManagePage() {
+  const { t } = useTranslation("admin");
   const { confirm, ConfirmDialog } = useConfirm();
   const [crops, setCrops] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,38 +28,38 @@ export default function CropsManagePage() {
   useEffect(() => { load(); }, []);
 
   const handleDelete = async (id) => {
-    const confirmed = await confirm("Are you sure you want to delete this crop? This action cannot be undone.", "Delete crop");
+    const confirmed = await confirm(t("crops.deleteConfirmMessage"), t("crops.deleteConfirmTitle"));
     if (!confirmed) return;
     try {
       await cropService.adminDeleteCrop(id);
       setCrops((p) => p.filter((x) => x._id !== id));
-      toast.success("Crop deleted");
+      toast.success(t("crops.deleteSuccess"));
     } catch (err) {
       console.error(err);
-      toast.error("Failed to delete crop");
+      toast.error(t("crops.deleteFailed"));
     }
   };
 
   return (
     <main className="page-container">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="page-title">Crops</h1>
-        <Link to="/admin/crops/new" className="button-base button-primary">Create crop</Link>
+        <h1 className="page-title">{t("crops.title")}</h1>
+        <Link to="/admin/crops/new" className="button-base button-primary">{t("crops.createButton")}</Link>
       </div>
 
       {loading ? (
-        <p>Loading&hellip;</p>
+        <p>{t("common.loading")}</p>
       ) : error ? (
         <div className="empty-state card-shell">
-          <h2>Failed to load crops</h2>
+          <h2>{t("crops.failedToLoad")}</h2>
           <p>{error}</p>
-          <button onClick={load} className="button-base button-primary">Retry</button>
+          <button onClick={load} className="button-base button-primary">{t("common.retry")}</button>
         </div>
       ) : crops.length === 0 ? (
         <div className="empty-state card-shell">
-          <h2>No crops yet</h2>
-          <p>Create your first crop to help farmers discover relevant products.</p>
-          <Link to="/admin/crops/new" className="button-base button-primary">Create crop</Link>
+          <h2>{t("crops.noCropsTitle")}</h2>
+          <p>{t("crops.noCropsDescription")}</p>
+          <Link to="/admin/crops/new" className="button-base button-primary">{t("crops.createButton")}</Link>
         </div>
       ) : (
         <div className="space-y-4">
@@ -72,8 +74,8 @@ export default function CropsManagePage() {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <Link to={`/admin/crops/${c._id}/edit`} className="button-base">Edit</Link>
-                <button onClick={() => handleDelete(c._id)} className="button-base button-danger">Delete</button>
+                <Link to={`/admin/crops/${c._id}/edit`} className="button-base">{t("common.edit")}</Link>
+                <button onClick={() => handleDelete(c._id)} className="button-base button-danger">{t("common.delete")}</button>
               </div>
             </div>
           ))}

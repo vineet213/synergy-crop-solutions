@@ -141,3 +141,82 @@ export function deleteUploadFile(relativePath) {
 }
 
 export { DIRS, UPLOADS_ROOT };
+
+// ── Product uploads ────────────────────────────────────────────────────────
+
+const PRODUCT_ROOT = path.resolve(__dirname, "../../uploads/products");
+
+const PRODUCT_DIRS = {
+  images: path.join(PRODUCT_ROOT, "images"),
+  brochure: path.join(PRODUCT_ROOT, "brochure"),
+};
+
+Object.values(PRODUCT_DIRS).forEach(ensureDirSync);
+
+const BROCHURE_TYPES = ["application/pdf"];
+const PRODUCT_IMAGE_TYPES = IMAGE_TYPES;
+
+export function productUpload(req, res, next) {
+  const upload = multer({
+    storage: multer.diskStorage({
+      destination: (_req, file, cb) => {
+        if (file.fieldname === "brochure") return cb(null, PRODUCT_DIRS.brochure);
+        cb(null, PRODUCT_DIRS.images);
+      },
+      filename: (_req, file, cb) => cb(null, uniqueName(file.originalname)),
+    }),
+    fileFilter: (req2, file, cb) => {
+      if (file.fieldname === "brochure") {
+        if (BROCHURE_TYPES.includes(file.mimetype)) return cb(null, true);
+        return cb(
+          new Error(`Invalid brochure format: ${file.mimetype}. Allowed: ${BROCHURE_TYPES.join(", ")}`),
+          false
+        );
+      }
+      if (file.fieldname === "images") {
+        if (PRODUCT_IMAGE_TYPES.includes(file.mimetype)) return cb(null, true);
+        return cb(
+          new Error(`Invalid image format: ${file.mimetype}. Allowed: ${PRODUCT_IMAGE_TYPES.join(", ")}`),
+          false
+        );
+      }
+      cb(null, false);
+    },
+    limits: { fileSize: 20 * 1024 * 1024 },
+  });
+
+  const mw = upload.fields([
+    { name: "images", maxCount: 10 },
+    { name: "brochure", maxCount: 1 },
+  ]);
+
+  mw(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      if (err.code === "LIMIT_FILE_SIZE") {
+        return res.status(400).json({
+          success: false,
+          message: "File too large. Maximum size is 20 MB.",
+        });
+      }
+      return res.status(400).json({ success: false, message: err.message });
+    }
+    if (err) {
+      return res.status(400).json({ success: false, message: err.message });
+    }
+    next();
+  });
+}
+
+export function resolveProductPath(file) {
+  if (!file) return null;
+  const dir = file.fieldname === "brochure" ? "brochure" : "images";
+  return `uploads/products/${dir}/${file.filename}`;
+}
+
+export function deleteProductFile(relativePath) {
+  if (!relativePath) return;
+  const abs = path.resolve(__dirname, "../..", relativePath);
+  try {
+    if (fs.existsSync(abs)) fs.unlinkSync(abs);
+  } catch { /* ignore */ }
+}

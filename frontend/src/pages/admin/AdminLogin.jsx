@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { Mail, Lock, LogIn } from "lucide-react";
 
 export default function AdminLogin() {
+  const { t } = useTranslation("admin");
   const navigate = useNavigate();
   const { login, isAuthenticated, isLoading: authLoading } = useAuth();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
@@ -27,14 +29,14 @@ export default function AdminLogin() {
     try {
       const response = await login(data.email, data.password);
       if (response.success) {
-        toast.success("Login successful!");
+        toast.success(t("auth.loginSuccess"));
         navigate("/admin/dashboard");
       }
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||
         error.message ||
-        "Failed to login. Please try again.";
+        t("auth.loginFailed");
       setSubmitError(errorMessage);
       toast.error(errorMessage);
     }
@@ -53,8 +55,8 @@ export default function AdminLogin() {
       <div className="admin-login-card">
         <div className="card-shell">
           <div className="admin-login-header">
-            <h1 className="page-title">Synergy Crop Solutions</h1>
-            <p className="page-description" style={{ marginTop: "0.5rem" }}>Admin Login</p>
+            <h1 className="page-title">{t("auth.title")}</h1>
+            <p className="page-description" style={{ marginTop: "0.5rem" }}>{t("auth.subtitle")}</p>
           </div>
 
           {submitError && (
@@ -64,20 +66,20 @@ export default function AdminLogin() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="admin-login-field">
               <label htmlFor="email" className="admin-login-label">
-                Email Address
+                {t("auth.emailLabel")}
               </label>
               <div className="admin-login-input-wrap">
                 <Mail size={20} className="admin-login-icon" />
                 <input
                   id="email"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t("auth.emailPlaceholder")}
                   className={`input-field admin-login-input ${errors.email ? "admin-login-input-error" : ""}`}
                   {...register("email", {
-                    required: "Email is required",
+                    required: t("auth.emailRequired"),
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Invalid email address",
+                      message: t("auth.emailInvalid"),
                     },
                   })}
                 />
@@ -89,20 +91,20 @@ export default function AdminLogin() {
 
             <div className="admin-login-field">
               <label htmlFor="password" className="admin-login-label">
-                Password
+                {t("auth.passwordLabel")}
               </label>
               <div className="admin-login-input-wrap">
                 <Lock size={20} className="admin-login-icon" />
                 <input
                   id="password"
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder={t("auth.passwordPlaceholder")}
                   className={`input-field admin-login-input ${errors.password ? "admin-login-input-error" : ""}`}
                   {...register("password", {
-                    required: "Password is required",
+                    required: t("auth.passwordRequired"),
                     minLength: {
                       value: 6,
-                      message: "Password must be at least 6 characters",
+                      message: t("auth.passwordMinLength"),
                     },
                   })}
                 />
@@ -118,24 +120,24 @@ export default function AdminLogin() {
               className="button-base button-primary admin-login-submit"
             >
               <LogIn size={20} />
-              {isSubmitting ? "Logging in..." : "Login"}
+              {isSubmitting ? t("auth.loggingIn") : t("auth.loginButton")}
             </button>
           </form>
 
           <div className="admin-login-footer">
             <p style={{ margin: "0 0 0.5rem", color: "var(--text-muted)" }}>
-              Demo credentials:
+              {t("auth.demoCredentials")}
             </p>
             <p style={{ margin: 0, fontSize: "0.8rem", color: "var(--text-muted)" }}>
-              Email: admin@synergycrop.com
+              {t("auth.demoEmail")}
               <br />
-              Password: Admin@123
+              {t("auth.demoPassword")}
             </p>
           </div>
 
           <div style={{ textAlign: "center", marginTop: "1rem" }}>
             <Link to="/" style={{ color: "var(--brand)" }}>
-              Back to Home
+              {t("auth.backToHome")}
             </Link>
           </div>
         </div>

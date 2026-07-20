@@ -4,7 +4,12 @@
     "title": "Bio-based crop protection for healthier harvests.",
     "subtitle": "Synergy Crop Solutions delivers innovative bio-fertilizers, bio-pesticides, and residue-free crop protection products that help farmers grow more while protecting the land for future generations.",
     "quote": "Committed to residue-free farming. Trusted by growers across Maharashtra and Karnataka. We partner with distributors and dealers to build a sustainable agricultural future.",
-    "visual": "Crop intelligence through innovation"
+    "visual": "Crop intelligence through innovation",
+    "images": [
+      { "src": "/client-assets/hero/hero-1.jpeg", "alt": "Farmers working in lush green bio-crop fields" },
+      { "src": "/client-assets/hero/hero-2.jpeg", "alt": "Bio-based crop protection products in the field" },
+      { "src": "/client-assets/hero/hero-3.jpeg", "alt": "Healthy, residue-free harvest ready for market" }
+    ]
   },
   "carousel": {
     "region": "Featured images",
@@ -17,7 +22,8 @@
     "label": "About Synergy",
     "title": "Driving Residue-Free Agriculture in Maharashtra & Karnataka",
     "body": "Synergy Crop Solutions is a regional agricultural input company focused on developing and distributing bio-fertilizers, bio-pesticides, and residue-free crop protection products. Founded with a vision to transform agriculture in Maharashtra and Karnataka, we bridge the gap between modern crop science and traditional farming wisdom. Our team combines deep agronomic expertise with a passion for sustainable farming. We work closely with farmers, research institutions, and distribution networks to ensure that every product we bring to market is safe, effective, and environmentally responsible.",
-    "cta": "Learn more about us"
+    "cta": "Learn more about us",
+    "introImage": "Residue-free agriculture in Maharashtra &amp; Karnataka"
   },
   "aboutStats": [
     { "value": "2018", "label": "Founded in Pune" },
@@ -105,7 +111,8 @@
     "title": "Regional Distribution Network",
     "description": "From the farms of Maharashtra to the plantations of Karnataka, our products reach farmers through a robust network of distributors and dealers.",
     "states": ["Maharashtra", "Karnataka"],
-    "presence": "Maharashtra & Karnataka"
+    "presence": "Maharashtra & Karnataka",
+    "coverageImage": "Regional distribution network across Maharashtra and Karnataka"
   },
   "certifications": {
     "label": "Licences & Certifications",

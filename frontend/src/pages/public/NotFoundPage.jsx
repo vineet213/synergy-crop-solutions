@@ -14,9 +14,9 @@ export default function NotFoundPage() {
     <main className="page-container" style={{ padding: "4rem 1rem", textAlign: "center" }}>
       <h1
         style={{
-          fontSize: "6rem",
+          fontSize: "clamp(3rem, 12vw, 6rem)",
           fontWeight: 800,
-          color: "#166534",
+          color: "var(--brand-dark)",
           lineHeight: 1,
           margin: "0 0 0.5rem",
         }}
@@ -25,9 +25,9 @@ export default function NotFoundPage() {
       </h1>
       <h2
         style={{
-          fontSize: "1.5rem",
+          fontSize: "clamp(1.1rem, 4vw, 1.5rem)",
           fontWeight: 600,
-          color: "#111827",
+          color: "var(--text)",
           margin: "0 0 0.75rem",
         }}
       >
@@ -36,7 +36,7 @@ export default function NotFoundPage() {
       <p
         style={{
           fontSize: "1rem",
-          color: "#6b7280",
+          color: "var(--text-muted)",
           maxWidth: "420px",
           margin: "0 auto 2rem",
           lineHeight: 1.6,

@@ -51,7 +51,7 @@ export default function ContactPage() {
                   <div className="prem-contact-row-body">
                     <span className="prem-contact-row-label">{t("page.contact.email")}</span>
                     <span className="prem-contact-row-value">
-                      <a href="mailto:contact@synergycrops.com">contact@synergycrops.com</a>
+                      <a href={`mailto:${t("page.contact.emailValue")}`}>{t("page.contact.emailValue")}</a>
                     </span>
                   </div>
                 </div>
@@ -83,8 +83,8 @@ export default function ContactPage() {
                 <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.7 }}>
                   {t("page.contactPage.distributorDescription")}
                 </p>
-                <a href="mailto:partners@synergycrops.com" style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem", color: "var(--brand)", fontWeight: 600, fontSize: "0.9rem", marginTop: "0.5rem" }}>
-                  partners@synergycrops.com <ChevronRight size={14} />
+                <a href={`mailto:${t("page.contact.partnerEmailValue")}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem", color: "var(--brand)", fontWeight: 600, fontSize: "0.9rem", marginTop: "0.5rem" }}>
+                  {t("page.contact.partnerEmailValue")} <ChevronRight size={14} />
                 </a>
               </div>
             </div>

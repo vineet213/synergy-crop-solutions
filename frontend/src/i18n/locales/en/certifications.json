@@ -4,6 +4,7 @@
     "subtitle": "Trusted standards for every field",
     "description": "Trusted standards for every field. View our certifications including quality assurance, sustainable practices, and traceability credentials.",
     "loading": "Loading…",
-    "empty": "No certifications yet."
+    "empty": "No certifications yet.",
+    "loadError": "Failed to load certifications"
   }
 }

@@ -23,7 +23,8 @@
     "label": "Field Gallery",
     "title": "Agricultural Gallery",
     "description": "",
-    "viewImage": "View image"
+    "viewImage": "View image",
+    "fallbackAlt": "Agricultural field"
   },
   "cta": {
     "label": "Partner with Synergy",
@@ -36,5 +37,9 @@
     "prev": "Previous",
     "next": "Next",
     "of": "of"
+  },
+  "videoModal": {
+    "close": "Close",
+    "videoTitle": "Testimonial video"
   }
 }

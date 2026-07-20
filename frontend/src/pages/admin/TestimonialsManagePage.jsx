@@ -5,14 +5,9 @@ import { Search, Play, Eye, Star, ChevronUp, ChevronDown, X } from "lucide-react
 import useConfirm from "../../hooks/useConfirm.jsx";
 import testimonialService from "../../services/testimonialService.js";
 import mediaUrl from "../../utils/mediaUrl.js";
+import { useTranslation } from "react-i18next";
 
 const PAGE_SIZE = 10;
-
-const SORT_OPTIONS = [
-  { value: "displayOrder", label: "Display Order" },
-  { value: "createdAt", label: "Created Date" },
-  { value: "rating", label: "Rating" },
-];
 
 function fmtDate(iso) {
   if (!iso) return "—";
@@ -38,7 +33,14 @@ function Stars({ rating }) {
 }
 
 export default function TestimonialsManagePage() {
+  const { t } = useTranslation("admin");
   const { confirm, ConfirmDialog } = useConfirm();
+
+  const SORT_OPTIONS = [
+    { value: "displayOrder", label: t("testimonials.sortDisplayOrder") },
+    { value: "createdAt", label: t("testimonials.sortCreatedAt") },
+    { value: "rating", label: t("testimonials.sortRating") },
+  ];
 
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -127,27 +129,27 @@ export default function TestimonialsManagePage() {
 
   const handleDelete = async (id) => {
     const confirmed = await confirm(
-      "Are you sure you want to delete this testimonial? This action cannot be undone.",
-      "Delete testimonial"
+      t("testimonials.deleteConfirmMessage"),
+      t("testimonials.deleteConfirmTitle")
     );
     if (!confirmed) return;
     try {
       await testimonialService.adminDeleteTestimonial(id);
       setTestimonials((p) => p.filter((x) => x._id !== id));
-      toast.success("Testimonial deleted");
+      toast.success(t("testimonials.deleteSuccess"));
       if (previewItem?._id === id) setPreviewItem(null);
     } catch (err) {
       console.error(err);
-      toast.error("Failed to delete testimonial");
+      toast.error(t("testimonials.deleteFailed"));
     }
   };
 
   return (
     <main className="page-container">
       <div className="flex items-center justify-between mb-6" style={{ flexWrap: "wrap", gap: "0.75rem" }}>
-        <h1 className="page-title">Testimonials</h1>
+        <h1 className="page-title">{t("testimonials.title")}</h1>
         <Link to="/admin/testimonials/new" className="button-base button-primary">
-          Create testimonial
+          {t("testimonials.createButton")}
         </Link>
       </div>
 
@@ -168,7 +170,7 @@ export default function TestimonialsManagePage() {
           <input
             type="text"
             className="input-field"
-            placeholder="Search by name, crop, or location\u2026"
+            placeholder={t("testimonials.searchPlaceholder")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{ paddingLeft: "2.5rem" }}
@@ -219,34 +221,34 @@ export default function TestimonialsManagePage() {
       {/* Results count */}
       <p style={{ marginBottom: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
         {filtered.length === 0
-          ? "No testimonials found"
-          : `Showing ${Math.min((safePage - 1) * PAGE_SIZE + 1, filtered.length)}\u2013${Math.min(safePage * PAGE_SIZE, filtered.length)} of ${filtered.length} testimonial${filtered.length !== 1 ? "s" : ""}`}
+          ? t("testimonials.noTestimonialsFound")
+          : t("testimonials.showingRange", { from: Math.min((safePage - 1) * PAGE_SIZE + 1, filtered.length), to: Math.min(safePage * PAGE_SIZE, filtered.length), total: filtered.length })}
       </p>
 
       {loading ? (
-        <p>Loading&hellip;</p>
+        <p>{t("common.loading")}</p>
       ) : error ? (
         <div className="empty-state card-shell">
-          <h2>Failed to load testimonials</h2>
+          <h2>{t("testimonials.failedToLoad")}</h2>
           <p>{error}</p>
-          <button onClick={load} className="button-base button-primary">Retry</button>
+          <button onClick={load} className="button-base button-primary">{t("common.retry")}</button>
         </div>
       ) : filtered.length === 0 ? (
         <div className="empty-state card-shell">
-          <h2>{testimonials.length === 0 ? "No testimonials yet" : "No results"}</h2>
+          <h2>{testimonials.length === 0 ? t("testimonials.noTestimonialsTitle") : t("testimonials.noResults")}</h2>
           <p>
             {testimonials.length === 0
-              ? "Create your first testimonial to showcase customer feedback."
-              : "Try a different search term."}
+              ? t("testimonials.noTestimonialsDescription")
+              : t("testimonials.noResultsDescription")}
           </p>
           {testimonials.length === 0 && (
-            <Link to="/admin/testimonials/new" className="button-base button-primary">Create testimonial</Link>
+            <Link to="/admin/testimonials/new" className="button-base button-primary">{t("testimonials.createButton")}</Link>
           )}
         </div>
       ) : (
         <div className="space-y-3">
-          {paged.map((t) => (
-            <div key={t._id} className="card-shell" style={{ padding: "1rem 1.25rem" }}>
+          {paged.map((item) => (
+            <div key={item._id} className="card-shell" style={{ padding: "1rem 1.25rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
                 {/* Thumbnail */}
                 <div
@@ -263,18 +265,18 @@ export default function TestimonialsManagePage() {
                     position: "relative",
                   }}
                 >
-                  {t.thumbnail || t.image ? (
+                  {item.thumbnail || item.image ? (
                     <img
-                      src={mediaUrl(t.thumbnail || t.image)}
-                      alt={t.customerName}
+                      src={mediaUrl(item.thumbnail || item.image)}
+                      alt={item.customerName}
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
                   ) : (
                     <span style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--text-muted)" }}>
-                      {(t.customerName || "?").charAt(0).toUpperCase()}
+                      {(item.customerName || "?").charAt(0).toUpperCase()}
                     </span>
                   )}
-                  {t.video && (
+                  {item.video && (
                     <span
                       style={{
                         position: "absolute",
@@ -293,51 +295,51 @@ export default function TestimonialsManagePage() {
                 {/* Info */}
                 <div style={{ flex: "1 1 200px", minWidth: 0 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
-                    <strong style={{ fontSize: "0.95rem" }}>{t.customerName || "Unnamed"}</strong>
-                    <span className={`badge badge-${t.status === "active" ? "brand" : "soft"}`} style={{ fontSize: "0.7rem", padding: "0.25rem 0.6rem" }}>
-                      {t.status}
+                    <strong style={{ fontSize: "0.95rem" }}>{item.customerName || t("testimonials.unnamed")}</strong>
+                    <span className={`badge badge-${item.status === "active" ? "brand" : "soft"}`} style={{ fontSize: "0.7rem", padding: "0.25rem 0.6rem" }}>
+                      {item.status}
                     </span>
-                    {t.isFeatured && (
+                    {item.isFeatured && (
                       <span className="badge badge-brand" style={{ fontSize: "0.7rem", padding: "0.25rem 0.6rem" }}>
-                        Featured
+                        {t("testimonials.badgeFeatured")}
                       </span>
                     )}
                   </div>
                   <p style={{ margin: "0.2rem 0 0", fontSize: "0.8rem", color: "var(--text-muted)" }}>
-                    {[t.location, t.crop].filter(Boolean).join(" \u00B7 ")}
-                    {t.displayOrder > 0 && <span> &middot; Order: {t.displayOrder}</span>}
-                    <span> &middot; {fmtDate(t.createdAt)}</span>
+                    {[item.location, item.crop].filter(Boolean).join(" \u00B7 ")}
+                    {item.displayOrder > 0 && <span> &middot; {t("testimonials.labelOrderPrefix")}{item.displayOrder}</span>}
+                    <span> &middot; {fmtDate(item.createdAt)}</span>
                   </p>
                 </div>
 
                 {/* Rating */}
                 <div style={{ flexShrink: 0 }}>
-                  <Stars rating={t.rating} />
+                  <Stars rating={item.rating} />
                 </div>
 
                 {/* Actions */}
                 <div style={{ display: "flex", gap: "0.4rem", flexShrink: 0 }}>
                   <button
-                    onClick={() => setPreviewItem(t)}
+                    onClick={() => setPreviewItem(item)}
                     className="button-base"
                     style={{ padding: "0.5rem 0.85rem", fontSize: "0.8rem", display: "inline-flex", alignItems: "center", gap: "0.3rem" }}
-                    title="Preview"
+                    title={t("testimonials.previewTitle")}
                   >
                     <Eye size={14} />
                   </button>
                   <Link
-                    to={`/admin/testimonials/${t._id}/edit`}
+                    to={`/admin/testimonials/${item._id}/edit`}
                     className="button-base"
                     style={{ padding: "0.5rem 0.85rem", fontSize: "0.8rem" }}
                   >
-                    Edit
+                    {t("common.edit")}
                   </Link>
                   <button
-                    onClick={() => handleDelete(t._id)}
+                    onClick={() => handleDelete(item._id)}
                     className="button-base button-danger"
                     style={{ padding: "0.5rem 0.85rem", fontSize: "0.8rem" }}
                   >
-                    Delete
+                    {t("common.delete")}
                   </button>
                 </div>
               </div>
@@ -355,7 +357,7 @@ export default function TestimonialsManagePage() {
             disabled={safePage <= 1}
             onClick={() => setPage((p) => Math.max(1, p - 1))}
           >
-            &larr; Prev
+            &larr; {t("testimonials.prevPage")}
           </button>
           {Array.from({ length: totalPages }, (_, i) => i + 1)
             .filter((n) => n === 1 || n === totalPages || Math.abs(n - safePage) <= 2)
@@ -386,7 +388,7 @@ export default function TestimonialsManagePage() {
             disabled={safePage >= totalPages}
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
           >
-            Next &rarr;
+            {t("testimonials.nextPage")} &rarr;
           </button>
         </div>
       )}
@@ -429,7 +431,7 @@ export default function TestimonialsManagePage() {
                 borderBottom: "1px solid var(--border-light)",
               }}
             >
-              <h2 style={{ margin: 0, fontSize: "1.1rem", fontWeight: 700 }}>Testimonial Preview</h2>
+              <h2 style={{ margin: 0, fontSize: "1.1rem", fontWeight: 700 }}>{t("testimonials.previewTitle")}</h2>
               <button
                 onClick={() => setPreviewItem(null)}
                 style={{
@@ -440,7 +442,7 @@ export default function TestimonialsManagePage() {
                   display: "flex",
                   padding: "4px",
                 }}
-                aria-label="Close preview"
+                aria-label={t("testimonials.closePreview")}
               >
                 <X size={20} />
               </button>
@@ -505,7 +507,7 @@ export default function TestimonialsManagePage() {
                   {previewItem.status}
                 </span>
                 {previewItem.isFeatured && (
-                  <span className="badge badge-brand" style={{ fontSize: "0.7rem", padding: "0.2rem 0.55rem" }}>Featured</span>
+                  <span className="badge badge-brand" style={{ fontSize: "0.7rem", padding: "0.2rem 0.55rem" }}>{t("testimonials.badgeFeatured")}</span>
                 )}
               </div>
 
@@ -516,7 +518,7 @@ export default function TestimonialsManagePage() {
               )}
               {previewItem.crop && (
                 <p style={{ margin: "0 0 0.25rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-                  Crop: {previewItem.crop}
+                  {t("testimonials.labelCropPrefix")}{previewItem.crop}
                 </p>
               )}
 
@@ -524,7 +526,7 @@ export default function TestimonialsManagePage() {
                 <span style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem" }}>
                   <Stars rating={previewItem.rating} />
                 </span>
-                {previewItem.displayOrder > 0 && <span>Order: {previewItem.displayOrder}</span>}
+                {previewItem.displayOrder > 0 && <span>{t("testimonials.labelOrderPrefix")}{previewItem.displayOrder}</span>}
                 <span>{fmtDate(previewItem.createdAt)}</span>
               </div>
 
@@ -547,7 +549,7 @@ export default function TestimonialsManagePage() {
               {/* Video info */}
               {previewItem.video && (
                 <p style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
-                  Video: <span style={{ wordBreak: "break-all" }}>{previewItem.video}</span>
+                  {t("testimonials.labelVideo")}<span style={{ wordBreak: "break-all" }}>{previewItem.video}</span>
                   {previewItem.videoType && <span> ({previewItem.videoType})</span>}
                 </p>
               )}
@@ -559,21 +561,21 @@ export default function TestimonialsManagePage() {
                   className="button-base button-primary"
                   style={{ fontSize: "0.85rem" }}
                 >
-                  Edit
+                  {t("common.edit")}
                 </Link>
                 <button
                   onClick={() => { handleDelete(previewItem._id); }}
                   className="button-base button-danger"
                   style={{ fontSize: "0.85rem" }}
                 >
-                  Delete
+                  {t("common.delete")}
                 </button>
                 <button
                   onClick={() => setPreviewItem(null)}
                   className="button-base"
                   style={{ fontSize: "0.85rem" }}
                 >
-                  Close
+                  {t("common.close")}
                 </button>
               </div>
             </div>

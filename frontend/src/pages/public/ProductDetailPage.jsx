@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import ProductDetail from "../../components/products/ProductDetail.jsx";
 import { useProductBySlug } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
+import { resolveLocale, textValue } from "../../utils/productHelpers.js";
 
 function Skeleton() {
   return (
@@ -17,18 +18,19 @@ function Skeleton() {
 }
 
 export default function ProductDetailPage() {
-  const { t } = useTranslation("products");
+  const { t, i18n } = useTranslation("products");
   const { slug } = useParams();
   const { product, loading, error } = useProductBySlug(slug);
+  const locale = i18n.language || "en";
   useSEO({
-    title: product?.metadata?.seo?.title?.replace(" | Synergy Crop Solutions", "") || product?.name || t("title"),
-    description: product?.metadata?.seo?.description || product?.shortDescription || product?.description,
-    keywords: product?.metadata?.seo?.keywords?.join(", "),
+    title: resolveLocale(product?.metadata?.seo?.title, locale)?.replace(" | Synergy Crop Solutions", "") || resolveLocale(product?.name, locale) || t("title"),
+    description: resolveLocale(product?.metadata?.seo?.description, locale) || resolveLocale(product?.shortDescription, locale) || textValue(product?.description),
+    keywords: Array.isArray(product?.metadata?.seo?.keywords) ? product.metadata.seo.keywords.join(", ") : undefined,
     canonical: `/products/${slug}`
   });
 
   return (
-    <main className="page-container pd-page" style={{ paddingBottom: "4rem" }}>
+    <main className="page-container pd-page">
       <Link to="/products" className="pd-back-link">
         <ArrowLeft size={18} />
         {t("backToList")}

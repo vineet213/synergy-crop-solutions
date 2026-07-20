@@ -3,12 +3,13 @@ import Card from "../../components/ui/Card.jsx";
 import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import useSEO from "../../hooks/useSEO.js";
 import { usePublicCertifications } from "../../hooks/useCertifications.js";
+import { textValue } from "../../utils/productHelpers.js";
 
 const DEFAULT_IMAGE = "/client-assets/default-cert.png";
 
 export default function CertificationsPage() {
-  useSEO({ title: t("page.title"), description: t("page.description"), canonical: "/certifications" });
   const { t } = useTranslation("certifications");
+  useSEO({ title: t("page.title"), description: t("page.description"), canonical: "/certifications" });
   const { certifications, loading, error } = usePublicCertifications();
 
   return (
@@ -45,10 +46,10 @@ export default function CertificationsPage() {
                     onError={(e) => { e.target.style.display = "none"; }}
                   />
                 )}
-                {item.description && <p>{item.description}</p>}
+                {item.description && <p>{textValue(item.description)}</p>}
                 {item.issuingAuthority && (
                   <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
-                    {item.issuingAuthority}
+                    {textValue(item.issuingAuthority)}
                   </p>
                 )}
               </Card>

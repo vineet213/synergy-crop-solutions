@@ -5,6 +5,7 @@ import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import DistributorList from "../../components/distributor-locator/DistributorList.jsx";
 import { usePublicDistributors } from "../../hooks/useDistributors.js";
 import useSEO from "../../hooks/useSEO.js";
+import { textValue } from "../../utils/productHelpers.js";
 
 const INDIAN_STATES = [
   "All", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -29,8 +30,8 @@ export default function DistributorLocatorPage() {
     if (!q) return distributors;
     return (distributors || []).filter(
       (d) =>
-        (d.name && d.name.toLowerCase().includes(q)) ||
-        (d.company && d.company.toLowerCase().includes(q)) ||
+        (d.name && textValue(d.name).toLowerCase().includes(q)) ||
+        (d.company && textValue(d.company).toLowerCase().includes(q)) ||
         (d.address?.city && d.address.city.toLowerCase().includes(q)) ||
         (d.address?.state && d.address.state.toLowerCase().includes(q))
     );

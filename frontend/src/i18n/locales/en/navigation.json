@@ -8,5 +8,12 @@
     "blog": "Blog",
     "contact": "Contact"
   },
-  "cta": "Get in Touch"
+  "cta": "Get in Touch",
+  "aria": {
+    "toggleNavigation": "Toggle navigation",
+    "navigationMenu": "Navigation menu",
+    "closeNavigation": "Close navigation",
+    "selectLanguage": "Select language"
+  },
+  "lang": "Language"
 }

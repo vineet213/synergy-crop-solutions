@@ -70,16 +70,16 @@ export default function AboutPage() {
             <span className="prem-header__label" style={{ color: "rgba(255,255,255,0.5)" }}>{t("aboutPage.vision.title")} & {t("aboutPage.mission.title")}</span>
             <h2 className="prem-header__title">{t("aboutPage.vision.title")} & {t("aboutPage.mission.title")}</h2>
           </header>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3rem" }}>
-            <div style={{ padding: "2rem", background: "rgba(255,255,255,0.04)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              <Target size={28} style={{ marginBottom: "1rem", opacity: 0.7 }} />
-              <h2 style={{ margin: "0 0 1rem", fontSize: "1.5rem", fontWeight: 700 }}>{t("aboutPage.vision.title")}</h2>
-              <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, opacity: 0.8 }}>{t("aboutPage.vision.body")}</p>
+          <div className="prem-vision-grid">
+            <div className="prem-vision-card">
+              <Target size={28} />
+              <h2>{t("aboutPage.vision.title")}</h2>
+              <p>{t("aboutPage.vision.body")}</p>
             </div>
-            <div style={{ padding: "2rem", background: "rgba(255,255,255,0.04)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              <HeartHandshake size={28} style={{ marginBottom: "1rem", opacity: 0.7 }} />
-              <h2 style={{ margin: "0 0 1rem", fontSize: "1.5rem", fontWeight: 700 }}>{t("aboutPage.mission.title")}</h2>
-              <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, opacity: 0.8 }}>{t("aboutPage.mission.body")}</p>
+            <div className="prem-vision-card">
+              <HeartHandshake size={28} />
+              <h2>{t("aboutPage.mission.title")}</h2>
+              <p>{t("aboutPage.mission.body")}</p>
             </div>
           </div>
         </div>

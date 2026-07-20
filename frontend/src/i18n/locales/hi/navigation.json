@@ -8,5 +8,12 @@
     "blog": "ब्लॉग",
     "contact": "संपर्क"
   },
-  "cta": "संपर्क करें"
+  "cta": "संपर्क करें",
+  "aria": {
+    "toggleNavigation": "नेविगेशन टॉगल करें",
+    "navigationMenu": "नेविगेशन मेनू",
+    "closeNavigation": "नेविगेशन बंद करें",
+    "selectLanguage": "भाषा चुनें"
+  },
+  "lang": "भाषा"
 }

@@ -26,8 +26,8 @@ const productService = {
 	},
 
 	// Admin
-	adminListProducts: async () => {
-		const res = await api.get("/admin/products");
+	adminListProducts: async (params = {}) => {
+		const res = await api.get("/admin/products", { params });
 		return res.data.data;
 	},
 	adminGetProduct: async (id) => {
@@ -35,11 +35,19 @@ const productService = {
 		return res.data.data;
 	},
 	adminCreateProduct: async (payload) => {
-		const res = await api.post("/admin/products", payload);
+		const res = await api.post("/admin/products", payload, {
+			headers: payload instanceof FormData
+				? { "Content-Type": "multipart/form-data" }
+				: undefined,
+		});
 		return res.data.data;
 	},
 	adminUpdateProduct: async (id, payload) => {
-		const res = await api.patch(`/admin/products/${id}`, payload);
+		const res = await api.patch(`/admin/products/${id}`, payload, {
+			headers: payload instanceof FormData
+				? { "Content-Type": "multipart/form-data" }
+				: undefined,
+		});
 		return res.data.data;
 	},
 	adminDeleteProduct: async (id) => {

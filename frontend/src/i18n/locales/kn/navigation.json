@@ -8,5 +8,17 @@
     "blog": "ಬ್ಲಾಗ್",
     "contact": "ಸಂಪರ್ಕ"
   },
-  "cta": "ಸಂಪರ್ಕಿಸಿ"
+  "cta": "ಸಂಪರ್ಕಿಸಿ",
+  "aria": {
+    "toggleNavigation": "ನಾವಿಗೇಶನ್ ಟಾಗಲ್ ಮಾಡಿ",
+    "navigationMenu": "ನಾವಿಗೇಶನ್ ಮೆನು",
+    "closeNavigation": "ನಾವಿಗೇಶನ್ ಮುಚ್ಚಿ",
+    "selectLanguage": "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ"
+  },
+  "lang": {
+    "en": "English",
+    "hi": "हिन्दी",
+    "mr": "मराठी",
+    "kn": "ಕನ್ನಡ"
+  }
 }

@@ -9,6 +9,7 @@ import useSEO from "../../hooks/useSEO.js";
 import VideoModal from "../../components/ui/VideoModal.jsx";
 import testimonialService from "../../services/testimonialService.js";
 import mediaUrl from "../../utils/mediaUrl.js";
+import { textValue } from "../../utils/productHelpers.js";
 
 function isYouTube(url) {
   return /youtube\.com|youtu\.be/.test(url || "");
@@ -21,14 +22,13 @@ function ytEmbed(url) {
 }
 
 export default function TestimonialsPage() {
-  useSEO({
-    title: "Testimonials — Synergy Crop Solutions",
-    description:
-      "Watch video testimonials from farmers and explore our gallery of residue-free agriculture in action across Maharashtra and Karnataka.",
-    canonical: "/testimonials",
-  });
   const { t } = useTranslation("testimonials");
   const { t: tc } = useTranslation("common");
+  useSEO({
+    title: t("page.title"),
+    description: t("hero.subtitle"),
+    canonical: "/testimonials",
+  });
   const navigate = useNavigate();
 
   const [allTestimonials, setAllTestimonials] = useState([]);
@@ -52,12 +52,12 @@ export default function TestimonialsPage() {
     return () => { cancelled = true; };
   }, []);
 
-  const videoTestimonials = allTestimonials.filter((t) => t.video);
+  const videoTestimonials = allTestimonials.filter((item) => item.video);
   const galleryImages = allTestimonials
-    .filter((t) => t.image)
-    .map((t) => ({
-      src: mediaUrl(t.image),
-      alt: t.customerName || "Agricultural field",
+    .filter((item) => item.image)
+    .map((item) => ({
+      src: mediaUrl(item.image),
+      alt: textValue(item.customerName) || t("gallery.fallbackAlt", "Agricultural field"),
     }));
 
   const openLightbox = (idx) => setLightboxIndex(idx);
@@ -106,7 +106,7 @@ export default function TestimonialsPage() {
                       aria-label={t("videos.play")}
                     >
                       {thumbSrc ? (
-                        <img src={thumbSrc} alt={item.customerName || ""} className="vs-thumb-video" style={{ objectFit: "cover" }} />
+                        <img src={thumbSrc} alt={textValue(item.customerName) || ""} className="vs-thumb-video" style={{ objectFit: "cover" }} />
                       ) : (
                         <div className="vs-thumb-video" style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "var(--surface-muted)" }}>
                           <User size={40} style={{ color: "var(--text-muted)" }} />
@@ -119,7 +119,7 @@ export default function TestimonialsPage() {
                       </div>
                     </div>
                     <div className="vs-card-body">
-                      {item.customerName && <p className="vs-card-label">{item.customerName}</p>}
+                      {item.customerName && <p className="vs-card-label">{textValue(item.customerName)}</p>}
                       <button
                         className="vs-watch-btn"
                         onClick={() => setActiveVideo(playable)}
@@ -220,12 +220,12 @@ export default function TestimonialsPage() {
         isYouTube(activeVideo) ? (
           <div className="vm-overlay" onClick={() => setActiveVideo(null)}>
             <div className="vm-content" onClick={(e) => e.stopPropagation()}>
-              <button className="vm-close" onClick={() => setActiveVideo(null)} aria-label="Close">
+              <button className="vm-close" onClick={() => setActiveVideo(null)} aria-label={t("videoModal.close")}>
                 <X size={24} />
               </button>
               <iframe
                 src={ytEmbed(activeVideo)}
-                title="YouTube video"
+                title={t("videoModal.videoTitle")}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

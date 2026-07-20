@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -8,6 +8,11 @@ import Button from "../ui/Button.jsx";
 export default function ContactForm() {
   const { t } = useTranslation("common");
   const [submitted, setSubmitted] = useState(false);
+  const nameId = useId();
+  const emailId = useId();
+  const phoneId = useId();
+  const companyId = useId();
+  const messageId = useId();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     defaultValues: { name: "", email: "", phone: "", company: "", message: "" },
   });
@@ -34,27 +39,27 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form-block">
       <div>
-        <label className="block text-sm font-medium">{t("page.contactForm.name")}</label>
-        <input {...register("name", { required: t("page.contactForm.nameRequired") })} className="input-field" placeholder={t("page.contactForm.namePlaceholder")} />
+        <label htmlFor={nameId}>{t("page.contactForm.name")}</label>
+        <input id={nameId} {...register("name", { required: t("page.contactForm.nameRequired") })} className="input-field" placeholder={t("page.contactForm.namePlaceholder")} />
         {errors.name && <p className="form-field-error">{errors.name.message}</p>}
       </div>
       <div>
-        <label className="block text-sm font-medium">{t("page.contactForm.email")}</label>
-        <input type="email" {...register("email", { required: t("page.contactForm.emailRequired"), pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: t("page.contactForm.emailInvalid") || "Invalid email address" } })} className="input-field" placeholder={t("page.contactForm.emailPlaceholder")} />
+        <label htmlFor={emailId}>{t("page.contactForm.email")}</label>
+        <input id={emailId} type="email" {...register("email", { required: t("page.contactForm.emailRequired"), pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: t("page.contactForm.emailInvalid") || "Invalid email address" } })} className="input-field" placeholder={t("page.contactForm.emailPlaceholder")} />
         {errors.email && <p className="form-field-error">{errors.email.message}</p>}
       </div>
       <div>
-        <label className="block text-sm font-medium">{t("page.contactForm.phone")}</label>
-        <input type="tel" {...register("phone", { pattern: { value: /^[+]?[\d\s()-]{7,20}$/, message: t("page.contactForm.phoneInvalid") || "Invalid phone number" } })} className="input-field" placeholder={t("page.contactForm.phonePlaceholder")} />
-          {errors.phone && <p className="form-field-error">{errors.phone.message}</p>}
+        <label htmlFor={phoneId}>{t("page.contactForm.phone")}</label>
+        <input id={phoneId} type="tel" {...register("phone", { pattern: { value: /^[+]?[\d\s()-]{7,20}$/, message: t("page.contactForm.phoneInvalid") || "Invalid phone number" } })} className="input-field" placeholder={t("page.contactForm.phonePlaceholder")} />
+        {errors.phone && <p className="form-field-error">{errors.phone.message}</p>}
       </div>
       <div>
-        <label className="block text-sm font-medium">{t("page.contactForm.company")}</label>
-        <input {...register("company")} className="input-field" placeholder={t("page.contactForm.companyPlaceholder")} />
+        <label htmlFor={companyId}>{t("page.contactForm.company")}</label>
+        <input id={companyId} {...register("company")} className="input-field" placeholder={t("page.contactForm.companyPlaceholder")} />
       </div>
       <div>
-        <label className="block text-sm font-medium">{t("page.contactForm.message")}</label>
-        <textarea {...register("message")} className="input-field" rows={4} placeholder={t("page.contactForm.messagePlaceholder")} />
+        <label htmlFor={messageId}>{t("page.contactForm.message")}</label>
+        <textarea id={messageId} {...register("message")} className="input-field" rows={4} placeholder={t("page.contactForm.messagePlaceholder")} />
       </div>
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? t("page.contactForm.submitting") : t("page.contactForm.submit")}

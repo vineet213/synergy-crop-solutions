@@ -7,6 +7,7 @@ import SectionContainer from "../../components/ui/SectionContainer.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import diseaseService from "../../services/diseaseService.js";
 import { formatCategory } from "../../utils/formatters.js";
+import { textValue } from "../../utils/productHelpers.js";
 
 export default function DiseaseDetailPage() {
   const { id } = useParams();
@@ -70,11 +71,11 @@ export default function DiseaseDetailPage() {
       </Link>
 
       <SectionContainer title={disease.name} subtitle={t("common:page.diseaseDetail.info")}>
-        {disease.description && <p>{disease.description}</p>}
+        {disease.description && <p>{textValue(disease.description)}</p>}
         {disease.symptoms && (
           <div style={{ marginTop: "1rem" }}>
             <h3 className="font-semibold">{t("common:page.diseaseDetail.symptoms")}</h3>
-            <p>{disease.symptoms}</p>
+            <p>{textValue(disease.symptoms)}</p>
           </div>
         )}
       </SectionContainer>
@@ -88,10 +89,10 @@ export default function DiseaseDetailPage() {
               <Card key={product._id} className="product-card">
                 <div className="product-card-head">
                   <Badge variant="soft">{formatCategory(product.category, t)}</Badge>
-                  <h3 className="product-card-title">{product.name}</h3>
+                  <h3 className="product-card-title">{textValue(product.name)}</h3>
                 </div>
                 <div className="product-card-body">
-                  <p className="product-card-lead">{product.description}</p>
+                  <p className="product-card-lead">{textValue(product.description)}</p>
                 </div>
                 <div className="product-card-footer">
                   <div>

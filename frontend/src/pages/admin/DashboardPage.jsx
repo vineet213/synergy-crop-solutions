@@ -1,9 +1,11 @@
 ﻿import { useEffect, useState } from "react";
 import { Package, Truck, MessageSquare } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/AuthContext.jsx";
 import api from "../../services/api.js";
 
 export default function DashboardPage() {
+const { t } = useTranslation("admin");
 const { user } = useAuth();
 const [stats, setStats] = useState(null);
 const [loading, setLoading] = useState(true);
@@ -38,17 +40,17 @@ return () => {
 const statCards = stats
 ? [
 {
-label: "Total Products",
+label: t("dashboard.totalProducts"),
 value: String(stats.products),
 icon: Package,
 },
 {
-label: "Total Distributors",
+label: t("dashboard.totalDistributors"),
 value: String(stats.distributors),
 icon: Truck,
 },
 {
-label: "Total Leads",
+label: t("dashboard.totalLeads"),
 value: String(stats.leads),
 icon: MessageSquare,
 },
@@ -56,10 +58,10 @@ icon: MessageSquare,
 : [];
 
 return ( <main className="page-container section-block"> <div className="section-header"> <h1 className="page-title">
-Welcome, {user?.name || "Admin"}! </h1>
+{t("dashboard.welcome", { name: user?.name || t("dashboard.fallbackName") })} </h1>
 
     <p className="page-description">
-      Here's an overview of your platform.
+      {t("dashboard.overview")}
     </p>
   </div>
 
@@ -122,7 +124,7 @@ Welcome, {user?.name || "Admin"}! </h1>
         marginBottom: "1rem",
       }}
     >
-      Recent Leads
+      {t("dashboard.recentLeads")}
     </h2>
 
     {loading ? (
@@ -133,10 +135,9 @@ Welcome, {user?.name || "Admin"}! </h1>
       </div>
     ) : !stats?.recentLeads?.length ? (
       <div className="empty-state">
-        <h2>No Leads Yet</h2>
+        <h2>{t("dashboard.noLeadsTitle")}</h2>
         <p>
-          Leads submitted through the Contact page
-          will appear here.
+          {t("dashboard.noLeadsDescription")}
         </p>
       </div>
     ) : (
