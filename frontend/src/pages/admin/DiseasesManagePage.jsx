@@ -35,7 +35,6 @@ export default function DiseasesManagePage() {
       setDiseases((p) => p.filter((x) => x._id !== id));
       toast.success(t("diseases.deleteSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(t("diseases.deleteFailed"));
     }
   };

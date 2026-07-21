@@ -47,7 +47,7 @@ export default function SettingsPage() {
           <label className="block text-sm font-medium">{t("settings.newPassword")} *</label>
           <input
             type="password"
-            {...register("newPassword", { required: t("settings.newPasswordRequired"), minLength: { value: 6, message: t("settings.passwordMinLength") } })}
+            {...register("newPassword", { required: t("settings.newPasswordRequired"), minLength: { value: 8, message: t("settings.passwordMinLength") } })}
             className="input-field"
           />
           {errors.newPassword && <p className="text-sm text-red-600">{errors.newPassword.message}</p>}

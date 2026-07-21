@@ -9,6 +9,7 @@ import testimonialRoutes from "./testimonialRoutes.js";
 import certificationRoutes from "./certificationRoutes.js";
 import cropRoutes from "./cropRoutes.js";
 import diseaseRoutes from "./diseaseRoutes.js";
+import websiteSettingsRoutes from "./websiteSettingsRoutes.js";
 
 const router = express.Router();
 
@@ -22,5 +23,6 @@ router.use(testimonialRoutes);
 router.use(certificationRoutes);
 router.use(cropRoutes);
 router.use(diseaseRoutes);
+router.use(websiteSettingsRoutes);
 
 export default router;

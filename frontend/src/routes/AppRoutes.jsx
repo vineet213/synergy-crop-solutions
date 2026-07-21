@@ -32,6 +32,7 @@ import LeadsManagePage from "../pages/admin/LeadsManagePage.jsx";
 import ProductsManagePage from "../pages/admin/ProductsManagePage.jsx";
 import ProductFormPage from "../pages/admin/ProductFormPage.jsx";
 import SettingsPage from "../pages/admin/SettingsPage.jsx";
+import WebsiteSettingsPage from "../pages/admin/WebsiteSettingsPage.jsx";
 import AdminManagePage from "../pages/admin/AdminManagePage.jsx";
 import AdminFormPage from "../pages/admin/AdminFormPage.jsx";
 import TestimonialsManagePage from "../pages/admin/TestimonialsManagePage.jsx";
@@ -80,6 +81,7 @@ export default function AppRoutes() {
       >
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="blog" element={<BlogManagePage />} />
         <Route path="categories" element={<CategoriesManagePage />} />
         <Route path="certifications" element={<CertificationsManagePage />} />
@@ -99,6 +101,7 @@ export default function AppRoutes() {
         <Route path="products/new" element={<ProductFormPage />} />
         <Route path="products/:id/edit" element={<ProductFormPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="website-settings" element={<WebsiteSettingsPage />} />
           <Route path="admins" element={<AdminManagePage />} />
           <Route path="admins/new" element={<AdminFormPage />} />
           <Route path="admins/:id/edit" element={<AdminFormPage />} />

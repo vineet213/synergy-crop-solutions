@@ -39,7 +39,6 @@ export default function ProductsManagePage() {
       setProducts((p) => p.filter((x) => x._id !== id));
       toast.success(t("products.deleteSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(t("products.deleteFailed"));
     }
   };

@@ -42,7 +42,6 @@ export default function CertificationFormPage() {
         });
       })
       .catch((err) => {
-        console.error(err);
         toast.error(t("certificationForm.loadFailed"));
         navigate("/admin/certifications");
       })
@@ -65,7 +64,6 @@ export default function CertificationFormPage() {
       }
       navigate("/admin/certifications");
     } catch (err) {
-      console.error(err);
       toast.error(t("certificationForm.saveFailed"));
     }
   };
@@ -118,8 +116,8 @@ export default function CertificationFormPage() {
         <div>
           <label className="block text-sm font-medium">{t("certificationForm.fieldStatus")}</label>
           <select {...register("status")} className="input-field">
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
+            <option value="active">{t("certificationForm.active")}</option>
+            <option value="inactive">{t("certificationForm.inactive")}</option>
           </select>
         </div>
         <div className="flex gap-2">

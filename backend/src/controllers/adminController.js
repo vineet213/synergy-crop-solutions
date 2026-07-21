@@ -31,6 +31,10 @@ export async function createAdmin(req, res, next) {
   try {
     const { name, email, password, role } = req.body;
 
+    if (!password || password.length < 8) {
+      return next(new AppError("Password must be at least 8 characters", 400));
+    }
+
     const existing = await Admin.findOne({ email: email.toLowerCase().trim() });
     if (existing) {
       return next(new AppError("An admin with this email already exists", 409));
@@ -108,6 +112,10 @@ export async function changePassword(req, res, next) {
     const admin = await Admin.findById(req.user._id).select("+password");
     if (!(await admin.comparePassword(currentPassword))) {
       return next(new AppError("Current password is incorrect", 400));
+    }
+
+    if (!newPassword || newPassword.length < 8) {
+      return next(new AppError("New password must be at least 8 characters", 400));
     }
 
     admin.password = newPassword;

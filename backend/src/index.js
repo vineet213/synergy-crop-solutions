@@ -2,14 +2,14 @@ import env from "./config/env.js";
 import { connectDB, disconnectDB } from "./config/db.js";
 import app from "./app.js";
 import logger from "./utils/logger.js";
-import ensureAdminExists from "./services/seedService.js";
+import seedAll from "./services/seedService.js";
 
 let server;
 
 async function startServer() {
   try {
     await connectDB();
-    await ensureAdminExists();
+    await seedAll();
 
     server = app.listen(env.PORT, () => {
       logger.info("Server started", {

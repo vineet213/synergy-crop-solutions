@@ -7,11 +7,12 @@ export async function listPublicDistributors(req, res, next) {
     const filter = { status: "active" };
     if (state) filter["address.state"] = state;
     if (search) {
+      const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       filter.$or = [
-        { name: { $regex: search, $options: "i" } },
-        { company: { $regex: search, $options: "i" } },
-        { "address.city": { $regex: search, $options: "i" } },
-        { "address.state": { $regex: search, $options: "i" } },
+        { name: { $regex: escaped, $options: "i" } },
+        { company: { $regex: escaped, $options: "i" } },
+        { "address.city": { $regex: escaped, $options: "i" } },
+        { "address.state": { $regex: escaped, $options: "i" } },
       ];
     }
 
@@ -55,7 +56,7 @@ export async function adminGetDistributor(req, res, next) {
 
 export async function adminCreateDistributor(req, res, next) {
   try {
-    const payload = req.body;
+    const { _id, __v, createdAt, updatedAt, ...payload } = req.body;
     const distributor = await Distributor.create(payload);
     res.status(201).json({ success: true, data: distributor });
   } catch (error) {
@@ -66,7 +67,7 @@ export async function adminCreateDistributor(req, res, next) {
 export async function adminUpdateDistributor(req, res, next) {
   try {
     const { id } = req.params;
-    const updates = req.body;
+    const { _id, __v, createdAt, updatedAt, ...updates } = req.body;
     const distributor = await Distributor.findByIdAndUpdate(id, updates, {
       new: true,
       runValidators: true,

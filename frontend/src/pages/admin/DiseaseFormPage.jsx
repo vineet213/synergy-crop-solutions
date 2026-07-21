@@ -28,7 +28,7 @@ export default function DiseaseFormPage() {
   useEffect(() => {
     productService.adminListProducts()
       .then(setProducts)
-      .catch(console.error);
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -48,7 +48,6 @@ export default function DiseaseFormPage() {
         setSelectedProducts((data.products || []).map((p) => p._id || p));
       })
       .catch((err) => {
-        console.error(err);
         toast.error(t("diseaseForm.loadFailed"));
         navigate("/admin/diseases");
       })
@@ -77,7 +76,6 @@ export default function DiseaseFormPage() {
       }
       navigate("/admin/diseases");
     } catch (err) {
-      console.error(err);
       toast.error(t("diseaseForm.saveFailed"));
     }
   };

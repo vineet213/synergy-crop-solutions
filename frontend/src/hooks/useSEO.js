@@ -2,13 +2,23 @@ import { useEffect, useRef } from "react";
 
 const BASE_URL = "https://synergycrops.com";
 
-const DEFAULTS = {
+const FALLBACK = {
   title: "Synergy Crop Solutions",
   description:
     "Synergy Crop Solutions provides innovative agricultural products, crop protection solutions, bio fertilizers, bio pesticides, fungicides, micronutrients, and distributor support in Maharashtra & Karnataka.",
   keywords:
     "Agriculture, Bio Fertilizers, Bio Pesticides, Fungicides, Micronutrients, Crop Protection, Farming Solutions, Synergy Crop Solutions",
 };
+
+let _settingsCache = null;
+
+export function setSEOSettings(settings) {
+  _settingsCache = settings;
+}
+
+function getSettings() {
+  return _settingsCache;
+}
 
 function upsertMeta(attr, attrValue, content) {
   if (!content) return;
@@ -45,10 +55,11 @@ export default function useSEO(options = {}) {
       type = "website",
     } = options;
 
-    const siteName = DEFAULTS.title;
+    const s = getSettings();
+    const siteName = s?.company?.name || FALLBACK.title;
     const pageTitle = title ? `${title} | ${siteName}` : siteName;
-    const pageDesc = description || DEFAULTS.description;
-    const pageKeywords = keywords || DEFAULTS.keywords;
+    const pageDesc = description || FALLBACK.description;
+    const pageKeywords = keywords || FALLBACK.keywords;
     const canonicalUrl = canonical
       ? `${BASE_URL}${canonical}`
       : BASE_URL;

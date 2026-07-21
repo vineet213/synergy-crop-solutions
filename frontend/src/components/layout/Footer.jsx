@@ -1,9 +1,11 @@
 ﻿import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, ChevronRight } from "lucide-react";
+import { useWebsiteSettings } from "../../context/WebsiteSettingsContext.jsx";
 
 export default function Footer() {
   const { t } = useTranslation("common");
+  const { settings } = useWebsiteSettings();
   const year = new Date().getFullYear();
 
   const quickLinks = [
@@ -30,13 +32,13 @@ export default function Footer() {
           <div className="footer-about">
             <p className="footer-brand" style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.75rem" }}>
               <img
-                src="/client-assets/logo/official-logo.jpeg"
-                alt={t("footer.brandName")}
+                src={settings?.assets?.logo ? `/${settings.assets.logo}` : "/client-assets/logo/official-logo.jpeg"}
+                alt={settings?.company?.name || t("footer.brandName")}
                 className="footer-logo"
               />
-              {t("footer.brandName")}
+              {settings?.company?.name || t("footer.brandName")}
             </p>
-            <p>{t("footer.tagline")}</p>
+            <p>{settings?.website?.footerText || t("footer.tagline")}</p>
             <p>{t("about.visionStatement")}</p>
           </div>
 
@@ -74,31 +76,46 @@ export default function Footer() {
           <div>
             <p className="footer-heading">{t("footer.contact")}</p>
             <ul className="footer-links" style={{ gap: "0.8rem" }}>
-              <li>
-                <a href="mailto:contact@synergycrops.com" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Mail size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
-                  <span>{t("footer.email")}</span>
-                </a>
-              </li>
-              <li>
-                <span style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#9ca3af" }}>
-                  <Phone size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
-                  <span>{t("footer.phone")}</span>
-                </span>
-              </li>
-              <li>
-                <span style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", color: "#9ca3af" }}>
-                  <MapPin size={14} style={{ opacity: 0.4, flexShrink: 0, marginTop: "0.2rem" }} />
-                  <span>{t("footer.address")}</span>
-                </span>
-              </li>
+              {settings?.contact?.email && (
+                <li>
+                  <a href={`mailto:${settings.contact.email}`} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Mail size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
+                    <span>{settings.contact.email}</span>
+                  </a>
+                </li>
+              )}
+              {settings?.contact?.phoneNumbers?.filter(Boolean).length > 0 ? (
+                settings.contact.phoneNumbers.filter(Boolean).map((phone, idx) => (
+                  <li key={idx}>
+                    <a href={`tel:${phone.replace(/\s/g, "")}`} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <Phone size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
+                      <span>{phone}</span>
+                    </a>
+                  </li>
+                ))
+              ) : (
+                <li>
+                  <span style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#9ca3af" }}>
+                    <Phone size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
+                    <span>{t("footer.phone")}</span>
+                  </span>
+                </li>
+              )}
+              {(settings?.company?.address || settings?.company?.city || settings?.company?.state) && (
+                <li>
+                  <span style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", color: "#9ca3af" }}>
+                    <MapPin size={14} style={{ opacity: 0.4, flexShrink: 0, marginTop: "0.2rem" }} />
+                    <span>{[settings.company.address, settings.company.city, settings.company.state, settings.company.pinCode].filter(Boolean).join(", ") || t("footer.address")}</span>
+                  </span>
+                </li>
+              )}
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>&copy; {year} {t("footer.brandName")}. {t("footer.copyright")}</span>
-          <span style={{ opacity: 0.6 }}>{t("footer.taglineShort")}</span>
+          <span>&copy; {year} {settings?.company?.name || t("footer.brandName")}. {settings?.website?.copyrightText || t("footer.copyright")}</span>
+          <span style={{ opacity: 0.6 }}>{settings?.company?.tagline || t("footer.taglineShort")}</span>
         </div>
       </div>
     </footer>

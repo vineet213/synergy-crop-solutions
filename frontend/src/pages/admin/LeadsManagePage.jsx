@@ -82,7 +82,6 @@ export default function LeadsManagePage() {
       await remove(id);
       toast.success(t("leads.deleteSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(t("leads.deleteFailed"));
     }
   };
@@ -129,7 +128,6 @@ export default function LeadsManagePage() {
       setEditingId(null);
       toast.success(t("leads.updateSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(t("leads.updateFailed"));
     }
   };
@@ -141,7 +139,6 @@ export default function LeadsManagePage() {
       await leadService.adminExportLeads(exportParams, format);
       toast.success(t("leads.exportSuccess", { format: format.toUpperCase() }));
     } catch (err) {
-      console.error(err);
       toast.error(t("leads.exportFailed"));
     } finally {
       setExporting(false);
@@ -154,7 +151,6 @@ export default function LeadsManagePage() {
       await leadService.adminExportLeads(params, format);
       toast.success(t("leads.exportFilteredSuccess", { format: format.toUpperCase() }));
     } catch (err) {
-      console.error(err);
       toast.error(t("leads.exportFailed"));
     } finally {
       setExporting(false);

@@ -50,7 +50,6 @@ export default function DistributorFormPage() {
         });
       })
       .catch((err) => {
-        console.error(err);
         toast.error(t("distributorForm.loadFailed"));
         navigate("/admin/distributors");
       })
@@ -84,7 +83,6 @@ export default function DistributorFormPage() {
       }
       navigate("/admin/distributors");
     } catch (err) {
-      console.error(err);
       toast.error(t("distributorForm.saveFailed"));
     }
   };

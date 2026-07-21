@@ -139,7 +139,6 @@ export default function TestimonialsManagePage() {
       toast.success(t("testimonials.deleteSuccess"));
       if (previewItem?._id === id) setPreviewItem(null);
     } catch (err) {
-      console.error(err);
       toast.error(t("testimonials.deleteFailed"));
     }
   };

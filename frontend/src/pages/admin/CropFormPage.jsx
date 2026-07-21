@@ -28,7 +28,7 @@ export default function CropFormPage() {
   useEffect(() => {
     productService.adminListProducts()
       .then(setProducts)
-      .catch(console.error);
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -48,7 +48,6 @@ export default function CropFormPage() {
         setSelectedProducts((data.products || []).map((p) => p._id || p));
       })
       .catch((err) => {
-        console.error(err);
         toast.error(t("cropForm.loadFailed"));
         navigate("/admin/crops");
       })
@@ -77,7 +76,6 @@ export default function CropFormPage() {
       }
       navigate("/admin/crops");
     } catch (err) {
-      console.error(err);
       toast.error(t("cropForm.saveFailed"));
     }
   };

@@ -18,6 +18,10 @@ export async function createPublicLead(req, res, next) {
 
 const POPULATE_OPTS = [{ path: "assignedDistributor", select: "name company" }];
 
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function buildFilter(query) {
   const filter = {};
   if (query.status) filter.status = query.status;
@@ -34,7 +38,7 @@ function buildFilter(query) {
     }
   }
   if (query.search) {
-    const regex = new RegExp(query.search, "i");
+    const regex = new RegExp(escapeRegex(query.search), "i");
     filter.$or = [
       { name: regex },
       { email: regex },
@@ -74,7 +78,7 @@ export async function adminGetLead(req, res, next) {
 export async function adminUpdateLead(req, res, next) {
   try {
     const { id } = req.params;
-    const updates = { ...req.body };
+    const { _id, __v, createdAt, updatedAt, ...updates } = req.body;
     if (updates.assignedDistributor) {
       updates.assignedAt = new Date();
     } else if (updates.assignedDistributor === null) {

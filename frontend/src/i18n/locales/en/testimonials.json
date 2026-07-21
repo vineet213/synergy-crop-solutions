@@ -26,6 +26,10 @@
     "viewImage": "View image",
     "fallbackAlt": "Agricultural field"
   },
+  "textTestimonials": {
+    "label": "Grower Stories",
+    "title": "What Our Growers Say"
+  },
   "cta": {
     "label": "Partner with Synergy",
     "title": "Want to see results like these?",

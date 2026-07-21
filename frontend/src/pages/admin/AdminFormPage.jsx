@@ -31,7 +31,6 @@ export default function AdminFormPage() {
         reset({ name: data.name, email: data.email, role: data.role, password: "" });
       })
       .catch((err) => {
-        console.error(err);
         toast.error(t("adminForm.loadFailed"));
         navigate("/admin/admins");
       })
@@ -48,8 +47,6 @@ export default function AdminFormPage() {
           return;
         }
         payload.password = data.password;
-      } else if (data.password) {
-        payload.password = data.password;
       }
 
       if (isEdit) {
@@ -59,7 +56,6 @@ export default function AdminFormPage() {
       }
       navigate("/admin/admins");
     } catch (err) {
-      console.error(err);
       toast.error(err.response?.data?.message || t("adminForm.saveFailed"));
     }
   };
@@ -84,18 +80,17 @@ export default function AdminFormPage() {
           />
           {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
         </div>
-        <div>
-          <label className="block text-sm font-medium">
-            {isEdit ? t("adminForm.newPasswordHint") : `${t("adminForm.password")} *`}
-          </label>
-          <input
-            type="password"
-            {...register("password", !isEdit ? { required: t("adminForm.passwordRequired"), minLength: { value: 6, message: t("adminForm.passwordMinLength") } } : { minLength: { value: 6, message: t("adminForm.passwordMinLength") } })}
-            className="input-field"
-            placeholder={isEdit ? "••••••••" : ""}
-          />
-          {errors.password && <p className="text-sm text-red-600">{errors.password.message}</p>}
-        </div>
+        {!isEdit && (
+          <div>
+            <label className="block text-sm font-medium">{t("adminForm.password")} *</label>
+            <input
+              type="password"
+              {...register("password", { required: t("adminForm.passwordRequired"), minLength: { value: 8, message: t("adminForm.passwordMinLength") } })}
+              className="input-field"
+            />
+            {errors.password && <p className="text-sm text-red-600">{errors.password.message}</p>}
+          </div>
+        )}
         <div>
           <label className="block text-sm font-medium">{t("adminForm.role")} *</label>
           <select {...register("role", { required: t("adminForm.roleRequired") })} className="input-field">

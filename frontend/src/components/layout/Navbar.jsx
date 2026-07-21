@@ -3,11 +3,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
+import { useWebsiteSettings } from "../../context/WebsiteSettingsContext.jsx";
 
 export default function Navbar() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { settings } = useWebsiteSettings();
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -44,11 +46,11 @@ export default function Navbar() {
       <div className="nav-inner page-container">
         <NavLink to="/" className="brand">
           <img
-            src="/client-assets/logo/official-logo.jpeg"
-            alt={t("brand")}
+            src={settings?.assets?.logo ? `/${settings.assets.logo}` : "/client-assets/logo/official-logo.jpeg"}
+            alt={settings?.company?.name || t("brand")}
             className="brand-logo"
           />
-          <span className="brand-text">{t("brand")}</span>
+          <span className="brand-text">{settings?.company?.name || t("brand")}</span>
         </NavLink>
 
         <button
@@ -97,11 +99,11 @@ export default function Navbar() {
         <div className="mobile-panel-header">
           <NavLink to="/" className="brand" onClick={close} tabIndex={open ? 0 : -1}>
             <img
-              src="/client-assets/logo/official-logo.jpeg"
-              alt={t("brand")}
+              src={settings?.assets?.logo ? `/${settings.assets.logo}` : "/client-assets/logo/official-logo.jpeg"}
+              alt={settings?.company?.name || t("brand")}
               className="brand-logo"
             />
-            <span className="brand-text">{t("brand")}</span>
+            <span className="brand-text">{settings?.company?.name || t("brand")}</span>
           </NavLink>
           <button
             type="button"

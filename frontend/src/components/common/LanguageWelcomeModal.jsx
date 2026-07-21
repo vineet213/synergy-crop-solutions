@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Leaf } from "lucide-react";
+import { useWebsiteSettings } from "../../context/WebsiteSettingsContext.jsx";
 
 const LANGUAGES = [
   { code: "en", label: "English" },
@@ -11,15 +12,21 @@ const LANGUAGES = [
 
 export default function LanguageWelcomeModal({ onComplete }) {
   const { i18n } = useTranslation();
+  const { settings } = useWebsiteSettings();
   const firstButtonRef = useRef(null);
 
   useEffect(() => {
     firstButtonRef.current?.focus();
     document.body.style.overflow = "hidden";
+    function handleEscape(e) {
+      if (e.key === "Escape") onComplete();
+    }
+    document.addEventListener("keydown", handleEscape);
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleEscape);
     };
-  }, []);
+  }, [onComplete]);
 
   const handleSelect = (langCode) => {
     i18n.changeLanguage(langCode);
@@ -133,7 +140,7 @@ export default function LanguageWelcomeModal({ onComplete }) {
           <Leaf size={32} />
         </div>
 
-        <h1 style={titleStyle}>Welcome to Synergy Crop Solutions</h1>
+        <h1 style={titleStyle}>Welcome to {settings?.company?.name || "Synergy Crop Solutions"}</h1>
         <p style={subtitleStyle}>Choose your preferred language</p>
 
         <div style={buttonGridStyle}>

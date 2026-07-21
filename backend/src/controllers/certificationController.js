@@ -45,7 +45,7 @@ export async function adminGetCertification(req, res, next) {
 
 export async function adminCreateCertification(req, res, next) {
   try {
-    const payload = req.body;
+    const { _id, __v, createdAt, updatedAt, ...payload } = req.body;
     const certification = await Certification.create(payload);
     res.status(201).json({ success: true, data: certification });
   } catch (error) {
@@ -56,7 +56,7 @@ export async function adminCreateCertification(req, res, next) {
 export async function adminUpdateCertification(req, res, next) {
   try {
     const { id } = req.params;
-    const updates = req.body;
+    const { _id, __v, createdAt, updatedAt, ...updates } = req.body;
     const certification = await Certification.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
     if (!certification) return next(new AppError("Certification not found", 404));
     res.json({ success: true, data: certification });

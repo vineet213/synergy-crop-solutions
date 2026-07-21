@@ -75,10 +75,20 @@ export function resolveLocaleArray(arr, locale = "en") {
  */
 export function resolveBrochure(brochure) {
   if (!brochure) return { url: null, title: "" };
-  if (typeof brochure === "string") return { url: brochure, title: "" };
+  if (typeof brochure === "string") {
+    if (brochure.startsWith("http://") || brochure.startsWith("https://")) {
+      return { url: brochure, title: "" };
+    }
+    return { url: brochure.startsWith("/") ? brochure : `${API_BASE}/${brochure}`, title: "" };
+  }
   if (typeof brochure === "object") {
+    const raw = brochure.url || null;
+    let url = raw;
+    if (raw && !raw.startsWith("http://") && !raw.startsWith("https://") && !raw.startsWith("/")) {
+      url = `${API_BASE}/${raw}`;
+    }
     return {
-      url: brochure.url || null,
+      url,
       title: textValue(brochure.title) || "",
     };
   }

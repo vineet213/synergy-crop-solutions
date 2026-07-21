@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   Play, ChevronLeft, ChevronRight, X,
-  Image as ImageIcon, ArrowRight, User,
+  Image as ImageIcon, ArrowRight, User, Star,
 } from "lucide-react";
 import useSEO from "../../hooks/useSEO.js";
 import VideoModal from "../../components/ui/VideoModal.jsx";
@@ -59,6 +59,7 @@ export default function TestimonialsPage() {
       src: mediaUrl(item.image),
       alt: textValue(item.customerName) || t("gallery.fallbackAlt", "Agricultural field"),
     }));
+  const textTestimonials = allTestimonials.filter((item) => !item.video && !item.image);
 
   const openLightbox = (idx) => setLightboxIndex(idx);
   const closeLightbox = () => setLightboxIndex(null);
@@ -156,6 +157,38 @@ export default function TestimonialsPage() {
                     <ImageIcon size={24} />
                   </div>
                 </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============ SECTION C: TEXT TESTIMONIALS ============ */}
+      {!loading && textTestimonials.length > 0 && (
+        <section className="tp-section">
+          <div className="prem-container">
+            <header className="prem-header center">
+              <span className="prem-header__label">{t("textTestimonials.label")}</span>
+              <h2 className="prem-header__title">{t("textTestimonials.title")}</h2>
+            </header>
+            <div className="tp-text-grid">
+              {textTestimonials.map((item) => (
+                <div key={item._id} className="tp-text-card card-shell">
+                  <div className="tp-text-quote">&ldquo;{item.testimonial}&rdquo;</div>
+                  <div className="tp-text-meta">
+                    {item.rating && (
+                      <span className="tp-text-stars">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                          <Star key={i} size={14} fill={i <= item.rating ? "var(--brand)" : "none"} stroke={i <= item.rating ? "var(--brand)" : "var(--text-muted)"} strokeWidth={2} />
+                        ))}
+                      </span>
+                    )}
+                    <span className="tp-text-name">{textValue(item.customerName)}</span>
+                    {[item.location, item.crop].filter(Boolean).length > 0 && (
+                      <span className="tp-text-detail">{[item.location, item.crop].filter(Boolean).join(" \u00B7 ")}</span>
+                    )}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

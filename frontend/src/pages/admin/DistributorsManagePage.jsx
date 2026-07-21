@@ -16,7 +16,6 @@ export default function DistributorsManagePage() {
       await remove(id);
       toast.success(t("distributors.deleteSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(t("distributors.deleteFailed"));
     }
   };

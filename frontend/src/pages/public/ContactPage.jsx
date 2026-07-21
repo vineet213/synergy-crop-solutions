@@ -2,10 +2,18 @@
 import { Mail, Phone, MapPin, Clock, Sprout, ChevronRight } from "lucide-react";
 import ContactForm from "../../components/leads/ContactForm.jsx";
 import useSEO from "../../hooks/useSEO.js";
+import { useWebsiteSettings } from "../../context/WebsiteSettingsContext.jsx";
 
 export default function ContactPage() {
   const { t } = useTranslation("common");
+  const { settings } = useWebsiteSettings();
   useSEO({ title: t("page.contact.title"), description: t("page.contact.intro"), canonical: "/contact" });
+
+  const displayEmail = settings?.contact?.email || t("page.contact.emailValue");
+  const displayPhone = settings?.contact?.phoneNumbers?.filter(Boolean)?.[0] || t("footer.phone");
+  const displayAddress = [settings?.company?.address, settings?.company?.city, settings?.company?.state, settings?.company?.pinCode].filter(Boolean).join(", ") || t("footer.address");
+  const displayHours = settings?.contact?.officeHours || t("page.contactPage.hours");
+  const partnerEmail = t("page.contact.partnerEmailValue");
 
   return (
     <div>
@@ -51,7 +59,7 @@ export default function ContactPage() {
                   <div className="prem-contact-row-body">
                     <span className="prem-contact-row-label">{t("page.contact.email")}</span>
                     <span className="prem-contact-row-value">
-                      <a href={`mailto:${t("page.contact.emailValue")}`}>{t("page.contact.emailValue")}</a>
+                      <a href={`mailto:${displayEmail}`}>{displayEmail}</a>
                     </span>
                   </div>
                 </div>
@@ -59,21 +67,21 @@ export default function ContactPage() {
                   <span className="prem-contact-row-icon"><Phone size={16} /></span>
                   <div className="prem-contact-row-body">
                     <span className="prem-contact-row-label">{t("page.contact.phone")}</span>
-                    <span className="prem-contact-row-value">{t("footer.phone")}</span>
+                    <span className="prem-contact-row-value">{displayPhone}</span>
                   </div>
                 </div>
                 <div className="prem-contact-row">
                   <span className="prem-contact-row-icon"><MapPin size={16} /></span>
                   <div className="prem-contact-row-body">
                     <span className="prem-contact-row-label">{t("page.contact.office")}</span>
-                    <span className="prem-contact-row-value">{t("footer.address")}</span>
+                    <span className="prem-contact-row-value">{displayAddress}</span>
                   </div>
                 </div>
                 <div className="prem-contact-row">
                   <span className="prem-contact-row-icon"><Clock size={16} /></span>
                   <div className="prem-contact-row-body">
                     <span className="prem-contact-row-label">{t("page.contactPage.businessHours")}</span>
-                    <span className="prem-contact-row-value">{t("page.contactPage.hours")}</span>
+                    <span className="prem-contact-row-value">{displayHours}</span>
                   </div>
                 </div>
               </div>

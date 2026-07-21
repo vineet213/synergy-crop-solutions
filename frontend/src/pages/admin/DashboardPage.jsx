@@ -22,7 +22,6 @@ async function load() {
 
     setStats(res.data.data);
   } catch (err) {
-    console.error("Failed to load stats:", err);
   } finally {
     if (mounted) setLoading(false);
   }

@@ -57,7 +57,9 @@ export default function DiseaseDetailPage() {
     );
   }
 
-  const activeProducts = (disease.products || []).filter((p) => p.status === "published");
+  const activeProducts = (disease.products || []).filter(
+    (p) => p.status === "published" || p.published === true
+  );
 
   return (
     <main className="page-container" style={{ padding: "2rem 0" }}>

@@ -28,6 +28,15 @@ export function maxLength(max) {
   };
 }
 
+export function minLength(min) {
+  return (value, field) => {
+    if (value && value.length < min) {
+      return `${field} must be at least ${min} characters`;
+    }
+    return null;
+  };
+}
+
 export function isIn(allowed) {
   return (value, field) => {
     if (value && !allowed.includes(value)) {

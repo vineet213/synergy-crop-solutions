@@ -173,7 +173,6 @@ export default function ProductFormPage() {
         });
       })
       .catch((err) => {
-        console.error(err);
         toast.error(t("productForm.loadFailed"));
         navigate("/admin/products");
       })
@@ -236,7 +235,6 @@ export default function ProductFormPage() {
       }
       navigate("/admin/products");
     } catch (err) {
-      console.error(err);
       toast.error(err.response?.data?.message || t("productForm.saveFailed"));
     }
   };

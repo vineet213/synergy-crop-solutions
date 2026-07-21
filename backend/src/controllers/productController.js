@@ -247,7 +247,10 @@ export async function getProductsByCategory(req, res, next) {
 export async function getPublicProduct(req, res, next) {
 	try {
 		const { id } = req.params;
-		const product = await Product.findById(id).lean();
+		const product = await Product.findOne({
+			_id: id,
+			$or: [{ status: "published" }, { published: true }],
+		}).lean();
 		if (!product) return next(new AppError("Product not found", 404));
 		res.json({ success: true, data: product });
 	} catch (error) {
@@ -271,17 +274,22 @@ export async function adminListProducts(req, res, next) {
 		const filter = {};
 		if (status) filter.status = status;
 		if (category) filter.category = category;
+
+		const orConditions = [];
 		if (featured !== undefined) {
 			const isFeatured = featured === "true" || featured === true;
-			filter.$or = [{ isFeatured: isFeatured }, { featured: isFeatured }];
+			orConditions.push({ isFeatured: isFeatured }, { featured: isFeatured });
 		}
 		if (search) {
 			const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-			filter.$or = [
+			orConditions.push(
 				{ name: { $regex: escaped, $options: "i" } },
 				{ shortDescription: { $regex: escaped, $options: "i" } },
 				{ slug: { $regex: escaped, $options: "i" } },
-			];
+			);
+		}
+		if (orConditions.length > 0) {
+			filter.$or = orConditions;
 		}
 
 		const pageNum = Math.max(1, parseInt(page, 10) || 1);

@@ -1,4 +1,4 @@
-import { required, isEmail, maxLength, isIn } from "./common.js";
+import { required, isEmail, maxLength, isIn, minLength } from "./common.js";
 
 export const loginSchema = {
   email: [required, isEmail],
@@ -8,7 +8,7 @@ export const loginSchema = {
 export const createAdminSchema = {
   name: [required, maxLength(100)],
   email: [required, isEmail],
-  password: [required, maxLength(128)],
+  password: [required, minLength(8), maxLength(128)],
   role: [isIn(["superadmin", "admin"])],
 };
 
@@ -20,5 +20,5 @@ export const updateAdminSchema = {
 
 export const changePasswordSchema = {
   currentPassword: [required],
-  newPassword: [required, maxLength(128)],
+  newPassword: [required, minLength(8), maxLength(128)],
 };

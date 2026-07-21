@@ -40,7 +40,6 @@ export default function AdminManagePage() {
       setAdmins((a) => a.filter((x) => x._id !== id));
       toast.success(t("admins.deleteSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(err.response?.data?.message || t("admins.deleteFailed"));
     }
   };

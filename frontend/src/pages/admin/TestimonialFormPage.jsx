@@ -77,7 +77,6 @@ export default function TestimonialFormPage() {
         });
       })
       .catch((err) => {
-        console.error(err);
         toast.error(t("testimonialForm.loadFailed"));
         navigate("/admin/testimonials");
       })
@@ -125,7 +124,6 @@ export default function TestimonialFormPage() {
       }
       navigate("/admin/testimonials");
     } catch (err) {
-      console.error(err);
       toast.error(err.response?.data?.message || t("testimonialForm.saveFailed"));
     }
   };

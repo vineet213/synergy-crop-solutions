@@ -12,8 +12,8 @@ export default function AdminLogin() {
   const { login, isAuthenticated, isLoading: authLoading } = useAuth();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     defaultValues: {
-      email: "admin@synergycrop.com",
-      password: "Admin@123",
+      email: "",
+      password: "",
     },
   });
   const [submitError, setSubmitError] = useState("");
@@ -103,7 +103,7 @@ export default function AdminLogin() {
                   {...register("password", {
                     required: t("auth.passwordRequired"),
                     minLength: {
-                      value: 6,
+                      value: 8,
                       message: t("auth.passwordMinLength"),
                     },
                   })}
@@ -123,17 +123,6 @@ export default function AdminLogin() {
               {isSubmitting ? t("auth.loggingIn") : t("auth.loginButton")}
             </button>
           </form>
-
-          <div className="admin-login-footer">
-            <p style={{ margin: "0 0 0.5rem", color: "var(--text-muted)" }}>
-              {t("auth.demoCredentials")}
-            </p>
-            <p style={{ margin: 0, fontSize: "0.8rem", color: "var(--text-muted)" }}>
-              {t("auth.demoEmail")}
-              <br />
-              {t("auth.demoPassword")}
-            </p>
-          </div>
 
           <div style={{ textAlign: "center", marginTop: "1rem" }}>
             <Link to="/" style={{ color: "var(--brand)" }}>

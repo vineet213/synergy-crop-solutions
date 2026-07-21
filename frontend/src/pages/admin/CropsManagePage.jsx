@@ -35,7 +35,6 @@ export default function CropsManagePage() {
       setCrops((p) => p.filter((x) => x._id !== id));
       toast.success(t("crops.deleteSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(t("crops.deleteFailed"));
     }
   };

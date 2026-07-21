@@ -47,7 +47,7 @@ export async function adminGetCrop(req, res, next) {
 
 export async function adminCreateCrop(req, res, next) {
   try {
-    const payload = req.body;
+    const { _id, __v, createdAt, updatedAt, ...payload } = req.body;
     if (!payload.slug && payload.name) {
       payload.slug = payload.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
     }
@@ -61,7 +61,7 @@ export async function adminCreateCrop(req, res, next) {
 export async function adminUpdateCrop(req, res, next) {
   try {
     const { id } = req.params;
-    const updates = req.body;
+    const { _id, __v, createdAt, updatedAt, ...updates } = req.body;
     const crop = await Crop.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
     if (!crop) return next(new AppError("Crop not found", 404));
     res.json({ success: true, data: crop });

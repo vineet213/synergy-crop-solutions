@@ -35,7 +35,6 @@ export default function CertificationsManagePage() {
       setCertifications((p) => p.filter((x) => x._id !== id));
       toast.success(t("certifications.deleteSuccess"));
     } catch (err) {
-      console.error(err);
       toast.error(t("certifications.deleteFailed"));
     }
   };

@@ -1,31 +1,36 @@
 import { useState } from "react";
 import { Link, useNavigate, Outlet } from "react-router-dom";
-import { Menu, X, LogOut, LayoutDashboard, Package, Truck, MessageSquare, Star, Award, Bug, Users, Settings } from "lucide-react";
+import { Menu, X, LogOut, LayoutDashboard, Package, Truck, MessageSquare, Star, Award, Bug, Users, Settings, Globe } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
+import { useWebsiteSettings } from "../context/WebsiteSettingsContext.jsx";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 
 export default function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const { user, logout } = useAuth();
+  const { settings } = useWebsiteSettings();
   const navigate = useNavigate();
+  const { t } = useTranslation("admin");
 
   const handleLogout = () => {
     logout();
-    toast.success("Logged out successfully");
+    toast.success(t("sidebar.loggedOut"));
     navigate("/admin/login");
   };
 
   const sidebarLinks = [
-    { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-    { label: "Crops", href: "/admin/crops", icon: Award },
-    { label: "Diseases", href: "/admin/diseases", icon: Bug },
-    { label: "Certifications", href: "/admin/certifications", icon: Award },
-    { label: "Products", href: "/admin/products", icon: Package },
-    { label: "Distributors", href: "/admin/distributors", icon: Truck },
-    { label: "Testimonials", href: "/admin/testimonials", icon: Star },
-    { label: "Leads", href: "/admin/leads", icon: MessageSquare },
-    ...(user?.role === "superadmin" ? [{ label: "Admins", href: "/admin/admins", icon: Users }] : []),
-    { label: "Settings", href: "/admin/settings", icon: Settings },
+    { label: t("sidebar.dashboard"), href: "/admin/dashboard", icon: LayoutDashboard },
+    { label: t("sidebar.crops"), href: "/admin/crops", icon: Award },
+    { label: t("sidebar.diseases"), href: "/admin/diseases", icon: Bug },
+    { label: t("sidebar.certifications"), href: "/admin/certifications", icon: Award },
+    { label: t("sidebar.products"), href: "/admin/products", icon: Package },
+    { label: t("sidebar.distributors"), href: "/admin/distributors", icon: Truck },
+    { label: t("sidebar.testimonials"), href: "/admin/testimonials", icon: Star },
+    { label: t("sidebar.leads"), href: "/admin/leads", icon: MessageSquare },
+    { label: t("sidebar.websiteSettings"), href: "/admin/website-settings", icon: Globe },
+    ...(user?.role === "superadmin" ? [{ label: t("sidebar.admins"), href: "/admin/admins", icon: Users }] : []),
+    { label: t("sidebar.settings"), href: "/admin/settings", icon: Settings },
   ];
 
   return (
@@ -35,8 +40,8 @@ export default function AdminLayout() {
         {/* Logo */}
         <div className="admin-sidebar-logo">
           <img
-            src="/client-assets/logo/official-logo.jpeg"
-            alt="Synergy Crop Solutions"
+            src={settings?.assets?.logo ? `/${settings.assets.logo}` : "/client-assets/logo/official-logo.jpeg"}
+            alt={settings?.company?.name || "Synergy Crop Solutions"}
             className={`admin-logo-img ${!sidebarOpen && "hidden"}`}
           />
           <button
@@ -72,7 +77,7 @@ export default function AdminLayout() {
         {/* Header */}
         <header className="admin-header">
           <div className="admin-header-inner">
-            <h2 className="admin-header-title">Admin Dashboard</h2>
+            <h2 className="admin-header-title">{t("sidebar.adminDashboard")}</h2>
             <div className="admin-header-right">
               {user && (
                 <div className="admin-user-info">
@@ -85,7 +90,7 @@ export default function AdminLayout() {
                 className="admin-logout-btn"
               >
                 <LogOut size={18} />
-                Logout
+                {t("sidebar.logout")}
               </button>
             </div>
           </div>

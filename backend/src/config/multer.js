@@ -220,3 +220,54 @@ export function deleteProductFile(relativePath) {
     if (fs.existsSync(abs)) fs.unlinkSync(abs);
   } catch { /* ignore */ }
 }
+
+// ── Settings uploads (logo, favicon, certificate images) ─────────────────────
+
+const SETTINGS_ROOT = path.resolve(__dirname, "../../uploads/settings");
+
+if (!fs.existsSync(SETTINGS_ROOT)) {
+  fs.mkdirSync(SETTINGS_ROOT, { recursive: true });
+}
+
+const SETTINGS_IMAGE_TYPES = IMAGE_TYPES;
+
+export function settingsUpload(req, res, next) {
+  const upload = multer({
+    storage: multer.diskStorage({
+      destination: (_req, _file, cb) => cb(null, SETTINGS_ROOT),
+      filename: (_req, file, cb) => cb(null, uniqueName(file.originalname)),
+    }),
+    fileFilter: (_req2, file, cb) => {
+      if (SETTINGS_IMAGE_TYPES.includes(file.mimetype)) return cb(null, true);
+      return cb(
+        new Error(`Invalid image format: ${file.mimetype}. Allowed: ${SETTINGS_IMAGE_TYPES.join(", ")}`),
+        false
+      );
+    },
+    limits: { fileSize: 5 * 1024 * 1024 },
+  });
+
+  upload.single("file")(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      if (err.code === "LIMIT_FILE_SIZE") {
+        return res.status(400).json({
+          success: false,
+          message: "File too large. Maximum size is 5 MB.",
+        });
+      }
+      return res.status(400).json({ success: false, message: err.message });
+    }
+    if (err) {
+      return res.status(400).json({ success: false, message: err.message });
+    }
+    next();
+  });
+}
+
+export function deleteSettingsFile(relativePath) {
+  if (!relativePath) return;
+  const abs = path.resolve(__dirname, "../..", relativePath);
+  try {
+    if (fs.existsSync(abs)) fs.unlinkSync(abs);
+  } catch { /* ignore */ }
+}
