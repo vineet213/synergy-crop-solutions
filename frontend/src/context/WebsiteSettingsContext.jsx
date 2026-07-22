@@ -26,6 +26,7 @@ const DEFAULTS = {
     instagram: "",
     linkedin: "",
     youtube: "",
+    twitter: "",
   },
   website: {
     footerText: "Modern agricultural solutions for sustainable growth.",

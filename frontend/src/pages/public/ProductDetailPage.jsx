@@ -5,6 +5,7 @@ import ProductDetail from "../../components/products/ProductDetail.jsx";
 import { useProductBySlug } from "../../hooks/useProducts.js";
 import useSEO from "../../hooks/useSEO.js";
 import { resolveLocale, textValue } from "../../utils/productHelpers.js";
+import { useWebsiteSettings } from "../../context/WebsiteSettingsContext.jsx";
 
 function Skeleton() {
   return (
@@ -22,8 +23,10 @@ export default function ProductDetailPage() {
   const { slug } = useParams();
   const { product, loading, error } = useProductBySlug(slug);
   const locale = i18n.language || "en";
+  const { settings } = useWebsiteSettings();
+  const companyName = settings?.company?.name || "";
   useSEO({
-    title: resolveLocale(product?.metadata?.seo?.title, locale)?.replace(" | Synergy Crop Solutions", "") || resolveLocale(product?.name, locale) || t("title"),
+    title: resolveLocale(product?.metadata?.seo?.title, locale)?.replace(` | ${companyName}`, "") || resolveLocale(product?.name, locale) || t("title"),
     description: resolveLocale(product?.metadata?.seo?.description, locale) || resolveLocale(product?.shortDescription, locale) || textValue(product?.description),
     keywords: Array.isArray(product?.metadata?.seo?.keywords) ? product.metadata.seo.keywords.join(", ") : undefined,
     canonical: `/products/${slug}`

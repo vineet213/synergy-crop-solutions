@@ -9,10 +9,11 @@ export default function ContactPage() {
   const { settings } = useWebsiteSettings();
   useSEO({ title: t("page.contact.title"), description: t("page.contact.intro"), canonical: "/contact" });
 
-  const displayEmail = settings?.contact?.email || t("page.contact.emailValue");
-  const displayPhone = settings?.contact?.phoneNumbers?.filter(Boolean)?.[0] || t("footer.phone");
-  const displayAddress = [settings?.company?.address, settings?.company?.city, settings?.company?.state, settings?.company?.pinCode].filter(Boolean).join(", ") || t("footer.address");
-  const displayHours = settings?.contact?.officeHours || t("page.contactPage.hours");
+  const displayEmail = settings?.contact?.email;
+  const displayPhone = settings?.contact?.phoneNumbers?.filter(Boolean)?.[0];
+  const displayAddress = [settings?.company?.address, settings?.company?.city, settings?.company?.state, settings?.company?.pinCode].filter(Boolean).join(", ") || null;
+  const displayHours = settings?.contact?.officeHours;
+  const mapsEmbedUrl = settings?.location?.googleMapsEmbedUrl;
   const partnerEmail = t("page.contact.partnerEmailValue");
 
   return (
@@ -54,36 +55,44 @@ export default function ContactPage() {
             <div className="prem-contact-info">
               <div className="prem-contact-card">
                 <h3>{t("page.contact.otherWays")}</h3>
-                <div className="prem-contact-row">
-                  <span className="prem-contact-row-icon"><Mail size={16} /></span>
-                  <div className="prem-contact-row-body">
-                    <span className="prem-contact-row-label">{t("page.contact.email")}</span>
-                    <span className="prem-contact-row-value">
-                      <a href={`mailto:${displayEmail}`}>{displayEmail}</a>
-                    </span>
+                {displayEmail && (
+                  <div className="prem-contact-row">
+                    <span className="prem-contact-row-icon"><Mail size={16} /></span>
+                    <div className="prem-contact-row-body">
+                      <span className="prem-contact-row-label">{t("page.contact.email")}</span>
+                      <span className="prem-contact-row-value">
+                        <a href={`mailto:${displayEmail}`}>{displayEmail}</a>
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="prem-contact-row">
-                  <span className="prem-contact-row-icon"><Phone size={16} /></span>
-                  <div className="prem-contact-row-body">
-                    <span className="prem-contact-row-label">{t("page.contact.phone")}</span>
-                    <span className="prem-contact-row-value">{displayPhone}</span>
+                )}
+                {displayPhone && (
+                  <div className="prem-contact-row">
+                    <span className="prem-contact-row-icon"><Phone size={16} /></span>
+                    <div className="prem-contact-row-body">
+                      <span className="prem-contact-row-label">{t("page.contact.phone")}</span>
+                      <span className="prem-contact-row-value">{displayPhone}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="prem-contact-row">
-                  <span className="prem-contact-row-icon"><MapPin size={16} /></span>
-                  <div className="prem-contact-row-body">
-                    <span className="prem-contact-row-label">{t("page.contact.office")}</span>
-                    <span className="prem-contact-row-value">{displayAddress}</span>
+                )}
+                {displayAddress && (
+                  <div className="prem-contact-row">
+                    <span className="prem-contact-row-icon"><MapPin size={16} /></span>
+                    <div className="prem-contact-row-body">
+                      <span className="prem-contact-row-label">{t("page.contact.office")}</span>
+                      <span className="prem-contact-row-value">{displayAddress}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="prem-contact-row">
-                  <span className="prem-contact-row-icon"><Clock size={16} /></span>
-                  <div className="prem-contact-row-body">
-                    <span className="prem-contact-row-label">{t("page.contactPage.businessHours")}</span>
-                    <span className="prem-contact-row-value">{displayHours}</span>
+                )}
+                {displayHours && (
+                  <div className="prem-contact-row">
+                    <span className="prem-contact-row-icon"><Clock size={16} /></span>
+                    <div className="prem-contact-row-body">
+                      <span className="prem-contact-row-label">{t("page.contactPage.businessHours")}</span>
+                      <span className="prem-contact-row-value">{displayHours}</span>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               <div className="prem-contact-card">
@@ -95,6 +104,21 @@ export default function ContactPage() {
                   {t("page.contact.partnerEmailValue")} <ChevronRight size={14} />
                 </a>
               </div>
+
+              {mapsEmbedUrl && (
+                <div className="prem-contact-card" style={{ padding: 0, overflow: "hidden" }}>
+                  <iframe
+                    src={mapsEmbedUrl}
+                    title="Office Location"
+                    width="100%"
+                    height="300"
+                    style={{ border: 0, display: "block" }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   Leaf, ShieldCheck, Users, Award, TreePine, Sprout,
   Target, HeartHandshake, ChevronRight, Lightbulb, FlaskConical,
-  Building2, ArrowRight, Microscope, Sun, Dna, Tractor
+  ArrowRight, Microscope, Sun, Dna, Tractor
 } from "lucide-react";
 import Button from "../../components/ui/Button.jsx";
 import useSEO from "../../hooks/useSEO.js";
@@ -57,8 +57,13 @@ export default function AboutPage() {
               <p key={i} className="prem-split__body">{p}</p>
             ))}
           </div>
-          <div className="prem-intro-visual" style={{ background: "var(--brand-gradient)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Building2 size={80} strokeWidth={1} style={{ color: "rgba(255,255,255,0.12)" }} />
+          <div className="prem-intro-visual" style={{ overflow: "hidden" }}>
+            <img
+              src="/client-assets/about/about-hero.jpeg"
+              alt={t("aboutPage.overview.title")}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              loading="lazy"
+            />
           </div>
         </div>
       </section>

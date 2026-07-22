@@ -95,7 +95,7 @@ function validateSettingsInput(body) {
     if (typeof s !== "object" || Array.isArray(s)) {
       errors.push({ field: "socialMedia", message: "must be an object" });
     } else {
-      const m = url(s.facebook, 500) || url(s.instagram, 500) || url(s.linkedin, 500) || url(s.youtube, 500);
+      const m = url(s.facebook, 500) || url(s.instagram, 500) || url(s.linkedin, 500) || url(s.youtube, 500) || url(s.twitter, 500);
       if (m) errors.push({ field: "socialMedia", message: m });
     }
   }

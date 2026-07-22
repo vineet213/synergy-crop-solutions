@@ -22,6 +22,18 @@ export default function App() {
     }
   }, [settings]);
 
+  useEffect(() => {
+    if (settings?.assets?.favicon) {
+      let link = document.querySelector("link[rel='icon']");
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.head.appendChild(link);
+      }
+      link.href = `/${settings.assets.favicon}`;
+    }
+  }, [settings?.assets?.favicon]);
+
   return (
     <>
       <ScrollToTop />

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Upload, X, FileText } from "lucide-react";
+import { Upload, X, FileText, Image } from "lucide-react";
 import mediaUrl from "../../../utils/mediaUrl.js";
 import { resolveLocale } from "../../../utils/productHelpers.js";
 
@@ -21,7 +21,7 @@ export default function BrochureManager({ value, onChange, locale = "en" }) {
       : { en: normalized?.title || "", hi: "", mr: "", kn: "" };
     onChange({
       url: URL.createObjectURL(file),
-      title: { ...titleObj, en: file.name.replace(/\.pdf$/i, "") },
+      title: { ...titleObj, en: file.name.replace(/\.[^.]+$/, "") },
       _file: file,
     });
   };
@@ -43,6 +43,9 @@ export default function BrochureManager({ value, onChange, locale = "en" }) {
       ? normalized.url.split("/").pop()
       : null;
 
+  const isImage = normalized?._file?.type?.startsWith("image/") ||
+    /\.(jpg|jpeg|png|gif|webp)$/i.test(normalized?.url || "");
+
   const titleText = resolveLocale(normalized?.title, locale);
 
   const handleTitleChange = (v) => {
@@ -60,12 +63,20 @@ export default function BrochureManager({ value, onChange, locale = "en" }) {
 
   return (
     <div className="form-field">
-      <label className="form-label">Brochure (PDF)</label>
+      <label className="form-label">Brochure</label>
 
       {preview ? (
         <div className="brochure-preview">
           <div className="brochure-info">
-            <FileText size={20} />
+            {isImage ? (
+              <img
+                src={preview}
+                alt={titleText || fileName}
+                style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 6 }}
+              />
+            ) : (
+              <FileText size={20} />
+            )}
             <div>
               <p className="brochure-name">{titleText || fileName}</p>
               <a
@@ -74,7 +85,7 @@ export default function BrochureManager({ value, onChange, locale = "en" }) {
                 rel="noopener noreferrer"
                 className="brochure-link"
               >
-                View PDF
+                View
               </a>
             </div>
           </div>
@@ -92,7 +103,7 @@ export default function BrochureManager({ value, onChange, locale = "en" }) {
           <input
             ref={inputRef}
             type="file"
-            accept="application/pdf"
+            accept="application/pdf,image/jpeg,image/png"
             onChange={(e) => {
               const file = e.target.files?.[0];
               if (file) addFile(file);
@@ -105,7 +116,7 @@ export default function BrochureManager({ value, onChange, locale = "en" }) {
             className="upload-btn"
             onClick={() => inputRef.current?.click()}
           >
-            <Upload size={16} /> Upload PDF brochure
+            <Upload size={16} /> Upload brochure
           </button>
         </>
       )}

@@ -55,7 +55,7 @@ export default function WebsiteSettingsPage() {
       company: { name: "", tagline: "", address: "", city: "", state: "", pinCode: "" },
       contact: { phoneNumbers: [], whatsappNumber: "", email: "", officeHours: "" },
       location: { googleMapsEmbedUrl: "" },
-      socialMedia: { facebook: "", instagram: "", linkedin: "", youtube: "" },
+      socialMedia: { facebook: "", instagram: "", linkedin: "", youtube: "", twitter: "" },
       website: { footerText: "", copyrightText: "" },
       certificates: [],
     };
@@ -463,6 +463,10 @@ export default function WebsiteSettingsPage() {
             <div className="form-field">
               <label className="form-label">{t("websiteSettings.youtube")}</label>
               <input {...register("socialMedia.youtube")} className="input-field" placeholder="https://youtube.com/..." />
+            </div>
+            <div className="form-field">
+              <label className="form-label">{t("websiteSettings.twitter")}</label>
+              <input {...register("socialMedia.twitter")} className="input-field" placeholder="https://x.com/..." />
             </div>
           </div>
         </SectionCard>

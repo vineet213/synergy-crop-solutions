@@ -153,7 +153,7 @@ const PRODUCT_DIRS = {
 
 Object.values(PRODUCT_DIRS).forEach(ensureDirSync);
 
-const BROCHURE_TYPES = ["application/pdf"];
+const BROCHURE_TYPES = ["application/pdf", "image/jpeg", "image/jpg", "image/png"];
 const PRODUCT_IMAGE_TYPES = IMAGE_TYPES;
 
 export function productUpload(req, res, next) {

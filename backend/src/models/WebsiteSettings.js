@@ -35,6 +35,7 @@ const websiteSettingsSchema = new mongoose.Schema(
       instagram: { type: String, trim: true, default: "" },
       linkedin: { type: String, trim: true, default: "" },
       youtube: { type: String, trim: true, default: "" },
+      twitter: { type: String, trim: true, default: "" },
     },
     website: {
       footerText: { type: String, trim: true, default: "" },

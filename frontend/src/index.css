@@ -15,9 +15,12 @@
   --secondary: #2d936c;
   --secondary-soft: #e3f5ed;
 
-  /* Accent – Golden Yellow */
-  --accent: #D8A928;
-  --accent-soft: #fdf3e0;
+  /* Accent – Fresh Leaf Green */
+  --accent: #2d936c;
+  --accent-soft: #e3f5ed;
+
+  /* Accent Warm – Gold (for dark-bg CTAs & icon circles) */
+  --accent-warm: #D8A928;
 
   /* Highlight – Sky Blue */
   --highlight: #4a9bd4;
@@ -220,13 +223,13 @@ button {
   color: var(--brand);
   font-weight: 700;
   padding: 0.6rem 1.25rem;
-  box-shadow: 0 4px 16px rgba(216, 169, 40, 0.2);
+  box-shadow: 0 4px 16px rgba(45, 147, 108, 0.2);
 }
 
 .nav-cta:hover {
-  box-shadow: 0 6px 24px rgba(216, 169, 40, 0.35);
+  box-shadow: 0 6px 24px rgba(45, 147, 108, 0.35);
   transform: translateY(-1px);
-  background: #e0b32e;
+  background: #248a62;
 }
 
 .nav-lang {
@@ -380,7 +383,7 @@ button {
 }
 
 .mobile-nav-cta:hover {
-  background: #e0b32e;
+  background: #248a62;
   color: var(--brand);
 }
 
@@ -688,7 +691,7 @@ button {
   display: inline-flex;
   padding: 0.75rem;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-warm);
   color: var(--brand);
   box-shadow: 0 4px 12px rgba(216, 169, 40, 0.25);
 }
@@ -724,7 +727,7 @@ button {
 }
 
 .button-primary {
-  background: var(--accent);
+  background: var(--accent-warm);
   color: var(--brand);
   box-shadow: 0 8px 28px rgba(216, 169, 40, 0.22);
   position: relative;
@@ -824,7 +827,7 @@ button {
 
 .input-field:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(216, 169, 40, 0.12);
+  box-shadow: 0 0 0 3px rgba(45, 147, 108, 0.12);
 }
 
 .input-field::placeholder {
@@ -941,7 +944,7 @@ select.input-field {
 
 .product-search:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(216, 169, 40, 0.12);
+  box-shadow: 0 0 0 3px rgba(45, 147, 108, 0.12);
 }
 
 .search-input {
@@ -996,18 +999,18 @@ select.input-field {
   color: var(--brand-strong);
   border-color: var(--accent);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(216, 169, 40, 0.15);
+  box-shadow: 0 2px 8px rgba(45, 147, 108, 0.15);
 }
 
 .filter-pill.active:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
-  box-shadow: 0 4px 16px rgba(216, 169, 40, 0.2);
+  box-shadow: 0 4px 16px rgba(45, 147, 108, 0.2);
 }
 
 .filter-pill.active:focus-visible {
   outline: 2px solid var(--accent);
-  box-shadow: 0 2px 8px rgba(216, 169, 40, 0.15);
+  box-shadow: 0 2px 8px rgba(45, 147, 108, 0.15);
 }
 
 .filter-clear {
@@ -2238,7 +2241,7 @@ select.input-field {
   right: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(216, 169, 40, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(45, 147, 108, 0.1) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
 }
@@ -2369,7 +2372,7 @@ select.input-field {
   display: inline-flex;
   padding: 0.65rem;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-warm);
   color: var(--brand);
 }
 
@@ -2714,7 +2717,7 @@ select.input-field {
 
 .prem-filter-search input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(216, 169, 40, 0.12);
+  box-shadow: 0 0 0 3px rgba(45, 147, 108, 0.12);
 }
 
 .prem-filter-search input::placeholder {
@@ -3754,7 +3757,7 @@ select.input-field {
   text-decoration: none;
   transition: background var(--transition-fast);
 }
-.pd-sticky-btn:hover { background: #e0b32e; }
+.pd-sticky-btn:hover { background: #248a62; }
 .pd-sticky-close {
   background: var(--surface-warm);
   border: 1px solid var(--border-light);
@@ -3867,7 +3870,7 @@ select.input-field {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-warm);
   color: var(--brand);
   display: flex;
   align-items: center;
